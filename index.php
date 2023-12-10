@@ -45,7 +45,7 @@ $level = "pemohon";
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.php"><img src="main/img/logo4.png" width="150" height="54" alt="logo"></a>
+                    <a class="navbar-brand" href="index.php"><img src="main/img/header.png" width="195" height="75" alt="logo"></a>
                 </div>
 
                 <div class="collapse navbar-collapse navbar-right">
@@ -68,13 +68,13 @@ $level = "pemohon";
     <section id="cta2">
         <div class="container">
             <div class="text-center">
-                <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span>SISTEM PELAYANAN</span> ADMINITRASI SURAT <br> KECAMATAN SUMBER BAHAGIA</h2>
+                <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span>SISTEM PELAYANAN</span> ADMINITRASI SURAT <br> KELURAHAN SUMBER BAHAGIA</h2>
                 <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">KLIK LOGIN UNTUK MELANJUTKAN
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
-                        <div class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms"">
-                           <!-- Button trigger modal -->
-                           <a href=" login.php" type="submit" class="btn btn-primary">Login</a>
+                        <div class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms">
+                            <!-- Button trigger modal -->
+                            <a href=" login.php" type="submit" class="btn btn-primary">Login</a>
                             <a href="register.php" type="submit" class="btn btn-primary">Daftar</a>
                         </div>
                     </div>
@@ -220,11 +220,11 @@ $level = "pemohon";
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; <?php echo date('Y'); ?> KANTOR KELURAHAN LAMPUNG TENGAH
+                    &copy; <?php echo date('Y'); ?> KANTOR KELURAHAN SUMBER BAHAGIA KABUPATEN LAMPUNG TENGAH
                 </div>
                 <div class="col-sm-6">
                     <ul class="social-icons">
-                        <li><a href="https://www.instagram.com/fachrishofiyyuddin/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.google.co.id/?hl=id" target="_blank"><i class="fa fa-instagram"></i></a></li>
                         <li><a href="https://www.facebook.com/profile.php?id=100005519746461" target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.youtube.com/channel/UCzdAstXxirdPWsTcdyl9DQg" target="_blank"><i class="fa fa-youtube"></i></a></li>
                         <li><a href="https://github.com/fachrishofiyyuddin" target="_blank"><i class="fa fa-github"></i></a></li>
