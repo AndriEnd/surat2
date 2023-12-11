@@ -60,7 +60,7 @@
                     <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                     <font size="4">KECAMATAN SEPUTI BANYAK</font><br>
                     <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                    <font size="2"><i>JL.SOLO NO 1 ,34156</i></font><br> 
+                    <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br> 
                 </center>
             </td>
         <td></td>
