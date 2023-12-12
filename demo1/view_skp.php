@@ -105,7 +105,7 @@ if (isset($_GET['id_request_skp'])) {
                                 <td>
                                     <center>
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
-                                        <font size="4">>KECAMATAN SEPUTI BANYAK</font><br>
+                                        <font size="4">>KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>>KELURAHAN SUMBER BAHAGIA</b></font><br>
                                         <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                                     </center>
@@ -154,7 +154,7 @@ if (isset($_GET['id_request_skp'])) {
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputi Banyak<br> Lampung Tengah, Menerangkan bahwa :
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak<br> Lampung Tengah, Menerangkan bahwa :
                                 </td>
                             </tr>
                         </table>

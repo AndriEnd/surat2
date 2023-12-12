@@ -34,7 +34,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="main/img/logo4.png" width="150" height="54" alt="logo">
+                <img src="main/img/header.png" width="170" height="54" alt="logo">
               </div>
               <h4>HALAMAN PENDAFTARAN</h4>
               <form method="POST" class="pt-3">
