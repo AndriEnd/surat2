@@ -82,7 +82,7 @@ if (isset($_GET['id_request_sktm'])) {
                     <table border="1" align="center">
                         <table border="0" align="center">
                             <tr>
-                                <td><img src="img/logo1.png" width="75" height="87" alt=""></td>
+                                <td><img src="img/logo1.png" width="70" height="87" alt=""></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

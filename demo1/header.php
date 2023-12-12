@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Dashboard Pelayanan Surat Keterangan Online Kelurahan Wergu Wetan</title>
+	<title>SISTEM PELAYANAN ADMINITRASI SURAT KELURAHAN SUMBER BAHAGIA</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon" />
 
@@ -40,7 +40,7 @@
 			<div class="logo-header" data-background-color="blue">
 
 				<a href="#" class="logo">
-					<img src="../main/img/logo4.png" width="125" alt="navbar brand" class="navbar-brand">
+					<img src="../main/img/header.png" width="125" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">

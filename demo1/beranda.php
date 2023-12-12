@@ -72,7 +72,7 @@
 						<div class="col-md-3 pr-md-0">
 								<div class="card-pricing2 card-warning">
 									<div class="pricing-header">
-										<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Pamit</h6>
+										<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Kartu Keluarga</h6>
 									</div>
 									<div class="price-value">
 										<div class="value">
@@ -360,7 +360,7 @@
 										</a>
 										<div class="col col-stats ml-3 ml-sm-0">
 											<div class="numbers">
-												<p class="card-category">SKP</p>
+												<p class="card-category">SKK</p>
 												<?php
 													$sql = "SELECT * FROM data_request_skp WHERE status=0";
 													$query = mysqli_query($konek,$sql);

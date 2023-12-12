@@ -55,7 +55,7 @@ $level = "pemohon";
                         <li class="scroll"><a href="#services">Informasi</a></li>
                         <li class="scroll"><a href="pegawai.php">Pegawai</a></li>
                         <li class="scroll"><a href="#get-in-touch">Lokasi</a></li>
-                        <li class="scroll"><a href="#permohonan_surat">Cetak Surat</a></li>
+                        <li class="scroll"><a href="login.php">Cetak Surat</a></li>
                     </ul>
                 </div>
             </div>
@@ -220,7 +220,7 @@ $level = "pemohon";
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; <?php echo date('Y'); ?> KANTOR KELURAHAN SUMBER BAHAGIA KABUPATEN LAMPUNG TENGAH
+                    &copy; <?php echo date('Y'); ?> KANTOR KELURAHAN SUMBER BAHAGIA KECAMATAN SEPUTIH BANYAK
                 </div>
                 <div class="col-sm-6">
                     <ul class="social-icons">
