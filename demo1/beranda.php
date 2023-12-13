@@ -105,6 +105,42 @@
 										<i class="fas fa-plus-circle"></i> Request</a>
 								</div>
 						</div>
+						<div class="col-md-3 pr-md-0">
+								<div class="card-pricing2 card-danger">
+									<div class="pricing-header">
+										<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Lahir</h6>
+									</div>
+									<div class="price-value">
+										<div class="value">
+											<span class="currency"></span>
+											<span class="amount"><i class="flaticon-envelope-1"></i><span></span></span>
+											<span class="month"></span>
+										</div>
+									</div>
+									<ul class="pricing-content">
+									</ul>
+									<a href="?halaman=request_skd" class="btn btn-secondary btn-round btn-sm mb-3"><span class="btn-label">
+										<i class="fas fa-plus-circle"></i> Request</a>
+								</div>
+						</div>
+						<div class="col-md-3 pr-md-0">
+								<div class="card-pricing2 card--indigo">
+									<div class="pricing-header">
+										<h6 class="fw-bold text-center text-uppercase">Surat Keterangan KTP</h6>
+									</div>
+									<div class="price-value">
+										<div class="value">
+											<span class="currency"></span>
+											<span class="amount"><i class="flaticon-envelope-1"></i><span></span></span>
+											<span class="month"></span>
+										</div>
+									</div>
+									<ul class="pricing-content">
+									</ul>
+									<a href="?halaman=request_skd" class="btn btn-secondary btn-round btn-sm mb-3"><span class="btn-label">
+										<i class="fas fa-plus-circle"></i> Request</a>
+								</div>
+						</div>
 	</div>
 </div>
 <?php
