@@ -68,7 +68,7 @@ $level = "pemohon";
     <section id="cta2">
         <div class="container">
             <div class="text-center">
-                <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span>SISTEM PELAYANAN</span> ADMINITRASI SURAT <br> KELURAHAN SUMBER BAHAGIA</h2>
+                <h2 class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms"><span>SISTEM PELAYANAN</span> ADMINISTRASI <br> KELURAHAN SUMBER BAHAGIA</h2>
                 <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">KLIK LOGIN UNTUK MELANJUTKAN
                 <div class="row justify-content-center">
                     <div class="col-lg-12 text-center">
