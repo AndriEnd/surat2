@@ -3,12 +3,12 @@
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
 <?php
-if (isset($_GET['id_request_skp'])) {
-    $id = $_GET['id_request_skp'];
-    $sql = "SELECT * FROM data_request_skp natural join data_user WHERE id_request_skp='$id'";
+if (isset($_GET['id_request_kk'])) {
+    $id = $_GET['id_request_kk'];
+    $sql = "SELECT * FROM data_request_kk natural join data_user WHERE id_request_kk='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
-    $id = $data['id_request_skp'];
+    $id = $data['id_request_kk'];
     $nik = $data['nik'];
     $nama = $data['nama'];
     $tempat = $data['tempat_lahir'];
@@ -22,14 +22,20 @@ if (isset($_GET['id_request_skp'])) {
     $nama = $data['nama'];
     $alamat = $data['alamat'];
     $status_warga = $data['status_warga'];
-    $keperluan = $data['keperluan'];
     $request = $data['request'];
+    $keterangan = $data['keterangan'];
+    $status = $data['status'];
     $acc = $data['acc'];
+    $keperluan = $data['keperluan'];
     $format4 = date('d F Y', strtotime($acc));
-    if ($acc == 0) {
-        $acc = "BELUM TTD";
-    } elseif ($acc == 1) {
-        $acc;
+    if ($format4 == 0) {
+        $format4 = "kosong";
+    } elseif ($format4 == 1) {
+        $format4;
+    }
+
+    if ($status == 3) {
+        $keterangan = "Sudah ACC Lurah, surat sedang dalam proses cetak oleh staf";
     }
 }
 ?>
@@ -50,23 +56,34 @@ if (isset($_GET['id_request_skp'])) {
                     <div class="card-tools">
                         <form action="" method="POST">
                             <div class="form-group">
-                                <input type="date" name="tgl_acc" class="form-control" required="">
-                                <div class="form-group">
-                                    <input type="submit" name="ttd" value="ACC" class="btn btn-primary btn-sm">
-                                </div>
+                                <label>Keterangan</label>
+                                <select name="dicetak" id="" class="form-control" required="">
+                                    <option value="">Pilih</option>
+                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
+                                </select><br>
+                                <!-- <input type="date" name="tgl_acc" class="form-control"> -->
+                                <input type="submit" name="ttd" value="Kirim" class="btn btn-primary btn-sm">
+                                <a href="cetak_kk.php?id_request_kk=<?= $id; ?>" class="btn btn-primary btn-sm">Cetak</a>
+                                <!-- <div class="form-group">
+                                                    <a href="cetak_skd.php?id_request_skd=<?php $id; ?>">
+                                                        Cetak
+                                                    </a>
+                                                </div> -->
+                                <!-- <div class="form-group">
+                                                   <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
+                                                </div> -->
                             </div>
                         </form>
                         <?php
                         if (isset($_POST['ttd'])) {
-                            $ket = "Surat sedang dalam proses cetak";
-                            $tgl = $_POST['tgl_acc'];
-                            $update = mysqli_query($konek, "UPDATE data_request_skp SET acc='$tgl', status=2, keterangan='$ket' WHERE id_request_skp=$id");
+                            $cetak = $_POST['dicetak'];
+                            $update = mysqli_query($konek, "UPDATE data_request_kk SET keterangan='$cetak', status=3 WHERE id_request_kk=$id");
                             if ($update) {
-                                echo "<script language='javascript'>swal('Selamat...', 'ACC Lurah Berhasil', 'success');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_skp">';
+                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
+                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
                             } else {
-                                echo "<script language='javascript'>swal('Gagal...', 'ACC Lurah Gagal', 'error');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_skp">';
+                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
+                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_kk">';
                             }
                         }
                         ?>
@@ -105,7 +122,7 @@ if (isset($_GET['id_request_skp'])) {
                                 <td>
                                     <center>
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
-                                        <font size="4">>KECAMATAN SEPUTIH BANYAK</font><br>
+                                        <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>>KELURAHAN SUMBER BAHAGIA</b></font><br>
                                         <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                                     </center>
@@ -154,7 +171,7 @@ if (isset($_GET['id_request_skp'])) {
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak<br> Lampung Tengah, Menerangkan bahwa :
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak<br>Lampung Tengah, Menerangkan bahwa :
                                 </td>
                             </tr>
                         </table>
@@ -166,7 +183,7 @@ if (isset($_GET['id_request_skp'])) {
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat, tanggal lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -221,11 +238,12 @@ if (isset($_GET['id_request_skp'])) {
                         </table>
                         <br>
                         <br>
+                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <th></th>
                                 <th width="100px"></th>
-                                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                                <th>Lampung Tengah, <?php echo $format3; ?></th>
                             </tr>
                             <tr>
                                 <td>Tanda Tangan <br> Yang Bersangkutan </td>
@@ -285,10 +303,9 @@ if (isset($_GET['id_request_skp'])) {
                             <tr>
                                 <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
                                 <td></td>
-                                <td><b><u>(Burhan Suburhan)</u></b></td>
+                                <td><b><u>(AGUS SUPRIYANTO)</u></b></td>
                             </tr>
                         </table>
-
                     </table>
 
                 </div>

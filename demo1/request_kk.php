@@ -62,7 +62,7 @@ if (isset($_POST['kirim'])) {
 	$file_ktp = $_POST['nik'] . "_" . ".jpg";
 	$nama_kk = isset($_FILES['kk']);
 	$file_kk = $_POST['nik'] . "_" . ".jpg";
-	$sql = "INSERT INTO data_request_skp (nik,scan_ktp,scan_kk,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$keperluan')";
+	$sql = "INSERT INTO data_request_kk (nik,scan_ktp,scan_kk,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$keperluan')";
 	$query = mysqli_query($konek, $sql) or die(mysqli_error());
 
 	if ($query) {
@@ -72,7 +72,7 @@ if (isset($_POST['kirim'])) {
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=tampil_status">';
 	} else {
 		echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-		echo '<meta http-equiv="refresh" content="3; url=?halaman=request_skp">';
+		echo '<meta http-equiv="refresh" content="3; url=?halaman=request_kk">';
 	}
 }
 

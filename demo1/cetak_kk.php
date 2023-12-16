@@ -1,8 +1,8 @@
 <?php include '../konek.php'; ?>
 <?php
-if (isset($_GET['id_request_skp'])) {
-    $id = $_GET['id_request_skp'];
-    $sql = "SELECT * FROM data_request_skp natural join data_user WHERE id_request_skp='$id'";
+if (isset($_GET['id_request_kk'])) {
+    $id = $_GET['id_request_kk'];
+    $sql = "SELECT * FROM data_request_kk natural join data_user WHERE id_request_kk='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $nik = $data['nik'];
@@ -29,7 +29,7 @@ if (isset($_GET['id_request_skp'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CETAK SKP</title>
+    <title>CETAK kk</title>
 </head>
 
 <body>
