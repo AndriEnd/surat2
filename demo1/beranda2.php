@@ -107,7 +107,7 @@ if ($hak_akses == "Staf") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">kk</p>
+									<p class="card-category">KK</p>
 									<?php
 									$sql = "SELECT * FROM data_request_kk WHERE status=0";
 									$query = mysqli_query($konek, $sql);
@@ -144,6 +144,74 @@ if ($hak_akses == "Staf") {
 									<p class="card-category">SKD</p>
 									<?php
 									$sql = "SELECT * FROM data_request_skd WHERE status=0";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+									// if($status=="1"){
+									// 	$count ="Belum ada request";
+									// }
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=sudah_acc_akta">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">AKTA</p>
+									<?php
+									$sql = "SELECT * FROM data_request_akta WHERE status=0";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+									// if($status=="1"){
+									// 	$count ="Belum ada request";
+									// }
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=sudah_acc_ktp">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">KTP</p>
+									<?php
+									$sql = "SELECT * FROM data_request_ktp WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
@@ -253,7 +321,7 @@ if ($hak_akses == "Staf") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">kk</p>
+									<p class="card-category">KK</p>
 									<?php
 									$sql = "SELECT * FROM data_request_kk WHERE status=1";
 									$query = mysqli_query($konek, $sql);
@@ -286,6 +354,66 @@ if ($hak_akses == "Staf") {
 									<p class="card-category">SKD</p>
 									<?php
 									$sql = "SELECT * FROM data_request_skd WHERE status=1";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=belum_acc_akta">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">AKTA</p>
+									<?php
+									$sql = "SELECT * FROM data_request_akta WHERE status=1";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=belum_acc_ktp">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">KTP</p>
+									<?php
+									$sql = "SELECT * FROM data_request_ktp WHERE status=1";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);

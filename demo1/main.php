@@ -61,12 +61,14 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'beranda';
 					include 'beranda.php';
 					break;
+
 				case 'ubah_pemohon';
 					include 'ubah_pemohon.php';
 					break;
 				case 'tampil_pemohon';
 					include 'tampil_pemohon.php';
 					break;
+
 				case 'request_sktm';
 					include 'request_sktm.php';
 					break;
@@ -79,9 +81,17 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'request_skd';
 					include 'request_skd.php';
 					break;
+				case 'request_akta';
+					include 'request_akta.php';
+					break;
+				case 'request_ktp';
+					include 'request_ktp.php';
+					break;
+
 				case 'tampil_status';
 					include 'status_request.php';
 					break;
+
 				case 'belum_acc_sktm';
 					include 'belum_acc_sktm.php';
 					break;
@@ -94,6 +104,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'belum_acc_skd';
 					include 'belum_acc_skd.php';
 					break;
+				case 'belum_acc_akta';
+					include 'belum_acc_akta.php';
+					break;
+				case 'belum_acc_ktp';
+					include 'belum_acc_ktp.php';
+					break;
+
 				case 'sudah_acc_sktm';
 					include 'acc_sktm.php';
 					break;
@@ -106,6 +123,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'sudah_acc_skd';
 					include 'acc_skd.php';
 					break;
+				case 'sudah_acc_akta';
+					include 'acc_akta.php';
+					break;
+				case 'sudah_acc_ktp';
+					include 'acc_ktp.php';
+					break;
+
 				case 'detail_sktm';
 					include 'detail_sktm.php';
 					break;
@@ -118,6 +142,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'detail_skd';
 					include 'detail_skd.php';
 					break;
+				case 'detail_akta';
+					include 'detail_akta.php';
+					break;
+				case 'detail_ktp';
+					include 'detail_ktp.php';
+					break;
+
 				case 'cetak_sktm';
 					include 'cetak_sktm.php';
 					break;
@@ -130,6 +161,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'ubah_user';
 					include 'ubah_user.php';
 					break;
+
 				case 'ubah_sktm';
 					include 'ubah_request_sktm.php';
 					break;
@@ -142,6 +174,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'ubah_skd';
 					include 'ubah_request_skd.php';
 					break;
+				case 'ubah_akta';
+					include 'ubah_request_akta.php';
+					break;
+				case 'ubah_ktp';
+					include 'ubah_request_ktp.php';
+					break;
+
 				case 'laporan_perbulan';
 					include 'laporan_perbulan.php';
 					break;
@@ -149,7 +188,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					include 'laporan_pertahun.php';
 					break;
 				default:
-					echo "<center>HALAMAN KOSONG</center>";
+					echo "<center>HALAMAN KOSONG </center>";
 					break;
 			}
 		} else {

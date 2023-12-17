@@ -95,6 +95,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'tampil_pemohon';
 					include 'tampil_pemohon.php';
 					break;
+
 				case 'request_sktm';
 					include 'request_sktm.php';
 					break;
@@ -107,9 +108,17 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'request_skd';
 					include 'request_skd.php';
 					break;
+				case 'request_akta';
+					include 'request_akta.php';
+					break;
+				case 'request_ktp';
+					include 'request_ktp.php';
+					break;
+
 				case 'tampil_status';
 					include 'status_request.php';
 					break;
+
 				case 'belum_acc_sktm';
 					include 'belum_acc_sktm.php';
 					break;
@@ -122,6 +131,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'belum_acc_skd';
 					include 'belum_acc_skd.php';
 					break;
+				case 'belum_acc_akta';
+					include 'belum_acc_akta.php';
+					break;
+				case 'belum_acc_ktp';
+					include 'belum_acc_ktp.php';
+					break;
+
 				case 'sudah_acc_sktm';
 					include 'acc_sktm.php';
 					break;
@@ -134,6 +150,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'sudah_acc_skd';
 					include 'acc_skd.php';
 					break;
+				case 'sudah_acc_akta';
+					include 'acc_akta.php';
+					break;
+				case 'sudah_acc_ktp';
+					include 'acc_ktp.php';
+					break;
+
 				case 'detail_sktm';
 					include 'detail_sktm.php';
 					break;
@@ -146,9 +169,17 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'detail_skd';
 					include 'detail_skd.php';
 					break;
+				case 'detail_akta';
+					include 'detail_akta.php';
+					break;
+				case 'detail_ktp';
+					include 'detail_ktp.php';
+					break;
+
 				case 'cetak_sktm';
 					include 'cetak_sktm.php';
 					break;
+
 				case 'tampil_user';
 					include 'tampil_user.php';
 					break;
@@ -158,6 +189,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'ubah_user';
 					include 'ubah_user.php';
 					break;
+
 				case 'view_sktm';
 					include 'view_sktm.php';
 					break;
@@ -170,6 +202,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'view_skd';
 					include 'view_skd.php';
 					break;
+				case 'view_akta';
+					include 'view_akta.php';
+					break;
+				case 'view_ktp';
+					include 'view_ktp.php';
+					break;
+
 				case 'view_cetak_sktm';
 					include 'view_cetak_sktm.php';
 					break;
@@ -182,6 +221,13 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'view_cetak_skd';
 					include 'view_cetak_skd.php';
 					break;
+				case 'view_cetak_akta';
+					include 'view_cetak_akta.php';
+					break;
+				case 'view_cetak_ktp';
+					include 'view_cetak_ktp.php';
+					break;
+
 				case 'surat_dicetak';
 					include 'surat_dicetak.php';
 					break;

@@ -73,6 +73,30 @@
                                                     data_user
                                                 INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
                                                 WHERE data_request_kk.status = 3
+                                                UNION
+                                                SELECT
+                                                    data_user.nik,
+                                                    data_user.nama,
+                                                    data_request_akta.tanggal_request,
+                                                    data_request_akta.keperluan,
+                                                    data_request_akta.request,
+                                                    data_request_akta.status
+                                                FROM
+                                                    data_user
+                                                INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+                                                WHERE data_request_akta.status = 3
+                                                UNION
+                                                SELECT
+                                                    data_user.nik,
+                                                    data_user.nama,
+                                                    data_request_ktp.tanggal_request,
+                                                    data_request_ktp.keperluan,
+                                                    data_request_ktp.request,
+                                                    data_request_ktp.status
+                                                FROM
+                                                    data_user
+                                                INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+                                                WHERE data_request_ktp.status = 3
                                                 ";
                                 // $sql = "SELECT * FROM data_request_skd natural join data_user WHERE status=3";
                                 $query = mysqli_query($konek, $sql);

@@ -29,7 +29,7 @@ if ($hak_akses == "Pemohon") {
 	</div>
 	<div class="page-inner mt--5">
 		<div class="row mt--2">
-			<div class="col-md-3 pr-md-0">
+			<div class="col-md-3 pr-md-0"> SKTM
 				<div class="card-pricing2 card-primary">
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Tidak Mampu</h6>
@@ -49,7 +49,7 @@ if ($hak_akses == "Pemohon") {
 						</span> Request</a>
 				</div>
 			</div>
-			<div class="col-md-3 pr-md-0">
+			<div class="col-md-3 pr-md-0"> // SKU
 				<div class="card-pricing2 card-success">
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Usaha</h6>
@@ -68,7 +68,7 @@ if ($hak_akses == "Pemohon") {
 				</div>
 			</div>
 			<div class="col-md-3 pr-md-0">
-				<div class="card-pricing2 card-warning">
+				<div class="card-pricing2 card-warning"> // KK
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Kartu Keluarga</h6>
 					</div>
@@ -85,7 +85,7 @@ if ($hak_akses == "Pemohon") {
 							<i class="fas fa-plus-circle"></i> Request</a>
 				</div>
 			</div>
-			<div class="col-md-3 pr-md-0">
+			<div class="col-md-3 pr-md-0"> // SKD
 				<div class="card-pricing2 card-secondary">
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Domisili</h6>
@@ -103,7 +103,7 @@ if ($hak_akses == "Pemohon") {
 							<i class="fas fa-plus-circle"></i> Request</a>
 				</div>
 			</div>
-			<div class="col-md-3 pr-md-0">
+			<div class="col-md-3 pr-md-0"> // AKTA
 				<div class="card-pricing2 card-danger">
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Akta Lahir</h6>
@@ -117,11 +117,11 @@ if ($hak_akses == "Pemohon") {
 					</div>
 					<ul class="pricing-content">
 					</ul>
-					<a href="?halaman=request_skd" class="btn btn-danger btn-round btn-sm mb-3"><span class="btn-label">
+					<a href="?halaman=request_akta" class="btn btn-danger btn-round btn-sm mb-3"><span class="btn-label">
 							<i class="fas fa-plus-circle"></i> Request</a>
 				</div>
 			</div>
-			<div class="col-md-3 pr-md-0">
+			<div class="col-md-3 pr-md-0"> // KTP
 				<div class="card-pricing2 card-warning">
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan KTP</h6>
@@ -135,7 +135,7 @@ if ($hak_akses == "Pemohon") {
 					</div>
 					<ul class="pricing-content">
 					</ul>
-					<a href="?halaman=request_skd" class="btn btn-warning btn-round btn-sm mb-3"><span class="btn-label">
+					<a href="?halaman=request_ktp" class="btn btn-warning btn-round btn-sm mb-3"><span class="btn-label">
 							<i class="fas fa-plus-circle"></i> Request</a>
 				</div>
 			</div>
@@ -239,7 +239,7 @@ if ($hak_akses == "Pemohon") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">kk</p>
+									<p class="card-category">KK</p>
 									<?php
 									$sql = "SELECT * FROM data_request_kk WHERE status=1";
 									$query = mysqli_query($konek, $sql);
@@ -276,6 +276,74 @@ if ($hak_akses == "Pemohon") {
 									<p class="card-category">SKD</p>
 									<?php
 									$sql = "SELECT * FROM data_request_skd WHERE status=1";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+									// if($status=="1"){
+									// 	$count ="Belum ada request";
+									// }
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=sudah_acc_skd">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">AKTA</p>
+									<?php
+									$sql = "SELECT * FROM data_request_akta WHERE status=1";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+									// if($status=="1"){
+									// 	$count ="Belum ada request";
+									// }
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=sudah_acc_skd">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">KTP</p>
+									<?php
+									$sql = "SELECT * FROM data_request_ktp WHERE status=1";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
@@ -394,7 +462,7 @@ if ($hak_akses == "Pemohon") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SKK</p>
+									<p class="card-category">KK</p>
 									<?php
 									$sql = "SELECT * FROM data_request_kk WHERE status=0";
 									$query = mysqli_query($konek, $sql);
@@ -431,6 +499,74 @@ if ($hak_akses == "Pemohon") {
 									<p class="card-category">SKD</p>
 									<?php
 									$sql = "SELECT * FROM data_request_skd WHERE status=0";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+									if ($status == "1") {
+										$count = "Belum ada request";
+									}
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=belum_acc_akta">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">AKTA</p>
+									<?php
+									$sql = "SELECT * FROM data_request_akta WHERE status=0";
+									$query = mysqli_query($konek, $sql);
+									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+									$count = mysqli_num_rows($query);
+									$status = $data['status'];
+
+									if ($status == "1") {
+										$count = "Belum ada request";
+									}
+
+
+									?>
+									<h4 class="card-title"><?php echo $count; ?></h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-3">
+				<div class="card card-stats card-round">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<a href="?halaman=belum_acc_ktp">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-secondary bubble-shadow-small">
+										<i class="flaticon-envelope-1"></i>
+									</div>
+								</div>
+							</a>
+							<div class="col col-stats ml-3 ml-sm-0">
+								<div class="numbers">
+									<p class="card-category">KTP</p>
+									<?php
+									$sql = "SELECT * FROM data_request_ktp WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);

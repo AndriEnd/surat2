@@ -48,7 +48,29 @@ if (!isset($_POST['tampilkan'])) {
 	FROM
 		data_user
 	INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
-	WHERE data_request_sku.status = 3";
+	WHERE data_request_sku.status = 3
+	UNION
+	SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_akta.acc,
+		data_request_akta.keperluan,
+		data_request_akta.request
+	FROM
+		data_user
+	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+	WHERE data_request_akta.status = 3 
+	UNION
+	SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_ktp.acc,
+		data_request_ktp.keperluan,
+		data_request_ktp.request
+	FROM
+		data_user
+	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+	WHERE data_request_ktp.status = 3";
 	$query = mysqli_query($konek, $sql);
 } elseif (isset($_POST['tampilkan'])) {
 	$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
@@ -94,7 +116,29 @@ if (!isset($_POST['tampilkan'])) {
 	FROM
 		data_user
 	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE month(data_request_sktm.acc) = '$bulan'";
+	WHERE month(data_request_sktm.acc) = '$bulan'
+	UNION
+	SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_akta.acc,
+		data_request_akta.keperluan,
+		data_request_sktm.request
+	FROM
+		data_user
+	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+	WHERE month(data_request_akta.acc) = '$bulan'
+	UNION
+	SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_ktp.acc,
+		data_request_ktp.keperluan,
+		data_request_ktp.request
+	FROM
+		data_user
+	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+	WHERE month(data_request_ktp.acc) = '$bulan'";
 	$query = mysqli_query($konek, $sql);
 }
 

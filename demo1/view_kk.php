@@ -204,8 +204,8 @@ if (isset($_GET['id_request_kk'])) {
                                 <td>Keterangan</td>
                                 <td>:</td>
                                 <?php
-                                if ($request == "LAINNYA") {
-                                    $request = "Surat Keterangan / Pengantar Lainnya";
+                                if ($request == "KK") {
+                                    $request = "Surat Keterangan KK";
                                 }
                                 ?>
                                 <td><?php echo $request; ?></td>

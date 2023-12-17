@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="main/vendors/base/vendor.bundle.base.css">
   <link href="main/css/sweetalert.css" rel="stylesheet" type="text/css">
   <script src="main/js/jquery-2.1.3.min.js"></script>
-  <script src="main/js/sweetalert.min.js"></script>                
-  <script src="main/js/sweetalert-dev.js"></script>  
+  <script src="main/js/sweetalert.min.js"></script>
+  <script src="main/js/sweetalert-dev.js"></script>
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -22,7 +22,7 @@
 </head>
 
 <style type="text/css">
-  body{
+  body {
     background-image: url("22.PNG");
   }
 </style>
@@ -43,14 +43,14 @@
                   <select name="hak_akses" id="" class="form-control text-uppercase">
                     <option value="" selected="selected">Login sebagai</option>
                     <?php
-                        $SQL = "SELECT * FROM data_user WHERE hak_akses='Staf' or hak_akses='Lurah'";
-                        $QUERY = mysqli_query($konek,$SQL);
-                        while($data=mysqli_fetch_array($QUERY,MYSQLI_BOTH)){
-                          $hak_akses = $data['hak_akses'];
+                    $SQL = "SELECT * FROM data_user WHERE hak_akses='Staf' or hak_akses='Lurah'";
+                    $QUERY = mysqli_query($konek, $SQL);
+                    while ($data = mysqli_fetch_array($QUERY, MYSQLI_BOTH)) {
+                      $hak_akses = $data['hak_akses'];
                     ?>
-                    <option value="<?php echo $hak_akses;?>"><?php echo $hak_akses;?></option>
-                    <?php 
-                        }
+                      <option value="<?php echo $hak_akses; ?>"><?php echo $hak_akses; ?></option>
+                    <?php
+                    }
                     ?>
                   </select>
                   <!-- <input type="text" name="nik" class="form-control form-control-xs text-uppercase" placeholder="Password" required autofocus> -->
@@ -65,7 +65,7 @@
                   </button>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
-                  
+
                 </div>
                 <div class="mb-2">
                   <a class="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn" href="http://localhost/surat-keterangan-desa/">BATAL</a>
@@ -86,28 +86,28 @@
 
   <!-- login -->
   <?php
-    if(isset($_POST['login'])){
-      // $nik = $_POST['nik'];
-      $password = $_POST['password'];
-      $hak_akses = $_POST['hak_akses'];
-      
-        $sql_login = "SELECT * FROM data_user WHERE hak_akses='$hak_akses' AND password='$password'";
-        $query_login = mysqli_query($konek,$sql_login);
-        $data_login = mysqli_fetch_array($query_login,MYSQLI_BOTH);
-        $jumlah_login = mysqli_num_rows($query_login);
+  if (isset($_POST['login'])) {
+    // $nik = $_POST['nik'];
+    $password = $_POST['password'];
+    $hak_akses = $_POST['hak_akses'];
 
-        if($jumlah_login > 0){
-          session_start();
-          $_SESSION['hak_akses']=$data_login['hak_akses'];
-          $_SESSION['password']=$data_login['password'];
+    $sql_login = "SELECT * FROM data_user WHERE hak_akses='$hak_akses' AND password='$password'";
+    $query_login = mysqli_query($konek, $sql_login);
+    $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
+    $jumlah_login = mysqli_num_rows($query_login);
 
-          echo "<script language='javascript'>swal('Selamat...', 'Login Berhasil!', 'success');</script>" ;
-          echo '<meta http-equiv="refresh" content="3; url=demo1/main2.php">';
-        }else{
-          echo "<script language='javascript'>swal('Gagal...', 'Login Gagal', 'error');</script>" ;
-          echo '<meta http-equiv="refresh" content="3; url=pegawai.php">';
-        }
+    if ($jumlah_login > 0) {
+      session_start();
+      $_SESSION['hak_akses'] = $data_login['hak_akses'];
+      $_SESSION['password'] = $data_login['password'];
+
+      echo "<script language='javascript'>swal('Selamat...', 'Login Berhasil!', 'success');</script>";
+      echo '<meta http-equiv="refresh" content="3; url=demo1/main2.php">';
+    } else {
+      echo "<script language='javascript'>swal('Gagal...', 'Login Gagal', 'error');</script>";
+      echo '<meta http-equiv="refresh" content="3; url=pegawai.php">';
     }
+  }
   ?>
 
   <!-- plugins:js -->
@@ -119,7 +119,7 @@
   <script src="main/js/template.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- endinject -->
-  <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script> 
+  <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
 </body>
 
 </html>

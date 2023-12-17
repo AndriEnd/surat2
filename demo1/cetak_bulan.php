@@ -74,6 +74,30 @@ if (isset($_GET['bulan'])) {
 		data_user
 	INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
     WHERE month(data_request_skd.acc) = '$bln'
+    UNION
+    SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_akta.acc,
+        data_request_akta.tanggal_request,
+		data_request_akta.keperluan,
+		data_request_akta.request
+	FROM
+		data_user
+	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+    WHERE month(data_request_akta.acc) = '$bln'
+    UNION
+    SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_ktp.acc,
+        data_request_ktp.tanggal_request,
+		data_request_ktp.keperluan,
+		data_request_ktp.request
+	FROM
+		data_user
+	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+    WHERE month(data_request_ktp.acc) = '$bln'
     ";
 
     if ($bln == "1") {
@@ -116,7 +140,7 @@ if (isset($_GET['bulan'])) {
     <body>
         <table border="0" align="center">
             <tr>
-                <td><img src="img/kudus.png" width="70" height="87" alt=""></td>
+                <td><img src="img/logo1.png" width="70" height="87" alt=""></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -139,7 +163,7 @@ if (isset($_GET['bulan'])) {
                 <td>
                     <center>
                         <font size="4"><b>LAPORAN REQUEST SURAT KETERANGAN</b></font><br>
-                        <font size="4"><b>KELURAHAN WERGU WETAN</b></font><br>
+                        <font size="4"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
                         <font size="4"><b>BULAN <?php echo $bln; ?></b></font><br>
                     </center>
                 </td>
@@ -218,16 +242,16 @@ if (isset($_GET['bulan'])) {
         <br>
         <table border='0' align="right">
             <tr>
-                <td style="text-align: center"><b>Kudus, <?php echo date('d F Y'); ?></b></td>
+                <td style="text-align: center"><b>Lampung Tengah, <?php echo date('d F Y'); ?></b></td>
             </tr>
         </table>
         <br><br><br><br><br>
         <table border='0' align="right">
             <tr>
-                <td style="text-align: center"><b>Lurah Wergu Wetan</b></td>
+                <td style="text-align: center"><b>Lurah Sumber Bahagia</b></td>
             </tr>
             <tr>
-                <td style="text-align: center"><b>Agus Supriyanto</b></td>
+                <td style="text-align: center"><b>nama lurah</b></td>
             </tr>
         </table>
     </body>
