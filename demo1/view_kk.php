@@ -105,8 +105,8 @@ if (isset($_GET['id_request_kk'])) {
                                 <td>
                                     <center>
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
-                                        <font size="4">>KECAMATAN SEPUTIH BANYAK</font><br>
-                                        <font size="5"><b>>KELURAHAN SUMBER BAHAGIA</b></font><br>
+                                        <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
+                                        <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
                                         <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                                     </center>
                                 </td>
@@ -142,7 +142,7 @@ if (isset($_GET['id_request_kk'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR LAINNYA</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR KARTU KELUARGA</b></font><br>
                                         <hr style="margin:0px" color="black">
                                         <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
                                     </center>
@@ -285,7 +285,7 @@ if (isset($_GET['id_request_kk'])) {
                             <tr>
                                 <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
                                 <td></td>
-                                <td><b><u>(Burhan Suburhan)</u></b></td>
+                                <td><b><u>(LURAH)</u></b></td>
                             </tr>
                         </table>
 

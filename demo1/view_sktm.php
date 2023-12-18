@@ -142,7 +142,7 @@ if (isset($_GET['id_request_sktm'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN TIDAK MAMPU</b></font><br>
                                         <hr style="margin:0px" color="black">
                                         <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
                                     </center>
@@ -287,7 +287,7 @@ if (isset($_GET['id_request_sktm'])) {
                             <tr>
                                 <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
                                 <td></td>
-                                <td><b><u>(Burhan Suburhan)</u></b></td>
+                                <td><b><u>(LURAH)</u></b></td>
                             </tr>
                         </table>
 

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="fw-bold text-uppercase">belum acc request surat keterangan akta</h4>
+                        <h4 class="fw-bold text-uppercase"> tampil belum acc request surat keterangan domisili</h4>
                     </div>
                 </div>
                 <form action="" method="POST">
@@ -28,7 +28,8 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM data_request_ktp natural join data_user where status=1";
+                                    $i = 1;
+                                    $sql = "SELECT * FROM data_request_akta natural join data_user where status=1";
                                     $query = mysqli_query($konek, $sql);
                                     while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
                                         $tgl = $data['tanggal_request'];
@@ -36,13 +37,13 @@
                                         $nik = $data['nik'];
                                         $nama = $data['nama'];
                                         $status = $data['status'];
-                                        $id = $data['id_request_ktp'];
+                                        $id = $data['id_request_akta'];
                                         $ktp = $data['scan_ktp'];
                                         $kk = $data['scan_kk'];
-                                        $id_request_ktp = $data['id_request_ktp'];
+                                        $id_request_akta = $data['id_request_akta'];
 
                                         if ($status == "1") {
-                                            $status = "SUDAH ACC STAF";
+                                            $status = "Sudah ACC Staf";
                                         } elseif ($status == "0") {
                                             $status = "BELUM ACC";
                                         }
@@ -51,16 +52,12 @@
                                             <td><?php echo $format; ?></td>
                                             <td><?php echo $nik; ?></td>
                                             <td><?php echo $nama; ?></td>
-                                            <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
+                                            <td class="fw-bold text-uppercase text-success op-8"><?php echo $status; ?></td>
                                             <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
                                             <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-                                            <!-- <td>
-															<input type="checkbox" name="check[$i]" value="<?php echo $id; ?>">
-															<input type="submit" name="acc" class="btn btn-primary btn-sm" value="ACC">
-														</td> -->
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="View Surat" href="?halaman=view_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
+                                                    <a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="View Surat" href="?halaman=view_akta&id_request_akta=<?= $id_request_akta; ?>">
                                                         <i class="fa fa-edit"></i></a>
                                                 </div>
                                             </td>
@@ -84,16 +81,16 @@ if (isset($_POST['acc'])) {
     if (isset($_POST['check'])) {
         foreach ($_POST['check'] as $value) {
             // echo $value;
-            $ubah = "UPDATE data_request_ktp set status =2 where id_request_ktp = $value";
+            $ubah = "UPDATE data_request_akta set status =2 where id_request_akta = $value";
 
             $query = mysqli_query($konek, $ubah);
 
             if ($query) {
                 echo "<script language='javascript'>swal('Selamat...', 'ACC Berhasil!', 'success');</script>";
-                echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_ktp">';
+                echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_akta">';
             } else {
                 echo "<script language='javascript'>swal('Gagal...', 'ACC Gagal!', 'error');</script>";
-                echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_ktp">';
+                echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_akta">';
             }
         }
     }

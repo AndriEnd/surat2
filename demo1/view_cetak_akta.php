@@ -302,7 +302,7 @@ if (isset($_GET['id_request_akta'])) {
                             <tr>
                                 <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
                                 <td></td>
-                                <td><b><u>(AGUS SUPRIYANTO)</u></b></td>
+                                <td><b><u>(LURAH)</u></b></td>
                             </tr>
                         </table>
                     </table>

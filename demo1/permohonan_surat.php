@@ -8,12 +8,12 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MAMPU</h4>
+						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MANPU</h4>
 					</div>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table id="add1" class="display table table-striped table-hover">
+						<table id="add3" class="display table table-striped table-hover">
 							<thead>
 								<tr>
 									<th>Tanggal Request</th>
@@ -22,15 +22,15 @@
 									<th>Scan KTP</th>
 									<th>Scan KK</th>
 									<th>Keperluan</th>
+									<th>Status</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
-								$sql = "SELECT * FROM data_request_sktm natural join data_user WHERE status=2";
+								$sql = "SELECT * FROM data_request_sktm natural join data_user where status=2";
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-									$id_request_sktm = $data['id_request_sktm'];
 									$tgl = $data['tanggal_request'];
 									$format = date('d F Y', strtotime($tgl));
 									$nik = $data['nik'];
@@ -39,9 +39,12 @@
 									$ktp = $data['scan_ktp'];
 									$kk = $data['scan_kk'];
 									$keperluan = $data['keperluan'];
+									$keterangan = $data['keterangan'];
+									$id_request_sktm = $data['id_request_sktm'];
 
-									if ($status == "1") {
-										$status = "<b style='color:blue'>ACC</b>";
+
+									if ($status == "2") {
+										$status = "<b style='color:blue'>SUDAH ACC LURAH</b>";
 									} elseif ($status == "0") {
 										$status = "<b style='color:red'>BELUM ACC</b>";
 									}
@@ -53,6 +56,7 @@
 										<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 										<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
 										<td><?php echo $keperluan; ?></td>
+										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=view_cetak_sktm&id_request_sktm=<?= $id_request_sktm; ?>">
