@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <form method="POST">
                         <div class="table-responsive">
-                            <table id="add2" class="display table table-striped table-hover">
+                            <table id="add1" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>Tanggal Request</th>
@@ -22,18 +22,17 @@
                                         <th>Nama Lengkap</th>
                                         <th>Scan KTP</th>
                                         <th>Scan KK</th>
-                                        <th>Usaha</th>
                                         <th>Keperluan</th>
                                         <th style="width: 10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $si = 1;
-                                    $sql = "SELECT * FROM data_request_ktp natural join data_user where status=0";
+                                    $i = 1;
+                                    $sql = "SELECT * FROM data_request_kk natural join data_user WHERE status=0";
                                     $query = mysqli_query($konek, $sql);
                                     while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-                                        $id_request_ktp = $data['id_request_ktp'];
+                                        $id_request_kk = $data['id_request_kk'];
                                         $tgl = $data['tanggal_request'];
                                         $format = date('d F Y', strtotime($tgl));
                                         $nik = $data['nik'];
@@ -41,10 +40,8 @@
                                         $status = $data['status'];
                                         $ktp = $data['scan_ktp'];
                                         $kk = $data['scan_kk'];
-                                        $usaha  = $data['usaha'];
                                         $keperluan = $data['keperluan'];
                                         $keterangan = $data['keterangan'];
-                                        $id_request_ktp = $data['id_request_ktp'];
 
                                         if ($status == "1") {
                                             $status = "<b style='color:blue'>ACC</b>";
@@ -58,13 +55,13 @@
                                             <td><?php echo $nama; ?></td>
                                             <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
                                             <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-                                            <td><?php echo $usaha; ?></td>
                                             <td><?php echo $keperluan; ?></td>
                                             <td>
-                                                <input type="checkbox" name="check[$i]" value="<?php echo $id_request_ktp; ?>">
+
+                                                <input type="checkbox" name="check[$i]" value="<?php echo $id_request_kk; ?>">
                                                 <input type="submit" name="acc" class="btn btn-primary btn-sm" value="ACC">
                                                 <div class="form-button-action">
-                                                    <a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cek Data" href="?halaman=detail_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
+                                                    <a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cek Data" href="?halaman=detail_kk&id_request_kk=<?= $id_request_kk; ?>">
                                                         <i class="fa fa-edit"></i></a>
                                                 </div>
                                             </td>
@@ -82,21 +79,22 @@
 
     </div>
 </div>
+
 <?php
 if (isset($_POST['acc'])) {
     if (isset($_POST['check'])) {
         foreach ($_POST['check'] as $value) {
             // echo $value;
-            $ubah = "UPDATE data_request_ktp set status =1 where id_request_ktp = $value";
+            $ubah = "UPDATE data_request_kk set status =1 where id_request_kk = $value";
 
             $query = mysqli_query($konek, $ubah);
 
             if ($query) {
                 echo "<script language='javascript'>swal('Selamat...', 'ACC Staf Berhasil!', 'success');</script>";
-                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_ktp">';
+                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_kk">';
             } else {
                 echo "<script language='javascript'>swal('Gagal...', 'ACC Staf Gagal!', 'error');</script>";
-                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_ktp">';
+                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_kk">';
             }
         }
     }

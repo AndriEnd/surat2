@@ -21,7 +21,7 @@ if (isset($_GET['id_request_kk'])) {
 			<form method="POST" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">FORM TAMBAH REQUEST SURAT KETERANGAN LAINNYA</div>
+						<div class="card-title">FORM TAMBAH REQUEST SURAT KARTU KELUARGA</div>
 					</div>
 					<div class="card-body">
 						<div class="row">

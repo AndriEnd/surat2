@@ -159,7 +159,7 @@ if (isset($_GET['id_request_ktp'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR KTP</b></font><br>
                                         <hr style="margin:0px" color="black">
                                         <span>Nomor :045.2 / <?php echo $id; ?> / 29.07.05</span>
                                     </center>
@@ -221,8 +221,8 @@ if (isset($_GET['id_request_ktp'])) {
                                 <td>Keterangan</td>
                                 <td>:</td>
                                 <?php
-                                if ($request == "KTP") {
-                                    $request = "Surat Keterangan KTP";
+                                if ($request == "DOMISILI") {
+                                    $request = "Surat Keterangan Domisili";
                                 }
                                 ?>
                                 <td><?php echo $request; ?></td>

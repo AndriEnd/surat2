@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="fw-bold text-uppercase"> tampil belum acc request surat keterangan domisili</h4>
+                        <h4 class="fw-bold text-uppercase"> tampil belum acc request surat keterangan akta</h4>
                     </div>
                 </div>
                 <form action="" method="POST">

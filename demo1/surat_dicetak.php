@@ -96,8 +96,7 @@
                                                 FROM
                                                     data_user
                                                 INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
-                                                WHERE data_request_ktp.status = 3
-                                                ";
+                                                WHERE data_request_ktp.status = 3";
                                 // $sql = "SELECT * FROM data_request_skd natural join data_user WHERE status=3";
                                 $query = mysqli_query($konek, $sql);
                                 while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
