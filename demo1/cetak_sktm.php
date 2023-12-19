@@ -240,7 +240,7 @@ if (isset($_GET['id_request_sktm'])) {
         <tr>
             <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
             <td></td>
-            <td><b><u>(Burhan Suburhan)</u></b></td>
+            <td><b><u>(Lurah)</u></b></td>
         </tr>
     </table>
 
