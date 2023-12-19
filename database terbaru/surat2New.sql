@@ -89,11 +89,11 @@ INSERT INTO `data_request_skd` (`id_request_skd`, `nik`, `tanggal_request`, `sca
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_request_skp`
+-- Table structure for table `data_request_kk`
 --
 
-CREATE TABLE `data_request_skp` (
-  `id_request_skp` int(11) NOT NULL,
+CREATE TABLE `data_request_kk` (
+  `id_request_kk` int(11) NOT NULL,
   `nik` varchar(16) NOT NULL,
   `tanggal_request` timestamp NOT NULL DEFAULT current_timestamp(),
   `scan_ktp` text NOT NULL,
@@ -106,10 +106,10 @@ CREATE TABLE `data_request_skp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `data_request_skp`
+-- Dumping data for table `data_request_kk`
 --
 
-INSERT INTO `data_request_skp` (`id_request_skp`, `nik`, `tanggal_request`, `scan_ktp`, `scan_kk`, `keperluan`, `keterangan`, `request`, `status`, `acc`) VALUES
+INSERT INTO `data_request_kk` (`id_request_kk`, `nik`, `tanggal_request`, `scan_ktp`, `scan_kk`, `keperluan`, `keterangan`, `request`, `status`, `acc`) VALUES
 (10, '1111111111111111', '2021-10-18 06:14:07', '1111111111111111_.jpg', '1111111111111111_.jpg', 'KTP Hilang', 'Surat dicetak, bisa diambil!', 'LAINNYA', 3, '2021-10-18'),
 (11, '1212', '2023-12-11 14:58:43', '1212_.jpg', '1212_.jpg', 'aku pamit', 'Data sedang diperiksa oleh Staf', 'LAINNYA', 1, '0000-00-00');
 
@@ -228,10 +228,10 @@ ALTER TABLE `data_request_skd`
   ADD KEY `id_pemohon` (`nik`);
 
 --
--- Indexes for table `data_request_skp`
+-- Indexes for table `data_request_kk`
 --
-ALTER TABLE `data_request_skp`
-  ADD PRIMARY KEY (`id_request_skp`),
+ALTER TABLE `data_request_kk`
+  ADD PRIMARY KEY (`id_request_kk`),
   ADD KEY `id_pemohon` (`nik`);
 
 --
@@ -277,10 +277,10 @@ ALTER TABLE `data_request_skd`
   MODIFY `id_request_skd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `data_request_skp`
+-- AUTO_INCREMENT for table `data_request_kk`
 --
-ALTER TABLE `data_request_skp`
-  MODIFY `id_request_skp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `data_request_kk`
+  MODIFY `id_request_kk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `data_request_sktm`
@@ -317,10 +317,10 @@ ALTER TABLE `data_request_skd`
   ADD CONSTRAINT `data_request_skd_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `data_user` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `data_request_skp`
+-- Constraints for table `data_request_kk`
 --
-ALTER TABLE `data_request_skp`
-  ADD CONSTRAINT `data_request_skp_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `data_user` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `data_request_kk`
+  ADD CONSTRAINT `data_request_kk_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `data_user` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `data_request_sktm`
