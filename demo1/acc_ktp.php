@@ -29,10 +29,10 @@
                                 <tbody>
                                     <?php
                                     $i = 1;
-                                    $sql = "SELECT * FROM data_request_kk natural join data_user WHERE status=0";
+                                    $sql = "SELECT * FROM data_request_ktp natural join data_user WHERE status=0";
                                     $query = mysqli_query($konek, $sql);
                                     while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-                                        $id_request_kk = $data['id_request_kk'];
+                                        $id_request_ktp = $data['id_request_ktp'];
                                         $tgl = $data['tanggal_request'];
                                         $format = date('d F Y', strtotime($tgl));
                                         $nik = $data['nik'];
@@ -58,10 +58,10 @@
                                             <td><?php echo $keperluan; ?></td>
                                             <td>
 
-                                                <input type="checkbox" name="check[$i]" value="<?php echo $id_request_kk; ?>">
+                                                <input type="checkbox" name="check[$i]" value="<?php echo $id_request_ktp; ?>">
                                                 <input type="submit" name="acc" class="btn btn-primary btn-sm" value="ACC">
                                                 <div class="form-button-action">
-                                                    <a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cek Data" href="?halaman=detail_kk&id_request_kk=<?= $id_request_kk; ?>">
+                                                    <a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cek Data" href="?halaman=detail_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
                                                         <i class="fa fa-edit"></i></a>
                                                 </div>
                                             </td>
@@ -85,16 +85,16 @@ if (isset($_POST['acc'])) {
     if (isset($_POST['check'])) {
         foreach ($_POST['check'] as $value) {
             // echo $value;
-            $ubah = "UPDATE data_request_kk set status =1 where id_request_kk = $value";
+            $ubah = "UPDATE data_request_ktp set status =1 where id_request_ktp = $value";
 
             $query = mysqli_query($konek, $ubah);
 
             if ($query) {
                 echo "<script language='javascript'>swal('Selamat...', 'ACC Staf Berhasil!', 'success');</script>";
-                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_kk">';
+                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_ktp">';
             } else {
                 echo "<script language='javascript'>swal('Gagal...', 'ACC Staf Gagal!', 'error');</script>";
-                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_kk">';
+                echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_ktp">';
             }
         }
     }

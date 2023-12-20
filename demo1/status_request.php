@@ -489,7 +489,7 @@
 										<td><i><?= $keterangan; ?></i></td>
 										<td>
 											<div class="form-button-action">
-												<a href="?halaman=ubah_skd&id_request_ktp=<?= $id_request_ktp; ?>">
+												<a href="?halaman=ubah_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
 													<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
 														<i class="fa fa-edit"></i>
 													</button>
@@ -502,6 +502,7 @@
 											</div>
 										</td>
 									</tr>
+
 								<?php
 								}
 								?>
