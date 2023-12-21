@@ -1,8 +1,8 @@
 <?php include '../konek.php'; ?>
 <?php
-if (isset($_GET['id_request_akta'])) {
-    $id = $_GET['id_request_akta'];
-    $sql = "SELECT * FROM data_request_akta natural join data_user WHERE id_request_akta='$id'";
+if (isset($_GET['id_request_ktp'])) {
+    $id = $_GET['id_request_ktp'];
+    $sql = "SELECT * FROM data_request_ktp natural join data_user WHERE id_request_ktp='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $nik = $data['nik'];
@@ -19,7 +19,6 @@ if (isset($_GET['id_request_akta'])) {
     $alamat = $data['alamat'];
     $status_warga = $data['status_warga'];
     $request = $data['request'];
-    $usaha = $data['usaha'];
     $keperluan = $data['keperluan'];
     $acc = $data['acc'];
     $format4 = date('d F Y', strtotime($acc));
@@ -31,7 +30,7 @@ if (isset($_GET['id_request_akta'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CETAK AKTA</title>
+    <title>CETAK ktp</title>
 </head>
 
 <body>
@@ -62,7 +61,7 @@ if (isset($_GET['id_request_akta'])) {
                 <center>
                     <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                     <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
-                    <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
+                    <font size="5"><b>>KELURAHAN SUMBER BAHAGIA</b></font><br>
                     <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                 </center>
             </td>
@@ -122,7 +121,7 @@ if (isset($_GET['id_request_akta'])) {
             <td><?php echo $nama; ?></td>
         </tr>
         <tr>
-            <td>Tempat, tanggal lahir</td>
+            <td>TTL</td>
             <td>:</td>
             <td><?php echo $tempat . ", " . $format2; ?></td>
         </tr>
@@ -152,11 +151,6 @@ if (isset($_GET['id_request_akta'])) {
             <td><?php echo $alamat; ?></td>
         </tr>
         <tr>
-            <td>Usaha</td>
-            <td>:</td>
-            <td><?php echo $usaha; ?></td>
-        </tr>
-        <tr>
             <td>Keperluan</td>
             <td>:</td>
             <td><?php echo $keperluan; ?></td>
@@ -165,8 +159,8 @@ if (isset($_GET['id_request_akta'])) {
             <td>Keterangan</td>
             <td>:</td>
             <?php
-            if ($request == "AKTA") {
-                $request = "Surat Keterangan Akta";
+            if ($request == "DOMISILI") {
+                $request = "Surat Keterangan Domisili";
             }
             ?>
             <td><?php echo $request; ?></td>
@@ -186,12 +180,12 @@ if (isset($_GET['id_request_akta'])) {
         <tr>
             <th></th>
             <th width="100px"></th>
-            <th>Lampung Tengah, <?php echo  $format4; ?></th>
+            <th>Lampung Tengah, <?php echo $format4; ?></th>
         </tr>
         <tr>
             <td>Tanda Tangan <br> Yang Bersangkutan </td>
             <td></td>
-            <td>Lurah Sumber Bahagia</td>
+            <td>Lurah Sumber Bahagia </td>
         </tr>
         <tr>
             <td rowspan="15"></td>

@@ -19,7 +19,6 @@ if (isset($_GET['id_request_ktp'])) {
     $alamat = $data['alamat'];
     $status_warga = $data['status_warga'];
     $request = $data['request'];
-    $usaha = $data['usaha'];
     $keperluan = $data['keperluan'];
     $acc = $data['acc'];
     $format4 = date('d F Y', strtotime($acc));
@@ -62,7 +61,7 @@ if (isset($_GET['id_request_ktp'])) {
                 <center>
                     <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                     <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
-                    <font size="5"><b>>KELURAHAN SUMBER BAHAGIA</b></font><br>
+                    <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
                     <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                 </center>
             </td>
@@ -150,11 +149,6 @@ if (isset($_GET['id_request_ktp'])) {
             <td>Alamat</td>
             <td>:</td>
             <td><?php echo $alamat; ?></td>
-        </tr>
-        <tr>
-            <td>Usaha</td>
-            <td>:</td>
-            <td><?php echo $usaha; ?></td>
         </tr>
         <tr>
             <td>Keperluan</td>

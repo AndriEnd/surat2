@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MANPU</h4>
+						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MAMPU</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -378,8 +378,7 @@
 									<?php
 									if (isset($_POST['kirim'])) {
 										$keterangan = $_POST['keterangan'];
-										$sql = mysqli_query($konek, "UPDATE data_request_akta SET
-										keterangan='$keterangan', status='3' WHERE id_request_akta='$id_request_akta'");
+										$sql = mysqli_query($konek, "UPDATE data_request_akta SET keterangan='$keterangan', status='3' WHERE id_request_akta='$id_request_akta'");
 										if ($sql) {
 											echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil!', 'success');</script>";
 											echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
@@ -450,7 +449,7 @@
 											<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 											<td>
 												<div class="form-button-action">
-													<a href="?halaman=view_cetak_ktp&id_request_ktp=<?= $id_request_skd; ?>">
+													<a href="?halaman=view_cetak_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
 														<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="View Cetak">
 															<i class="fa fa-edit"></i>
 														</button>
@@ -465,8 +464,7 @@
 									<?php
 									if (isset($_POST['kirim'])) {
 										$keterangan = $_POST['keterangan'];
-										$sql = mysqli_query($konek, "UPDATE data_request_ktp SET
-										keterangan='$keterangan', status='3' WHERE id_request_ktp='$id_request_ktp'");
+										$sql = mysqli_query($konek, "UPDATE data_request_ktp SET keterangan='$keterangan', status='3' WHERE id_request_ktp='$id_request_ktp'");
 										if ($sql) {
 											echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil!', 'success');</script>";
 											echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
