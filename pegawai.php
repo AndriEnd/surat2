@@ -43,7 +43,7 @@
                   <select name="hak_akses" id="" class="form-control text-uppercase">
                     <option value="" selected="selected">Login sebagai</option>
                     <?php
-                    $SQL = "SELECT * FROM data_user WHERE hak_akses='Staf' or hak_akses='Lurah'";
+                    $SQL = "SELECT * FROM data_user WHERE hak_akses='Staf' or hak_akses='Lurah' or hak_akses='Admin'";
                     $QUERY = mysqli_query($konek, $SQL);
                     while ($data = mysqli_fetch_array($QUERY, MYSQLI_BOTH)) {
                       $hak_akses = $data['hak_akses'];

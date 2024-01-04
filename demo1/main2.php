@@ -69,7 +69,47 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 						</div>
 					</li>
 				<?php
-				}
+				} elseif ($hak_akses == "Admin") {
+					?>
+						<li class="nav-item">
+							<a href="?halaman=tampil_user">
+								<i class="fas fa-user-alt"></i>
+								<p>Data User</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="?halaman=permohonan_surat">
+								<i class="far fa-calendar-check"></i>
+								<p>Cetak Surat</p>
+							</a>
+						<li class="nav-item">
+							<a href="?halaman=permohonan_surat">
+								<i class="far fa-user"></i>
+								<p>Data Penduduk</p>
+							</a>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#tables">
+								<i class="fas fa-table"></i>
+								<p>Laporan</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="?halaman=laporan_perbulan">
+											<span class="sub-item">Perbulan</span>
+										</a>
+									</li>
+									<li>
+										<a href="?halaman=laporan_pertahun">
+											<span class="sub-item">Pertahun</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					<?php
+					}
 				?>
 				<li class="mx-4 mt-2">
 					<a href="logout.php" class="btn btn-danger btn-block"><span class="btn-label mr-2"> <i class="icon-logout"></i> </span>Logout</a>

@@ -61,6 +61,7 @@
 														<option value="Pemohon">Pemohon</option>
 														<option value="Lurah">Lurah</option>
 														<option value="Staf">Staf</option>
+														<option value ="Admin">Admin</option>
 													</select>
 												</div>
 											</div>
