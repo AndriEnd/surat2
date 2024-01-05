@@ -83,7 +83,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 								<p>Cetak Surat</p>
 							</a>
 						<li class="nav-item">
-							<a href="?halaman=permohonan_surat">
+							<a href="?halaman=tampil_user">
 								<i class="far fa-user"></i>
 								<p>Data Penduduk</p>
 							</a>
