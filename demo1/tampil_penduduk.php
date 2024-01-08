@@ -97,13 +97,14 @@
                                         $no_kk = $data['no_kk'];
                                         $jekel = $data['jekel'];
                                         $tempat_lahir = $data['tempat_lahir'];
+                                        $tanggal = $data['tanggal_lahir'];
                                         $tanggal_lahir = date("d-F-Y", strtotime($tanggal));
                                         $alamat = $data['alamat'];
-                                        $gol_darah = $data['golongan darah'];
+                                        $gol_darah = $data['gol_darah'];
                                         $agama = $data['agama'];
                                         $status_perkawinan = $data['status_perkawinan'];
                                         $status_hdk = $data['status_hdk'];
-                                        $pend_terakhir = $data['pendidikan_terakhir'];
+                                        $pend_terakhir = $data['pend_terakhir'];
                                         $pekerjaan = $data['pekerjaan'];
                                         $nama_ayah = $data['nama_ayah'];
                                         $nama_ibu = $data['nama_ibu'];
@@ -112,9 +113,11 @@
                                         <tr>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $nik . ' - ' . $nama; ?></td>
-                                            <td><?php echo $tempat_lahir . ", " . $tanggal_lahir; ?></td>
+                                            <td><?php echo $no_kk; ?></td>
                                             <td><?php echo $alamat; ?></td>
                                             <td><?php echo $gol_darah; ?></td>
+                                            <td><?php echo $jekel; ?></td>
+                                            <td><?php echo $tempat_lahir . ", " . $tanggal_lahir; ?></td>
                                             <td><?php echo $agama; ?></td>
                                             <td><?php echo $status_perkawinan; ?></td>
                                             <td><?php echo $status_hdk; ?></td>
@@ -125,10 +128,10 @@
 
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="?halaman=ubah_penduduk&nama=<?php echo $nama; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit penduduk">
+                                                    <a href="?halaman=ubah_penduduk&nik=<?php echo $nama; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit penduduk">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="?halaman=tampil_penduduk&nama=<?php echo $nama; ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus penduduk">
+                                                    <a href="?halaman=tampil_penduduk&nik=<?php echo $nama; ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus penduduk">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>

@@ -139,7 +139,7 @@ if (isset($_POST['simpan'])) {
     $nama_ayah = $_POST['nama_ayah'];
     $nama_ibu = $_POST['nama_ibu'];
 
-    $sql = "INSERT INTO data_penduduk (nik,no_kk,nama,jekel,tempat_lahir,tanggal_lahir,gol_darah,agama,status_perkawinan,status_hdk,pend_terakhir,alamat,pekerjaan,nama_ayah,nama_ibu) VALUES ('$nik','$no_kk','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$gol_darah','$agama','$status_perkawinan','$status_hdk','$pend_terakhir','$alamat','$pekerjaan','$nama_ayah,'$nama_ibu')";
+    $sql = "INSERT INTO data_penduduk (nik,no_kk,nama,jekel,tempat_lahir,tanggal_lahir,gol_darah,agama,status_perkawinan,status_hdk,pend_terakhir,alamat,pekerjaan,nama_ayah,nama_ibu) VALUES ('$nik','$no_kk','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$gol_darah','$agama','$status_perkawinan','$status_hdk','$pend_terakhir','$alamat','$pekerjaan','$nama_ayah','$nama_ibu')";
     $query = mysqli_query($konek, $sql);
 
     if ($query) {
