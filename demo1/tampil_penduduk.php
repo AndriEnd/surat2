@@ -76,7 +76,9 @@
                                         <th>Golongan Darah</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tempat & Tanggal Lahir</th>
+                                        <th>Telepon</th>
                                         <th>Agama</th>
+                                        <th>status_warga</th>
                                         <th>Status Perkawinan</th>
                                         <th>Status HDK</th>
                                         <th>Pendidikan</th>
@@ -99,9 +101,11 @@
                                         $tempat_lahir = $data['tempat_lahir'];
                                         $tanggal = $data['tanggal_lahir'];
                                         $tanggal_lahir = date("d-F-Y", strtotime($tanggal));
+                                        $telepon = $data['telepon'];
                                         $alamat = $data['alamat'];
                                         $gol_darah = $data['gol_darah'];
                                         $agama = $data['agama'];
+                                        $status_warga = $data['status_warga'];
                                         $status_perkawinan = $data['status_perkawinan'];
                                         $status_hdk = $data['status_hdk'];
                                         $pend_terakhir = $data['pend_terakhir'];
@@ -118,7 +122,9 @@
                                             <td><?php echo $gol_darah; ?></td>
                                             <td><?php echo $jekel; ?></td>
                                             <td><?php echo $tempat_lahir . ", " . $tanggal_lahir; ?></td>
+                                            <td><?php echo $telepon; ?></td>
                                             <td><?php echo $agama; ?></td>
+                                            <td><?php echo $status_warga; ?></td>
                                             <td><?php echo $status_perkawinan; ?></td>
                                             <td><?php echo $status_hdk; ?></td>
                                             <td><?php echo $pend_terakhir; ?></td>

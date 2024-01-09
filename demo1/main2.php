@@ -39,6 +39,11 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 						</a>
 					</li>
 					<li class="nav-item">
+						<a href="?halaman=tampil_penduduk">
+							<i class="far fa-user"></i>
+							<p>Data Penduduk</p>
+						</a>
+					<li class="nav-item">
 						<a href="?halaman=surat_dicetak">
 							<i class="far fa-calendar-check"></i>
 							<p>Surat Selesai</p>

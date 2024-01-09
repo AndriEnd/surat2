@@ -41,7 +41,10 @@
                                     <label>Tanggal Lahir</label>
                                     <input type="date" name="tanggal_lahir" class="form-control">
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Nomer Telepon</label>
+                                    <input type="nama" name="telepon" class="form-control" placeholder="Nomer Telepon">
+                                </div>
                                 <div class="form-group">
                                     <label>Golongan Darah</label>
                                     <select name="gol_darah" class="form-control">
@@ -61,8 +64,12 @@
                                         <option value="Kristen">Kristen</option>
                                         <option value="Budha">Budha</option>
                                         <option value="Hindu">Hindu</option>
-                                        <option value="Kong-Hu-Chu">Budha</option>
+                                        <option value="Konghucu">Konghucu</option>
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status Warga</label>
+                                    <input type="nama" name="status_warga" class="form-control" placeholder="RT/RW">
                                 </div>
                                 <div class="form-group">
                                     <label>Status Perkawinan</label>
@@ -81,7 +88,7 @@
                                 <div class="form-group">
                                     <label>Pendidikan</label>
                                     <select name="pend_terakhir" class="form-control">
-                                        <option disabled="" selected="">Pilih Penndidikan</option>
+                                        <option disabled="" selected="">Pilih Pendidikan</option>
                                         <option value="Tidak Lulus Sekolah">Tidak Lulus Sekolah</option>
                                         <option value="SD">SD</option>
                                         <option value="SMP">SMP</option>
@@ -129,8 +136,10 @@ if (isset($_POST['simpan'])) {
     $jekel = $_POST['jekel'];
     $tempat_lahir = $_POST['tempat_lahir'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
+    $telepon = $_POST['telepon'];
     $gol_darah = $_POST['gol_darah'];
     $agama = $_POST['agama'];
+    $status_warga = $_POST['status_warga'];
     $status_perkawinan = $_POST['status_perkawinan'];
     $status_hdk = $_POST['status_hdk'];
     $pend_terakhir = $_POST['pend_terakhir'];
@@ -139,7 +148,7 @@ if (isset($_POST['simpan'])) {
     $nama_ayah = $_POST['nama_ayah'];
     $nama_ibu = $_POST['nama_ibu'];
 
-    $sql = "INSERT INTO data_penduduk (nik,no_kk,nama,jekel,tempat_lahir,tanggal_lahir,gol_darah,agama,status_perkawinan,status_hdk,pend_terakhir,alamat,pekerjaan,nama_ayah,nama_ibu) VALUES ('$nik','$no_kk','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$gol_darah','$agama','$status_perkawinan','$status_hdk','$pend_terakhir','$alamat','$pekerjaan','$nama_ayah','$nama_ibu')";
+    $sql = "INSERT INTO data_penduduk (nik,no_kk,nama,jekel,tempat_lahir,tanggal_lahir,telepon,gol_darah,agama,status_warga,status_perkawinan,status_hdk,pend_terakhir,alamat,pekerjaan,nama_ayah,nama_ibu) VALUES ('$nik','$no_kk','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$telepon','$gol_darah','$agama','$status_warga','$status_perkawinan','$status_hdk','$pend_terakhir','$alamat','$pekerjaan','$nama_ayah','$nama_ibu')";
     $query = mysqli_query($konek, $sql);
 
     if ($query) {
