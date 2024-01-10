@@ -42,8 +42,8 @@
                                     <input type="date" name="tanggal_lahir" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nomer Telepon</label>
-                                    <input type="nama" name="telepon" class="form-control" placeholder="Nomer Telepon">
+                                    <label>Nomor Telepon</label>
+                                    <input type="nama" name="telepon" class="form-control" placeholder="Nomor Telepon">
                                 </div>
                                 <div class="form-group">
                                     <label>Golongan Darah</label>
