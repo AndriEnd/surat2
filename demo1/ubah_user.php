@@ -133,7 +133,6 @@ if (isset($_GET['nik'])) {
 	$jekel = $data['jekel'];
 	$agama = $data['agama'];
 	$alamat = $data['alamat'];
-	$telepon = $data['telepon'];
 	$status_warga = $data['status_warga'];
 }
 

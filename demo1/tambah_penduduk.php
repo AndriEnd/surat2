@@ -68,7 +68,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Status Warga</label>
+                                    <label>RT / RW</label>
                                     <input type="nama" name="status_warga" class="form-control" placeholder="RT/RW">
                                 </div>
                                 <div class="form-group">

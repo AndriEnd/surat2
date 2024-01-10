@@ -94,9 +94,9 @@
                                     $tampil = "SELECT * FROM data_penduduk";
                                     $query = mysqli_query($konek, $tampil);
                                     while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-                                        $nama = $data['nama'];
                                         $nik = $data['nik'];
                                         $no_kk = $data['no_kk'];
+                                        $nama = $data['nama'];
                                         $jekel = $data['jekel'];
                                         $tempat_lahir = $data['tempat_lahir'];
                                         $tanggal = $data['tanggal_lahir'];
@@ -134,10 +134,10 @@
 
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="?halaman=ubah_penduduk&nik=<?php echo $nama; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit penduduk">
+                                                    <a href="?halaman=ubah_penduduk&nik=<?php echo $nik; ?>" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit penduduk">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="?halaman=tampil_penduduk&nik=<?php echo $nama; ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus penduduk">
+                                                    <a href="?halaman=tampil_penduduk&nik=<?php echo $nik; ?>" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus penduduk">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
