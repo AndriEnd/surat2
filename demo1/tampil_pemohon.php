@@ -6,14 +6,21 @@ $data = mysqli_fetch_array($query, MYSQLI_BOTH);
 $nik = $data['nik'];
 $no_kk = $data['no_kk'];
 $nama = $data['nama'];
-$tempat_lahir = $data['tempat_lahir'];
-$tanggal_lahir = $data['tanggal_lahir'];
-$format = date('d-m-Y', strtotime($tanggal_lahir));
 $jekel = $data['jekel'];
-$alamat = $data['alamat'];
+$tempat_lahir = $data['tempat_lahir'];
+$tanggal = $data['tanggal_lahir'];
+$tanggal_lahir = date("d-F-Y", strtotime($tanggal));
 $telepon = $data['telepon'];
+$alamat = $data['alamat'];
+$gol_darah = $data['gol_darah'];
 $agama = $data['agama'];
 $status_warga = $data['status_warga'];
+$status_perkawinan = $data['status_perkawinan'];
+$status_hdk = $data['status_hdk'];
+$pend_terakhir = $data['pend_terakhir'];
+$pekerjaan = $data['pekerjaan'];
+$nama_ayah = $data['nama_ayah'];
+$nama_ibu = $data['nama_ibu'];
 
 ?>
 <div class="page-inner">
@@ -43,40 +50,70 @@ $status_warga = $data['status_warga'];
                                 <td><?= $no_kk; ?></td>
                             </tr>
                             <tr>
-                                <th>NAMA</th>
+                                <th>Nama</th>
                                 <td>:</td>
                                 <td><?= $nama; ?></td>
                             </tr>
                             <tr>
-                                <th>TTL</th>
-                                <td>:</td>
-                                <td><?= $tempat . ', ' . $format; ?></td>
-                            </tr>
-
-                            <tr>
-                                <th>JEKEL</th>
+                                <th>Jenis Kelamin</th>
                                 <td>:</td>
                                 <td><?= $jekel; ?></td>
                             </tr>
                             <tr>
-                                <th>AGAMA</th>
+                                <th>Tempat Tanggal Lahir</th>
                                 <td>:</td>
-                                <td><?= $agama; ?></td>
+                                <td><?= $tempat_lahir . ' ,  ' . $tanggal_lahir; ?></td>
                             </tr>
                             <tr>
-                                <th>ALAMAT</th>
-                                <td>:</td>
-                                <td><?= $alamat; ?></td>
-                            </tr>
-                            <tr>
-                                <th>TELEPON</th>
+                                <th>Nomor Telepon</th>
                                 <td>:</td>
                                 <td><?= $telepon; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Golongan Darah</th>
+                                <td>:</td>
+                                <td><?= $gol_darah; ?></td>
+                            </tr>
+
+                            <tr>
+                                <th>Agama</th>
+                                <td>:</td>
+                                <td><?= $agama; ?></td>
                             </tr>
                             <tr>
                                 <th>RT / RW</th>
                                 <td>:</td>
                                 <td><?= $status_warga; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Status Perkawinan</th>
+                                <td>:</td>
+                                <td><?= $status_perkawinan; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Pendidikan</th>
+                                <td>:</td>
+                                <td><?= $pend_terakhir; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Pkerjaan</th>
+                                <td>:</td>
+                                <td><?= $pekerjaan; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Alamat</th>
+                                <td>:</td>
+                                <td><?= $pend_terakhir; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nama Ayah</th>
+                                <td>:</td>
+                                <td><?= $nama_ayah; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nama Ibu</th>
+                                <td>:</td>
+                                <td><?= $nama_ibu; ?></td>
                             </tr>
                         </thead>
                     </table>

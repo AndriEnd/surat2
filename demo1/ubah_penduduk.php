@@ -149,13 +149,13 @@ if (isset($_GET['nik'])) {
     $alamat = $data['alamat'];
     $telepon = $data['telepon'];
     $status_warga = $data['status_warga'];
-    $status_perkawinan = $_POST['status_perkawinan'];
-    $status_hdk = $_POST['status_hdk'];
-    $pend_terakhir = $_POST['pend_terakhir'];
-    $alamat = $_POST['alamat'];
-    $pekerjaan = $_POST['pekerjaan'];
-    $nama_ayah = $_POST['nama_ayah'];
-    $nama_ibu = $_POST['nama_ibu'];
+    $status_perkawinan = $data['status_perkawinan'];
+    $status_hdk = $data['status_hdk'];
+    $pend_terakhir = $data['pend_terakhir'];
+    $alamat = $data['alamat'];
+    $pekerjaan = $data['pekerjaan'];
+    $nama_ayah = $data['nama_ayah'];
+    $nama_ibu = $data['nama_ibu'];
 }
 
 ?>
