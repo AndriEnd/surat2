@@ -1,13 +1,14 @@
 <?php include '../konek.php'; ?>
 <?php
-$tampil_nik = "SELECT * FROM data_user WHERE nik=$_SESSION[nik]";
+$tampil_nik = "SELECT * FROM data_penduduk WHERE nik=$_SESSION[nik]";
 $query = mysqli_query($konek, $tampil_nik);
 $data = mysqli_fetch_array($query, MYSQLI_BOTH);
 $nik = $data['nik'];
+$no_kk = $data['no_kk'];
 $nama = $data['nama'];
-$tempat = $data['tempat_lahir'];
-$tanggal = $data['tanggal_lahir'];
-$format = date('d-m-Y', strtotime($tanggal));
+$tempat_lahir = $data['tempat_lahir'];
+$tanggal_lahir = $data['tanggal_lahir'];
+$format = date('d-m-Y', strtotime($tanggal_lahir));
 $jekel = $data['jekel'];
 $alamat = $data['alamat'];
 $telepon = $data['telepon'];
@@ -35,6 +36,11 @@ $status_warga = $data['status_warga'];
                                 <th>NIK</th>
                                 <td>:</td>
                                 <td><?= $nik; ?></td>
+                            </tr>
+                            <tr>
+                                <th>No.KK</th>
+                                <td>:</td>
+                                <td><?= $no_kk; ?></td>
                             </tr>
                             <tr>
                                 <th>NAMA</th>
@@ -68,7 +74,7 @@ $status_warga = $data['status_warga'];
                                 <td><?= $telepon; ?></td>
                             </tr>
                             <tr>
-                                <th>STATUS WARGA</th>
+                                <th>RT / RW</th>
                                 <td>:</td>
                                 <td><?= $status_warga; ?></td>
                             </tr>

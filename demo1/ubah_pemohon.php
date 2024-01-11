@@ -2,18 +2,25 @@
 
 <?php
 if (isset($_GET['nik'])) {
-	$tampil_nik = "SELECT * FROM data_user WHERE nik=$_SESSION[nik]";
+	$tampil_nik = "SELECT * FROM data_penduduk WHERE nik=$_SESSION[nik]";
 	$query = mysqli_query($konek, $tampil_nik);
 	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 	$nik = $data['nik'];
-	$nama = $data['nama'];
-	$tempat = $data['tempat_lahir'];
-	$tanggal = $data['tanggal_lahir'];
-	$jekel = $data['jekel'];
-	$agama = $data['agama'];
-	$alamat = $data['alamat'];
-	$telepon = $data['telepon'];
-	$status_warga = $data['status_warga'];
+    $nama = $data['nama'];
+    $tempat_lahir = $data['tempat_lahir'];
+    $tanggal_lahir = $data['tanggal_lahir'];
+    $jekel = $data['jekel'];
+    $agama = $data['agama'];
+    $alamat = $data['alamat'];
+    $telepon = $data['telepon'];
+    $status_warga = $data['status_warga'];
+    $status_perkawinan = $_POST['status_perkawinan'];
+    $status_hdk = $_POST['status_hdk'];
+    $pend_terakhir = $_POST['pend_terakhir'];
+    $alamat = $_POST['alamat'];
+    $pekerjaan = $_POST['pekerjaan'];
+    $nama_ayah = $_POST['nama_ayah'];
+    $nama_ibu = $_POST['nama_ibu'];
 }
 
 ?>
@@ -37,6 +44,10 @@ if (isset($_GET['nik'])) {
 									<input type="number" name="nik" class="form-control" placeholder="NIK Anda.." value="<?= $nik; ?>" readonly>
 								</div>
 								<div class="form-group">
+									<label>N0.KK</label>
+									<input type="number" name="no_kk" class="form-control" placeholder="Nomer kartu Keluarga" value="<?= $no_kk; ?>" >
+								</div>
+								<div class="form-group">
 									<label>Nama Lengkap</label>
 									<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap Anda.." value="<?= $nama; ?>">
 								</div>
@@ -53,7 +64,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Tempat Lahir</label>
-									<input type="text" name="tempat" class="form-control" value="<?= $tempat; ?>" placeholder="Tempat Lahir Anda..">
+									<input type="text" name="tempat_lahir" class="form-control" value="<?= $tempat_lahir; ?>" placeholder="Tempat Lahir Anda..">
 								</div>
 								<div class="form-group">
 									<label>Tanggal Lahir</label>
