@@ -280,7 +280,7 @@ if (isset($_GET['nik'])) {
                     </div>
                     <div class="card-action">
                         <button name="ubah" class="btn btn-success">Ubah</button>
-                        <a href="?halaman=tampil_penduduk" class="btn btn-default">Batal</a>
+                        <a href="?halaman=tampil_pendudukgit  " class="btn btn-default">Batal</a>
                     </div>
                 </div>
         </div>

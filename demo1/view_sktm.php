@@ -5,7 +5,7 @@
 <?php
 if (isset($_GET['id_request_sktm'])) {
     $id = $_GET['id_request_sktm'];
-    $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE id_request_sktm='$id'";
+    $sql = "SELECT * FROM data_request_sktm natural join data_penduduk WHERE id_request_sktm='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $id = $data['id_request_sktm'];
@@ -17,6 +17,7 @@ if (isset($_GET['id_request_sktm'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $pekerjaan = $data['pekerjaan'];
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
@@ -125,14 +126,9 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                             <tr>
-                                <td colspan="45">
+                                <td colspan="60">
                                     <hr color="black">
                                 </td>
                             </tr>
@@ -150,7 +146,6 @@ if (isset($_GET['id_request_sktm'])) {
                             </tr>
                         </table>
                         <br>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
@@ -166,9 +161,14 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>NIK</td>
                                 <td>:</td>
-                                <td><?php echo $tempat . ", " . $format1; ?></td>
+                                <td><?php echo $nik; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Tempat ,Tanggal Lahir </td>
+                                <td>:</td>
+                                <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
@@ -181,15 +181,16 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td><?php echo $agama; ?></td>
                             </tr>
                             <tr>
-                                <td>Status Warga</td>
+                                <td>Pekerjaan</td>
+                                <td>:</td>
+                                <td><?php echo $pekerjaan; ?></td>
+                            </tr>
+                            <tr>
+                                <td>RT / RW </td>
                                 <td>:</td>
                                 <td><?php echo $status_warga; ?></td>
                             </tr>
-                            <tr>
-                                <td>No. NIK</td>
-                                <td>:</td>
-                                <td><?php echo $nik; ?></td>
-                            </tr>
+
                             <tr>
                                 <td>Alamat</td>
                                 <td>:</td>
@@ -217,16 +218,15 @@ if (isset($_GET['id_request_sktm'])) {
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bahwa nama tersebut benar- benar warga kami dan menurut sepanjang pengetahuan kami <br> dari laporan RT setempat dan hingga surat ini dikeluarkan yang bersanggkutan benar - benar<br> berasal dari keluarga tidak mampu.&nbsp;&nbsp;<br><br>Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan <br> untuk sebagaimana mestinya.&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                             </tr>
                         </table>
                         <br>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <th></th>
-                                <th width="100px"></th>
+                                <th width="90px"></th>
                                 <th>Lampung Tengah, <?php echo $acc; ?></th>
                             </tr>
                             <tr>
@@ -290,9 +290,7 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td><b><u>(LURAH)</u></b></td>
                             </tr>
                         </table>
-
                     </table>
-
                 </div>
             </div>
         </div>
