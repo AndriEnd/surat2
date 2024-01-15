@@ -21,15 +21,23 @@ $nama = $data['nama'];
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>NIK</label>
+                                    <label>NIK Kepala Keluarga</label>
                                     <input type="text" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="nik" class="form-control" value="<?= $nik; ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label>Keperluan</label>
-                                    <input type="text" name="keperluan" class="form-control" placeholder="Keperluan Anda.." autofocus>
+                                    <label>No.KK</label>
+                                    <input type="text" name="no_kk" class="form-control" placeholder="Nomer Kartu Keluarga" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Anak</label>
+                                    <input type="text" name="nama_anak" class="form-control" placeholder="Nama Anak.." autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label>Anak Ke -</label>
+                                    <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke - " autofocus>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">

@@ -166,7 +166,7 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td><?php echo $nik; ?></td>
                             </tr>
                             <tr>
-                                <td>Tempat ,Tanggal Lahir </td>
+                                <td>Tempat,Tanggal Lahir </td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
