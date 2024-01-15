@@ -15,13 +15,20 @@
 		$agama = $data['agama'];
 		$jekel = $data['jekel'];
 		$alamat = $data['alamat'];
-		$status_warga = $data['status_warga'];
+		
 		$nama = $data['nama'];
 		$id = $data['id_request_sktm'];
 		$ktp = $data['scan_ktp'];
 		$kk = $data['scan_kk'];
 		$keperluan = $data['keperluan'];
 		$keterangan = $data['keterangan'];
+	}
+	if(isset($_GET['id_request_sktm'])){
+		$id_request_sktm=$_GET['id_request_sktm'];
+		$sql = "SELECT * FROM data_request_sktm natural join data_penduduk WHERE id_request_sktm='$id_request_sktm'";
+		$query = mysqli_query($konek,$sql);
+		$data = mysqli_fetch_array($query,MYSQLI_BOTH);
+		$status_warga = $data['status_warga'];
 	}
 ?>
 				<div class="page-inner">
@@ -97,13 +104,9 @@
 														<textarea class="form-control" name="alamat" rows="5"> <?php echo $alamat;?></textarea>
 													</div>	
 													<div class="form-group">
-														<label>Status Warga</label>
-														<select name="status_warga" value="<?php echo $status_warga;?>" class="form-control">
-															<option value="Sekolah" <?php if($status_warga=="Sekolah") echo 'selected'?>>Sekolah</option>
-															<option value="Kerja" <?php if($status_warga=="Kerja") echo 'selected'?>>Kerja</option>
-															<option value="Bekerja" <?php if($status_warga=="Bekerja") echo 'selected'?>>Bekerja</option>
-														</select>
-													</div>			
+														<label>RT / RW</label>
+														<input type="text" name="status_warga" value="<?php echo $status_warga;?>" class="form-control" placeholder="RT / RW" readonly="">
+													</div>		
 													<div class="form-group">
 														<label>Keperluan</label>
 														<input type="text" name="telepon" value="<?php echo $keperluan;?>" class="form-control" placeholder="Telepon Anda.." readonly="">

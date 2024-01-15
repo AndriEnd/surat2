@@ -86,7 +86,7 @@
 
   <!-- insert register -->
   <?php
-    if(isset($_POST['register'])){
+    if(isset($_POST['register'])) {
         $nik = $_POST['nik'];
         $password = $_POST['password'];
         $hak_akses = "Pemohon";
