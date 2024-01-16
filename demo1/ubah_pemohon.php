@@ -45,11 +45,11 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>No.KK</label>
-									<input type="number" name="no_kk" class="form-control" placeholder="Nomer kartu Keluarga" value="<?= $no_kk; ?>">
+									<input type="number" name="no_kk" class="form-control" value="<?= $no_kk; ?>" placeholder="Nomer kartu Keluarga" value="<?= $no_kk; ?>">
 								</div>
 								<div class="form-group">
 									<label>Nama Lengkap</label>
-									<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap Anda.." value="<?= $nama; ?>">
+									<input type="text" name="nama" class="form-control" value="<?= $nama; ?>" placeholder="Nama Lengkap Anda.." value="<?= $nama; ?>">
 								</div>
 								<div class="form-check">
 									<label>Jenis Kelamin</label><br />
@@ -64,7 +64,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Tempat Lahir</label>
-									<input type="text" name="tempat_lahir" class="form-control" value="<?= $tempat_lahir; ?>" placeholder="Tempat Lahir Anda..">
+									<input type="text" name="tempat_lahir" class="form-control" value="<?= $tempat_lahir; ?>" value="<?= $tempat_lahir; ?>" placeholder="Tempat Lahir Anda..">
 								</div>
 								<div class="form-group">
 									<label>Tanggal Lahir</label>
@@ -72,15 +72,13 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Nomor Telepon</label>
-									<input type="text" name="telepon" class="form-control" placeholder="Npmer Telepon Anda" value="<?= $telepon; ?>">
+									<input type="text" name="telepon" class="form-control" value="<?= $telepon; ?>" placeholder="Npmer Telepon Anda" value="<?= $telepon; ?>">
 								</div>
-
-
 							</div>
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
 									<label>Golongan Darah</label>
-									<select name="gol_darah" class="form-control">
+									<select name="gol_darah" class="form-control" value="<?= $gol_darah; ?>">
 										<option disabled="" selected="">Pilih Golongan Darah</option>
 										<option value='O'>O</option>
 										<option value='A'>A</option>
@@ -90,7 +88,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Agama</label>
-									<select name="agama" class="form-control">
+									<select name="agama" class="form-control" value="<?= $agama; ?>">
 										<option value="">Pilih Agama Anda</option>
 
 										<option <?php if ($agama == 'Islam') {
@@ -120,7 +118,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Status perkawinan</label>
-									<select name="status_perkawinan" class="form-control">
+									<select name="status_perkawinan" class="form-control" value="<?= $status_perkawinan; ?>">
 										<option disabled="" selected="">Pilih Status Perkawinan</option>
 										<option value='Belum Berkeluarga'>Belum Berkeluarga</option>
 										<option value='Sudah Berkeluarga'>Sudah Berkeluarga</option>
@@ -134,7 +132,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Pendidikan</label>
-									<select name="pend_terakhir" class="form-control">
+									<select name="pend_terakhir" class="form-control" value="<?= $pend_terakhir; ?>">
 										<option disabled="" selected="">Pendidikan</option>
 										<option value='Tidak Lulus Sekolah'>Tidak Lulus Sekolah</option>
 										<option value='SD'>SD</option>
@@ -147,19 +145,19 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Pekerjaan</label>
-									<input type="text" name="pekerjaan" class="form-control" placeholder="Pekerjaan" value="<?= $pekerjaan; ?>">
+									<input type="text" name="pekerjaan" class="form-control" value="<?= $pekerjaan; ?>" placeholder="Pekerjaan" value="<?= $pekerjaan; ?>">
 								</div>
 								<div class="form-group">
 									<label for="comment">Alamat</label>
-									<textarea class="form-control" name="alamat" rows="5"><?= $alamat ?></textarea>
+									<textarea class="form-control" value="<?= $alamat; ?>" name="alamat" rows="5"><?= $alamat ?></textarea>
 								</div>
 								<div class="form-group">
 									<label>Nama Ayah</label>
-									<input type="text" name="nama_ayah" class="form-control" placeholder="Nama Ayah" value="<?= $nama_ayah; ?>">
+									<input type="text" name="nama_ayah" value="<?= $nama_ayah; ?>" class="form-control" placeholder="Nama Ayah" value="<?= $nama_ayah; ?>">
 								</div>
 								<div class="form-group">
 									<label>Nama Ibu</label>
-									<input type="text" name="nama_ibu" class="form-control" placeholder="Nama Ibu" value="<?= $nama_ibu; ?>">
+									<input type="text" name="nama_ibu" value="<?= $nama_ibu; ?>" class="form-control" placeholder="Nama Ibu" value="<?= $nama_ibu; ?>">
 								</div>
 							</div>
 						</div>

@@ -21,7 +21,7 @@ $nama = $data['nama'];
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>NIK Kepala Keluarga</label>
+                                    <label>NIK Kepala Keluarga & Nama</label>
                                     <input type="text" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
                                 </div>
                                 <div class="form-group">
@@ -42,7 +42,7 @@ $nama = $data['nama'];
                             </div>
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Scan KTP</label>
+                                    <label>Scan KTP Kepala Keluarga</label>
                                     <input type="file" name="ktp" class="form-control" size="37" required>
                                 </div>
                                 <div class="form-group">

@@ -103,7 +103,7 @@ $nama_ibu = $data['nama_ibu'];
                             <tr>
                                 <th>Alamat</th>
                                 <td>:</td>
-                                <td><?= $pend_terakhir; ?></td>
+                                <td><?= $alamat; ?></td>
                             </tr>
                             <tr>
                                 <th>Nama Ayah</th>
