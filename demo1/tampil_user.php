@@ -74,7 +74,7 @@
                                         <th>Tempat & Tanggal Lahir</th>
                                         <th>Alamat</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Status Warga</th>
+                                        <th>RT / RW</th>
                                         <th>Password</th>
                                         <th>Hak Akses</th>
                                         <th style="width: 10%">Action</th>

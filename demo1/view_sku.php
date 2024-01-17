@@ -5,13 +5,14 @@
 <?php
 if (isset($_GET['id_request_sku'])) {
     $id = $_GET['id_request_sku'];
-    $sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id'";
+    $sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $id = $data['id_request_sku'];
     $nik = $data['nik'];
     $nama = $data['nama'];
     $tempat = $data['tempat_lahir'];
+    $pekerjaan = $data['pekerjaan'];
     $tgl = $data['tanggal_lahir'];
     $tgl2 = $data['tanggal_request'];
     $format1 = date('Y', strtotime($tgl2));
@@ -19,7 +20,6 @@ if (isset($_GET['id_request_sku'])) {
     $format3 = date('d F Y', strtotime($tgl2));
     $agama = $data['agama'];
     $jekel = $data['jekel'];
-    $nama = $data['nama'];
     $alamat = $data['alamat'];
     $status_warga = $data['status_warga'];
     $keperluan = $data['keperluan'];
@@ -32,6 +32,17 @@ if (isset($_GET['id_request_sku'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_sku'])) {
+    $id = $_GET['id_request_sku'];
+    $sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $alamat_usaha = $data['alamat_usaha'];
+    $usaha = $data['usaha'];
+    $jenis_usaha = $data['jenis_usaha'];
+    $alamat_usaha = $data['alamat_usaha'];
+    $kepemilikan = $data['kepemilikan'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -138,7 +149,6 @@ if (isset($_GET['id_request_sku'])) {
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
@@ -149,25 +159,22 @@ if (isset($_GET['id_request_sku'])) {
                                     </center>
                                 </td>
                             </tr>
-                        </table>
-                        <br>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak <br> Lampung Tengah, Menerangkan bahwa :
+                                    <br>Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> Menerangkan bahwa :
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
                                 <td><?php echo $nama; ?></td>
+                                
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat,Tanggal Lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -182,14 +189,9 @@ if (isset($_GET['id_request_sku'])) {
                                 <td><?php echo $agama; ?></td>
                             </tr>
                             <tr>
-                                <td>Status Warga</td>
+                                <td>Pekerjaan</td>
                                 <td>:</td>
-                                <td><?php echo $status_warga; ?></td>
-                            </tr>
-                            <tr>
-                                <td>No. NIK</td>
-                                <td>:</td>
-                                <td><?php echo $nik; ?></td>
+                                <td><?php echo $pekerjaan; ?></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
@@ -197,35 +199,57 @@ if (isset($_GET['id_request_sku'])) {
                                 <td><?php echo $alamat; ?></td>
                             </tr>
                             <tr>
-                                <td>Usaha</td>
+                                <td>RT /RW </td>
                                 <td>:</td>
+                                <td><?php echo $status_warga; ?></td>
+                            </tr>
+                        </table>
+                        <table border="0" align="center">
+                             <tr>
+                                <td>
+                                    Sesuai dengan yang bersangkutan benar nama tersebut mempunyai usaha sebagai berikut :
+                                </td>
+                            </tr>
+                            <tr>
+                        <table border="0" align="center">
+                                <td>Nama Usaha</td>
+                                <td>:</td>
+                                <td></td>
                                 <td><?php echo $usaha; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Jenis Usaha</td>
+                                <td>:</td>
+                                <td></td>
+                                <td><?php echo $jenis_usaha; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Alamat Usaha</td>
+                                <td>:</td>
+                                <td></td>
+                                <td><?php echo $alamat_usaha; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Status Kepemilikan</td>
+                                <td>:</td>
+                                <td></td>
+                                <td><?php echo $kepemilikan; ?></td>
+                               
                             </tr>
                             <tr>
                                 <td>Keperluan</td>
                                 <td>:</td>
+                                <td></td>
                                 <td><?php echo $keperluan; ?></td>
                             </tr>
-                            <tr>
-                                <td>Request</td>
-                                <td>:</td>
-                                <?php
-                                if ($request == "USAHA") {
-                                    $request = "Surat Keterangan Usaha";
-                                }
-                                ?>
-                                <td><?php echo $request; ?></td>
-                            </tr>
-                        </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
+                                   Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan untuk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>sebagaimana mestinya.
                                 </td>
                             </tr>
                         </table>
-                        <br>
+                        
                         <br>
                         <table border="0" align="center">
                             <tr>
@@ -294,7 +318,6 @@ if (isset($_GET['id_request_sku'])) {
                                 <td><b><u>(LURAH)</u></b></td>
                             </tr>
                         </table>
-
                     </table>
 
                 </div>

@@ -181,13 +181,8 @@ if (isset($_GET['nik'])) {
 									<textarea class="form-control" name="alamat" rows="5"><?= $alamat ?></textarea>
 								</div>
 								<div class="form-group">
-									<label>Status Warga</label>
-									<select name="status_warga" class="form-control">
-										<option disabled="" selected="">Pilih Status Warga</option>
-										<option value="Sekolah" <?php if ($status_warga == "Sekolah") echo 'selected' ?>>Sekolah</option>
-										<option value="Kerja" <?php if ($status_warga == "Kerja") echo 'selected' ?>>Kerja</option>
-										<option value="Belum Kerja" <?php if ($status_warga == "Belum Kerja") echo 'selected' ?>>Belum Kerja</option>
-									</select>
+									<label>RT / RW</label>
+									<input type="text" name="status_warga" class="form-control" value="<?= $status_warga; ?>" placeholder="RT /RW">
 								</div>
 								<div class="form-group">
 									<label>Password</label>

@@ -78,7 +78,7 @@
                                         <th>Tempat & Tanggal Lahir</th>
                                         <th>Telepon</th>
                                         <th>Agama</th>
-                                        <th>status_warga</th>
+                                        <th>RT / RW</th>
                                         <th>Status Perkawinan</th>
                                         <th>Status HDK</th>
                                         <th>Pendidikan</th>

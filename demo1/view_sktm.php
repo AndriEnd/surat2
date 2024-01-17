@@ -21,7 +21,7 @@ if (isset($_GET['id_request_sktm'])) {
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
-    $alamat = $data['alamat'];
+   
     $status_warga = $data['status_warga'];
     $keperluan = $data['keperluan'];
     $request = $data['request'];
@@ -32,6 +32,13 @@ if (isset($_GET['id_request_sktm'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_sktm'])) {
+    $id = $_GET['id_request_sktm'];
+    $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE id_request_sktm='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $alamat = $data['alamat'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -209,7 +216,6 @@ if (isset($_GET['id_request_sktm'])) {
                                 if ($request == "TIDAK MAMPU") {
                                     $request = "Surat Keterangan Tidak Mampu";
                                 }
-
                                 ?>
                                 <td><?php echo $request; ?></td>
                             </tr>

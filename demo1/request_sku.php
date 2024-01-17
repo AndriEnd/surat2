@@ -43,6 +43,10 @@ $nama = $data['nama'];
 									<label>Alamat Usaha</label>
 									<input type="text" name="alamat_usaha" class="form-control" placeholder="Alamat Usaha" autofocus>
 								</div>
+								<div class="form-group">
+									<label>Status Kepemilikan</label>
+									<input type="text" name="kepemilikan" class="form-control" placeholder="Kepemilikan" autofocus>
+								</div>
 							</div>
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
@@ -71,12 +75,13 @@ if (isset($_POST['kirim'])) {
 	$usaha = $_POST['usaha'];
 	$jenis_usaha = $_POST['jenis_usaha'];
 	$alamat_usaha = $_POST['alamat_usaha'];
+	$kepemilikan = $_POST['kepemilikan'];
 	$keperluan = $_POST['keperluan'];
 	$nama_ktp = isset($_FILES['ktp']);
 	$file_ktp = $_POST['nik'] . "_" . ".jpg";
 	$nama_kk = isset($_FILES['kk']);
 	$file_kk = $_POST['nik'] . "_" . ".jpg";
-	$sql = "INSERT INTO data_request_sku (nik,scan_ktp,scan_kk,usaha,jenis_usaha,alamat_usaha,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$usaha','$jenis_usaha','$alamat_usaha','$keperluan')";
+	$sql = "INSERT INTO data_request_sku (nik,scan_ktp,scan_kk,usaha,jenis_usaha,alamat_usaha,keperluan,kepemilikan) VALUES ('$nik','$file_ktp','$file_kk','$usaha','$jenis_usaha','$alamat_usaha','$keperluan','$kepemilikan')";
 	$query = mysqli_query($konek, $sql) or die(mysqli_error());
 
 	if ($query) {

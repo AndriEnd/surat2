@@ -184,7 +184,7 @@ if (isset($_GET['id_request_sku'])) {
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat,Tanggal lahir </td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -199,6 +199,16 @@ if (isset($_GET['id_request_sku'])) {
                                 <td><?php echo $agama; ?></td>
                             </tr>
                             <tr>
+                                <td>Pekerjaan</td>
+                                <td>:</td>
+                                <td><?php echo $agama; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td><?php echo $alamat; ?></td>
+                            </tr>
+                            <tr>
                                 <td>Status Warga</td>
                                 <td>:</td>
                                 <td><?php echo $status_warga; ?></td>
@@ -208,11 +218,7 @@ if (isset($_GET['id_request_sku'])) {
                                 <td>:</td>
                                 <td><?php echo $nik; ?></td>
                             </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td>:</td>
-                                <td><?php echo $alamat; ?></td>
-                            </tr>
+                           
                             <tr>
                                 <td>Usaha</td>
                                 <td>:</td>

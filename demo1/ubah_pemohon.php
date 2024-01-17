@@ -17,7 +17,6 @@ if (isset($_GET['nik'])) {
 	$status_perkawinan = $data['status_perkawinan'];
 	$status_hdk = $data['status_hdk'];
 	$pend_terakhir = $data['pend_terakhir'];
-	$alamat = $data['alamat'];
 	$pekerjaan = $data['pekerjaan'];
 	$nama_ayah = $data['nama_ayah'];
 	$nama_ibu = $data['nama_ibu'];
