@@ -97,7 +97,7 @@ if (isset($_GET['id_request_sktm'])) {
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                <table border="1" align="center">
+                    <table border="1" align="center">
                         <table border="0" align="center">
                             <tr>
                                 <td><img src="img/logo1.png" width="70" height="87" alt=""></td>
@@ -128,6 +128,10 @@ if (isset($_GET['id_request_sktm'])) {
                                         <font size="2"><i>JL.SOLO NO 1 , 34156</i></font><br>
                                     </center>
                                 </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
