@@ -15,13 +15,21 @@ if (isset($_GET['id_request_kk'])) {
 	$agama = $data['agama'];
 	$jekel = $data['jekel'];
 	$alamat = $data['alamat'];
-	$status_warga = $data['status_warga'];
 	$nama = $data['nama'];
 	$id = $data['id_request_kk'];
 	$ktp = $data['scan_ktp'];
 	$kk = $data['scan_kk'];
 	$keperluan = $data['keperluan'];;
 	$keterangan = $data['keterangan'];
+	$warga_negara = $data['warga_negara'];
+
+}
+if (isset($_GET['id_request_kk'])) {
+	$id_request_kk = $_GET['id_request_kk'];
+	$sql = "SELECT * FROM data_request_kk natural join data_penduduk WHERE id_request_kk='$id_request_kk'";
+	$query = mysqli_query($konek, $sql);
+	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+	$status_warga = $data['status_warga'];
 }
 ?>
 <div class="page-inner">
@@ -54,6 +62,10 @@ if (isset($_GET['id_request_kk'])) {
 								<div class="form-group">
 									<label>Nama Lengkap</label>
 									<input type="text" name="nama" value="<?php echo $nama; ?>" class="form-control" placeholder="Nama Lengkap Anda..">
+								</div>
+								<div class="form-group">
+									<label>Kewarganegaraan</label>
+									<input type="text" name="warga_negara" value="<?php echo $warga_negara; ?>" class="form-control" placeholder="Kewarganegaraan">
 								</div>
 								<div class="form-check">
 									<label>Jenis Kelamin</label><br />
@@ -91,41 +103,27 @@ if (isset($_GET['id_request_kk'])) {
 									<textarea class="form-control" name="alamat" rows="5"> <?php echo $alamat; ?></textarea>
 								</div>
 								<div class="form-group">
-									<label>Status Warga</label>
-									<select name="status_warga" value="<?php echo $status_warga; ?>" class="form-control">
-										<option value="Sekolah" <?php if ($status_warga == "Sekolah") echo 'selected' ?>>Sekolah</option>
-										<option value="Kerja" <?php if ($status_warga == "Kerja") echo 'selected' ?>>Kerja</option>
-										<option value="Belum Bekerja" <?php if ($status_warga == "Belum Bekerja") echo 'selected' ?>>Belum Bekerja</option>
-									</select>
+									<label>RT / RW</label>
+									<input type="text" name="keperluan" value="<?php echo $status_warga; ?>" class="form-control" placeholder="Warga Negara">
 								</div>
 								<div class="form-group">
 									<label>Keperluan</label>
-									<input type="text" name="keperluan" value="<?php echo $keperluan; ?>" class="form-control" placeholder="Telepon Anda..">
+									<input type="text" name="keperluan" value="<?php echo $keperluan; ?>" class="form-control" placeholder="Keperluan">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-5">
-				<div class="card">
-					<div class="card-header">
-						<h4 class="card-title">KTP</h4>
-					</div>
-					<div class="card-body">
-						<div class="row justify-content-md-center">
-							<img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="350" height="250" alt="">
-
+				<div class="col-md-5">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title">KTP</h4>
 						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header">
-						<h4 class="card-title">KK</h4>
-					</div>
-					<div class="card-body">
-						<div class="row justify-content-md-center">
-							<img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="300" height="300" alt="">
+						<div class="card-body">
+							<div class="row justify-content-md-center">
+								<img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="350" height="250" alt="">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -146,6 +144,7 @@ if (isset($_POST['ubah'])) {
 	$status_warga = $_POST['status_warga'];
 	$keperluan = $_POST['keperluan'];
 	$keterangan = $_POST['keterangan'];
+	$warga_negara = $_POST['warga_negara'];
 
 	$ubah = "UPDATE data_user SET
 		nama='$nama',

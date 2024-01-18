@@ -5,7 +5,7 @@
 <?php
 if (isset($_GET['id_request_sku'])) {
 	$id_request_sku = $_GET['id_request_sku'];
-	$sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id_request_sku'";
+	$sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id_request_sku'";
 	$query = mysqli_query($konek, $sql);
 	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 	$nik = $data['nik'];
@@ -13,24 +13,26 @@ if (isset($_GET['id_request_sku'])) {
 	$tempat = $data['tempat_lahir'];
 	$tgl = $data['tanggal_lahir'];
 	$agama = $data['agama'];
-	$jekel = $data['jekel'];
-	$id = $data['id_request_sku'];
-	$ktp = $data['scan_ktp'];
-	$kk = $data['scan_kk'];
-	$keperluan = $data['keperluan'];
-	$status_warga = $data['status_warga'];
 	$alamat = $data['alamat'];
-}
-if (isset($_GET['id_request_sku'])) {
-	$id_request_sku = $_GET['id_request_sku'];
-	$sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id_request_sku'";
-	$query = mysqli_query($konek, $sql);
-	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 	$usaha = $data['usaha'];
 	$keterangan = $data['keterangan'];
 	$alamat_usaha = $data['alamat_usaha'];
 	$jenis_usaha = $data['jenis_usaha'];
 	$kepemilikan = $data['kepemilikan'];
+	$jekel = $data['jekel'];
+	$id = $data['id_request_sku'];
+	$ktp = $data['scan_ktp'];
+	$kk = $data['scan_kk'];
+	$keperluan = $data['keperluan'];
+
+}
+if (isset($_GET['id_request_sku'])) {
+	$id_request_sku = $_GET['id_request_sku'];
+	$sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id_request_sku'";
+	$query = mysqli_query($konek, $sql);
+	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+	$status_warga = $data['status_warga'];
+
 }
 ?>
 <div class="page-inner">
@@ -109,13 +111,14 @@ if (isset($_GET['id_request_sku'])) {
 									<input type="text" name="nama_usaha" value="<?php echo $usaha; ?>" class="form-control" placeholder="Nama Usaha Anda" readonly="">
 								</div>
 								<div class="form-group">
-									<label>jenis Usaha</label>
-									<input type="text" name="jenis_usaha" value="<?php echo $jenis_usaha; ?>" class="form-control" placeholder="Jenis Usaha" readonly="">
-								</div>
-								<div class="form-group">
 									<label>Alamat Usaha</label>
 									<input type="text" name="alamat_usaha" value="<?php echo $alamat_usaha; ?>" class="form-control" placeholder="Alamat Usaha" readonly="">
 								</div>
+								<div class="form-group">
+									<label>jenis Usaha</label>
+									<input type="text" name="jenis_usaha" value="<?php echo $jenis_usaha; ?>" class="form-control" placeholder="Jenis Usaha" readonly="">
+								</div>
+								
 								<div class="form-group">
 									<label>Kepemilikan</label>
 									<input type="text" name="kepemilikan" value="<?php echo $kepemilikan; ?>" class="form-control" placeholder="Kepemilikan" readonly="">
@@ -169,6 +172,7 @@ if (isset($_POST['ubah'])) {
 	$kepemilikan = $_POST['kepemilikan'];
 	$status_warga = $_POST['status_warga'];
 	$keterangan = $_POST['keterangan'];
+	$keperluan = $_POST['keperluan'];
 	$ubah = "UPDATE data_user SET
 		nama='$nama',
 		tanggal_lahir='$tgl',
@@ -176,12 +180,8 @@ if (isset($_POST['ubah'])) {
 		jekel='$jekel',
 		agama='$agama',
 		alamat='$alamat',
-		alamat_usaha ='$alamat_usaha',
-		jenis_usaha ='$jenis_usaha',
-		kepemilikan ='$kepemilikan',
-		keterangan ='$keterangan',
 		status_warga='$status_warga' WHERE nik='$nik'";
-	$query = mysqli_query($konek, $ubah);
+		$query = mysqli_query($konek, $ubah);
 
 	if ($query == 1) {
 		$keterangan = $_POST['keterangan'];

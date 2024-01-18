@@ -11,6 +11,7 @@ if (isset($_GET['id_request_kk'])) {
 	$nik = $data['nik'];
 	$nama = $data['nama'];
 	$keperluan = $data['keperluan'];
+	$warga_negara = $data['warga_negara'];
 	$ktp = $data['scan_ktp'];
 	$kk = $data['scan_kk'];
 }
@@ -34,6 +35,10 @@ if (isset($_GET['id_request_kk'])) {
 									<label>Keperluan</label>
 									<input type="text" name="keperluan" class="form-control" value="<?= $keperluan; ?>" placeholder="Keperluan Anda..">
 								</div>
+								<div class="form-group">
+									<label>Kewarganegaraan</label>
+									<input type="text" name="warga_negara" class="form-control" value="<?= $warga_negara; ?>" placeholder="Kewarganegaraan">
+								</div>
 							</div>
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
@@ -41,14 +46,7 @@ if (isset($_GET['id_request_kk'])) {
 									<img src="../dataFoto/scan_ktp/<?= $ktp; ?>" width="200" height="100" alt="">
 								</div>
 								<div class="form-group">
-									<input type="file" name="ktp" class="form-control" size="37">
-								</div>
-								<div class="form-group">
-									<label>Scan KK</label><br>
-									<img src="../dataFoto/scan_kk/<?= $kk; ?>" width="200" height="100" alt="">
-								</div>
-								<div class="form-group">
-									<input type="file" name="kk" class="form-control" size="37">
+									<input type="file" name="ktp" class="form-control"value="<?= $ktp; ?>" size="37">
 								</div>
 							</div>
 						</div>
@@ -66,6 +64,7 @@ if (isset($_GET['id_request_kk'])) {
 <?php
 if (isset($_POST['ubah'])) {
 	$keperluan = $_POST['keperluan'];
+	$warga_negara = $_POST['warga_negara'];
 	$nama_ktp = isset($_FILES['ktp']);
 	$file_ktp = $_POST['nik'] . "_" . ".jpg";
 	$nama_kk = isset($_FILES['kk']);
@@ -74,8 +73,6 @@ if (isset($_POST['ubah'])) {
 	$query = mysqli_query($konek, $sql);
 
 	if ($query) {
-		copy($_FILES['ktp']['tmp_name'], "../dataFoto/scan_ktp/" . $file_ktp);
-		copy($_FILES['kk']['tmp_name'], "../dataFoto/scan_kk/" . $file_kk);
 		echo "<script language='javascript'>swal('Selamat...', 'Ubah Berhasil', 'success');</script>";
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=tampil_status">';
 	} else {

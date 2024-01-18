@@ -21,7 +21,7 @@ if (isset($_GET['id_request_kk'])) {
     $jekel = $data['jekel'];
     $nama = $data['nama'];
     $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
+    $warga_negara = $data['warga_negara'];
     $keperluan = $data['keperluan'];
     $request = $data['request'];
     $acc = $data['acc'];
@@ -31,6 +31,16 @@ if (isset($_GET['id_request_kk'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_kk'])) {
+    $id = $_GET['id_request_kk'];
+    $sql = "SELECT * FROM data_request_kk natural join data_penduduk WHERE id_request_kk='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_warga = $data['status_warga'];
+    $status_perkawinan = $data['status_perkawinan'];
+    $pekerjaan = $data['pekerjaan'];
+
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -161,12 +171,17 @@ if (isset($_GET['id_request_kk'])) {
                         <br>
                         <table border="0" align="center">
                             <tr>
-                                <td>Nama</td>
+                                <td>NIK</td>
+                                <td>:</td>
+                                <td><?php echo $nik; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Nama Lengkap</td>
                                 <td>:</td>
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat,Tanggal Lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -181,9 +196,14 @@ if (isset($_GET['id_request_kk'])) {
                                 <td><?php echo $agama; ?></td>
                             </tr>
                             <tr>
-                                <td>No. NIK</td>
+                                <td>Pekerjaan</td>
                                 <td>:</td>
-                                <td><?php echo $nik; ?></td>
+                                <td><?php echo $pekerjaan; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Kewarganegaraan</td>
+                                <td>:</td>
+                                <td><?php echo $warga_negara; ?></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
@@ -191,24 +211,14 @@ if (isset($_GET['id_request_kk'])) {
                                 <td><?php echo $alamat; ?></td>
                             </tr>
                             <tr>
-                                <td>Status Warga</td>
+                                <td>Status Perkawinan</td>
                                 <td>:</td>
-                                <td><?php echo $status_warga; ?></td>
+                                <td><?php echo $status_perkawinan; ?></td>
                             </tr>
                             <tr>
                                 <td>Keperluan</td>
                                 <td>:</td>
                                 <td><?php echo $keperluan; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Keterangan</td>
-                                <td>:</td>
-                                <?php
-                                if ($request == "KK") {
-                                    $request = "Surat Keterangan KK";
-                                }
-                                ?>
-                                <td><?php echo $request; ?></td>
                             </tr>
                         </table>
                         <br>

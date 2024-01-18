@@ -21,7 +21,7 @@ $nama = $data['nama'];
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
-									<label>NIK</label>
+									<label>NIK - Nama</label>
 									<input type="text" name="keterangan" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
 								</div>
 								<div class="form-group">
