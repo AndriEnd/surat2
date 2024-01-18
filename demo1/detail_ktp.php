@@ -102,6 +102,10 @@ if (isset($_GET['id_request_ktp'])) {
                                     <label>Keperluan</label>
                                     <input type="text" name="keperluan" readonly="" class="form-control" placeholder="Keperluan Anda.." value="<?= $keperluan; ?>">
                                 </div>
+                                <div class="form-group">
+                                    <label>Kewarganegaraan</label>
+                                    <input type="text" name="warga_negara" readonly="" class="form-control" placeholder="Kewarganegaraan" value="<?= $warga_negara; ?>">
+                                </div>
                             </div>
                         </div>
                     </div>

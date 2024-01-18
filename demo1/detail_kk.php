@@ -22,7 +22,6 @@ if (isset($_GET['id_request_kk'])) {
 	$keperluan = $data['keperluan'];;
 	$keterangan = $data['keterangan'];
 	$warga_negara = $data['warga_negara'];
-
 }
 if (isset($_GET['id_request_kk'])) {
 	$id_request_kk = $_GET['id_request_kk'];
@@ -104,32 +103,36 @@ if (isset($_GET['id_request_kk'])) {
 								</div>
 								<div class="form-group">
 									<label>RT / RW</label>
-									<input type="text" name="keperluan" value="<?php echo $status_warga; ?>" class="form-control" placeholder="Warga Negara">
+									<input type="text" name="status_warga" value="<?php echo $status_warga; ?>" class="form-control" placeholder="status_warga">
 								</div>
 								<div class="form-group">
 									<label>Keperluan</label>
 									<input type="text" name="keperluan" value="<?php echo $keperluan; ?>" class="form-control" placeholder="Keperluan">
 								</div>
+								<div class="form-group">
+									<label>Kewarganegaraan</label>
+									<input type="text" name="warga_negara" readonly="" class="form-control" placeholder="Kewarganegaraan" value="<?= $warga_negara; ?>">
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-				<div class="col-md-5">
-					<div class="card">
-						<div class="card-header">
-							<h4 class="card-title">KTP</h4>
-						</div>
-						<div class="card-body">
-							<div class="row justify-content-md-center">
-								<img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="350" height="250" alt="">
-							</div>
+			<div class="col-md-5">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">KTP</h4>
+					</div>
+					<div class="card-body">
+						<div class="row justify-content-md-center">
+							<img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="350" height="250" alt="">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+</div>
+</form>
 </div>
 
 <?php

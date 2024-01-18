@@ -40,7 +40,6 @@ if (isset($_GET['id_request_kk'])) {
     $status_warga = $data['status_warga'];
     $status_perkawinan = $data['status_perkawinan'];
     $pekerjaan = $data['pekerjaan'];
-
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -117,7 +116,7 @@ if (isset($_GET['id_request_kk'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
+                                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font>
                                     </center>
                                 </td>
                                 <td></td>
@@ -147,7 +146,6 @@ if (isset($_GET['id_request_kk'])) {
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
@@ -160,7 +158,6 @@ if (isset($_GET['id_request_kk'])) {
                             </tr>
                         </table>
                         <br>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
@@ -168,7 +165,6 @@ if (isset($_GET['id_request_kk'])) {
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>NIK</td>
@@ -221,16 +217,16 @@ if (isset($_GET['id_request_kk'])) {
                                 <td><?php echo $keperluan; ?></td>
                             </tr>
                         </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adalah benar penduduk Desa Sumber Baagia Kecamatan Seputih Banyak;Kabupaten Lampung Tengah<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat keterangan kartu keluraga ini dibuat denggan sebenar-benarnya dan dipergunakan
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sebagaianmana mestinya.
                                 </td>
                             </tr>
+                            <br>
                         </table>
-                        <br>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <th></th>
@@ -298,9 +294,7 @@ if (isset($_GET['id_request_kk'])) {
                                 <td><b><u>(LURAH)</u></b></td>
                             </tr>
                         </table>
-
                     </table>
-
                 </div>
             </div>
         </div>
