@@ -31,6 +31,10 @@ $nama = $data['nama'];
                                     <label>Keperluan</label>
                                     <input type="text" name="keperluan" class="form-control" placeholder="Keperluan Anda.." autofocus>
                                 </div>
+                                <div class="form-group">
+                                    <label>Kewarganegaraan</label>
+                                    <input type="text" name="warga_negara" class="form-control" placeholder="Kewarganegaraan" autofocus>
+                                </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
@@ -58,11 +62,12 @@ $nama = $data['nama'];
 if (isset($_POST['kirim'])) {
     $nik = $_POST['nik'];
     $keperluan = $_POST['keperluan'];
+    $warga_negara = $_POST['warga_negara'];
     $nama_ktp = isset($_FILES['ktp']);
     $file_ktp = $_POST['nik'] . "_" . ".jpg";
     $nama_kk = isset($_FILES['kk']);
     $file_kk = $_POST['nik'] . "_" . ".jpg";
-    $sql = "INSERT INTO data_request_ktp (nik,scan_ktp,scan_kk,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$keperluan')";
+    $sql = "INSERT INTO data_request_ktp (nik,scan_ktp,scan_kk,keperluan,warga_negara) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$warga_negara')";
     $query = mysqli_query($konek, $sql) or die(mysqli_error());
 
     if ($query) {

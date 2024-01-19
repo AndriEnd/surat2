@@ -21,7 +21,6 @@ if (isset($_GET['id_request_ktp'])) {
     $jekel = $data['jekel'];
     $nama = $data['nama'];
     $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
     $request = $data['request'];
     $keperluan = $data['keperluan'];
     $acc = $data['acc'];
@@ -31,6 +30,16 @@ if (isset($_GET['id_request_ktp'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_ktp'])) {
+    $id = $_GET['id_request_ktp'];
+    $sql = "SELECT * FROM data_request_ktp natural join data_penduduk WHERE id_request_ktp='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_warga = $data['status_warga'];
+    $status_perkawinan = $data['status_perkawinan'];
+    $pekerjaan = $data['pekerjaan'];
+    $warga_negara = $data['warga_negara'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -107,7 +116,7 @@ if (isset($_GET['id_request_ktp'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156</i></font><br>
+                                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -142,9 +151,9 @@ if (isset($_GET['id_request_ktp'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN KARTU TANDA PENDUDUK</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN KTP SEMENTARA</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                        <span>Nomor :045.2 / <?php echo $id; ?> / 29.07.05</span>
                                     </center>
                                 </td>
                             </tr>
@@ -161,12 +170,17 @@ if (isset($_GET['id_request_ktp'])) {
                         <br>
                         <table border="0" align="center">
                             <tr>
+                                <td>No. NIK</td>
+                                <td>:</td>
+                                <td><?php echo $nik; ?></td>
+                            </tr>
+                            <tr>
                                 <td>Nama</td>
                                 <td>:</td>
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat, Tanggal Lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -181,14 +195,25 @@ if (isset($_GET['id_request_ktp'])) {
                                 <td><?php echo $agama; ?></td>
                             </tr>
                             <tr>
-                                <td>Status Warga</td>
+                                <td>RT /RW</td>
                                 <td>:</td>
                                 <td><?php echo $status_warga; ?></td>
                             </tr>
                             <tr>
-                                <td>No. NIK</td>
+                                <td>Kewarganegaraan</td>
                                 <td>:</td>
-                                <td><?php echo $nik; ?></td>
+                                <td><?php echo $warga_negara; ?></td>
+                            </tr>
+
+                            <tr>
+                                <td>Pekerjaan</td>
+                                <td>:</td>
+                                <td><?php echo $pekerjaan; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Status Perkawinan</td>
+                                <td>:</td>
+                                <td><?php echo $status_perkawinan; ?></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
@@ -200,33 +225,24 @@ if (isset($_GET['id_request_ktp'])) {
                                 <td>:</td>
                                 <td><?php echo $keperluan; ?></td>
                             </tr>
-                            <tr>
-                                <td>Keterangan</td>
-                                <td>:</td>
-                                <?php
-                                if ($request == "KTP") {
-                                    $request = "Surat Keterangan KTP";
-                                }
-                                ?>
-                                <td><?php echo $request; ?></td>
-                            </tr>
                         </table>
                         <br>
                         <table border="0" align="center">
-                            <tr>
+                            <tr align="justify">
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Dengan ini menerangkan bahwa yang bersangkutan adalah penduduk Kampung Sumber Bahagia
+                                    <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kecamatan Seputih Banyak.Demikian surat keterangan KTP Sementara ini dibuat dengan
+                                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sebenar-benarnya untuk diketahui dan digunakan sebagaimana mestinya.
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <br>
                         <br>
                         <table border="0" align="center">
                             <tr>
                                 <th></th>
                                 <th width="100px"></th>
-                                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                                <th>Lampung Tengah, <?php echo $format4; ?></th>
                             </tr>
                             <tr>
                                 <td>Tanda Tangan <br> Yang Bersangkutan </td>
@@ -286,11 +302,10 @@ if (isset($_GET['id_request_ktp'])) {
                             <tr>
                                 <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
                                 <td></td>
-                                <td><b><u>(LURAH)</u></b></td>
+                                <td><b><u>(Lurah)</u></b></td>
                             </tr>
                         </table>
                     </table>
-
                 </div>
             </div>
         </div>

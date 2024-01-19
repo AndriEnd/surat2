@@ -41,7 +41,6 @@ if (isset($_GET['id_request_skd'])) {
 </head>
 
 <body>
-
     <table border="1" align="center">
         <table border="0" align="center">
             <tr>
@@ -70,7 +69,7 @@ if (isset($_GET['id_request_skd'])) {
                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                        <font size="2"><i>JL.SOLO NO 1 , 34156</i></font><br>
+                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
                     </center>
                 </td>
                 <td></td>
@@ -105,9 +104,9 @@ if (isset($_GET['id_request_skd'])) {
             <tr>
                 <td>
                     <center>
-                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR DOMISILI</b></font><br>
+                        <font size="4"><b>SURAT KETERANGAN KTP SEMENTARA</b></font><br>
                         <hr style="margin:0px" color="black">
-                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                        <span>Nomor :045.2 / <?php echo $id; ?> / 29.07.05</span>
                     </center>
                 </td>
             </tr>
@@ -134,12 +133,7 @@ if (isset($_GET['id_request_skd'])) {
                 <td><?php echo $nama; ?></td>
             </tr>
             <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td><?php echo $alamat; ?></td>
-            </tr>
-            <tr>
-                <td>Tempat,Tanggal Lahir</td>
+                <td>Tempat, Tanggal Lahir</td>
                 <td>:</td>
                 <td><?php echo $tempat . ", " . $format2; ?></td>
             </tr>
@@ -154,14 +148,30 @@ if (isset($_GET['id_request_skd'])) {
                 <td><?php echo $agama; ?></td>
             </tr>
             <tr>
-                <td>Status Warga</td>
+                <td>RT /RW</td>
                 <td>:</td>
                 <td><?php echo $status_warga; ?></td>
+            </tr>
+            <tr>
+                <td>Kewarganegaraan</td>
+                <td>:</td>
+                <td><?php echo $warga_negara; ?></td>
+            </tr>
+
+            <tr>
+                <td>Pekerjaan</td>
+                <td>:</td>
+                <td><?php echo $pekerjaan; ?></td>
             </tr>
             <tr>
                 <td>Status Perkawinan</td>
                 <td>:</td>
                 <td><?php echo $status_perkawinan; ?></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>:</td>
+                <td><?php echo $alamat; ?></td>
             </tr>
             <tr>
                 <td>Keperluan</td>
@@ -173,20 +183,19 @@ if (isset($_GET['id_request_skd'])) {
         <table border="0" align="center">
             <tr align="justify">
                 <td>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dengan ini menerangkan bahwa benar yang bersangkutan berdomisili di Kampung Sumber<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Bahagia Kecamatan Seputih Banyak Kabupaten Lampung Tengah.
-                    <br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Dengan ini menerangkan bahwa yang bersangkutan adalah penduduk Kampung Sumber Bahagia
+                    <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kecamatan Seputih Banyak.Demikian surat keterangan KTP Sementara ini dibuat dengan
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sebenar-benarnya untuk diketahui dan digunakan sebagaimana mestinya.
                 </td>
             </tr>
         </table>
-        <br>
         <br>
         <br>
         <table border="0" align="center">
             <tr>
                 <th></th>
                 <th width="100px"></th>
-                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                <th>Lampung Tengah, <?php echo $format4; ?></th>
             </tr>
             <tr>
                 <td>Tanda Tangan <br> Yang Bersangkutan </td>
@@ -246,14 +255,10 @@ if (isset($_GET['id_request_skd'])) {
             <tr>
                 <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
                 <td></td>
-                <td><b><u>(LURAH)</u></b></td>
+                <td><b><u>(Lurah)</u></b></td>
             </tr>
         </table>
     </table>
-
-
-
-
 </body>
 
 </html>

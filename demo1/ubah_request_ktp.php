@@ -16,6 +16,15 @@ if (isset($_GET['id_request_ktp'])) {
     $ktp = $data['scan_ktp'];
     $kk = $data['scan_kk'];
     $keperluan = $data['keperluan'];
+    $warga_negara = $data['warga_negara'];
+}
+if (isset($_GET['id_request_ktp'])) {
+    $id = $_GET['id_request_ktp'];
+    $tampil_nik = "SELECT * FROM data_request_ktp NATURAL JOIN data_penduduk WHERE id_request_ktp=$id";
+    $query = mysqli_query($konek, $tampil_nik);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_perkawinan = $data['status_perkawinan'];
+    $status_warga = $data['status_warga'];
 }
 ?>
 <div class="page-inner">
@@ -42,7 +51,13 @@ if (isset($_GET['id_request_ktp'])) {
                             </div>
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Scan KTP</label><br>
+                                    <label>Kewarganegaraan</label>
+                                    <input type="text" name="warga_negara" class="form-control" value="<?= $warga_negara; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Scan Photo</label><br>
                                     <img src="../dataFoto/scan_ktp/<?= $ktp; ?>" width="200" height="100" alt="">
                                 </div>
                                 <div class="form-group">
@@ -77,6 +92,7 @@ if (isset($_POST['ubah'])) {
     $nama_kk = isset($_FILES['kk']);
     $file_kk = $_POST['nik'] . "_" . ".jpg";
     $keperluan = $_POST['keperluan'];
+    $status_warga = $_POST['warga_negara'];
     $sql = "UPDATE data_request_ktp SET scan_ktp='$file_ktp',scan_kk='$file_kk',keperluan='$keperluan' WHERE id_request_ktp=$id";
     $query = mysqli_query($konek, $sql);
 
