@@ -279,7 +279,7 @@ if (isset($_GET['id_request_kk'])) {
                                 <tr>
                                     <th></th>
                                     <th width="100px"></th>
-                                    <th>Lampung Tengah, <?php echo $acc; ?></th>
+                                    <th>Lampung Tengah, <?php echo $format4; ?></th>
                                 </tr>
                                 <tr>
                                     <td>Tanda Tangan <br> Yang Bersangkutan </td>

@@ -1,4 +1,5 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+include '../convert_romawi.php'; ?>
 <?php
 if (isset($_GET['id_request_kk'])) {
     $id = $_GET['id_request_kk'];
@@ -14,8 +15,9 @@ if (isset($_GET['id_request_kk'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $agama = $data['agama'];
-
     $nama = $data['nama'];
     $warga_negara = $data['warga_negara'];
     $status_warga = $data['status_warga'];
@@ -86,7 +88,7 @@ if (isset($_GET['id_request_kk'])) {
                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
+                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                     </center>
                 </td>
                 <td></td>
@@ -123,7 +125,7 @@ if (isset($_GET['id_request_kk'])) {
                         <br>
                         <font size="4"><b>SURAT KETERANGAN / PENGANTAR KARTU KELUARGA</b></font><br>
                         <hr style="margin:0px" color="black">
-                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                        <span>Nomor : 145.5 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                     </center>
                 </td>
             </tr>
@@ -244,7 +246,7 @@ if (isset($_GET['id_request_kk'])) {
             <tr>
                 <th></th>
                 <th width="100px"></th>
-                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                <th>Lampung Tengah, <?php echo $format4; ?></th>
             </tr>
             <tr>
                 <td>Tanda Tangan <br> Yang Bersangkutan </td>

@@ -169,7 +169,7 @@ if (isset($_GET['id_request_akta'])) {
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat, Tanggal Lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -229,7 +229,7 @@ if (isset($_GET['id_request_akta'])) {
                             <tr>
                                 <th></th>
                                 <th width="100px"></th>
-                                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                                <th>Lampung Tengah, <?php echo $format4; ?></th>
                             </tr>
                             <tr>
                                 <td>Tanda Tangan <br> Yang Bersangkutan </td>

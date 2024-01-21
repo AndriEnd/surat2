@@ -14,20 +14,19 @@ if (isset($_GET['id_request_skd'])) {
 	$tgl = $data['tanggal_lahir'];
 	$agama = $data['agama'];
 	$jekel = $data['jekel'];
-
 	$nama = $data['nama'];
 	$id = $data['id_request_skd'];
 	$ktp = $data['scan_ktp'];
 	$kk = $data['scan_kk'];
 	$keterangan = $data['keterangan'];
 	$keperluan = $data['keperluan'];
-	$status_warga = $data['status_warga'];
 }
 if (isset($_GET['id_request_skd'])) {
 	$id_request_skd = $_GET['id_request_skd'];
 	$sql = "SELECT * FROM data_request_skd natural join data_penduduk WHERE id_request_skd='$id_request_skd'";
 	$query = mysqli_query($konek, $sql);
 	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+	$status_warga = $data['status_warga'];
 	$status_perkawinan = $data['status_perkawinan'];
 	$alamat = $data['alamat'];
 }

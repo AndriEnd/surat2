@@ -15,13 +15,19 @@ if (isset($_GET['id_request_akta'])) {
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
     $nama = $data['nama'];
     $id = $data['id_request_akta'];
     $ktp = $data['scan_ktp'];
     $kk = $data['scan_kk'];
     $keterangan = $data['keterangan'];
     $keperluan = $data['keperluan'];
+}
+if (isset($_GET['id_request_akta'])) {
+    $id_request_akta = $_GET['id_request_akta'];
+    $sql = "SELECT * FROM data_request_akta natural join data_penduduk WHERE id_request_akta='$id_request_akta'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_warga = $data['status_warga'];
 }
 ?>
 <div class="page-inner">
@@ -91,12 +97,8 @@ if (isset($_GET['id_request_akta'])) {
                                     <textarea class="form-control" name="alamat" rows="5"> <?php echo $alamat; ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Status Warga</label>
-                                    <select name="status_warga" value="<?php echo $status_warga; ?>" class="form-control">
-                                        <option value="Sekolah" <?php if ($status_warga == "Sekolah") echo 'selected' ?>>Sekolah</option>
-                                        <option value="Kerja" <?php if ($status_warga == "Kerja") echo 'selected' ?>>Kerja</option>
-                                        <option value="Belum Bekerja" <?php if ($status_warga == "Belum Bekerja") echo 'selected' ?>>Belum Bekerja</option>
-                                    </select>
+                                    <label>RT / RW</label>
+                                    <input type="text" name="status_warga" readonly="" class="form-control" placeholder="RT / RW" value="<?= $status_warga; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Keperluan</label>

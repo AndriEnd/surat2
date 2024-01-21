@@ -1,4 +1,5 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+include '../convert_romawi.php'; ?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
@@ -17,6 +18,8 @@ if (isset($_GET['id_request_akta'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
@@ -124,7 +127,7 @@ if (isset($_GET['id_request_akta'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
+                                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -159,9 +162,9 @@ if (isset($_GET['id_request_akta'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR AKTA</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor :045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                        <span>Nomor : 145.6 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                     </center>
                                 </td>
                             </tr>
@@ -183,7 +186,7 @@ if (isset($_GET['id_request_akta'])) {
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Tempat, Tanggal Lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -236,6 +239,7 @@ if (isset($_GET['id_request_akta'])) {
                                 </td>
                             </tr>
                         </table>
+                        <br>
                         <br>
                         <br>
                         <table border="0" align="center">
@@ -306,7 +310,6 @@ if (isset($_GET['id_request_akta'])) {
                             </tr>
                         </table>
                     </table>
-
                 </div>
             </div>
         </div>

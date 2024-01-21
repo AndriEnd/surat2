@@ -25,10 +25,12 @@ if (isset($_GET['id_request_ktp'])) {
 }
 if (isset($_GET['id_request_ktp'])) {
     $id_request_ktp = $_GET['id_request_ktp'];
-    $sql = "SELECT * FROM data_request_ktp natural join data_user WHERE id_request_ktp='$id_request_ktp'";
+    $sql = "SELECT * FROM data_request_ktp natural join data_penduduk WHERE id_request_ktp='$id_request_ktp'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $status_warga = $data['status_warga'];
+    $status_perkawinan = $data['status_perkawinan'];
+    $alamat = $data['alamat'];
 }
 ?>
 <div class="page-inner">
