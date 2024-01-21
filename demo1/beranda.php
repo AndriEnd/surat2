@@ -106,7 +106,7 @@ if ($hak_akses == "Pemohon") {
 			<div class="col-md-3 pr-md-0">
 				<div class="card-pricing2 card-danger">
 					<div class="pricing-header">
-						<h6 class="fw-bold text-center text-uppercase">Surat Akta Lahir</h6>
+						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan Lahir</h6>
 					</div>
 					<div class="price-value">
 						<div class="value">
@@ -142,7 +142,7 @@ if ($hak_akses == "Pemohon") {
 		</div>
 	</div>
 <?php
-} elseif ($hak_akses == "Staf") {
+} elseif ($hak_akses == "RT") {
 ?>
 	<div class="panel-header bg-primary-gradient">
 		<div class="page-inner py-5">
@@ -307,7 +307,7 @@ if ($hak_akses == "Pemohon") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">AKTA</p>
+									<p class="card-category">SURAT LAHIR</p>
 									<?php
 									$sql = "SELECT * FROM data_request_akta WHERE status=1";
 									$query = mysqli_query($konek, $sql);
@@ -530,7 +530,7 @@ if ($hak_akses == "Pemohon") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">AKTA</p>
+									<p class="card-category">SURAT LAHIR</p>
 									<?php
 									$sql = "SELECT * FROM data_request_akta WHERE status=0";
 									$query = mysqli_query($konek, $sql);
@@ -753,7 +753,7 @@ if ($hak_akses == "Pemohon") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">AKTA</p>
+									<p class="card-category">SURAT LAHIR</p>
 									<?php
 									$sql = "SELECT * FROM data_request_akta WHERE status=0";
 									$query = mysqli_query($konek, $sql);

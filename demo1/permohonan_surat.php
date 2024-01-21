@@ -28,7 +28,7 @@
 							</thead>
 							<tbody>
 								<?php
-								$sql = "SELECT * FROM data_request_sktm natural join data_user where status=2";
+								$sql = "SELECT * FROM data_request_sktm natural join data_user  where status=2";
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -315,7 +315,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN AKTA</h4>
+						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN LAHIR</h4>
 					</div>
 				</div>
 				<form method="POST">

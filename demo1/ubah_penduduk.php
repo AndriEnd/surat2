@@ -208,7 +208,7 @@ if (isset($_GET['nik'])) {
                                 </div>
                                 <div class="form-group">
                                     <label>Golongan Darah</label>
-                                    <select name="gol_darah" class="form-control">
+                                    <select name="gol_darah" class="form-control" value="<?= $gol_darah; ?>">
                                         <option disabled="" selected="">Golongan Darah</option>
                                         <option value="O" <?php if ($gol_darah == "O") echo 'selected' ?>>O</option>
                                         <option value="A" <?php if ($gol_darah == "A") echo 'selected' ?>>A</option>

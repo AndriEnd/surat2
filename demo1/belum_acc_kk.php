@@ -42,7 +42,7 @@
 										$id_request_kk = $data['id_request_kk'];
 
 										if ($status == "1") {
-											$status = "SUDAH ACC STAF";
+											$status = "SUDAH ACC RT";
 										} elseif ($status == "0") {
 											$status = "BELUM ACC";
 										}

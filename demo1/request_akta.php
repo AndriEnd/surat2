@@ -28,10 +28,6 @@ $nama = $data['nama'];
                                     <input type="hidden" name="nik" class="form-control" value="<?= $nik; ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label>No.KK</label>
-                                    <input type="text" name="no_kk" class="form-control" placeholder="Nomer Kartu Keluarga" autofocus>
-                                </div>
-                                <div class="form-group">
                                     <label>Nama Anak</label>
                                     <input type="text" name="nama_anak" class="form-control" placeholder="Nama Anak.." autofocus>
                                 </div>
@@ -39,15 +35,19 @@ $nama = $data['nama'];
                                     <label>Anak Ke -</label>
                                     <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke - " autofocus>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Scan KTP Kepala Keluarga</label>
-                                    <input type="file" name="ktp" class="form-control" size="37" required>
+                                    <label>Keperluan </label>
+                                    <input type="text" name="keperluan" class="form-control" placeholder="Keperluan" autofocus>
                                 </div>
-                                <div class="form-group">
-                                    <label>Scan KK</label>
-                                    <input type="file" name="kk" class="form-control" size="37" required>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Scan KTP Kepala Keluarga</label>
+                                        <input type="file" name="ktp" class="form-control" size="37" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Scan KK</label>
+                                        <input type="file" name="kk" class="form-control" size="37" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,9 @@ if (isset($_POST['kirim'])) {
     $file_ktp = $_POST['nik'] . "_" . ".jpg";
     $nama_kk = isset($_FILES['kk']);
     $file_kk = $_POST['nik'] . "_" . ".jpg";
-    $sql = "INSERT INTO data_request_akta (nik,scan_ktp,scan_kk,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$keperluan')";
+    $nama_anak = $_POST['nama_anak'];
+    $anak_ke = $_POST['anak_ke'];
+    $sql = "INSERT INTO data_request_akta (nik,scan_ktp,scan_kk,keperluan,anak_ke,nama_anak) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$anak_ke','$nama_anak')";
     $query = mysqli_query($konek, $sql) or die(mysqli_error());
 
     if ($query) {

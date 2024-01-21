@@ -63,14 +63,14 @@ if (isset($_GET['id_request_ktp'])) {
                                 <div class="form-group">
                                     <input type="file" name="kk" class="form-control" size="37">
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <label>Scan KK</label><br>
-                                    <img src="../dataFoto/scan_kk/<?= $kk; ?>" width="200" height="100" alt="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" name="kk" class="form-control" size="37">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Scan KK</label><br>
+                                        <img src="../dataFoto/scan_kk/<?= $kk; ?>" width="200" height="100" alt="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" name="kk" class="form-control" size="37">
+                                    </div>
                                 </div>
                             </div>
                         </div>

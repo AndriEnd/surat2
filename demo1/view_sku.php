@@ -1,28 +1,37 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+include '../convert_romawi.php';
+?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
+
 <?php
 if (isset($_GET['id_request_sku'])) {
     $id = $_GET['id_request_sku'];
-    $sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id'";
+    $sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $id = $data['id_request_sku'];
     $nik = $data['nik'];
     $nama = $data['nama'];
     $tempat = $data['tempat_lahir'];
-    $pekerjaan = $data['pekerjaan'];
     $tgl = $data['tanggal_lahir'];
     $tgl2 = $data['tanggal_request'];
+    $bulan = date('acc');
+    $romawi = getRomawi($bulan);
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
-    $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
     $keperluan = $data['keperluan'];
+    $alamat_usaha = $data['alamat_usaha'];
+    $usaha = $data['usaha'];
+    $jenis_usaha = $data['jenis_usaha'];
+    $alamat_usaha = $data['alamat_usaha'];
+    $kepemilikan = $data['kepemilikan'];
     $request = $data['request'];
     $usaha = $data['usaha'];
     $acc = $data['acc'];
@@ -35,14 +44,12 @@ if (isset($_GET['id_request_sku'])) {
 }
 if (isset($_GET['id_request_sku'])) {
     $id = $_GET['id_request_sku'];
-    $sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id'";
+    $sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
-    $alamat_usaha = $data['alamat_usaha'];
-    $usaha = $data['usaha'];
-    $jenis_usaha = $data['jenis_usaha'];
-    $alamat_usaha = $data['alamat_usaha'];
-    $kepemilikan = $data['kepemilikan'];
+    $status_warga = $data['status_warga'];
+    $alamat = $data['alamat'];
+    $pekerjaan = $data['pekerjaan'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -119,7 +126,7 @@ if (isset($_GET['id_request_sku'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
+                                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -155,7 +162,7 @@ if (isset($_GET['id_request_sku'])) {
                                     <center>
                                         <font size="4"><b>SURAT KETERANGAN USAHA</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                        <span>Nomor : 145.2 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                     </center>
                                 </td>
                             </tr>

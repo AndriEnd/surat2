@@ -43,7 +43,7 @@
                                         $id_request_akta = $data['id_request_akta'];
 
                                         if ($status == "1") {
-                                            $status = "Sudah ACC Staf";
+                                            $status = "Sudah ACC RT";
                                         } elseif ($status == "0") {
                                             $status = "BELUM ACC";
                                         }

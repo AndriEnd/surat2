@@ -194,7 +194,7 @@ if (isset($_GET['nik'])) {
 										<option disbaled="" selected="">Pilih Hak Akses</option>
 										<option value="Pemohon" <?php if ($hak_akses == "Pemohon") echo 'selected' ?>>Pemohon</option>
 										<option value="Lurah" <?php if ($hak_akses == "Lurah") echo 'selected' ?>>Lurah</option>
-										<option value="Staf" <?php if ($hak_akses == "Staf") echo 'selected' ?>>Staf</option>
+										<option value="RT" <?php if ($hak_akses == "RT") echo 'selected' ?>>RT</option>
 										<option value="Admin" <?php if ($hak_akses == "Admin") echo 'selected' ?>>Admin</option>
 									</select>
 								</div>

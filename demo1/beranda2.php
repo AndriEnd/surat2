@@ -10,7 +10,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 }
 ?>
 <?php
-if ($hak_akses == "Staf") {
+if ($hak_akses == "RT") {
 ?>
 	<div class="panel-header bg-primary-gradient">
 		<div class="page-inner py-5">
@@ -175,7 +175,7 @@ if ($hak_akses == "Staf") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">AKTA</p>
+									<p class="card-category">SURAT LAHIR</p>
 									<?php
 									$sql = "SELECT * FROM data_request_akta WHERE status=0";
 									$query = mysqli_query($konek, $sql);
@@ -381,7 +381,7 @@ if ($hak_akses == "Staf") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">AKTA</p>
+									<p class="card-category">SURAT LAHIR</p>
 									<?php
 									$sql = "SELECT * FROM data_request_akta WHERE status=1";
 									$query = mysqli_query($konek, $sql);

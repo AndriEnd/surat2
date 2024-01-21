@@ -15,13 +15,20 @@ if (isset($_GET['id_request_ktp'])) {
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
     $nama = $data['nama'];
     $id = $data['id_request_ktp'];
     $ktp = $data['scan_ktp'];
     $kk = $data['scan_kk'];
     $keterangan = $data['keterangan'];
     $keperluan = $data['keperluan'];
+    $warga_negara = $data['warga_negara'];
+}
+if (isset($_GET['id_request_ktp'])) {
+    $id_request_ktp = $_GET['id_request_ktp'];
+    $sql = "SELECT * FROM data_request_ktp natural join data_user WHERE id_request_ktp='$id_request_ktp'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_warga = $data['status_warga'];
 }
 ?>
 <div class="page-inner">
@@ -91,12 +98,8 @@ if (isset($_GET['id_request_ktp'])) {
                                     <textarea class="form-control" name="alamat" rows="5"> <?php echo $alamat; ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Status Warga</label>
-                                    <select name="status_warga" value="<?php echo $status_warga; ?>" class="form-control">
-                                        <option value="Sekolah" <?php if ($status_warga == "Sekolah") echo 'selected' ?>>Sekolah</option>
-                                        <option value="Kerja" <?php if ($status_warga == "Kerja") echo 'selected' ?>>Kerja</option>
-                                        <option value="Belum Bekerja" <?php if ($status_warga == "Belum Bekerja") echo 'selected' ?>>Belum Bekerja</option>
-                                    </select>
+                                    <label>RT / RW</label>
+                                    <input type="text" name="status_warga" readonly="" class="form-control" placeholder="RT / RW" value="<?= $status_warga; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Keperluan</label>
@@ -150,6 +153,7 @@ if (isset($_POST['ubah'])) {
     $status_warga = $_POST['status_warga'];
     $keperluan = $_POST['keperluan'];
     $keterangan = $_POST['keterangan'];
+    $warga_negara = $_POST['warga_negara'];
 
     $ubah = "UPDATE data_user SET
 		nama='$nama',

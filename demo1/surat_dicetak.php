@@ -111,9 +111,9 @@
                                     $request = $data['request'];
 
                                     if ($status == "1") {
-                                        $status = "<b style='color:blue'>Sudah ACC Staf</b>";
+                                        $status = "<b style='color:blue'>Sudah ACC RT</b>";
                                     } elseif ($status == "0") {
-                                        $status = "<b style='color:red'>BELUM ACC staf</b>";
+                                        $status = "<b style='color:red'>BELUM ACC RT</b>";
                                     } elseif ($status == "3") {
                                         $status = "<b style='color:green'>SURAT SUDAH DICETAK</b>";
                                     }

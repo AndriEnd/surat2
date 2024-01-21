@@ -96,7 +96,7 @@ $nama_ibu = $data['nama_ibu'];
                                 <td><?= $pend_terakhir; ?></td>
                             </tr>
                             <tr>
-                                <th>Pkerjaan</th>
+                                <th>Pekerjaan</th>
                                 <td>:</td>
                                 <td><?= $pekerjaan; ?></td>
                             </tr>

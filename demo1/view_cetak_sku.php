@@ -46,7 +46,7 @@ if (isset($_GET['id_request_sku'])) {
     }
 
     if ($status == 3) {
-        $keterangan = "Sudah ACC Lurah, surat sedang dalam proses cetak oleh staf";
+        $keterangan = "Sudah ACC Lurah, surat sedang dalam proses cetak oleh RT";
     }
 }
 ?>

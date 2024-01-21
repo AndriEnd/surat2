@@ -16,6 +16,8 @@ if (isset($_GET['id_request_akta'])) {
     $ktp = $data['scan_ktp'];
     $kk = $data['scan_kk'];
     $keperluan = $data['keperluan'];
+    $nama_anak = $data['nama_anak'];
+    $anak_ke = $data['anak_ke'];
 }
 ?>
 <div class="page-inner">
@@ -33,11 +35,17 @@ if (isset($_GET['id_request_akta'])) {
                                     <label>NIK</label>
                                     <input type="text" name="nik" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Nama Anak</label>
+                                    <input type="text" name="nama_anak" class="form-control" value="<?= $nama_anak; ?>" placeholder="Nama Anak.." autofocus readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Anak Ke -</label>
+                                    <input type="text" name="anak_ke" class="form-control" value="<?= $anak_ke; ?>" placeholder="Anak Ke - " autofocus>
+                                </div>
                                 <div class="form-group">
                                     <label>Keperluan</label>
-                                    <input type="text" name="keperluan" class="form-control" value="<?= $keperluan; ?>">
+                                    <input type="text" name="keperluan" class="form-control" value="<?= $keperluan; ?>" placeholder="Anak Ke - ">
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6">
@@ -48,8 +56,6 @@ if (isset($_GET['id_request_akta'])) {
                                 <div class="form-group">
                                     <input type="file" name="kk" class="form-control" size="37">
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
                                     <label>Scan KK</label><br>
                                     <img src="../dataFoto/scan_kk/<?= $kk; ?>" width="200" height="100" alt="">
@@ -77,12 +83,12 @@ if (isset($_POST['ubah'])) {
     $nama_kk = isset($_FILES['kk']);
     $file_kk = $_POST['nik'] . "_" . ".jpg";
     $keperluan = $_POST['keperluan'];
+    $nama_anak = $_POST['nama_anak'];
+    $anak_ke = $_POST['anak_ke'];
     $sql = "UPDATE data_request_akta SET scan_ktp='$file_ktp',scan_kk='$file_kk',keperluan='$keperluan' WHERE id_request_akta=$id";
     $query = mysqli_query($konek, $sql);
 
     if ($query) {
-        copy($_FILES['ktp']['tmp_name'], "../dataFoto/scan_ktp/" . $file_ktp);
-        copy($_FILES['kk']['tmp_name'], "../dataFoto/scan_kk/" . $file_kk);
         echo "<script language='javascript'>swal('Selamat...', 'Ubah Berhasil', 'success');</script>";
         echo '<meta http-equiv="refresh" content="3; url=?halaman=tampil_status">';
     } else {

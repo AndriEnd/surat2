@@ -13,7 +13,6 @@ if (isset($_GET['id_request_sku'])) {
 	$tempat = $data['tempat_lahir'];
 	$tgl = $data['tanggal_lahir'];
 	$agama = $data['agama'];
-	$alamat = $data['alamat'];
 	$usaha = $data['usaha'];
 	$keterangan = $data['keterangan'];
 	$alamat_usaha = $data['alamat_usaha'];
@@ -24,7 +23,6 @@ if (isset($_GET['id_request_sku'])) {
 	$ktp = $data['scan_ktp'];
 	$kk = $data['scan_kk'];
 	$keperluan = $data['keperluan'];
-
 }
 if (isset($_GET['id_request_sku'])) {
 	$id_request_sku = $_GET['id_request_sku'];
@@ -32,7 +30,7 @@ if (isset($_GET['id_request_sku'])) {
 	$query = mysqli_query($konek, $sql);
 	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 	$status_warga = $data['status_warga'];
-
+	$alamat = $data['alamat'];
 }
 ?>
 <div class="page-inner">
@@ -118,7 +116,7 @@ if (isset($_GET['id_request_sku'])) {
 									<label>jenis Usaha</label>
 									<input type="text" name="jenis_usaha" value="<?php echo $jenis_usaha; ?>" class="form-control" placeholder="Jenis Usaha" readonly="">
 								</div>
-								
+
 								<div class="form-group">
 									<label>Kepemilikan</label>
 									<input type="text" name="kepemilikan" value="<?php echo $kepemilikan; ?>" class="form-control" placeholder="Kepemilikan" readonly="">
@@ -181,7 +179,7 @@ if (isset($_POST['ubah'])) {
 		agama='$agama',
 		alamat='$alamat',
 		status_warga='$status_warga' WHERE nik='$nik'";
-		$query = mysqli_query($konek, $ubah);
+	$query = mysqli_query($konek, $ubah);
 
 	if ($query == 1) {
 		$keterangan = $_POST['keterangan'];

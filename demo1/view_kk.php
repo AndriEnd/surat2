@@ -1,4 +1,6 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+include '../convert_romawi.php';
+?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
@@ -17,6 +19,8 @@ if (isset($_GET['id_request_kk'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
@@ -89,7 +93,7 @@ if (isset($_GET['id_request_kk'])) {
             <div class="card">
                 <div class="card-body">
                     <table border="1" align="center">
-                    <table border="1" align="center">
+                        <table border="1" align="center">
                             <table border="0" align="center">
                                 <tr>
                                     <td><img src="img/logo1.png" width="70" height="87" alt=""></td>
@@ -117,7 +121,7 @@ if (isset($_GET['id_request_kk'])) {
                                             <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                             <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                             <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                            <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
+                                            <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                         </center>
                                     </td>
                                     <td></td>
@@ -154,7 +158,7 @@ if (isset($_GET['id_request_kk'])) {
                                             <br>
                                             <font size="4"><b>SURAT KETERANGAN / PENGANTAR KARTU KELUARGA</b></font><br>
                                             <hr style="margin:0px" color="black">
-                                            <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                            <span>Nomor : 145.5 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                         </center>
                                     </td>
                                 </tr>
@@ -162,8 +166,8 @@ if (isset($_GET['id_request_kk'])) {
                             <br>
                             <table border="0" align="center">
                                 <tr>
-                                    <td align ="justify">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak<br> 
+                                    <td align="justify">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak<br>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lampung Tengah, Menerangkan bahwa :
                                     </td>
                                 </tr>
@@ -222,7 +226,7 @@ if (isset($_GET['id_request_kk'])) {
                             </table>
                             <table border="0" align="center">
                                 <tr>
-                                    <td align ="justify">
+                                    <td align="justify">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adalah benar penduduk Desa Sumber Baagia Kecamatan Seputih Banyak Kabupaten Lampung Tengah.<br>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat keterangan kartu keluraga ini dibuat dan dipergunakan sebagaianmana mestinya.<br>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adapun anggota keluarga yang berdasarkan dokumen pendataan kependudukan Desa Sumber Bahagia <br>
@@ -231,46 +235,45 @@ if (isset($_GET['id_request_kk'])) {
                                 </tr>
                                 <br>
                             </table>
-                                <br>
-                                    <table border="1" align="center">
-                                            <tr align="center">
-                                                <th>No.</th>
-                                                <th>Nama</th>
-                                                <th>NIK</th>
-                                                <th>Tempat, Tanggal lahir</th>
-                                                <th>Jenis Kelamin</th>
-                                                <th>Agama</th>
-                                                <th>Status HDK</th>
-                                            </tr>
-                                            <?php
-                                                $no = 0;
-                                                $query = mysqli_query($konek, $sql);
-                                                while ($data = mysqli_fetch_array($query, MYSQLI_BOTH))
-                                                {
-                                                    $no++;
-                                                    $nama = $data['nama'];
-                                                    $nik = $data['nik'];
-                                                    $format2 = date('d F Y', strtotime($tgl));
-                                                    $jekel = $data['jekel'];
-                                                    $agama = $data['agama'];
-                                                    $status_hdk = $data['status_hdk'];
-                                                ?>
-                                                <tbody>
-                                                        <tr align="center">
-                                                            <th><?php echo $no++; ?></th>
-                                                            <th><?php echo $nama; ?></th>
-                                                            <td><?php echo $nik; ?></td>
-                                                            <td><?php echo $tempat . ", " . $format2; ?></td>
-                                                            <td><?php echo $jekel; ?></td>
-                                                            <td><?php echo $agama; ?></td>
-                                                            <td><?php echo $status_hdk; ?></td>
-                                                            </tr>
-                                                </tbody>
-                                            <?php 
-                                        }
-                                    ?>
-                                    </table>
-                                <br>
+                            <br>
+                            <table border="1" align="center">
+                                <tr align="center">
+                                    <th>No.</th>
+                                    <th>Nama</th>
+                                    <th>NIK</th>
+                                    <th>Tempat, Tanggal lahir</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Agama</th>
+                                    <th>Status HDK</th>
+                                </tr>
+                                <?php
+                                $no = 0;
+                                $query = mysqli_query($konek, $sql);
+                                while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
+                                    $no++;
+                                    $nama = $data['nama'];
+                                    $nik = $data['nik'];
+                                    $format2 = date('d F Y', strtotime($tgl));
+                                    $jekel = $data['jekel'];
+                                    $agama = $data['agama'];
+                                    $status_hdk = $data['status_hdk'];
+                                ?>
+                                    <tbody>
+                                        <tr align="center">
+                                            <th><?php echo $no++; ?></th>
+                                            <th><?php echo $nama; ?></th>
+                                            <td><?php echo $nik; ?></td>
+                                            <td><?php echo $tempat . ", " . $format2; ?></td>
+                                            <td><?php echo $jekel; ?></td>
+                                            <td><?php echo $agama; ?></td>
+                                            <td><?php echo $status_hdk; ?></td>
+                                        </tr>
+                                    </tbody>
+                                <?php
+                                }
+                                ?>
+                            </table>
+                            <br>
                             <br>
                             <table border="0" align="center">
                                 <tr>

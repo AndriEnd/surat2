@@ -24,14 +24,8 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					<h4 class="text-section">fitur</h4>
 				</li>
 				<?php
-				if ($hak_akses == "Staf") {
+				if ($hak_akses == "RT") {
 				?>
-					<li class="nav-item">
-						<a href="?halaman=tampil_user">
-							<i class="fas fa-user-alt"></i>
-							<p>Data User</p>
-						</a>
-					</li>
 					<li class="nav-item">
 						<a href="?halaman=permohonan_surat">
 							<i class="far fa-calendar-check"></i>

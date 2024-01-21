@@ -14,7 +14,7 @@ if (isset($_GET['id_request_skd'])) {
 	$tgl = $data['tanggal_lahir'];
 	$agama = $data['agama'];
 	$jekel = $data['jekel'];
-	$alamat = $data['alamat'];
+
 	$nama = $data['nama'];
 	$id = $data['id_request_skd'];
 	$ktp = $data['scan_ktp'];
@@ -29,6 +29,7 @@ if (isset($_GET['id_request_skd'])) {
 	$query = mysqli_query($konek, $sql);
 	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 	$status_perkawinan = $data['status_perkawinan'];
+	$alamat = $data['alamat'];
 }
 ?>
 <div class="page-inner">

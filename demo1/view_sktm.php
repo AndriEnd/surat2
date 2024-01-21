@@ -1,4 +1,7 @@
-<?php include '../konek.php'; ?>
+<?php
+include '../konek.php';
+include '../convert_romawi.php';
+?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
@@ -17,11 +20,13 @@ if (isset($_GET['id_request_sktm'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $pekerjaan = $data['pekerjaan'];
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
-   
+
     $status_warga = $data['status_warga'];
     $keperluan = $data['keperluan'];
     $request = $data['request'];
@@ -115,7 +120,7 @@ if (isset($_GET['id_request_sktm'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156</i></font><br>
+                                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -147,7 +152,7 @@ if (isset($_GET['id_request_sktm'])) {
                                     <center>
                                         <font size="4"><b>SURAT KETERANGAN TIDAK MAMPU</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05 /<?php echo $format1; ?> </span>
+                                        <span>Nomor : 145.1 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                     </center>
                                 </td>
                             </tr>

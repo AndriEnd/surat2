@@ -35,7 +35,7 @@ if (isset($_GET['id_request_skd'])) {
     }
 
     if ($status == 3) {
-        $keterangan = "Sudah ACC Lurah, surat sedang dalam proses cetak oleh staf";
+        $keterangan = "Sudah ACC Lurah, surat sedang dalam proses cetak oleh RT";
     }
 }
 if (isset($_GET['id_request_skd'])) {

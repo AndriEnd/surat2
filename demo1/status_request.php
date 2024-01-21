@@ -44,9 +44,9 @@
 									$id_request_sktm = $data['id_request_sktm'];
 
 									if ($status == "1") {
-										$status = "<b style='color:green'>Sudah ACC Staf</b>";
+										$status = "<b style='color:green'>Sudah ACC RT</b>";
 									} elseif ($status == "0") {
-										$status = "<b style='color:red'>BELUM ACC staf</b>";
+										$status = "<b style='color:red'>BELUM ACC RT</b>";
 									} elseif ($status == "2") {
 										$status = "<b style='color:blue'>Sudah ACC Lurah</b>";
 									} elseif ($status == "3") {
@@ -129,9 +129,9 @@
 									$id_request_sku = $data['id_request_sku'];
 
 									if ($status == "1") {
-										$status = "<b style='color:green'>Sudah ACC Staf</b>";
+										$status = "<b style='color:green'>Sudah ACC RT</b>";
 									} elseif ($status == "0") {
-										$status = "<b style='color:red'>BELUM ACC staf</b>";
+										$status = "<b style='color:red'>BELUM ACC RT</b>";
 									} elseif ($status == "2") {
 										$status = "<b style='color:blue'>Sudah ACC Lurah</b>";
 									} elseif ($status == "3") {
@@ -215,9 +215,9 @@
 
 
 									if ($status == "1") {
-										$status = "<b style='color:green'>Sudah ACC Staf</b>";
+										$status = "<b style='color:green'>Sudah ACC RT</b>";
 									} elseif ($status == "0") {
-										$status = "<b style='color:red'>BELUM ACC staf</b>";
+										$status = "<b style='color:red'>BELUM ACC RT</b>";
 									} elseif ($status == "2") {
 										$status = "<b style='color:blue'>Sudah ACC Lurah</b>";
 									} elseif ($status == "3") {
@@ -299,9 +299,9 @@
 									$id_request_skd = $data['id_request_skd'];
 
 									if ($status == "1") {
-										$status = "<b style='color:green'>Sudah ACC Staf</b>";
+										$status = "<b style='color:green'>Sudah ACC Rt</b>";
 									} elseif ($status == "0") {
-										$status = "<b style='color:red'>BELUM ACC staf</b>";
+										$status = "<b style='color:red'>BELUM ACC RT</b>";
 									} elseif ($status == "2") {
 										$status = "<b style='color:blue'>Sudah ACC Lurah</b>";
 									} elseif ($status == "3") {
@@ -362,6 +362,7 @@
 									<th>Scan KTP</th>
 									<th>Scan KK</th>
 									<th>Status</th>
+									<th>RT/ RW</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
 									<th style="width: 10%">Action</th>
@@ -384,9 +385,9 @@
 									$id_request_akta = $data['id_request_akta'];
 
 									if ($status == "1") {
-										$status = "<b style='color:green'>Sudah ACC Staf</b>";
+										$status = "<b style='color:green'>Sudah ACC RT</b>";
 									} elseif ($status == "0") {
-										$status = "<b style='color:red'>BELUM ACC staf</b>";
+										$status = "<b style='color:red'>BELUM ACC RT</b>";
 									} elseif ($status == "2") {
 										$status = "<b style='color:blue'>Sudah ACC Lurah</b>";
 									} elseif ($status == "3") {
@@ -469,9 +470,9 @@
 									$id_request_ktp = $data['id_request_ktp'];
 
 									if ($status == "1") {
-										$status = "<b style='color:green'>Sudah ACC Staf</b>";
+										$status = "<b style='color:green'>Sudah ACC RT</b>";
 									} elseif ($status == "0") {
-										$status = "<b style='color:red'>BELUM ACC staf</b>";
+										$status = "<b style='color:red'>BELUM ACC RT</b>";
 									} elseif ($status == "2") {
 										$status = "<b style='color:blue'>Sudah ACC Lurah</b>";
 									} elseif ($status == "3") {
