@@ -24,7 +24,6 @@ if (isset($_GET['id_request_ktp'])) {
     $jekel = $data['jekel'];
     $nama = $data['nama'];
     $alamat = $data['alamat'];
-
     $request = $data['request'];
     $keterangan = $data['keterangan'];
     $keperluan = $data['keperluan'];

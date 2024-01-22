@@ -362,9 +362,7 @@
 									<th>Scan KTP</th>
 									<th>Scan KK</th>
 									<th>Status</th>
-									<th>RT/ RW</th>
 									<th>Keperluan</th>
-									<th>Keterangan</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
