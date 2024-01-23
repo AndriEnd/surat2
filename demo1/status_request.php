@@ -23,8 +23,8 @@
 									<th>Scan KK</th>
 									<th>Keperluan</th>
 									<th>Status</th>
-									<th>Keterangan</th>
 									<th style="width: 10%">Action</th>
+																		
 								</tr>
 							</thead>
 							<tbody>

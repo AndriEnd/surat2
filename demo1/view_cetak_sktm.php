@@ -63,8 +63,21 @@ if (isset($_GET['id_request_sktm'])) {
                                 <label>Keterangan</label>
                                 <select name="dicetak" id="" class="form-control" required="">
                                     <option value="">Pilih</option>
-                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
+                                    <option value="Sedang Diverivikasi">Sedang Diverivikasi</option>
+                                    <option value="Sedang Diperoses">Sedang Diperoses</option>
+                                    <option value="Surat dicetak, bisa diunduh">Surat dicetak, bisa diunduh</option>
                                 </select><br>
+                                <label>Upload File</label>
+                                    <form action="upload.php" method="post" > 
+                                        <label enctype="multipart/form-data">
+                                        image to upload: 
+                                        </label>
+                                        <br>
+                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                        <input type="submit" name="submit" value="Upload File" calas="btn btn-primary btn-sm" >
+                                        <br>
+                                    </form>
+                                <br>
                                 <!-- <input type="date" name="tgl_acc" class="form-control"> -->
                                 <input type="submit" name="ttd" value="Kirim" class="btn btn-primary btn-sm">
                                 <a href="cetak_sktm.php?id_request_sktm=<?= $id; ?>" class="btn btn-primary btn-sm">Cetak</a>
@@ -77,6 +90,7 @@ if (isset($_GET['id_request_sktm'])) {
                                                    <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
                                                 </div> -->
                             </div>
+                            
                         </form>
                         <?php
                         if (isset($_POST['ttd'])) {

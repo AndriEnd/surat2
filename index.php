@@ -91,7 +91,7 @@ $level = "pemohon";
             </div>
             <div class="row">
                 <div class="col-sm-6 wow fadeInLeft">
-                    <img class="img-responsive" src="main/img/attendance.png" alt="">
+                    <img class="img-responsive" src="main/img/calendar.png" alt="">
                 </div>
                 <div class="col-sm-6">
                     <div class="media service-box wow fadeInRight">
@@ -144,6 +144,18 @@ $level = "pemohon";
                                 <img src="main/img/number.png" alt="">
                             </div>
                             <div class="media-body">
+                                <h4 class="media-heading">Dafatrkan NIK Pada RT</h4>
+                                <p>Pemohon Surat melakukan Pendaftaran, melalui RT Setempat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="0ms">
+                        <div class="media service-box">
+                            <div class="pull-left">
+                                <img src="main/img/number2.png" alt="">
+                            </div>
+                            <div class="media-body">
                                 <h4 class="media-heading">Login</h4>
                                 <p>Pemohon Surat melakukan login, melalui halaman Login.
                                 </p>
@@ -155,11 +167,11 @@ $level = "pemohon";
                     <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms">
                         <div class="media service-box">
                             <div class="pull-left">
-                                <img src="main/img/number2.png" alt="">
+                                <img src="main/img/number3.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Menginput Data</h4>
-                                <p>Input data pemohon dengan sebelumnya melakukan Login dengan username dan password.</p>
+                                <p>Input data pemohon dengan sebelumnya melakukan Login dengan NIK dan password.</p>
                             </div>
                         </div>
                     </div>
@@ -168,7 +180,7 @@ $level = "pemohon";
                     <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms">
                         <div class="media service-box">
                             <div class="pull-left">
-                                <img src="main/img/number3.png" alt="">
+                                <img src="main/img/number4.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Mengajukan Surat Permohonan</h4>
@@ -177,19 +189,17 @@ $level = "pemohon";
                         </div>
                     </div>
                     <!--/.col-md-4-->
-
-                    <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                    <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-duration="300ms" data-wow-delay="200ms">
                         <div class="media service-box">
                             <div class="pull-left">
-                                <img src="main/img/number4.png" alt="">
+                                <img src="main/img/number5.png" alt="">
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Permohonan Disetujui</h4>
-                                <p>Permohonan di setujui oleh lurah, kemudian staf akan mencetak surat sesuai request surat yang diajukan, pemohon mengambil surat yang sudah dicetak dan bertandatangan di Kantor Kelurahan Wergu Wetan.</p>
+                                <p>Permohonan di setujui oleh lurah, kemudian staf akan mencetak surat sesuai request surat yang diajukan, pemohon mengambil surat yang sudah dicetak dan bertandatangan di Kantor Kelurahan Sumber.</p>
                             </div>
                         </div>
                     </div>
-                    <!--/.col-md-4-->
 
                 </div>
             </div>
