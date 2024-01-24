@@ -66,6 +66,11 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 								</li>
 							</ul>
 						</div>
+					<li class="nav-item">
+						<a href="?halaman=tampil_penduduk">
+							<i class="far fa-user"></i>
+							<p>Data Penduduk</p>
+						</a>
 					</li>
 				<?php
 				} elseif ($hak_akses == "Admin") {
