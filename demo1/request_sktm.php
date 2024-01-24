@@ -57,7 +57,7 @@ $nama = $data['nama'];
 						<a href="?halaman=beranda" class="btn btn-default">Batal</a>
 					</div>
 				</div>
-		</div>
+			</div>
 		</form>
 	</div>
 </div>
