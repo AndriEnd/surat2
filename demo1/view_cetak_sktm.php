@@ -30,6 +30,7 @@ if (isset($_GET['id_request_sktm'])) {
     $request = $data['request'];
     $keterangan = $data['keterangan'];
     $status = $data['status'];
+    $file_sktm = $data['file_sktm'];
     $acc = $data['acc'];
     $format4 = date('d F Y', strtotime($acc));
     if ($format4 == 0) {
@@ -61,25 +62,33 @@ if (isset($_GET['id_request_sktm'])) {
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <select name="dicetak" id="" class="form-control" required="">
+                                <select name="dicetak" id="" class="form-control">
                                     <option value="">Pilih</option>
-                                    <option value="Surat dicetak, bisa diunduh">Surat dicetak, bisa diunduh</option>
+                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
                                 </select>
                                 <br>
-                                <br>
                                 <label>Upload File SKTM</label>
-                                <input type="file" name="sktm" class="form-control" size="37" required>
+								<input type="file" name="file_sktm" class="form-control" size="37" required>
+
+                                <!-- <input type="date" name="tgl_acc" class="form-control"> -->
                                 <input type="submit" name="ttd" value="Kirim" class="btn btn-primary btn-sm">
                                 <a href="cetak_sktm.php?id_request_sktm=<?= $id; ?>" class="btn btn-primary btn-sm">Cetak</a>
+                                <!-- <div class="form-group">
+                                                    <a href="cetak_skd.php?id_request_skd=<?php $id; ?>">
+                                                        Cetak
+                                                    </a>
+                                                </div> -->
+                                <!-- <div class="form-group">
+                                                   <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
+                                                </div> -->
                             </div>
-                            
                         </form>
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
-                            $nama_sktm = isset($_FILES['sktm']);
-                            $file_sktm = $_POST['nik'] . "_" . ".pdf";
-                            $update = mysqli_query($konek, "UPDATE data_request_sktm SET keterangan='$cetak','$file_sktm' status=3 WHERE id_request_sktm=$id");
+                            $file_sktm = $_POST['file_sktm'];
+                            $sql = "INSERT INTO data_request_sktm (nik,file_sktm) VALUES ('$nik','$file_sktm')";
+                            $update = mysqli_query($konek, "UPDATE data_request_sktm SET keterangan='$cetak',status=3 WHERE id_request_sktm=$id");
                             if ($update) {
                                 echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_sktm">';
@@ -87,10 +96,6 @@ if (isset($_GET['id_request_sktm'])) {
                                 echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sktm">';
                             }
-  
-                        }
-                        if (isset($_POST['ttd'])) {
-                            
                         }
                         ?>
                     </div>

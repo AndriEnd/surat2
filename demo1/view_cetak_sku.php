@@ -88,6 +88,11 @@ if (isset($_GET['id_request_sku'])) {
                                                 </div> -->
                             </div>
                         </form>
+                        <div class="col-md-6 col-lg-6">
+									<label>Scan KTP</label>
+									<input type="file" name="ktp" class="form-control" size="37" required>
+								
+                            </div>
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
