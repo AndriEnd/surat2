@@ -24,6 +24,7 @@
 									<th>Keperluan</th>
 									<th>Status</th>
 									<th>Keterangan</th>
+									<th style="width:10%" >Link</th>
 									<th style="width: 10%">Action</th>
 
 								</tr>
@@ -42,7 +43,9 @@
 									$kk = $data['scan_kk'];
 									$keperluan = $data['keperluan'];
 									$keterangan = $data['keterangan'];
+									$file_sktm = $data['file_sktm'];
 									$id_request_sktm = $data['id_request_sktm'];
+									$file_sktm =$data['file_sktm'];
 
 									if ($status == "1") {
 										$status = "<b style='color:green'>Sudah ACC RT</b>";
@@ -63,6 +66,9 @@
 										<td><?php echo $keperluan; ?></td>
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
+										<td>
+											
+										</td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=ubah_sktm&id_request_sktm=<?= $id_request_sktm; ?>">

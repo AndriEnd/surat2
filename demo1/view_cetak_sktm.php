@@ -86,10 +86,12 @@ if (isset($_GET['id_request_sktm'])) {
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
-                            $file_sktm = $_POST['file_sktm'];
+                            $nama_sktm = isset($_FILES['file_sktm']);
+                            $file_sktm = $_POST['nik'] . "_" . ".pdf";
                             $sql = "INSERT INTO data_request_sktm (nik,file_sktm) VALUES ('$nik','$file_sktm')";
                             $update = mysqli_query($konek, "UPDATE data_request_sktm SET keterangan='$cetak',status=3 WHERE id_request_sktm=$id");
                             if ($update) {
+                                copy($_FILES['file_sktm']['tmp_name'], "../outputSurat/SKTM/" . $file_sktm);
                                 echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=belum_acc_sktm">';
                             } else {
