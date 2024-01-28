@@ -57,7 +57,7 @@ $nama = $data['nama'];
 						<a href="?halaman=beranda" class="btn btn-default">Batal</a>
 					</div>
 				</div>
-			</div>
+		</div>
 		</form>
 	</div>
 </div>
@@ -71,7 +71,7 @@ if (isset($_POST['kirim'])) {
 	$nama_kk = isset($_FILES['kk']);
 	$file_kk = $_POST['nik'] . "_" . ".jpg";
 	$sql = "INSERT INTO data_request_sktm (nik,scan_ktp,scan_kk,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$keperluan')";
-	$query = mysqli_query($konek, $sql) or die(mysqli_error());
+	$query = mysqli_query($konek, $sql) or die(mysqli_connect_error());
 
 	if ($query) {
 		copy($_FILES['ktp']['tmp_name'], "../dataFoto/scan_ktp/" . $file_ktp);

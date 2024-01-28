@@ -223,6 +223,24 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'cetak_sktm';
 					include 'cetak_sktm.php';
 					break;
+				case 'cetak_skd';
+					include 'cetak_skd.php';
+					break;
+				case 'cetak_sku';
+					include 'cetak_sku.php';
+					break;
+				case 'cetak_kk';
+					include 'cetak_kk.php';
+					break;
+				case 'cetak_ktp';
+					include 'cetak_ktp.php';
+					break;
+				case 'cetak_akta';
+					include 'cetak_akta.php';
+					break;
+				case 'cetak_penduduk';
+					include 'cetak_penduduk.php';
+					break;
 
 				case 'tampil_user';
 					include 'tampil_user.php';
@@ -282,7 +300,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					include 'view_cetak_ktp.php';
 					break;
 
-				case 'donwload_sktm';
+				case 'download_sktm';
 					include 'download_sktm.php';
 					break;
 				case 'download_sku';
@@ -294,7 +312,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				case 'downlaod_skd';
 					include 'downlaod_skd.php';
 					break;
-				case 'donwload_akta';
+				case 'download_akta';
 					include 'download_akta.php';
 					break;
 				case 'download_ktp';

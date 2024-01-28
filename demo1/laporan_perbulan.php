@@ -138,7 +138,8 @@ if (!isset($_POST['tampilkan'])) {
 	FROM
 		data_user
 	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
-	WHERE month(data_request_ktp.acc) = '$bulan'";
+	WHERE month(data_request_ktp.acc) = '$bulan'
+	";
 	$query = mysqli_query($konek, $sql);
 }
 
