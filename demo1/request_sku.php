@@ -82,7 +82,7 @@ if (isset($_POST['kirim'])) {
 	$nama_kk = isset($_FILES['kk']);
 	$file_kk = $_POST['nik'] . "_" . ".jpg";
 	$sql = "INSERT INTO data_request_sku (nik,scan_ktp,scan_kk,usaha,jenis_usaha,alamat_usaha,keperluan,kepemilikan) VALUES ('$nik','$file_ktp','$file_kk','$usaha','$jenis_usaha','$alamat_usaha','$keperluan','$kepemilikan')";
-	$query = mysqli_query($konek, $sql) or die(mysqli_error());
+	$query = mysqli_query($konek, $sql) or die(mysqli_connect_error());
 
 	if ($query) {
 		copy($_FILES['ktp']['tmp_name'], "../dataFoto/scan_ktp/" . $file_ktp);

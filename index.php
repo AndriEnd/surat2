@@ -217,11 +217,9 @@ $level = "pemohon";
         </div>
     </section>
     <!--/#get-in-touch-->
-
-
     <section id="contact">
         <div>
-            <iframe src="https://maps.google.com/maps?q=%20kantor%20kelurahan%20sumber%20bahagia%20seputi%20banyak%20lampung%20tengah&amp;t=k&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"" width=" 100%" height="650px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" alt="lokasi kelurahan"></iframe>
+            <iframe src="https://maps.google.com/maps?q=%20kantor%20kelurahan%20sumber%20bahagia%20seputi%20banyak%20lampung%20tengah&amp;t=k&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width=" 100%" height="650px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" alt="lokasi kelurahan"></iframe>
         </div>
     </section>
     <!--/#bottom-->

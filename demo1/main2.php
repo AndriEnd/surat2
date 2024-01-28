@@ -282,6 +282,25 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					include 'view_cetak_ktp.php';
 					break;
 
+				case 'donwload_sktm';
+					include 'download_sktm.php';
+					break;
+				case 'download_sku';
+					include 'download_sku.php';
+					break;
+				case 'download_kk';
+					include 'download_kk.php';
+					break;
+				case 'downlaod_skd';
+					include 'downlaod_skd.php';
+					break;
+				case 'donwload_akta';
+					include 'download_akta.php';
+					break;
+				case 'download_ktp';
+					include 'download_ktp.php';
+					break;
+
 				case 'surat_dicetak';
 					include 'surat_dicetak.php';
 					break;

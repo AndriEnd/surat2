@@ -73,11 +73,11 @@ if (isset($_GET['id_request_sku'])) {
                                 <label>Keterangan</label>
                                 <select name="dicetak" id="" class="form-control">
                                     <option value="">Pilih</option>
-                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
+                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, Silahkan Di Unduh!</option>
                                 </select><br>
                                 <!-- <input type="date" name="tgl_acc" class="form-control"> -->
-                                <input type="submit" name="ttd" value="Kirim" class="btn btn-primary btn-sm">
-                                <a href="cetak_sku.php?id_request_sku=<?= $id; ?>" class="btn btn-primary btn-sm">Cetak</a>
+                                <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
+                                <a href="cetak_sku.php?id_request_sku=<?= $id; ?>" class="btn btn-warning btn-sm">Cetak</a>
                                 <!-- <div class="form-group">
                                                     <a href="cetak_skd.php?id_request_skd=<?php $id; ?>">
                                                         Cetak
@@ -86,16 +86,21 @@ if (isset($_GET['id_request_sku'])) {
                                 <!-- <div class="form-group">
                                                    <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
                                                 </div> -->
+                                <br>
+                                <br>
+                                <b> Upload File SKU <b>
+                                        <br>
+                                        <input type="file" name="sku">
+                                        <!--<input type="submit" name="ttd" value="Upload"> -->
                             </div>
                         </form>
-                        <div class="col-md-6 col-lg-6">
-									<label>Scan KTP</label>
-									<input type="file" name="ktp" class="form-control" size="37" required>
-								
-                            </div>
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
+                            $nama_sku = isset($_FILES['sku']);
+                            $file_sku = $_POST['sku'] . "_" . ".pdf";
+                            $sql = "UPDATE data_request_sku SET file_sku='$file_sku' WHERE id_request_sku=$id";
+                            $query = mysqli_query($konek, $sql);
                             $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");
                             if ($update) {
                                 echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
@@ -105,8 +110,11 @@ if (isset($_GET['id_request_sku'])) {
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sku">';
                             }
                         }
+                        //if (isset($_POST['upload'])) {
+                        //}
                         ?>
                     </div>
+
                 </div>
             </div>
         </div>
