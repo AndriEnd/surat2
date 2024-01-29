@@ -162,9 +162,10 @@ if (isset($_GET['bulan'])) {
                 <td></td>
                 <td>
                     <center>
-                        <font size="4"><b>LAPORAN REQUEST SURAT KETERANGAN</b></font><br>
+                        <font size="4"><b>PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</b></font><br>
                         <font size="4"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                        <font size="4"><b>BULAN <?php echo $bln; ?></b></font><br>
+                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
+                        <!-- <font size="4"><b>PERIODE BULAN <?php echo $bln; ?></b></font><br> -->
                     </center>
                 </td>
                 <td></td>

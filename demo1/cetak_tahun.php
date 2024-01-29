@@ -77,29 +77,29 @@ if (isset($_GET['tahun'])) {
 
     //(if($bln=="1"){
     //     $bln="JANUARI";
-     //}elseif($bln=="2"){
-      //   $bln="FEBRUARI";
-     //}elseif($bln=="3"){
-       //  $bln="MARET";
-     //}elseif($bln=="4"){
-      //   $bln="APRIL";
-     //}elseif($bln=="5"){
-       //  $bln="MEI";
-     //}elseif($bln=="6"){
-       // $bln="JUNI";
-     //}elseif($bln=="7"){
-       // $bln="JULI";
+    //}elseif($bln=="2"){
+    //   $bln="FEBRUARI";
+    //}elseif($bln=="3"){
+    //  $bln="MARET";
+    //}elseif($bln=="4"){
+    //   $bln="APRIL";
+    //}elseif($bln=="5"){
+    //  $bln="MEI";
+    //}elseif($bln=="6"){
+    // $bln="JUNI";
+    //}elseif($bln=="7"){
+    // $bln="JULI";
     //}elseif($bln=="8"){
-      //   $bln="AGUSTUS";
-     //}elseif($bln=="9"){
-       //  $bln="SEPTEMBER";
-     //}elseif($bln=="10"){
-       //  $bln="OKTOBER";
-     //}elseif($bln=="11"){
-       //  $bln="NOVEMBER";
-     //}elseif($bln=="12"){
-       //  $bln="DESEMBER";
-     //} 
+    //   $bln="AGUSTUS";
+    //}elseif($bln=="9"){
+    //  $bln="SEPTEMBER";
+    //}elseif($bln=="10"){
+    //  $bln="OKTOBER";
+    //}elseif($bln=="11"){
+    //  $bln="NOVEMBER";
+    //}elseif($bln=="12"){
+    //  $bln="DESEMBER";
+    //} 
 
 
 ?>
@@ -109,7 +109,7 @@ if (isset($_GET['tahun'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CETAK TAHUN</title>
+        <title>Laporan Penduduk Tahun <?php echo date('Y'); ?></title>
     </head>
 
     <body>
@@ -137,9 +137,11 @@ if (isset($_GET['tahun'])) {
                 <td></td>
                 <td>
                     <center>
-                        <font size="4"><b>LAPORAN REQUEST SURAT KETERANGAN</b></font><br>
-                        <font size="4"><b>KELURAHAN WERGU WETAN</b></font><br>
-                        <font size="4"><b>TAHUN <?php echo $tahun; ?></b></font><br>
+                        <font size="4"><b>PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</b></font><br>
+                        <font size="4"><b>KECAMATAN SEPUTIH BANYAK</b></font><br>
+                        <font size="4"><b>KELURAHAN SUMBER BAHAGIA<?php echo $tahun; ?></b></font><br>
+                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
+                        <!-- <font size="4"><b>TAHUN <?php echo $tahun; ?></b></font><br> -->
                     </center>
                 </td>
                 <td></td>

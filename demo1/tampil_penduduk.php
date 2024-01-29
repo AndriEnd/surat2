@@ -13,9 +13,13 @@
                             <i class="fa fa-plus"></i>
                             Add Penduduk
                         </a>
-                        <a href="?halaman=cetak_penduduk" class="btn btn-primary btn-round ml-auto">
-                            <i class="fa fa-plus"></i>
-                            Cetak
+                    </div>
+                    <div class="card-tools">
+                        <a href="cetak_penduduk.php?<?php echo $data_penduduk; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
                         </a>
                     </div>
                 </div>
