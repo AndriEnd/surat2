@@ -229,8 +229,8 @@ if (!isset($_POST['tampilkan'])) {
 								<tr>
 									<td><?php echo $no; ?></td>
 									<td><?php echo $tgl; ?></td>
-									<td><?php echo $nik; ?></td>
 									<td><?php echo $nama; ?></td>
+									<td><?php echo $nik; ?></td>
 									<td><?php echo $keperluan; ?></td>
 									<td><?php echo $request; ?></td>
 								</tr>

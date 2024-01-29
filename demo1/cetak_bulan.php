@@ -251,7 +251,7 @@ if (isset($_GET['bulan'])) {
                 <td style="text-align: center"><b>Lurah Sumber Bahagia</b></td>
             </tr>
             <tr>
-                <td style="text-align: center"><b>nama lurah</b></td>
+                <td style="text-align: center"><b>(Lurah)</b></td>
             </tr>
         </table>
     </body>
