@@ -75,31 +75,31 @@ if (isset($_GET['tahun'])) {
 	INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
 	WHERE year(data_request_skd.acc) = '$tahun'";
 
-    // if($bln=="1"){
-    //     $bln="JANUARI";
-    // }elseif($bln=="2"){
-    //     $bln="FEBRUARI";
-    // }elseif($bln=="3"){
-    //     $bln="MARET";
-    // }elseif($bln=="4"){
-    //     $bln="APRIL";
-    // }elseif($bln=="5"){
-    //     $bln="MEI";
-    // }elseif($bln=="6"){
-    //     $bln="JUNI";
-    // }elseif($bln=="7"){
-    //     $bln="JULI";
-    // }elseif($bln=="8"){
-    //     $bln="AGUSTUS";
-    // }elseif($bln=="9"){
-    //     $bln="SEPTEMBER";
-    // }elseif($bln=="10"){
-    //     $bln="OKTOBER";
-    // }elseif($bln=="11"){
-    //     $bln="NOVEMBER";
-    // }elseif($bln=="12"){
-    //     $bln="DESEMBER";
-    // }
+    if($bln=="1"){
+         $bln="JANUARI";
+     }elseif($bln=="2"){
+         $bln="FEBRUARI";
+     }elseif($bln=="3"){
+         $bln="MARET";
+     }elseif($bln=="4"){
+         $bln="APRIL";
+     }elseif($bln=="5"){
+         $bln="MEI";
+     }elseif($bln=="6"){
+        $bln="JUNI";
+     }elseif($bln=="7"){
+        $bln="JULI";
+    }elseif($bln=="8"){
+         $bln="AGUSTUS";
+     }elseif($bln=="9"){
+         $bln="SEPTEMBER";
+     }elseif($bln=="10"){
+         $bln="OKTOBER";
+     }elseif($bln=="11"){
+         $bln="NOVEMBER";
+     }elseif($bln=="12"){
+         $bln="DESEMBER";
+     }
 
 
 ?>
@@ -115,7 +115,7 @@ if (isset($_GET['tahun'])) {
     <body>
         <table border="0" align="center">
             <tr>
-                <td><img src="img/kudus.png" width="70" height="87" alt=""></td>
+                <td><img src="img/logo1.PNG" width="70" height="87" alt=""></td>
                 <td></td>
                 <td></td>
                 <td></td>

@@ -1,5 +1,4 @@
 <?php
-
 include '../konek.php';
 date_default_timezone_set('Asia/Jakarta');
 ?>
@@ -59,7 +58,7 @@ if (!isset($_POST['tampilkan'])) {
 	FROM
 		data_user
 	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
-	WHERE data_request_akta.status = 3 
+	WHERE data_request_akta.status = 3
 	UNION
 	SELECT
 		data_user.nik,
@@ -72,9 +71,20 @@ if (!isset($_POST['tampilkan'])) {
 	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
 	WHERE data_request_ktp.status = 3";
 	$query = mysqli_query($konek, $sql);
-} elseif (isset($_POST['tampilkan'])) {
+}  elseif (isset($_POST['tampilkan'])) {
 	$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
 	$sql = "SELECT
+		data_user.nik,
+		data_user.nama,
+		data_request_sktm.acc,
+		data_request_sktm.keperluan,
+		data_request_sktm.request
+	FROM
+		data_user
+	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
+	WHERE month(data_request_sktm.acc) = '$bulan'
+	UNION
+	SELECT
 		data_user.nik,
 		data_user.nama,
 		data_request_kk.acc,
@@ -110,20 +120,9 @@ if (!isset($_POST['tampilkan'])) {
 	SELECT
 		data_user.nik,
 		data_user.nama,
-		data_request_sktm.acc,
-		data_request_sktm.keperluan,
-		data_request_sktm.request
-	FROM
-		data_user
-	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE month(data_request_sktm.acc) = '$bulan'
-	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
 		data_request_akta.acc,
 		data_request_akta.keperluan,
-		data_request_sktm.request
+		data_request_akta.request
 	FROM
 		data_user
 	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
@@ -142,7 +141,6 @@ if (!isset($_POST['tampilkan'])) {
 	";
 	$query = mysqli_query($konek, $sql);
 }
-
 ?>
 <div class="panel-header bg-primary-gradient">
 	<div class="page-inner py-5">
