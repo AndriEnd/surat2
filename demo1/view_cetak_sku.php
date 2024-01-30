@@ -97,6 +97,29 @@ if (isset($_GET['id_request_sku'])) {
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
+                            $file_sku = $_POST['sku']['tmp_name'] ;// lokasi
+                            $nama_sku = $_FILES['sku']['name'] . "_" . ".pdf"; // nama file
+                           
+                            //$lokasi_file = $_FILES['sku']['tmp_name']; // lokasi
+                           
+                            $folder = "../outputSurat/SKU/$nama_sku"; // folder
+                            $sql = "UPDATE data_request_sku SET _sku='$file_sku' WHERE id_request_sku=$id";
+                            $query = mysqli_query($konek, $sql);
+                            $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");
+                            if ($update && $sql) {
+                               //copy($_FILES['sku']['tmp_name'], "../outputSurat/SKU/" . $file_sku);
+                                move_uploaded_file($file_sku,"$folder");
+                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil Upload', 'success');</script>";
+                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                            } else {
+                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
+                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sku">';
+                            }
+                        }
+                        //if (isset($_POST['upload'])) {
+                        //}
+                        if (isset($_POST['ttd'])) {
+                            $cetak = $_POST['dicetak'];
                             $nama_sku = isset($_FILES['sku']);
                             $file_sku = $_POST['sku'] . "_" . ".pdf";
                             $sql = "UPDATE data_request_sku SET file_sku='$file_sku' WHERE id_request_sku=$id";
@@ -112,6 +135,11 @@ if (isset($_GET['id_request_sku'])) {
                         }
                         //if (isset($_POST['upload'])) {
                         //}
+                        ?>
+
+
+
+
                         ?>
                     </div>
 
