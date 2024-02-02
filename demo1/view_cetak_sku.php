@@ -91,24 +91,26 @@ if (isset($_GET['id_request_sku'])) {
                                 <b> Upload File SKU <b>
                                         <br>
                                         <input type="file" name="sku">
+                                        
                                         <!--<input type="submit" name="ttd" value="Upload"> -->
                             </div>
                         </form>
+
+                        
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
-                            $file_sku = $_POST['sku']['tmp_name'] ;// lokasi
-                            $nama_sku = $_FILES['sku']['name'] . "_" . ".pdf"; // nama file
-                           
-                            //$lokasi_file = $_FILES['sku']['tmp_name']; // lokasi
-                           
-                            $folder = "../outputSurat/SKU/$nama_sku"; // folder
-                            $sql = "UPDATE data_request_sku SET _sku='$file_sku' WHERE id_request_sku=$id";
+                            $nama_file   = isset($_FILES['sku']['tmp_name']);
+                            //$lokasi_sku = $_FILES['sku'];
+                            $file_sku = $_POST['sku'];
+                            
+                            $folder = "/outputSurat/SKU/$file_sku"; // folder 
+                            $sql = "UPDATE data_request_sku SET file_sku='$file_sku' WHERE id_request_sku=$id";
                             $query = mysqli_query($konek, $sql);
                             $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");
                             if ($update && $sql) {
                                //copy($_FILES['sku']['tmp_name'], "../outputSurat/SKU/" . $file_sku);
-                                move_uploaded_file($file_sku,"$folder");
+                              move_uploaded_file($file_sku,"$folder");
                                 echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil Upload', 'success');</script>";
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
                             } else {
@@ -116,30 +118,6 @@ if (isset($_GET['id_request_sku'])) {
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sku">';
                             }
                         }
-                        //if (isset($_POST['upload'])) {
-                        //}
-                        if (isset($_POST['ttd'])) {
-                            $cetak = $_POST['dicetak'];
-                            $nama_sku = isset($_FILES['sku']);
-                            $file_sku = $_POST['sku'] . "_" . ".pdf";
-                            $sql = "UPDATE data_request_sku SET file_sku='$file_sku' WHERE id_request_sku=$id";
-                            $query = mysqli_query($konek, $sql);
-                            $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");
-                            if ($update) {
-                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
-                            } else {
-                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sku">';
-                            }
-                        }
-                        //if (isset($_POST['upload'])) {
-                        //}
-                        ?>
-
-
-
-
                         ?>
                     </div>
 

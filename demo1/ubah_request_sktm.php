@@ -80,11 +80,11 @@ if(isset($_POST['ubah'])){
 		$file_ktp = $_POST['nik']."_".".jpg";
 		$nama_kk = isset($_FILES['kk']);
     	$file_kk = $_POST['nik']."_".".jpg";
-    $sql = "UPDATE data_request_sktm SET
-    keperluan='$keperluan',
-    scan_ktp='$file_ktp',
-    scan_kk='$file_kk' WHERE id_request_sktm=$id";
-	$query = mysqli_query($konek,$sql);
+		$sql = "UPDATE data_request_sktm SET
+		keperluan='$keperluan',
+		scan_ktp='$file_ktp',
+		scan_kk='$file_kk' WHERE id_request_sktm=$id";
+		$query = mysqli_query($konek,$sql);
 
 	if($query){
 		copy($_FILES['ktp']['tmp_name'],"../dataFoto/scan_ktp/".$file_ktp);
