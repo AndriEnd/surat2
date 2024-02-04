@@ -74,31 +74,16 @@ if (isset($_GET['id_request_sku'])) {
                                 <select name="dicetak" id="" class="form-control">
                                     <option value="">Pilih</option>
                                     <option value="Surat dicetak, bisa diambil!">Surat dicetak, Silahkan Di Unduh!</option>
-                                </select><br>
-                                <!-- <input type="date" name="tgl_acc" class="form-control"> -->
-
-                                <!--<a href="cetak_sku.php?id_request_sku=<?= $id; ?>" class="btn btn-warning btn-sm">Cetak</a> -->
-                                <!-- <div class="form-group">
-                                                    <a href="cetak_skd.php?id_request_skd=<?php $id; ?>">
-                                                        Cetak
-                                                    </a>
-                                                </div> -->
-                                <!-- <div class="form-group">
-                                                   <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
-                                                </div> -->
-
+                                </select>
+                                <br>
                                 <b> Upload File SKU <b>
                                         <br>
                                         <input type="file" name="sku" class="form-control" size="37" required>
                                         <br>
                                         <br>
                                         <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
-
-                                        <!--<input type="submit" name="ttd" value="Upload"> -->
                             </div>
                         </form>
-
-
                         <?php
 
                         if (isset($_POST['ttd'])) {

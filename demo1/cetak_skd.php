@@ -40,7 +40,7 @@ if (isset($_GET['id_request_skd'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CETAK SKD</title>
+    <title>SKD_<?php echo $id; ?>_<?php echo $nama; ?>_<?php echo $nik; ?></title>
 </head>
 
 <body>
@@ -198,7 +198,9 @@ if (isset($_GET['id_request_skd'])) {
                 </tr>
                 <tr>
                     <td rowspan="15"></td>
-                    <td></td>
+                    <td>
+                    <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                    </td>
                     <td rowspan="15"></td>
                 </tr>
                 <tr>

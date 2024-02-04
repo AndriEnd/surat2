@@ -157,8 +157,9 @@
 										<td><?php echo $keperluan; ?></td>
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
-										<td><a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i></td>
-										<!--<a href="cetak_sku.php?id_request_sku=<?= $id; ?>" class="btn btn-warning btn-sm">Cetak</a> -->
+										<td>
+											<a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i>
+										</td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=ubah_sku&id_request_sku=<?= $id_request_sku; ?>">

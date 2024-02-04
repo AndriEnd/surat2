@@ -224,7 +224,9 @@ if (isset($_GET['id_request_sku'])) {
                 </tr>
                 <tr>
                     <td rowspan="15"></td>
-                    <td></td>
+                    <td>
+                    <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                    </td>
                     <td rowspan="15"></td>
                 </tr>
                 <tr>
