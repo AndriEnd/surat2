@@ -68,7 +68,7 @@ if (isset($_GET['id_request_sku'])) {
             <div class="card full-height">
                 <div class="card-body">
                     <div class="card-tools">
-                        <form action="" method="POST">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <select name="dicetak" id="" class="form-control">
@@ -76,8 +76,8 @@ if (isset($_GET['id_request_sku'])) {
                                     <option value="Surat dicetak, bisa diambil!">Surat dicetak, Silahkan Di Unduh!</option>
                                 </select><br>
                                 <!-- <input type="date" name="tgl_acc" class="form-control"> -->
-                                <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
-                                <a href="cetak_sku.php?id_request_sku=<?= $id; ?>" class="btn btn-warning btn-sm">Cetak</a>
+
+                                <!--<a href="cetak_sku.php?id_request_sku=<?= $id; ?>" class="btn btn-warning btn-sm">Cetak</a> -->
                                 <!-- <div class="form-group">
                                                     <a href="cetak_skd.php?id_request_skd=<?php $id; ?>">
                                                         Cetak
@@ -86,32 +86,32 @@ if (isset($_GET['id_request_sku'])) {
                                 <!-- <div class="form-group">
                                                    <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
                                                 </div> -->
-                                <br>
-                                <br>
+
                                 <b> Upload File SKU <b>
                                         <br>
-                                        <input type="file" name="sku">
-                                        
+                                        <input type="file" name="sku" class="form-control" size="37" required>
+                                        <br>
+                                        <br>
+                                        <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
+
                                         <!--<input type="submit" name="ttd" value="Upload"> -->
                             </div>
                         </form>
 
-                        
+
                         <?php
+
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
-                            $nama_file   = isset($_FILES['sku']['tmp_name']);
-                            //$lokasi_sku = $_FILES['sku'];
-                            $file_sku = $_POST['sku'];
-                            
-                            $folder = "/outputSurat/SKU/$file_sku"; // folder 
+                            $nama_file   = $_FILES['sku'];
+                            $file_sku = $_FILES['sku']['name']; // Perbaikan disini
                             $sql = "UPDATE data_request_sku SET file_sku='$file_sku' WHERE id_request_sku=$id";
                             $query = mysqli_query($konek, $sql);
                             $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");
-                            if ($update && $sql) {
-                               //copy($_FILES['sku']['tmp_name'], "../outputSurat/SKU/" . $file_sku);
-                              move_uploaded_file($file_sku,"$folder");
-                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil Upload', 'success');</script>";
+
+                            if ($update && $query) { // Perbaikan disini
+                                copy($_FILES['sku']['tmp_name'], "../outputSurat/SKU/" . $file_sku);
+                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
                                 echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
                             } else {
                                 echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
@@ -120,7 +120,6 @@ if (isset($_GET['id_request_sku'])) {
                         }
                         ?>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -130,6 +129,12 @@ if (isset($_GET['id_request_sku'])) {
             <div class="card">
                 <div class="card-body">
                     <table border="1" align="center">
+                        <a href="cetak_sku.php?id_request_sku=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </a>
                         <table border="0" align="center">
                             <tr>
                                 <td><img src="img/logo1.png" width="70" height="87" alt=""></td>
