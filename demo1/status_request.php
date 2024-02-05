@@ -24,7 +24,7 @@
 									<th>Keperluan</th>
 									<th>Status</th>
 									<th>Keterangan</th>
-									<th style="width:10%">Link</th>
+									<th>Surat</th>
 									<th style="width: 10%">Action</th>
 
 								</tr>
@@ -67,7 +67,8 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
 										<td>
-
+											<a href="download_sktm.php?url=<?php echo $row['file_sktm']; ?>"><?php echo $file_sktm; ?> </a></i>
+										</td>
 										</td>
 										<td>
 											<div class="form-button-action">
@@ -207,6 +208,7 @@
 									<th>Keperluan</th>
 									<th>Status</th>
 									<th>Keterangan</th>
+									<th>Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
@@ -224,6 +226,7 @@
 									$kk = $data['scan_kk'];
 									$keperluan = $data['keperluan'];
 									$keterangan = $data['keterangan'];
+									$file_kk =$data['file_kk'];
 									$id_request_kk = $data['id_request_kk'];
 
 
@@ -246,6 +249,9 @@
 										<td><?php echo $keperluan; ?></td>
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
+										<td>
+											<a href="download_kk.php?url=<?php echo $row['file_kk']; ?>"><?php echo $file_kk; ?> </a></i>
+										</td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=ubah_kk&id_request_kk=<?= $id_request_kk; ?>">
@@ -292,6 +298,7 @@
 									<th>Status</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
+									<th>Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
@@ -310,6 +317,7 @@
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
 									$id_request_skd = $data['id_request_skd'];
+									$file_skd =$data['file_skd'];
 
 									if ($status == "1") {
 										$status = "<b style='color:green'>Sudah ACC Rt</b>";
@@ -330,6 +338,9 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><?= $keperluan; ?></td>
 										<td><i><?= $keterangan; ?></i></td>
+										<td>
+											<a href="download_skd.php?url=<?php echo $row['file_skd']; ?>"><?php echo $file_skd; ?> </a></i>
+										</td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=ubah_skd&id_request_skd=<?= $id_request_skd; ?>">
@@ -377,6 +388,7 @@
 									<th>Status</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
+									<th>Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
@@ -394,6 +406,8 @@
 									$kk = $data['scan_kk'];
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
+									$file_akta = $data['file_akta'];
+									
 									$id_request_akta = $data['id_request_akta'];
 
 									if ($status == "1") {
@@ -415,6 +429,9 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><?= $keperluan; ?></td>
 										<td><i><?= $keterangan; ?></i></td>
+										<td>
+											<a href="download_akta.php?url=<?php echo $row['file_akta']; ?>"><?php echo $file_akta; ?> </a></i>
+										</td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=ubah_akta&id_request_akta=<?= $id_request_akta; ?>">
@@ -462,6 +479,7 @@
 									<th>Status</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
+									<th>Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
@@ -479,6 +497,7 @@
 									$kk = $data['scan_kk'];
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
+									$file_ktp = $data['file_ktp'];
 									$id_request_ktp = $data['id_request_ktp'];
 
 									if ($status == "1") {
@@ -500,6 +519,9 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><?= $keperluan; ?></td>
 										<td><i><?= $keterangan; ?></i></td>
+										<td>
+											<a href="download_ktp.php?url=<?php echo $row['file_ktp']; ?>"><?php echo $file_ktp; ?> </a></i>
+										</td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=ubah_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
