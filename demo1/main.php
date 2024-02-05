@@ -40,6 +40,12 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 							<p>Status Request</p>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a href="?halaman=tampil_download">
+							<i class="far fa-calendar-check"></i>
+							<p>Download Surat</p>
+						</a>
+					</li>
 
 				<?php
 				}
@@ -68,6 +74,9 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					break;
 				case 'tampil_pemohon';
 					include 'tampil_pemohon.php';
+					break;
+				case 'tampil_download';
+					include 'tampil_download.php';
 					break;
 
 				case 'request_sktm';

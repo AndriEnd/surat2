@@ -226,7 +226,7 @@
 									$kk = $data['scan_kk'];
 									$keperluan = $data['keperluan'];
 									$keterangan = $data['keterangan'];
-									$file_kk =$data['file_kk'];
+									$file_kk = $data['file_kk'];
 									$id_request_kk = $data['id_request_kk'];
 
 
@@ -287,7 +287,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table id="add4" class="display table table-striped table-hover">
+						<table id="add1" class="display table table-striped table-hover">
 							<thead>
 								<tr>
 									<th>Tanggal Request</th>
@@ -317,7 +317,7 @@
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
 									$id_request_skd = $data['id_request_skd'];
-									$file_skd =$data['file_skd'];
+									$file_skd = $data['file_skd'];
 
 									if ($status == "1") {
 										$status = "<b style='color:green'>Sudah ACC Rt</b>";
@@ -367,7 +367,6 @@
 			</div>
 		</div>
 
-
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
@@ -377,7 +376,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table id="add4" class="display table table-striped table-hover">
+						<table id="add2" class="display table table-striped table-hover">
 							<thead>
 								<tr>
 									<th>Tanggal Request</th>
@@ -407,7 +406,7 @@
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
 									$file_akta = $data['file_akta'];
-									
+
 									$id_request_akta = $data['id_request_akta'];
 
 									if ($status == "1") {
@@ -468,7 +467,7 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table id="add4" class="display table table-striped table-hover">
+						<table id="add3" class="display table table-striped table-hover">
 							<thead>
 								<tr>
 									<th>Tanggal Request</th>

@@ -156,7 +156,7 @@ if (isset($_POST['ubah'])) {
 	$agama = $_POST['agama'];
 	$alamat = $_POST['alamat'];
 	$status_warga = $_POST['status_warga'];
-	$keperluan = $_POST['keperluan'];
+	//$keperluan = $_POST['keperluan'];
 	$keterangan = $_POST['keterangan'];
 
 	$ubah = "UPDATE data_user SET
