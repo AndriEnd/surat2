@@ -73,7 +73,7 @@ if (isset($_POST['kirim'])) {
     $nama_anak = $_POST['nama_anak'];
     $anak_ke = $_POST['anak_ke'];
     $sql = "INSERT INTO data_request_akta (nik,scan_ktp,scan_kk,keperluan,anak_ke,nama_anak) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$anak_ke','$nama_anak')";
-    $query = mysqli_query($konek, $sql) or die(mysqli_error());
+    $query = mysqli_query($konek, $sql)  or die(mysqli_connect_error());
 
     if ($query) {
         copy($_FILES['ktp']['tmp_name'], "../dataFoto/scan_ktp/" . $file_ktp);

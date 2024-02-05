@@ -42,7 +42,7 @@ if (isset($_GET['id_request_ktp'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CETAK KTP</title>
+    <title>KTP_<?php echo $id; ?>_<?php echo $nama; ?>_<?php echo $nik; ?></title>
 </head>
 
 <body>

@@ -68,38 +68,41 @@ if (isset($_GET['id_request_kk'])) {
             <div class="card full-height">
                 <div class="card-body">
                     <div class="card-tools">
-                        <form action="" method="POST">
+                    <form action="" enctype="multipart/form-data" method="POST">
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <select name="dicetak" id="" class="form-control" required="">
                                     <option value="">Pilih</option>
                                     <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
-                                </select><br>
-                                <!-- <input type="date" name="tgl_acc" class="form-control"> -->
-                                <input type="submit" name="ttd" value="Kirim" class="btn btn-primary btn-sm">
-                                <a href="cetak_kk.php?id_request_kk=<?= $id; ?>" class="btn btn-primary btn-sm">Cetak</a>
-                                <!-- <div class="form-group">
-                                                    <a href="cetak_skd.php?id_request_skd=<?php $id; ?>">
-                                                        Cetak
-                                                    </a>
-                                                </div> -->
-                                <!-- <div class="form-group">
-                                                   <a href="cetak_skd.php?id_request_skd=<?= $id; ?>">a</a>
-                                                </div> -->
+                                </select>
+                                <br>
+                                <br>
+                                <b> Upload File KK <b>
+                                        <br>
+                                        <input type="file" name="kartu_kk" class="form-control" size="37" required>
+                                        <br>
+                                        <br>
+                                        <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
                             </div>
                         </form>
                         <?php
-                        if (isset($_POST['ttd'])) {
-                            $cetak = $_POST['dicetak'];
-                            $update = mysqli_query($konek, "UPDATE data_request_kk SET keterangan='$cetak', status=3 WHERE id_request_kk=$id");
-                            if ($update) {
-                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
-                            } else {
-                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_kk">';
-                            }
+                       if (isset($_POST['ttd'])) {
+                        $cetak = $_POST['dicetak'];
+                        $nama_file   = $_FILES['kartu_kk'];
+                        $file_kk = $_FILES['kartu_kk']['name']; // Perbaikan disini
+                        $sql = "UPDATE data_request_kk SET file_kk='$file_kk' WHERE id_request_kk=$id";
+                        $query = mysqli_query($konek, $sql);
+                        $update = mysqli_query($konek, "UPDATE data_request_kk SET keterangan='$cetak', status=3 WHERE id_request_kk=$id");
+
+                        if ($update && $query) { // Perbaikan disini
+                            copy($_FILES['kartu_kk']['tmp_name'], "../outputSurat/kk/" . $file_kk);
+                            echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
+                            echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                        } else {
+                            echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
+                            echo '<meta http-equiv="refresh" content="3; url=?halaman=view_kk">';
                         }
+                    }
                         ?>
                     </div>
                 </div>
@@ -111,6 +114,12 @@ if (isset($_GET['id_request_kk'])) {
             <div class="card">
                 <div class="card-body">
                     <table border="1" align="center">
+                    <a href="cetak_kk.php?id_request_kk=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </a>
                         <table border="0" align="center">
                             <tr>
                                 <td><img src="img/logo1.png" width="70" height="87" alt=""></td>

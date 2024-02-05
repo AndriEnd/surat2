@@ -64,7 +64,7 @@ if (isset($_GET['id_request_skd'])) {
             <div class="card full-height">
                 <div class="card-body">
                     <div class="card-tools">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <select name="dicetak" id="" class="form-control">
@@ -81,23 +81,23 @@ if (isset($_GET['id_request_skd'])) {
                             </div>
                         </form>
                         <?php
-                        if (isset($_POST['ttd'])) {
-                            $cetak = $_POST['dicetak'];
-                            $nama_file   = $_FILES['skd'];
-                            $file_skd = $_FILES['skd']['name']; // Perbaikan disini
-                            $sql = "UPDATE data_request_skd SET file_skd='$file_skd' WHERE id_request_skd=$id";
-                            $query = mysqli_query($konek, $sql);
-                            $update = mysqli_query($konek, "UPDATE data_request_skd SET keterangan='$cetak', status=3 WHERE id_request_skd=$id");
+                       if (isset($_POST['ttd'])) {
+                        $cetak = $_POST['dicetak'];
+                        $nama_file   = $_FILES['skd'];
+                        $file_skd = $_FILES['skd']['name']; // Perbaikan disini
+                        $sql = "UPDATE data_request_skd SET file_skd='$file_skd' WHERE id_request_skd=$id";
+                        $query = mysqli_query($konek, $sql);
+                        $update = mysqli_query($konek, "UPDATE data_request_skd SET keterangan='$cetak', status=3 WHERE id_request_skd=$id");
 
-                            if ($update && $query) { // Perbaikan disini
-                                copy($_FILES['skd']['tmp_name'], "../outputSurat/SKD/" . $file_skd);
-                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
-                            } else {
-                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_skd">';
-                            }
+                        if ($update && $query) { // Perbaikan disini
+                            copy($_FILES['skd']['tmp_name'], "../outputSurat/skd/" . $file_skd);
+                            echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
+                            echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                        } else {
+                            echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
+                            echo '<meta http-equiv="refresh" content="3; url=?halaman=view_skd">';
                         }
+                    }
                         ?>
                     </div>
                 </div>
@@ -108,14 +108,13 @@ if (isset($_GET['id_request_skd'])) {
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table border="1" align="center">
-                        <table border="1" align="center">
-                            <a href="cetak_skd.php?id_request_skd=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
-                                <span class="btn-label">
-                                    <i class="fa fa-print"></i>
-                                </span>
-                                Print
-                            </a>
+                <table border="1" align="center">
+                        <a href="cetak_skd.php?id_request_skd=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Print
+                        </a>
                             <table border="0" align="center">
                                 <tr>
                                     <td><img src="img/logo1.png" width="70" height="87" alt=""></td>
