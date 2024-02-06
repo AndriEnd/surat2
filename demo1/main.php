@@ -191,6 +191,25 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					include 'ubah_request_ktp.php';
 					break;
 
+				case 'download_sktm';
+					include 'download_sktm.php';
+					break;
+				case 'download_sku';
+					include 'download_sku.php';
+					break;
+				case 'download_kk';
+					include 'download_kk.php';
+					break;
+				case 'downlaod_skd';
+					include 'downlaod_skd.php';
+					break;
+				case 'download_akta';
+					include 'download_akta.php';
+					break;
+				case 'download_ktp';
+					include 'download_ktp.php';
+					break;
+
 				case 'laporan_perbulan';
 					include 'laporan_perbulan.php';
 					break;

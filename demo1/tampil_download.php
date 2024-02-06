@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MAMPU</h4>
+                        <h4 class="card-title">DOWNLOAD SURAT KETERANGAN TIDAK MAMPU</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -16,22 +16,21 @@
                         <table id="add1" class="display table table-striped table-hover">
                             <thead>
                                 <tr>
+
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
-
-                                    <th>Status</th>
-                                    <th>Keterangan</th>
+                                    <th>Keperluan</th>
                                     <th>Surat</th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+
                                 $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE nik=$_SESSION[nik]";
                                 $query = mysqli_query($konek, $sql);
                                 while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
+
                                     $tgl = $data['tanggal_request'];
                                     $format = date('d F Y', strtotime($tgl));
                                     $nik = $data['nik'];
@@ -56,14 +55,11 @@
                                     }
                                 ?>
                                     <tr>
+
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
-                                        <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
                                         <td><?php echo $keperluan; ?></td>
-                                        <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
-                                        <td><i><?php echo $keterangan; ?></i></td>
                                         <td>
                                             <a href="download_sktm.php?url=<?php echo $row['file_sktm']; ?>"><?php echo $file_sktm; ?> </a></i>
                                         </td>
@@ -84,7 +80,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">STATUS REQUEST SURAT KETERANGAN USAHA</h4>
+                        <h4 class="card-title">DOWNLOAD SURAT KETERANGAN USAHA</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -95,14 +91,9 @@
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Scan KTP</th>
-                                    <th>Scan KK</th>
-                                    <th>Usaha</th>
+                                    <th>Nama Perusahaan</th>
                                     <th>Keperluan</th>
-                                    <th>Status</th>
-                                    <th>Keterangan</th>
                                     <th>Surat</th>
-                                    <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -137,30 +128,14 @@
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
-                                        <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
                                         <td><?php echo $usaha; ?></td>
                                         <td><?php echo $keperluan; ?></td>
-                                        <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
-                                        <td><i><?php echo $keterangan; ?></i></td>
-                                        <td>
-                                            <a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i>
-                                        </td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="?halaman=ubah_sku&id_request_sku=<?= $id_request_sku; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="?halaman=tampil_status&id_request_sku=<?= $id_request_sku; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
 
+                                        <td>
+                                            <a href="?download_sku.php=" ?url> <?php echo $file_sku; ?> </a>
+                                            <!-- <a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i> -->
+                                        </td>
+                                        <td>
                                     </tr>
                                 <?php
                                 }
@@ -172,12 +147,11 @@
             </div>
         </div>
 
-
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">STATUS REQUEST SURAT KETERANGAN KARTU KELUARGA</h4>
+                        <h4 class="card-title">DOWNLOAD SURAT KETERANGAN KARTU KELUARGA</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -188,13 +162,8 @@
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Scan KTP</th>
-                                    <th>Scan KK</th>
                                     <th>Keperluan</th>
-                                    <th>Status</th>
-                                    <th>Keterangan</th>
                                     <th>Surat</th>
-                                    <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -214,7 +183,6 @@
                                     $file_kk = $data['file_kk'];
                                     $id_request_kk = $data['id_request_kk'];
 
-
                                     if ($status == "1") {
                                         $status = "<b style='color:green'>Sudah ACC RT</b>";
                                     } elseif ($status == "0") {
@@ -229,28 +197,12 @@
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
-                                        <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
                                         <td><?php echo $keperluan; ?></td>
-                                        <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
-                                        <td><i><?php echo $keterangan; ?></i></td>
                                         <td>
-                                            <a href="download_kk.php?url=<?php echo $row['file_kk']; ?>"><?php echo $file_kk; ?> </a></i>
+                                            <a href="download_kk.php=" ?url> <?php echo $file_kk; ?> </a>
+                                            <!-- <a href="download_kk.php"?url=<?php echo $row['file_kk']; ?>><?php echo $file_kk; ?> </a></i> -->
                                         </td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="?halaman=ubah_kk&id_request_kk=<?= $id_request_kk; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="?halaman=tampil_status&id_request_kk=<?= $id_request_kk; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
+
                                     </tr>
                                 <?php
                                 }
@@ -267,7 +219,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">STATUS REQUEST SURAT KETERANGAN DOMISILI</h4>
+                        <h4 class="card-title">DOWNLOAD SURAT KETERANGAN DOMISILI</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -278,13 +230,8 @@
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Scan KTP</th>
-                                    <th>Scan KK</th>
-                                    <th>Status</th>
                                     <th>Keperluan</th>
-                                    <th>Keterangan</th>
                                     <th>Surat</th>
-                                    <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -318,30 +265,11 @@
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
-                                        <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-                                        <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
                                         <td><?= $keperluan; ?></td>
-                                        <td><i><?= $keterangan; ?></i></td>
                                         <td>
                                             <a href="download_skd.php?url=<?php echo $row['file_skd']; ?>"><?php echo $file_skd; ?> </a></i>
                                         </td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="?halaman=ubah_skd&id_request_skd=<?= $id_request_skd; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="?halaman=tampil_status&id_request_skd=<?= $id_request_skd; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
                                     </tr>
-
                                 <?php
                                 }
                                 ?>
@@ -356,7 +284,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">STATUS REQUEST SURAT KETERANGAN AKTA</h4>
+                        <h4 class="card-title">DOWNLOAD SURAT KETERANGAN AKTA</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -367,13 +295,8 @@
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Scan KTP</th>
-                                    <th>Scan KK</th>
-                                    <th>Status</th>
                                     <th>Keperluan</th>
-                                    <th>Keterangan</th>
                                     <th>Surat</th>
-                                    <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -391,7 +314,6 @@
                                     $keterangan = $data['keterangan'];
                                     $keperluan = $data['keperluan'];
                                     $file_akta = $data['file_akta'];
-
                                     $id_request_akta = $data['id_request_akta'];
 
                                     if ($status == "1") {
@@ -408,30 +330,11 @@
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
-                                        <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-                                        <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
                                         <td><?= $keperluan; ?></td>
-                                        <td><i><?= $keterangan; ?></i></td>
                                         <td>
                                             <a href="download_akta.php?url=<?php echo $row['file_akta']; ?>"><?php echo $file_akta; ?> </a></i>
                                         </td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="?halaman=ubah_akta&id_request_akta=<?= $id_request_akta; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="?halaman=tampil_status&id_request_akta=<?= $id_request_akta; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
                                     </tr>
-
                                 <?php
                                 }
                                 ?>
@@ -447,7 +350,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">STATUS REQUEST SURAT KETERANGAN KTP</h4>
+                        <h4 class="card-title">DOWNLOAD SURAT KETERANGAN KTP</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -458,13 +361,8 @@
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Scan KTP</th>
-                                    <th>Scan KK</th>
-                                    <th>Status</th>
                                     <th>Keperluan</th>
-                                    <th>Keterangan</th>
                                     <th>Surat</th>
-                                    <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -498,30 +396,11 @@
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
-                                        <td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
-                                        <td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-                                        <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
                                         <td><?= $keperluan; ?></td>
-                                        <td><i><?= $keterangan; ?></i></td>
                                         <td>
                                             <a href="download_ktp.php?url=<?php echo $row['file_ktp']; ?>"><?php echo $file_ktp; ?> </a></i>
                                         </td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="?halaman=ubah_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Data">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="?halaman=tampil_status&id_request_ktp=<?= $id_request_ktp; ?>">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Hapus">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </td>
                                     </tr>
-
                                 <?php
                                 }
                                 ?>
