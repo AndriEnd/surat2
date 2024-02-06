@@ -16,7 +16,6 @@
                         <table id="add1" class="display table table-striped table-hover">
                             <thead>
                                 <tr>
-
                                     <th>Tanggal Request</th>
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
@@ -26,11 +25,9 @@
                             </thead>
                             <tbody>
                                 <?php
-
                                 $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE nik=$_SESSION[nik]";
                                 $query = mysqli_query($konek, $sql);
                                 while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-
                                     $tgl = $data['tanggal_request'];
                                     $format = date('d F Y', strtotime($tgl));
                                     $nik = $data['nik'];
@@ -61,12 +58,16 @@
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td>
-                                            <a href="download_sktm.php?url=<?php echo $row['file_sktm']; ?>"><?php echo $file_sktm; ?> </a></i>
+                                            <!-- <a href="download_sktm.php?url=<?php echo $row['file_sktm']; ?>"><?php echo $file_sktm; ?> </a></i> -->
+                                            <a href="download_sktm.php?=" ?url> <?php echo $file_sktm; ?> </a>
+
                                         </td>
                                         </td>
 
                                     </tr>
+
                                 <?php
+
                                 }
                                 ?>
                             </tbody>
@@ -132,7 +133,7 @@
                                         <td><?php echo $keperluan; ?></td>
 
                                         <td>
-                                            <a href="?download_sku.php=" ?url> <?php echo $file_sku; ?> </a>
+                                            <a href="download_sku.php?=" ?url> <?php echo $file_sku; ?> </a>
                                             <!-- <a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i> -->
                                         </td>
                                         <td>
@@ -146,7 +147,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -344,7 +344,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="col-md-12">
             <div class="card">
