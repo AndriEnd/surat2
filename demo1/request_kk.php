@@ -112,18 +112,18 @@ $nama = $data['nama'];
 						</div>
 					</div>
 					<script type="text/javascript">
-						$(document).ready(function() {
-						$(".add-more").click(function(){ 
-							var html = $(".copy").html();
-							$(".after-add-more").after(html);
-						});
+					$(document).ready(function() {
+					$(".add-more").click(function(){ 
+						var html = $(".copy").html();
+						$(".after-add-more").after(html);
+					});
 
-						// saat tombol remove dklik control group akan dihapus 
-						$("body").on("click",".remove",function(){ 
-							$(this).parents(".control-group").remove();
-						});
-						});
-					</script>
+					// saat tombol remove dklik control group akan dihapus 
+					$("body").on("click",".remove",function(){ 
+						$(this).parents(".control-group").remove();
+					});
+					});
+				</script>
 					<div class="card-action">
 						<button name="kirim" class="btn btn-success">Kirim</button>
 						<a href="?halaman=beranda" class="btn btn-default">Batal</a>
