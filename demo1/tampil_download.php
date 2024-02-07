@@ -58,16 +58,26 @@
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td>
-                                            <!-- <a href="download_sktm.php?url=<?php echo $row['file_sktm']; ?>"><?php echo $file_sktm; ?> </a></i> -->
-                                            <a href="download_sktm.php?=" ?url> <?php echo $file_sktm; ?> </a>
-
+                                            <a href="download_sktm.php?url=<?php echo $row['sktm']; ?>">Download</a>
                                         </td>
                                         </td>
-
                                     </tr>
-
+                                    <?php
+                                                //Susunan Struktur File :> $file = 'file/501-862-1-SM.pdf';
+                                                $file = $_GET['url'];
+                                                if (file_exists($file)) {
+                                                    header('Content-Description: File Transfer');
+                                                    header('Content-Type: application/octet-stream');
+                                                    header('Content-Disposition: attachment; filename="'.basename($file).'"');
+                                                    header('Expires: 0');
+                                                    header('Cache-Control: must-revalidate');
+                                                    header('Pragma: public');
+                                                    header('Content-Length: ' . filesize($file));
+                                                    readfile($file);
+                                                    exit;
+                                                }
+                                    ?>
                                 <?php
-
                                 }
                                 ?>
                             </tbody>

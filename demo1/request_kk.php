@@ -27,6 +27,7 @@ $nama = $data['nama'];
 								<div class="form-group">
 									<input type="hidden" name="nik" class="form-control" value="<?= $nik; ?>" readonly>
 								</div>
+
 								<div class="form-group">
 									<label>Keperluan</label>
 									<input type="text" name="keperluan" class="form-control" placeholder="Keperluan Anda.." autofocus>
@@ -35,7 +36,73 @@ $nama = $data['nama'];
 									<label>Kewarganegaraan</label>
 									<input type="text" name="warga_negara" class="form-control" placeholder="kewarganegaraan" autofocus>
 								</div>
-							</div>
+								<div class="form-group">
+										<div class="control-group after-add-more">
+											<h2>Anggota Keluarga</h2>
+											<label>Nama</label>
+												<input type="text" name="nama[]" class="form-control">
+											<label>NIK</label>
+												<input type="text" name="nik[]" class="form-control">
+											<label>Tempat & Tgl Lahir</label>
+												<input type="text" name="Tempat[]" class="form-control">
+											<label>Jenis Kelamin</label>
+												<select class="form-control" name="jekel[]">
+													<option>Laki-Laki</option>
+													<option>Perempuan</option>
+												</select>
+											<label>Agama</label>
+											<select class="form-control" name="Agama[]">
+												<option>Islam</option>
+												<option>Katolik</option>
+												<option>Kristen</option>
+												<option>Budha</option>
+												<option>Hindu</option>
+												<option>Konghucu</option>
+											</select>
+											<label>Status HDK</label>
+												<input type="text" name="status_hdk[]" class="form-control">
+											<br>
+											<button class="btn btn-success add-more" type="button">
+											<i class="glyphicon glyphicon-plus"></i> Tambah Anggota +
+											</button>
+											<hr>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+										<div class="copy hide">
+											<h2>Anggota Keluarga</h2>
+											<label>Nama</label>
+												<input type="text" name="nama[]" class="form-control">
+											<label>NIK</label>
+												<input type="text" name="nik[]" class="form-control">
+											<label>Tempat & Tgl Lahir</label>
+												<input type="text" name="Tempat[]" class="form-control">
+											<label>Jenis Kelamin</label>
+												<select class="form-control" name="jekel[]">
+													<option>Laki-Laki</option>
+													<option>Perempuan</option>
+												</select>
+											<label>Agama</label>
+											<select class="form-control" name="Agama[]">
+												<option>Islam</option>
+												<option>Katolik</option>
+												<option>Kristen</option>
+												<option>Budha</option>
+												<option>Hindu</option>
+												<option>Konghucu</option>
+											</select>
+											<label>Status HDK</label>
+												<input type="text" name="status_hdk[]" class="form-control">
+											<br>
+											<button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+											<hr>
+										</div>
+									</div>
+								</div>
+
+								
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
 									<label>Scan KTP</label>
@@ -44,6 +111,19 @@ $nama = $data['nama'];
 							</div>
 						</div>
 					</div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+						$(".add-more").click(function(){ 
+							var html = $(".copy").html();
+							$(".after-add-more").after(html);
+						});
+
+						// saat tombol remove dklik control group akan dihapus 
+						$("body").on("click",".remove",function(){ 
+							$(this).parents(".control-group").remove();
+						});
+						});
+					</script>
 					<div class="card-action">
 						<button name="kirim" class="btn btn-success">Kirim</button>
 						<a href="?halaman=beranda" class="btn btn-default">Batal</a>
@@ -58,12 +138,13 @@ $nama = $data['nama'];
 if (isset($_POST['kirim'])) {
 	$nik = $_POST['nik'];
 	$keperluan = $_POST['keperluan'];
+	$anggota_keluarga = $_POST['anggota_keluarga'];
 	$warga_negara = $_POST['warga_negara'];
 	$nama_ktp = isset($_FILES['ktp']);
 	$file_ktp = $_POST['nik'] . "_" . ".jpg";
 	$nama_kk = isset($_FILES['kk']);
 	$file_kk = $_POST['nik'] . "_" . ".jpg";
-	$sql = "INSERT INTO data_request_kk (nik,scan_ktp,scan_kk,keperluan,warga_negara) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$warga_negara')";
+	$sql = "INSERT INTO data_request_kk (nik,scan_ktp,scan_kk,keperluan,warga_negara,anggota_keluarga) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$warga_negara','$anggota_keluarga')";
 	$query = mysqli_query($konek, $sql) or die(mysqli_connect_error());
 
 	if ($query) {

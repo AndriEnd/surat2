@@ -3,7 +3,7 @@
 
 
 // Ambil nama file dari database
-$result = mysqli_query($konek, $sql, "SELECT file_sktm FROM data_request_sktm WHERE id_request_sktm= $id_request_sktm");
+$result = mysqli_query($konek, "SELECT file_sktm FROM data_request_sktm WHERE id_request_sktm= $id_request_sktm");
 $row = mysqli_fetch_assoc($result);
 $file_sktm = $row['file_sktm'];
 
