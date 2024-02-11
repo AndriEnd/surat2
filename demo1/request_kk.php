@@ -36,102 +36,113 @@ $nama = $data['nama'];
 									<label>Kewarganegaraan</label>
 									<input type="text" name="warga_negara" class="form-control" placeholder="kewarganegaraan" autofocus>
 								</div>
+								<!--<div class="form-group">
+									<label>Anggota Keluarga</label>
+									<input type="text" name="anggota_keluarga" class="form-control" placeholder="Anggota  Keluarga" autofocus>
+								</div> -->
+
+
 								<div class="form-group">
-										<div class="control-group after-add-more">
-											<h2>Anggota Keluarga</h2>
-											<label>Nama</label>
-												<input type="text" name="nama[]" class="form-control">
-											<label>NIK</label>
-												<input type="text" name="nik[]" class="form-control">
-											<label>Tempat & Tgl Lahir</label>
-												<input type="text" name="Tempat[]" class="form-control">
-											<label>Jenis Kelamin</label>
-												<select class="form-control" name="jekel[]">
-													<option>Laki-Laki</option>
-													<option>Perempuan</option>
-												</select>
-											<label>Agama</label>
-											<select class="form-control" name="Agama[]">
-												<option>Islam</option>
-												<option>Katolik</option>
-												<option>Kristen</option>
-												<option>Budha</option>
-												<option>Hindu</option>
-												<option>Konghucu</option>
-											</select>
-											<label>Status HDK</label>
-												<input type="text" name="status_hdk[]" class="form-control">
-											<br>
-											<button class="btn btn-success add-more" type="button">
+									<div class="control-group after-add-more">
+										<h2>Anggota Keluarga</h2>
+										<label>NIK</label>
+										<input type="text" name="nik_anggota" class="form-control">
+
+										<label>Nama</label>
+										<input type="text" name="nama_anggota" class="form-control">
+
+										<label>Tempat Lahir</label>
+										<input type="text" name="tempat_anggota" class="form-control" placeholder="Tempat Lahir..">
+
+										<label>Tanggal Lahir</label>
+										<input type="date" name="tgl_anggota" class="form-control">
+
+										<label>Jenis Kelamin</label>
+										<select class="form-control" name="jekel_anggota">
+											<option>Laki-Laki</option>
+											<option>Perempuan</option>
+										</select>
+										<label>Agama</label>
+										<select class="form-control" name="agama_anggota">
+											<option>Islam</option>
+											<option>Katolik</option>
+											<option>Kristen</option>
+											<option>Budha</option>
+											<option>Hindu</option>
+											<option>Konghucu</option>
+										</select>
+										<label>Status HDK</label>
+										<input type="text" name="hdk_anggota" class="form-control">
+										<br>
+										<!-- <button class="btn btn-success add-more" type="button">
 											<i class="glyphicon glyphicon-plus"></i> Tambah Anggota +
-											</button>
-											<hr>
-										</div>
+										</button> -->
+										<hr>
 									</div>
 								</div>
+							</div>
 
-								<div class="form-group">
-										<div class="copy hide">
-											<h2>Anggota Keluarga</h2>
-											<label>Nama</label>
-												<input type="text" name="nama[]" class="form-control">
-											<label>NIK</label>
-												<input type="text" name="nik[]" class="form-control">
-											<label>Tempat & Tgl Lahir</label>
-												<input type="text" name="Tempat[]" class="form-control">
-											<label>Jenis Kelamin</label>
-												<select class="form-control" name="jekel[]">
-													<option>Laki-Laki</option>
-													<option>Perempuan</option>
-												</select>
-											<label>Agama</label>
-											<select class="form-control" name="Agama[]">
-												<option>Islam</option>
-												<option>Katolik</option>
-												<option>Kristen</option>
-												<option>Budha</option>
-												<option>Hindu</option>
-												<option>Konghucu</option>
-											</select>
-											<label>Status HDK</label>
-												<input type="text" name="status_hdk[]" class="form-control">
-											<br>
-											<button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-											<hr>
-										</div>
-									</div>
+							<!--<div class="form-group">
+								<div class="copy hide">
+									<h2>Anggota Keluarga</h2>
+									<label>Nama</label>
+									<input type="text" name="nama[]" class="form-control">
+									<label>NIK</label>
+									<input type="text" name="nik[]" class="form-control">
+									<label>Tempat & Tgl Lahir</label>
+									<input type="text" name="Tempat[]" class="form-control">
+									<label>Jenis Kelamin</label>
+									<select class="form-control" name="jekel[]">
+										<option>Laki-Laki</option>
+										<option>Perempuan</option>
+									</select>
+									<label>Agama</label>
+									<select class="form-control" name="Agama[]">
+										<option>Islam</option>
+										<option>Katolik</option>
+										<option>Kristen</option>
+										<option>Budha</option>
+										<option>Hindu</option>
+										<option>Konghucu</option>
+									</select>
+									<label>Status HDK</label>
+									<input type="text" name="status_hdk[]" class="form-control">
+									<br>
+									<button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+									<hr>
 								</div>
+							</div> -->
 
-								
-							<div class="col-md-6 col-lg-6">
-								<div class="form-group">
-									<label>Scan KTP</label>
-									<input type="file" name="ktp" class="form-control" size="37" required>
-								</div>
+						</div>
+						<div class="col-md-6 col-lg-6">
+							<div class="form-group">
+								<label>Scan KTP</label>
+								<input type="file" name="ktp" class="form-control" size="37" required>
 							</div>
 						</div>
 					</div>
-					<script type="text/javascript">
-					$(document).ready(function() {
-					$(".add-more").click(function(){ 
-						var html = $(".copy").html();
-						$(".after-add-more").after(html);
-					});
-
-					// saat tombol remove dklik control group akan dihapus 
-					$("body").on("click",".remove",function(){ 
-						$(this).parents(".control-group").remove();
-					});
-					});
-				</script>
-					<div class="card-action">
-						<button name="kirim" class="btn btn-success">Kirim</button>
-						<a href="?halaman=beranda" class="btn btn-default">Batal</a>
-					</div>
+				</div>
+				<div class="card-action">
+					<button name="kirim" class="btn btn-success">Kirim</button>
+					<a href="?halaman=beranda" class="btn btn-default">Batal</a>
 				</div>
 		</div>
-		</form>
 	</div>
+	<!-- <script type="text/javascript">
+		$(document).ready(function() {
+			$(".add-more").click(function() {
+				var html = $(".copy").html();
+				$(".after-add-more").after(html);
+			});
+
+			// saat tombol remove dklik control group akan dihapus 
+			$("body").on("click", ".remove", function() {
+				$(this).parents(".control-group").remove();
+			});
+		});
+	</script> -->
+	</form>
+</div>
 </div>
 
 <?php
@@ -144,7 +155,46 @@ if (isset($_POST['kirim'])) {
 	$file_ktp = $_POST['nik'] . "_" . ".jpg";
 	$nama_kk = isset($_FILES['kk']);
 	$file_kk = $_POST['nik'] . "_" . ".jpg";
-	$sql = "INSERT INTO data_request_kk (nik,scan_ktp,scan_kk,keperluan,warga_negara,anggota_keluarga) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$warga_negara','$anggota_keluarga')";
+	$nama_anggota  = $_POST['nama_anggota']; // anggota kel
+	$nik_anggota  = $_POST['nik_anggota'];
+	$tempat_anggota  = $_POST['tempat_anggota'];
+	$tgl_anggota  = $_POST['tgl_anggota'];
+	$jekel_anggota  = $_POST['jekel_anggota'];
+	$agama_anggota  = $_POST['agama_anggota'];
+	$hdk_anggota  = $_POST['hdk_anggota'];
+
+	$sql = "INSERT INTO data_request_kk 
+	(nik,
+	scan_ktp,
+	scan_kk,
+	keperluan,
+	warga_negara,
+	nama_anggota,
+	nik_anggota,
+	tempat_anggota,
+	tgl_anggota,
+	jekel_anggota,
+	agama_anggota,
+	hdk_anggota) 
+	VALUES 
+	('$nik',
+	'$file_ktp',
+	'$file_kk',
+	'$keperluan',
+	'$warga_negara',
+	'$nama_anggota',
+	'$nik_anggota',
+	'$tempat_anggota',
+	'$tgl_anggota',
+	'$jekel_anggota',
+	'$agama_anggota',
+	'$hdk_anggota')";
+
+	//$sql = "INSERT INTO data_penduduk 
+	//(nik,nama,jekel,tempat_lahir,tanggal_lahir,telepon,agama,status_hdk) 
+	//VALUES ('$nik','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$tanggal_lahir','$agama','$status_hdk')";
+	//$query = mysqli_query($konek, $sql);
+
 	$query = mysqli_query($konek, $sql) or die(mysqli_connect_error());
 
 	if ($query) {

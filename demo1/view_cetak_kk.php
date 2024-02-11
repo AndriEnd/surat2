@@ -22,14 +22,20 @@ if (isset($_GET['id_request_kk'])) {
     $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
-    $nama = $data['nama'];
+
+    $nama_anggota = $data['nama_anggota'];
+    $nik_anggota = $data['nik_anggota'];
+    $jekel_anggota = $data['jekel_anggota'];
+    $agama_anggota = $data['agama_anggota'];
+    $hdk_anggota = $data['hdk_anggota'];
+
     $warga_negara = $data['warga_negara'];
     $status_warga = $data['status_warga'];
     $request = $data['request'];
     $keterangan = $data['keterangan'];
     $status = $data['status'];
     $acc = $data['acc'];
-    $keperluan = $data['keperluan'];
+    $keperluan = $data['keperluan'];;
     $format4 = date('d F Y', strtotime($acc));
     if ($format4 == 0) {
         $format4 = "kosong";
@@ -52,6 +58,7 @@ if (isset($_GET['id_request_kk'])) {
     $status_perkawinan = $data['status_perkawinan'];
 }
 
+
 ?>
 <div class="panel-header bg-primary-gradient">
     <div class="page-inner py-5">
@@ -68,7 +75,7 @@ if (isset($_GET['id_request_kk'])) {
             <div class="card full-height">
                 <div class="card-body">
                     <div class="card-tools">
-                    <form action="" enctype="multipart/form-data" method="POST">
+                        <form action="" enctype="multipart/form-data" method="POST">
                             <div class="form-group">
                                 <label>Keterangan</label>
                                 <select name="dicetak" id="" class="form-control" required="">
@@ -86,23 +93,23 @@ if (isset($_GET['id_request_kk'])) {
                             </div>
                         </form>
                         <?php
-                       if (isset($_POST['ttd'])) {
-                        $cetak = $_POST['dicetak'];
-                        $nama_file   = $_FILES['kartu_kk'];
-                        $file_kk = $_FILES['kartu_kk']['name']; // Perbaikan disini
-                        $sql = "UPDATE data_request_kk SET file_kk='$file_kk' WHERE id_request_kk=$id";
-                        $query = mysqli_query($konek, $sql);
-                        $update = mysqli_query($konek, "UPDATE data_request_kk SET keterangan='$cetak', status=3 WHERE id_request_kk=$id");
+                        if (isset($_POST['ttd'])) {
+                            $cetak = $_POST['dicetak'];
+                            $nama_file   = $_FILES['kartu_kk'];
+                            $file_kk = $_FILES['kartu_kk']['name']; // Perbaikan disini
+                            $sql = "UPDATE data_request_kk SET file_kk='$file_kk' WHERE id_request_kk=$id";
+                            $query = mysqli_query($konek, $sql);
+                            $update = mysqli_query($konek, "UPDATE data_request_kk SET keterangan='$cetak', status=3 WHERE id_request_kk=$id");
 
-                        if ($update && $query) { // Perbaikan disini
-                            copy($_FILES['kartu_kk']['tmp_name'], "../outputSurat/kk/" . $file_kk);
-                            echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                            echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
-                        } else {
-                            echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                            echo '<meta http-equiv="refresh" content="3; url=?halaman=view_kk">';
+                            if ($update && $query) { // Perbaikan disini
+                                copy($_FILES['kartu_kk']['tmp_name'], "../outputSurat/kk/" . $file_kk);
+                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
+                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                            } else {
+                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
+                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_kk">';
+                            }
                         }
-                    }
                         ?>
                     </div>
                 </div>
@@ -114,7 +121,7 @@ if (isset($_GET['id_request_kk'])) {
             <div class="card">
                 <div class="card-body">
                     <table border="1" align="center">
-                    <a href="cetak_kk.php?id_request_kk=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+                        <a href="cetak_kk.php?id_request_kk=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
                             <span class="btn-label">
                                 <i class="fa fa-print"></i>
                             </span>
@@ -271,6 +278,7 @@ if (isset($_GET['id_request_kk'])) {
                                 <th>Jenis Kelamin</th>
                                 <th>Agama</th>
                                 <th>Status HDK</th>
+
                             </tr>
                             <?php
                             $no = 0;
@@ -283,16 +291,28 @@ if (isset($_GET['id_request_kk'])) {
                                 $jekel = $data['jekel'];
                                 $agama = $data['agama'];
                                 $status_hdk = $data['status_hdk'];
+                                $nama_anggota = $data['nama_anggota'];
+                                $nik_anggota = $data['nik_anggota'];
+                                $format2 = date('d F Y', strtotime($tgl));
+                                $jekel_anggota = $data['jekel_anggota'];
+                                $agama_anggota = $data['agama_anggota'];
+                                $hdk_anggota = $data['hdk_anggota'];
+
                             ?>
                                 <tbody>
                                     <tr align="center">
-                                        <th><?php echo $no++; ?></th>
-                                        <th><?php echo $nama; ?></th>
+                                        <th><?php echo $no++; ?></th> <br>
+                                        <th><?php echo $nama; ?> </th>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $tempat . ", " . $format2; ?></td>
                                         <td><?php echo $jekel; ?></td>
                                         <td><?php echo $agama; ?></td>
                                         <td><?php echo $status_hdk; ?></td>
+                                        <!-- <th><?php echo $nama_anggota; ?></th>
+                                        <td><?php echo $nik_anggota; ?></td>
+                                        <td><?php echo $jekel_anggota; ?></td>
+                                        <td><?php echo $agama_anggota; ?></td>
+                                        <td><?php echo $hdk_anggota; ?></td> -->
                                     </tr>
                                 </tbody>
                             <?php
@@ -314,7 +334,9 @@ if (isset($_GET['id_request_kk'])) {
                             </tr>
                             <tr>
                                 <td rowspan="15"></td>
-                                <td></td>
+                                <td>
+                                <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                                </td>
                                 <td rowspan="15"></td>
                             </tr>
                             <tr>
@@ -369,7 +391,6 @@ if (isset($_GET['id_request_kk'])) {
                             </tr>
                         </table>
                     </table>
-
                 </div>
             </div>
         </div>

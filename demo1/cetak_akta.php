@@ -191,7 +191,7 @@ if (isset($_GET['id_request_akta'])) {
                 <th>Lampung Tengah, <?php echo $format4; ?></th>
             </tr>
             <tr>
-                <td>Tanda Tangan <br> Yang Bersangkutan </td>
+                <!--<td>Tanda Tangan <br> Yang Bersangkutan </td> -->
                 <td><img src="" alt=""></td>
                 <td>Lurah Sumber Bahagia </td>
             </tr>

@@ -209,7 +209,7 @@ if (isset($_GET['tahun'])) {
                     </tbody>
             <?php
                 }
-            }
+            
             ?>
             </table>
         </center>

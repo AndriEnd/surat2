@@ -1,28 +1,30 @@
-<?php 
-    if (isset($_GET['file_sku'])) {
-    $file_sku    = $_GET['file_sku'];
+<?php
+include("konek.php"); // Sesuaikan dengan nama file koneksi Anda
 
-    $back_dir    ="../outputSurat/SKU/$nama_file";
-    $file = $back_dir.$_GET['file_sku'];
-     
-        if (file_exists($file)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename='.basename($file_sku));
-            header('Content-Transfer-Encoding: binary');
-            header('Expires: 0');
-            header('Cache-Control: private');
-            header('Pragma: private');
-            header('Content-Length: ' . filesize($file_sku));
-            ob_clean();
-            flush();
-            readfile($file_sku);
-            
-            exit;
-        } 
-        else {
-            $_SESSION['pesan'] = "Oops! File - $file_sku - not found ...";
-            header("location:tampil_download.php");
-        }
+if (isset($_GET['file_id'])) {
+    $id = $_GET['file_id'];
+
+    // Ambil nama file dari database
+    $result = mysqli_query($konek, "SELECT file_sku FROM data_request_sktm WHERE id_request_sktm=$id");
+    $row = mysqli_fetch_assoc($result);
+    $file_sku = $row['file_sku'];
+
+    // Path ke direktori penyimpanan file
+    $file_path = "../outputSurat/SKTM/" . $file_sku;
+
+    // Periksa apakah file ada
+    if (file_exists($file_path)) {
+        // Set header untuk mengaktifkan pengunduhan
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
+        header('Content-Length: ' . filesize($file_path));
+
+        // Baca file dan kirimkan ke output
+        readfile($file_path);
+        exit;
+    } else {
+        echo "File tidak ditemukan.";
     }
-?>
+} else {
+    echo "Parameter file_id tidak valid.";
+}
