@@ -89,7 +89,16 @@ if (isset($_GET['id_request_sku'])) {
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
                             $nama_file   = $_FILES['sku'];
-                            $file_sku = $_FILES['sku']['name']; // Perbaikan disini
+                            $file_sku = $_FILES['sku']['name']; // SKU = file upload, name=nama file yg terupload 
+                            $x = explode('.', $file_sku);
+                            $ekstensiFile = strtolower(end($x));
+                            $ukuranFile    = $_FILES['sku']['size'];
+                            $file_tmp = $_FILES['sku']['tmp_name'];
+                            $dir_upload = "../outputSurat/SKU/";
+                            $link_upload = $dir_upload.$file_sku;
+                            move_uploaded_file($file_tmp, $link_upload); // sampe sini.. cek link upload
+                            
+
                             $sql = "UPDATE data_request_sku SET file_sku='$file_sku' WHERE id_request_sku=$id";
                             $query = mysqli_query($konek, $sql);
                             $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");

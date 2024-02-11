@@ -62,21 +62,7 @@
                                         </td>
                                         </td>
                                     </tr>
-                                    <?php
-                                                //Susunan Struktur File :> $file = 'file/501-862-1-SM.pdf';
-                                                $file = $_GET['url'];
-                                                if (file_exists($file)) {
-                                                    header('Content-Description: File Transfer');
-                                                    header('Content-Type: application/octet-stream');
-                                                    header('Content-Disposition: attachment; filename="'.basename($file).'"');
-                                                    header('Expires: 0');
-                                                    header('Cache-Control: must-revalidate');
-                                                    header('Pragma: public');
-                                                    header('Content-Length: ' . filesize($file));
-                                                    readfile($file);
-                                                    exit;
-                                                }
-                                    ?>
+                                    
                                 <?php
                                 }
                                 ?>
@@ -105,6 +91,7 @@
                                     <th>Nama Perusahaan</th>
                                     <th>Keperluan</th>
                                     <th>Surat</th>
+                                    <th>size</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,6 +111,7 @@
                                     $keterangan = $data['keterangan'];
                                     $file_sku = $data['file_sku'];
                                     $id_request_sku = $data['id_request_sku'];
+                                   
 
                                     if ($status == "1") {
                                         $status = "<b style='color:green'>Sudah ACC RT</b>";
@@ -141,11 +129,10 @@
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $usaha; ?></td>
                                         <td><?php echo $keperluan; ?></td>
-
                                         <td>
-                                            <a href="download_sku.php?=" ?url> <?php echo $file_sku; ?> </a>
-                                            <!-- <a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i> -->
+                                            <a href="download_sku.php?url=<?php echo $row['sku']; ?>"><?php echo $file_sku; ?></a></td>
                                         </td>
+                                        <td><?php echo number_format($row['sku']/(1024*1024), 2) ?>MB</td>
                                         <td>
                                     </tr>
                                 <?php
@@ -217,8 +204,10 @@
                                 <?php
                                 }
                                 ?>
+                                
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
