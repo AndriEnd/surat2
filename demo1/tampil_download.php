@@ -132,7 +132,7 @@
                                         <td>
                                             <a href="download_sku.php?url=<?php echo $row['sku']; ?>"><?php echo $file_sku; ?></a></td>
                                         </td>
-                                        <td><?php echo number_format($row['sku']/(1024*1024), 2) ?>MB</td>
+                                        <td><?php echo number_format($row['size']/(1024*1024), 2) ?>MB</td>
                                         <td>
                                     </tr>
                                 <?php
