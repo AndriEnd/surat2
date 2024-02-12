@@ -15,7 +15,7 @@ $nama = $data['nama'];
 			<form method="POST" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">FORM TAMBAH REQUEST SURAT KETERANGAN KARTU KELUARGA</div>
+						<div class="card-title">FORM LAYANAN SURAT KETERANGAN KARTU KELUARGA</div>
 					</div>
 					<div class="card-body">
 						<div class="row">

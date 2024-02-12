@@ -26,26 +26,26 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				<?php
 				if ($hak_akses == "RT") {
 				?>
-					<li class="nav-item">
+					<!--<li class="nav-item">
 						<a href="?halaman=permohonan_surat">
 							<i class="far fa-calendar-check"></i>
 							<p>Cetak Surat</p>
 						</a>
-					</li>
+					</li> -->
 					<li class="nav-item">
 						<a href="?halaman=tampil_penduduk">
 							<i class="far fa-user"></i>
 							<p>Data Penduduk</p>
 						</a>
-					<li class="nav-item">
+						<!--<li class="nav-item">
 						<a href="?halaman=surat_dicetak">
 							<i class="far fa-calendar-check"></i>
 							<p>Surat Selesai</p>
 						</a>
-					</li>
-				<?php
+					</li> -->
+					<?php
 				} elseif ($hak_akses == "Lurah") {
-				?>
+					?>
 					<li class="nav-item">
 						<a data-toggle="collapse" href="#tables">
 							<i class="fas fa-table"></i>
@@ -81,16 +81,26 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 							<p>Data User</p>
 						</a>
 					</li>
+
 					<li class="nav-item">
 						<a href="?halaman=permohonan_surat">
 							<i class="far fa-calendar-check"></i>
 							<p>Cetak Surat</p>
 						</a>
+					</li>
+
 					<li class="nav-item">
 						<a href="?halaman=tampil_penduduk">
 							<i class="far fa-user"></i>
 							<p>Data Penduduk</p>
 						</a>
+					</li>
+					<li class="nav-item">
+						<a href="?halaman=surat_dicetak">
+							<i class="far fa-calendar-check"></i>
+							<p>Surat Selesai</p>
+						</a>
+					</li>
 					<li class="nav-item">
 						<a data-toggle="collapse" href="#tables">
 							<i class="fas fa-table"></i>

@@ -20,7 +20,7 @@
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
                                     <th>Keperluan</th>
-                                    <th>Surat</th>
+                                    <th>Download Surat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,17 +52,14 @@
                                     }
                                 ?>
                                     <tr>
-
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td>
-                                            <a href="download_sktm.php?url=<?php echo $row['sktm']; ?>">Download</a>
-                                        </td>
+                                            <a href="download_sktm.php?url=<?php echo $file_sktm; ?>"><?php echo $file_sktm; ?></a>
                                         </td>
                                     </tr>
-                                    
                                 <?php
                                 }
                                 ?>
@@ -90,8 +87,8 @@
                                     <th>Nama Lengkap</th>
                                     <th>Nama Perusahaan</th>
                                     <th>Keperluan</th>
-                                    <th>Surat</th>
-                                    <th>size</th>
+                                    <th>Download Surat</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -111,7 +108,7 @@
                                     $keterangan = $data['keterangan'];
                                     $file_sku = $data['file_sku'];
                                     $id_request_sku = $data['id_request_sku'];
-                                   
+
 
                                     if ($status == "1") {
                                         $status = "<b style='color:green'>Sudah ACC RT</b>";
@@ -130,9 +127,10 @@
                                         <td><?php echo $usaha; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td>
-                                            <a href="download_sku.php?url=<?php echo $row['sku']; ?>"><?php echo $file_sku; ?></a></td>
+                                            <a href="download_sku.php?url=<?php echo $row['sku']; ?>"><?php echo $file_sku; ?></a>
                                         </td>
-                                        <td><?php echo number_format($row['size']/(1024*1024), 2) ?>MB</td>
+                                        </td>
+
                                         <td>
                                     </tr>
                                 <?php
@@ -160,7 +158,7 @@
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
                                     <th>Keperluan</th>
-                                    <th>Surat</th>
+                                    <th>Download Surat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -204,10 +202,10 @@
                                 <?php
                                 }
                                 ?>
-                                
+
                             </tbody>
                         </table>
-                        
+
                     </div>
                 </div>
             </div>
@@ -230,7 +228,7 @@
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
                                     <th>Keperluan</th>
-                                    <th>Surat</th>
+                                    <th>Download Surat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -295,7 +293,7 @@
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
                                     <th>Keperluan</th>
-                                    <th>Surat</th>
+                                    <th>Download Surat</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -360,7 +358,7 @@
                                     <th>NIK</th>
                                     <th>Nama Lengkap</th>
                                     <th>Keperluan</th>
-                                    <th>Surat</th>
+                                    <th>Download Surat</th>
                                 </tr>
                             </thead>
                             <tbody>

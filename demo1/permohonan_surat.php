@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MAMPU</h4>
+						<h4 class="card-title">JENIS LAYANAN SURAT KETERANGAN TIDAK MAMPU</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -82,7 +82,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN USAHA</h4>
+						<h4 class="card-title">JENIS LAYANAN SURAT KETERANGAN USAHA</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -155,7 +155,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN KARTU KELUARGA</h4>
+						<h4 class="card-title">JENIS LAYANAN SURAT KETERANGAN KARTU KELUARGA</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -228,7 +228,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN DOMISILI</h4>
+						<h4 class="card-title">JENIS LAYANAN SURAT KETERANGAN DOMISILI</h4>
 					</div>
 				</div>
 				<form method="POST">
@@ -315,7 +315,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN LAHIR</h4>
+						<h4 class="card-title">JENIS LAYANAN SURAT KETERANGAN LAHIR</h4>
 					</div>
 				</div>
 				<form method="POST">
@@ -401,7 +401,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN KTP</h4>
+						<h4 class="card-title">JENIS LAYANAN SURAT KETERANGAN KTP</h4>
 					</div>
 				</div>
 				<form method="POST">

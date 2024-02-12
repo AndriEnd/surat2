@@ -139,7 +139,7 @@ if (isset($_GET['tahun'])) {
                     <center>
                         <font size="4"><b>PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</b></font><br>
                         <font size="4"><b>KECAMATAN SEPUTIH BANYAK</b></font><br>
-                        <font size="4"><b>KELURAHAN SUMBER BAHAGIA<?php echo $tahun; ?></b></font><br>
+                        <font size="4"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
                         <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                         <!-- <font size="4"><b>TAHUN <?php echo $tahun; ?></b></font><br> -->
                     </center>
@@ -180,7 +180,7 @@ if (isset($_GET['tahun'])) {
                     <th>Tanggal ACC</th>
                     <th>Nama</th>
                     <th>Keperluan</th>
-                    <th>Request</th>
+                    <th>Layanan</th>
                 </tr>
                 <?php
                 $no = 0;
@@ -190,7 +190,7 @@ if (isset($_GET['tahun'])) {
                     // $nik = $data['nik'];
                     $nama = $data['nama'];
                     $tanggal = $data['acc'];
-                    $format1 = date('d F Y', strtotime($tanggal));
+                    $tgl = date('d F Y', strtotime($tanggal));
                     $keperluan = $data['keperluan'];
                     $request = $data['request'];
                     $tglreq = $data['tanggal_request'];
@@ -200,7 +200,7 @@ if (isset($_GET['tahun'])) {
                         <tr>
                             <th><?php echo $no; ?></th>
                             <td><?php echo $req; ?></td>
-                            <td><?php echo $format1; ?></td>
+                            <td><?php echo $tgl; ?></td>
                             <!-- <td><?php echo $nik; ?></td> -->
                             <td><?php echo $nama; ?></td>
                             <td><?php echo $keperluan; ?></td>
@@ -209,7 +209,7 @@ if (isset($_GET['tahun'])) {
                     </tbody>
             <?php
                 }
-            
+            }
             ?>
             </table>
         </center>

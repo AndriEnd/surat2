@@ -37,7 +37,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					<li class="nav-item">
 						<a href="?halaman=tampil_status">
 							<i class="far fa-calendar-check"></i>
-							<p>Status Request</p>
+							<p>Status Layanan</p>
 						</a>
 					</li>
 					<li class="nav-item">

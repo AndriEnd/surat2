@@ -71,7 +71,7 @@ if (!isset($_POST['tampilkan'])) {
 	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
 	WHERE data_request_ktp.status = 3";
 	$query = mysqli_query($konek, $sql);
-}  elseif (isset($_POST['tampilkan'])) {
+} elseif (isset($_POST['tampilkan'])) {
 	$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
 	$sql = "SELECT
 		data_user.nik,
@@ -146,7 +146,7 @@ if (!isset($_POST['tampilkan'])) {
 	<div class="page-inner py-5">
 		<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 			<div>
-				<h2 class="text-white pb-2 fw-bold">LAPORAN PERBULAN REQUEST SURAT KETERANGAN</h2>
+				<h2 class="text-white pb-2 fw-bold">LAPORAN PERBULAN </h2>
 			</div>
 		</div>
 	</div>
@@ -173,6 +173,15 @@ if (!isset($_POST['tampilkan'])) {
 									<option value="10">Oktober</option>
 									<option value="11">Nopember</option>
 									<option value="12">Desember</option>
+								</select>
+								<select name="request" id="request" class="form-control">
+									<option value="">Pilih</option>
+									<option value="SKTM">SKTM</option>
+									<option value="KK">KK</option>
+									<option value="SKU">SKU</option>
+									<option value="SKD">SKD</option>
+									<option value="KTP">KTP</option>
+
 								</select>
 								<div class="form-group">
 									<input type="submit" name="tampilkan" value="Tampilkan" class="btn btn-primary btn-sm">
@@ -206,7 +215,7 @@ if (!isset($_POST['tampilkan'])) {
 							<tr>
 								<th scope="col">No</th>
 								<th scope="col">Tanggal ACC</th>
-								<th scope="col">Nik</th>
+								<th scope="col">NIK</th>
 								<th scope="col">Nama</th>
 								<th scope="col">Keperluan</th>
 								<th scope="col">Request</th>

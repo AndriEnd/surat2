@@ -66,7 +66,7 @@
                     </div>
                     <form action="">
                         <div class="table-responsive">
-                            <table id="add" class="display table table-striped table-hover">
+                            <table id="add3" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>No.</th>

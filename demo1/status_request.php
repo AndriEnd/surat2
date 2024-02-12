@@ -26,7 +26,6 @@
 									<th>Keterangan</th>
 									<th>Surat</th>
 									<th style="width: 10%">Action</th>
-
 								</tr>
 							</thead>
 							<tbody>

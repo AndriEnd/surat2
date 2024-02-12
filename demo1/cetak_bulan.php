@@ -134,7 +134,7 @@ if (isset($_GET['bulan'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CETAK BULAN</title>
+        <title> LAPORAN BULAN <?php echo date('F'); ?></title>
     </head>
 
     <body>
@@ -163,6 +163,7 @@ if (isset($_GET['bulan'])) {
                 <td>
                     <center>
                         <font size="4"><b>PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</b></font><br>
+                        <font size="4"><b>KECAMATAN SEPUTIH BANYAK</b></font><br>
                         <font size="4"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
                         <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                         <!-- <font size="4"><b>PERIODE BULAN <?php echo $bln; ?></b></font><br> -->
@@ -197,14 +198,14 @@ if (isset($_GET['bulan'])) {
         </table>
         <br>
         <center>
-            <table class="table table-bordered">
+            <table border="1" class="table table-bordered">
                 <tr>
                     <th>No.</th>
                     <th>Tanggal Request</th>
                     <th>Tanggal ACC</th>
                     <th>Nama</th>
                     <th>Keperluan</th>
-                    <th>Request</th>
+                    <th>Layanan</th>
                 </tr>
                 <?php
                 $no = 0;
@@ -237,8 +238,6 @@ if (isset($_GET['bulan'])) {
             ?>
             </table>
         </center>
-
-
         <br>
         <br>
         <table border='0' align="right">

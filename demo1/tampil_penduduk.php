@@ -23,7 +23,7 @@
                         </a>
                     </div>
 
-                    
+
                 </div>
                 <div class="card-body">
                     <!-- Modal -->
@@ -80,8 +80,8 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>NIK / Nama</th>
                                         <th>No.KK</th>
+                                        <th>NIK / Nama</th>
                                         <th>Alamat</th>
                                         <th>Golongan Darah</th>
                                         <th>Jenis Kelamin</th>
@@ -126,8 +126,8 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $nik . ' - ' . $nama; ?></td>
                                             <td><?php echo $no_kk; ?></td>
+                                            <td><?php echo $nik . ' - ' . $nama; ?></td>
                                             <td><?php echo $alamat; ?></td>
                                             <td><?php echo $gol_darah; ?></td>
                                             <td><?php echo $jekel; ?></td>

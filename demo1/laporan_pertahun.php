@@ -1,11 +1,12 @@
 <?php
-
 include '../konek.php';
 date_default_timezone_set('Asia/Jakarta');
 ?>
 <?php
+
 if (!isset($_POST['tampilkan'])) {
 	$tahun = isset($_POST['tahun']) ? $_POST['tahun'] : '';
+	$request = isset($_POST['request']) ? $_POST['request'] : '';
 	$sql = "SELECT
 		data_user.nik,
 		data_user.nama,
@@ -74,6 +75,7 @@ if (!isset($_POST['tampilkan'])) {
 	$query = mysqli_query($konek, $sql);
 } elseif (isset($_POST['tampilkan'])) {
 	$tahun = isset($_POST['tahun']) ? $_POST['tahun'] : '';
+	$request = isset($_POST['tahun']) ? $_POST['tahun'] : '';
 	$sql = "SELECT
 		data_user.nik,
 		data_user.nama,
@@ -83,7 +85,7 @@ if (!isset($_POST['tampilkan'])) {
 	FROM
 		data_user
 	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE year(data_request_sktm.acc) = '$tahun'
+	WHERE year(data_request_sktm.acc) = '$tahun' 
 	UNION
 	SELECT
 		data_user.nik,
@@ -94,7 +96,7 @@ if (!isset($_POST['tampilkan'])) {
 	FROM
 		data_user
 	INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
-	WHERE year(data_request_kk.acc) = '$tahun'
+	WHERE year(data_request_kk.acc) = '$tahun' 
 	UNION
 	SELECT
 		data_user.nik,
@@ -142,14 +144,12 @@ if (!isset($_POST['tampilkan'])) {
 	";
 	$query = mysqli_query($konek, $sql);
 }
-
 ?>
-
 <div class="panel-header bg-primary-gradient">
 	<div class="page-inner py-5">
 		<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 			<div>
-				<h2 class="text-white pb-2 fw-bold">LAPORAN PERTAHUN REQUEST SURAT KETERANGAN</h2>
+				<h2 class="text-white pb-2 fw-bold">LAPORAN PERTAHUN </h2>
 			</div>
 		</div>
 	</div>
@@ -164,7 +164,6 @@ if (!isset($_POST['tampilkan'])) {
 							<div class="form-group">
 								<select name="tahun" class="form-control">
 									<option value="">Pilih</option>
-
 									<option value="2020">2020</option>
 									<option value="2021">2021</option>
 									<option value="2022">2022</option>
@@ -175,6 +174,14 @@ if (!isset($_POST['tampilkan'])) {
 									<option value="2027">2027</option>
 									<option value="2028">2028</option>
 									<option value="2029">2029</option>
+								</select>
+								<select name="request" id="request" class="form-control">
+									<option value="">Pilih</option>
+									<option value="SKTM">SKTM</option>
+									<option value="KK">KK</option>
+									<option value="SKU">SKU</option>
+									<option value="SKD">SKD</option>
+									<option value="SKU">SKU</option>
 								</select>
 								<div class="form-group">
 									<input type="submit" name="tampilkan" value="Tampilkan" class="btn btn-primary btn-sm">
@@ -202,6 +209,7 @@ if (!isset($_POST['tampilkan'])) {
 						</a>
 					</div>
 				</div>
+
 				<div class="card-body">
 					<table class="table mt-3">
 						<thead>

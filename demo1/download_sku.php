@@ -1,30 +1,37 @@
 <?php
-include("konek.php"); // Sesuaikan dengan nama file koneksi Anda
+// Buat file download_sku.php untuk meng-handle proses download
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-if (isset($_GET['file_id'])) {
-    $id = $_GET['file_id'];
+    // Ambil data file SKU dari database berdasarkan id
+    $sql = "SELECT file_sku FROM data_request_sku WHERE id_request_sku = $id";
+    $result = mysqli_query($konek, $sql);
 
-    // Ambil nama file dari database
-    $result = mysqli_query($konek, "SELECT file_sku FROM data_request_sktm WHERE id_request_sktm=$id");
-    $row = mysqli_fetch_assoc($result);
-    $file_sku = $row['file_sku'];
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+        $file_sku = $row['file_sku'];
 
-    // Path ke direktori penyimpanan file
-    $file_path = "../outputSurat/SKTM/" . $file_sku;
+        // Path file SKU
+        $file_path = "../outputSurat/SKU/" . $file_sku;
 
-    // Periksa apakah file ada
-    if (file_exists($file_path)) {
-        // Set header untuk mengaktifkan pengunduhan
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
-        header('Content-Length: ' . filesize($file_path));
-
-        // Baca file dan kirimkan ke output
-        readfile($file_path);
-        exit;
+        // Cek apakah file ada
+        if (file_exists($file_path)) {
+            // Set header untuk melakukan download
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file_path));
+            readfile($file_path);
+            exit;
+        } else {
+            // Jika file tidak ditemukan
+            echo "<script language='javascript'>alert('File tidak ditemukan');</script>";
+        }
     } else {
-        echo "File tidak ditemukan.";
+        // Jika query tidak berhasil
+        echo "<script language='javascript'>alert('Query error');</script>";
     }
-} else {
-    echo "Parameter file_id tidak valid.";
 }

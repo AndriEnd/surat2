@@ -38,7 +38,7 @@ if (isset($_GET['data_penduduk'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CETAK TAHUN</title>
+    <title>LAPORAN DATA PENDUDUK TAHUN <?php echo date('Y'); ?></title>
 </head>
 
 <body>
@@ -104,8 +104,11 @@ if (isset($_GET['data_penduduk'])) {
         <table border="1" align="center" class="table table-bordered">
             <tr align="center">
                 <th>No.</th>
-                <th>NIK / Nama</th>
                 <th>No.KK</th>
+                <th>NIK
+                    <br> Nama
+                </th>
+
                 <th>Alamat</th>
                 <th>Golongan
                     <br>Darah
@@ -132,8 +135,8 @@ if (isset($_GET['data_penduduk'])) {
             $query = mysqli_query($konek, $tampil);
             while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
                 $no++;
-                $nik = $data['nik'];
                 $no_kk = $data['no_kk'];
+                $nik = $data['nik'];
                 $nama = $data['nama'];
                 $jekel = $data['jekel'];
                 $tempat_lahir = $data['tempat_lahir'];
@@ -154,8 +157,8 @@ if (isset($_GET['data_penduduk'])) {
                 <tbody>
                     <tr align="center">
                         <th><?php echo $no++; ?></th>
-                        <td><?php echo $nik; ?> <br> <?php echo $nama; ?></td>
                         <td><?php echo $no_kk; ?></td>
+                        <td><?php echo $nik; ?> <?php echo $nama; ?></td>
                         <td><?php echo $alamat; ?></td>
                         <td><?php echo $gol_darah; ?></td>
                         <td><?php echo $jekel; ?></td>
@@ -190,7 +193,7 @@ if (isset($_GET['data_penduduk'])) {
     <br><br><br><br><br>
     <table border='0' align="right">
         <tr>
-            <td style="text-align: center"><b>Lurah kec.Sumber Bahagia</b></td>
+            <td style="text-align: center"><b>Lurah Kel.Sumber Bahagia</b></td>
         </tr>
         <tr>
             <td style="text-align: center"><b>(Lurah)</b></td>
