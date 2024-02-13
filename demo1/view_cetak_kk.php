@@ -58,7 +58,6 @@ if (isset($_GET['id_request_kk'])) {
     $status_perkawinan = $data['status_perkawinan'];
 }
 
-
 ?>
 <div class="panel-header bg-primary-gradient">
     <div class="page-inner py-5">
@@ -308,13 +307,9 @@ if (isset($_GET['id_request_kk'])) {
                                         <td><?php echo $jekel; ?></td>
                                         <td><?php echo $agama; ?></td>
                                         <td><?php echo $status_hdk; ?></td>
-                                        <!-- <th><?php echo $nama_anggota; ?></th>
-                                        <td><?php echo $nik_anggota; ?></td>
-                                        <td><?php echo $jekel_anggota; ?></td>
-                                        <td><?php echo $agama_anggota; ?></td>
-                                        <td><?php echo $hdk_anggota; ?></td> -->
                                     </tr>
                                 </tbody>
+                               
                             <?php
                             }
                             ?>

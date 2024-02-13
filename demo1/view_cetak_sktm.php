@@ -78,11 +78,12 @@ if (isset($_GET['id_request_sktm'])) {
                         // Pastikan variabel $id sudah didefinisikan sebelumnya
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
-                            $file_sktm = $_FILES['sktm']['name'];
-                            $file_tmp = $_FILES['sktm']['tmp_name'];
-                            $file_destination = "../outputSurat/SKTM/" . $file_sktm;
-                            $sql = "UPDATE data_request_sktm SET file_sktm='$file_sktm' WHERE id_request_sktm=$id";
-                            $query = mysqli_query($konek, $sql);
+                            $file_sktm = $_FILES['sktm']['name']; // nama file
+                            $file_tmp = $_FILES['sktm']['tmp_name']; // lokasi file
+                            $file_destination = "../outputSurat/SKTM/" . $file_sktm; // folder file                           
+                            $konek = mysqli_connect($hostname, $username, $password, $database,); // info file
+                            $sql = "INSERT INTO data_request_sktm (file_sktm) VALUES ('$file_sktm') WHERE id_request_sktm=$id";
+                            $query = mysqli_query($konek, $sql,);
                             $update = mysqli_query($konek, "UPDATE data_request_sktm SET keterangan='$cetak', status=3 WHERE id_request_sktm=$id");
 
                             if ($update && $query) {
