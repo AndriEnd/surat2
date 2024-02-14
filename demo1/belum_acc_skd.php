@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="fw-bold text-uppercase"> tampil belum acc request surat keterangan domisili</h4>
+						<h4 class="fw-bold text-uppercase"> daftar acc surat keterangan domisili</h4>
 					</div>
 				</div>
 				<form action="" method="POST">
@@ -23,6 +23,8 @@
 										<th>Status</th>
 										<th>Scan KTP</th>
 										<th>Scan KK</th>
+										<th>Keterangan</th>
+										<th>Keperluan</th>
 										<th style="width: 10%">Action</th>
 									</tr>
 								</thead>
@@ -40,6 +42,8 @@
 										$id = $data['id_request_skd'];
 										$ktp = $data['scan_ktp'];
 										$kk = $data['scan_kk'];
+										$keterangan = $data['keterangan'];
+										$keperluan = $data['keperluan'];
 										$id_request_skd = $data['id_request_skd'];
 
 										if ($status == "1") {
@@ -55,6 +59,8 @@
 											<td class="fw-bold text-uppercase text-success op-8"><?php echo $status; ?></td>
 											<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 											<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
+											<td><i><?php echo $keterangan; ?></i></td>
+											<td><i><?php echo $keperluan; ?></i></td>
 											<td>
 												<div class="form-button-action">
 													<a type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="View Surat" href="?halaman=view_skd&id_request_skd=<?= $id_request_skd; ?>">

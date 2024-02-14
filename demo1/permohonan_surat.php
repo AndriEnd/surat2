@@ -95,6 +95,7 @@
 									<th>Nama Lengkap</th>
 									<th>Scan KTP</th>
 									<th>Scan KK</th>
+									<th>Keperluan</th>
 									<th>Status</th>
 									<th style="width: 10%">Action</th>
 								</tr>
@@ -128,6 +129,7 @@
 										<td><?php echo $nama; ?></td>
 										<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 										<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
+										<td><?php echo $keperluan; ?></td>
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td>
 											<div class="form-button-action">
@@ -242,6 +244,7 @@
 										<th>Nama Lengkap</th>
 										<th>Scan KTP</th>
 										<th>Scan KK</th>
+										<th>Keperluan</th>
 										<th>Status</th>
 										<th style="width: 10%">Action</th>
 									</tr>
@@ -274,6 +277,7 @@
 											<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 											<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
 											<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
+											<td><?php echo $keperluan; ?></td>
 											<td>
 												<div class="form-button-action">
 													<a href="?halaman=view_cetak_skd&id_request_skd=<?= $id_request_skd; ?>">
@@ -329,6 +333,7 @@
 										<th>Nama Lengkap</th>
 										<th>Scan KTP</th>
 										<th>Scan KK</th>
+										<th>Keperluan</th>
 										<th>Status</th>
 										<th style="width: 10%">Action</th>
 									</tr>
@@ -361,6 +366,7 @@
 											<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 											<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
 											<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
+											<td><?php echo $keperluan; ?></td>
 											<td>
 												<div class="form-button-action">
 													<a href="?halaman=view_cetak_akta&id_request_akta=<?= $id_request_akta; ?>">
@@ -415,6 +421,7 @@
 										<th>Nama Lengkap</th>
 										<th>Scan KTP</th>
 										<th>Scan KK</th>
+										<th>Keperluan</th>
 										<th>Status</th>
 										<th style="width: 10%">Action</th>
 									</tr>
@@ -447,6 +454,7 @@
 											<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 											<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
 											<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
+											<td><?php echo $keperluan; ?></td>
 											<td>
 												<div class="form-button-action">
 													<a href="?halaman=view_cetak_ktp&id_request_ktp=<?= $id_request_ktp; ?>">

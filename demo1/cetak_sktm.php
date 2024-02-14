@@ -160,18 +160,7 @@ if (isset($_GET['id_request_sktm'])) {
                 <td>:</td>
                 <td><?php echo $keperluan; ?></td>
             </tr>
-            <tr>
-                <td>Keterangan</td>
-                <td>:</td>
-                <?php
 
-                if ($request == "TIDAK MAMPU") {
-                    $request = "Surat Keterangan Tidak Mampu";
-                }
-
-                ?>
-                <td><?php echo $request; ?></td>
-            </tr>
         </table>
         <br>
         <table border="0" align="center">

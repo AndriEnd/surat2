@@ -21,6 +21,9 @@ if (isset($_GET['id_request_akta'])) {
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
+    $nama_anak = $data['nama_anak'];
+    $status_anak = $data['status_anak'];
+    $anak_ke = $data['anak_ke'];
     $alamat = $data['alamat'];
     $status_warga = $data['status_warga'];
     $request = $data['request'];
@@ -30,6 +33,7 @@ if (isset($_GET['id_request_akta'])) {
     $acc = $data['acc'];
     $format4 = date('d F Y', strtotime($acc));
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +108,7 @@ if (isset($_GET['id_request_akta'])) {
             <tr>
                 <td>
                     <center>
-                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR AKTA</b></font><br>
+                        <font size="4"><b>SURAT KETERANGAN LAHIR</b></font><br>
                         <hr style="margin:0px" color="black">
                         <span>Nomor : 145.6 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                     </center>
@@ -125,7 +129,7 @@ if (isset($_GET['id_request_akta'])) {
             <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td><?php echo $nama; ?></td>
+                <td><?php echo $nama_anak; ?></td>
             </tr>
             <tr>
                 <td>Tempat, Tanggal Lahir</td>
@@ -148,6 +152,21 @@ if (isset($_GET['id_request_akta'])) {
                 <td><?php echo $status_warga; ?></td>
             </tr>
             <tr>
+                <td>Status anak</td>
+                <td>:</td>
+                <td><?php echo $status_anak; ?></td>
+            </tr>
+            <tr>
+                <td>Anak Ke -</td>
+                <td>:</td>
+                <td><?php echo $anak_ke; ?></td>
+            </tr>
+            <tr>
+                <td>Nama Ibu</td>
+                <td>:</td>
+                <td><?php echo $nama; ?></td>
+            </tr>
+            <tr>
                 <td>No. NIK</td>
                 <td>:</td>
                 <td><?php echo $nik; ?></td>
@@ -162,15 +181,7 @@ if (isset($_GET['id_request_akta'])) {
                 <td>:</td>
                 <td><?php echo $keperluan; ?></td>
             </tr>
-            <tr>
-                <td>Keterangan</td>
-                <td>:</td>
-                <?php
-                if ($request == "AKTA") {
-                    $request = "Surat Keterangan Akta";
-                }
-                ?>
-                <td><?php echo $request; ?></td>
+
             </tr>
         </table>
         <br>
@@ -191,7 +202,7 @@ if (isset($_GET['id_request_akta'])) {
                 <th>Lampung Tengah, <?php echo $format4; ?></th>
             </tr>
             <tr>
-                <!--<td>Tanda Tangan <br> Yang Bersangkutan </td> -->
+                <td>Tanda Tangan <br> Yang Bersangkutan </td>
                 <td><img src="" alt=""></td>
                 <td>Lurah Sumber Bahagia </td>
             </tr>

@@ -119,7 +119,7 @@ if (isset($_GET['id_request_ktp'])) {
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">KTP</h4>
+                        <h4 class="card-title">Photo / KTP</h4>
                     </div>
                     <div class="card-body">
                         <div class="row justify-content-md-center">

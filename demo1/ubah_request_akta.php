@@ -18,6 +18,7 @@ if (isset($_GET['id_request_akta'])) {
     $keperluan = $data['keperluan'];
     $nama_anak = $data['nama_anak'];
     $anak_ke = $data['anak_ke'];
+    $status_anak = $data['status_anak'];
 }
 ?>
 <div class="page-inner">
@@ -26,7 +27,7 @@ if (isset($_GET['id_request_akta'])) {
             <form method="POST" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">UBAH DATA REQUEST SURAT KETERANGAN AKTA</div>
+                        <div class="card-title">UBAH DATA LAYANAN SURAT KETERANGAN AKTA</div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -35,13 +36,21 @@ if (isset($_GET['id_request_akta'])) {
                                     <label>NIK</label>
                                     <input type="text" name="nik" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label>No.KK </label>
+                                    <input type="text" class="form-control" value="<?= $no_kk; ?>" readonly>
+                                </div> -->
                                 <div class="form-group">
                                     <label>Nama Anak</label>
-                                    <input type="text" name="nama_anak" class="form-control" value="<?= $nama_anak; ?>" placeholder="Nama Anak.." autofocus readonly>
+                                    <input type="text" name="nama_anak" class="form-control" value="<?= $nama_anak; ?>" placeholder="Nama Anak.." autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label>Anak Ke -</label>
                                     <input type="text" name="anak_ke" class="form-control" value="<?= $anak_ke; ?>" placeholder="Anak Ke - " autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status Anak</label>
+                                    <input type="text" name="status_anak" class="form-control" value="<?= $status_anak; ?>" placeholder="status_anak " autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label>Keperluan</label>
@@ -85,7 +94,7 @@ if (isset($_POST['ubah'])) {
     $keperluan = $_POST['keperluan'];
     $nama_anak = $_POST['nama_anak'];
     $anak_ke = $_POST['anak_ke'];
-    $sql = "UPDATE data_request_akta SET scan_ktp='$file_ktp',scan_kk='$file_kk',keperluan='$keperluan' WHERE id_request_akta=$id";
+    $sql = "UPDATE data_request_akta SET scan_ktp='$file_ktp',scan_kk='$file_kk',keperluan='$keperluan',nama_anak='$nama_anak',anak_ke='$anak_ke',status_anak='$status_anak' WHERE id_request_akta=$id";
     $query = mysqli_query($konek, $sql);
 
     if ($query) {

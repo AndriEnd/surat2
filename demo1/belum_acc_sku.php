@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="fw-bold text-uppercase">belum acc request surat keterangan usaha</h4>
+						<h4 class="fw-bold text-uppercase">daftar acc surat keterangan usaha</h4>
 					</div>
 				</div>
 				<form action="" method="POST">
@@ -23,7 +23,10 @@
 										<th>Status</th>
 										<th>Scan KTP</th>
 										<th>Scan KK</th>
+										<th>Keterangan</th>
+										<th>Keperluan</th>
 										<th style="width: 10%">Action</th>
+
 									</tr>
 								</thead>
 								<tbody>
@@ -39,6 +42,8 @@
 										$id = $data['id_request_sku'];
 										$ktp = $data['scan_ktp'];
 										$kk = $data['scan_kk'];
+										$keterangan = $data['keterangan'];
+										$keperluan = $data['keperluan'];
 										$id_request_sku = $data['id_request_sku'];
 
 										if ($status == "1") {
@@ -51,9 +56,11 @@
 											<td><?php echo $format; ?></td>
 											<td><?php echo $nik; ?></td>
 											<td><?php echo $nama; ?></td>
-											<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
+											<td class="fw-bold text-uppercase text-success op-8"><?php echo $status; ?></td>
 											<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 											<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
+											<td><i><?php echo $keterangan; ?></i></td>
+											<td><i><?php echo $keperluan; ?></i></td>
 											<!-- <td>
 															<input type="checkbox" name="check[$i]" value="<?php echo $id; ?>">
 															<input type="submit" name="acc" class="btn btn-primary btn-sm" value="ACC">

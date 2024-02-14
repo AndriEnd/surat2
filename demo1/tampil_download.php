@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
+                                <?php
                                 $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE nik=$_SESSION[nik]";
                                 $konek = mysqli_connect($hostname, $username, $password, $database,); // info file
                                 $query = mysqli_query($konek, $sql);
@@ -38,9 +38,8 @@
                                     $kk = $data['scan_kk'];
                                     $keperluan = $data['keperluan'];
                                     $keterangan = $data['keterangan'];
-                                    $file_sktm = $data['file_sktm'];
                                     $id_request_sktm = $data['id_request_sktm'];
-                                    $file_sktm = $data['file_sktm'];
+                                    $file_sktm = $data['file_sktm']; // file sktm
 
                                     if ($status == "1") {
                                         $status = "<b style='color:green'>Sudah ACC RT</b>";
@@ -52,19 +51,19 @@
                                         $status = "<b style='color:green'>SURAT SUDAH DICETAK</b>";
                                     }
                                 ?>
-                                
+
                                     <tr>
                                         <td><?php echo $format; ?></td>
                                         <td><?php echo $nik; ?></td>
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td>
-                                        <a href="download_sktm.php?file=<?php echo $file_sktm; ?>"><?php echo $file_sktm; ?></a>
+                                            <a href="download_sktm.php?file=<?php echo $file_sktm; ?>"><?php echo $file_sktm; ?></a> <!-- Button link -->
                                         </td>
                                     </tr>
                                 <?php
                                 }
-                            ?>
+                                ?>
                             </tbody>
                         </table>
                     </div>

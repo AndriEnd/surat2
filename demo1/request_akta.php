@@ -15,7 +15,7 @@ $nama = $data['nama'];
             <form method="POST" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">FORM LAYANAN SURAT AKTA LAHIR</div>
+                        <div class="card-title">FORM LAYANAN SURAT KETERANGAN LAHIR</div>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -23,6 +23,10 @@ $nama = $data['nama'];
                                 <div class="form-group">
                                     <label>NIK Kepala Keluarga & Nama</label>
                                     <input type="text" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>No.KK </label>
+                                    <input type="text" class="form-control" value="<?= $no_kk; ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="nik" class="form-control" value="<?= $nik; ?>" readonly>
@@ -34,6 +38,10 @@ $nama = $data['nama'];
                                 <div class="form-group">
                                     <label>Anak Ke -</label>
                                     <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke - " autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status Anak</label>
+                                    <input type="text" name="status_anak" class="form-control" placeholder="status_anak " autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label>Keperluan </label>
@@ -72,7 +80,7 @@ if (isset($_POST['kirim'])) {
     $file_kk = $_POST['nik'] . "_" . ".jpg";
     $nama_anak = $_POST['nama_anak'];
     $anak_ke = $_POST['anak_ke'];
-    $sql = "INSERT INTO data_request_akta (nik,scan_ktp,scan_kk,keperluan,anak_ke,nama_anak) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$anak_ke','$nama_anak')";
+    $sql = "INSERT INTO data_request_akta (nik,scan_ktp,scan_kk,keperluan,anak_ke,nama_anak,status_anak) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$anak_ke','$nama_anak','$status_anak')";
     $query = mysqli_query($konek, $sql)  or die(mysqli_connect_error());
 
     if ($query) {

@@ -33,7 +33,7 @@ if (isset($_GET['id_request_ktp'])) {
             <form method="POST" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">UBAH DATA REQUEST SURAT KETERANGAN KTP</div>
+                        <div class="card-title">UBAH DATA LAYANAN SURAT KETERANGAN KTP</div>
                     </div>
                     <div class="card-body">
                         <div class="row">

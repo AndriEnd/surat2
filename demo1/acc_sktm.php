@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="fw-bold text-uppercase">TAMPIL ACC REQUEST SURAT KETERANGAN TIDAK MAMPU</h4>
+						<h4 class="fw-bold text-uppercase">DAFTAR ACC SURAT KETERANGAN TIDAK MAMPU</h4>
 					</div>
 				</div>
 				<div class="card-body">

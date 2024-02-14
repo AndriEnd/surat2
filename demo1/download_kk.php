@@ -1,16 +1,25 @@
-<?php include '../konek.php';
-?>
-
 <?php
-if (isset($_GET['id_request_sku'])) {
-    $id = $_GET['id_request_sku'];
-    $sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id'";
-    $query = mysqli_query($konek, $sql);
-    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
-    $alamat_usaha = $data['alamat_usaha'];
-    $usaha = $data['usaha'];
-    $jenis_usaha = $data['jenis_usaha'];
-    $alamat_usaha = $data['alamat_usaha'];
-    $kepemilikan = $data['kepemilikan'];
+
+if (isset($_GET['file'])) {
+    // Mendapatkan nama file dari parameter URL
+    $file_name = $_GET['file'];
+
+    // Mendefinisikan path ke file
+    $file_path = "../outputSurat/KK/" . $file_name; // Ganti dengan path yang sesuai
+
+    // Memeriksa apakah file ada
+    if (file_exists($file_path)) {
+        // Mengatur header untuk memaksa download
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . $file_name . '"');
+        header('Content-Length: ' . filesize($file_path));
+
+        // Membaca file dan mengirimkannya ke browser
+        readfile($file_path);
+        exit;
+    } else {
+        echo "File tidak ditemukan.";
+    }
+} else {
+    echo "Permintaan tidak valid.";
 }
-?>

@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN TIDAK MAMPU</h4>
+						<h4 class="card-title">STATUS LAYANAN SURAT KETERANGAN TIDAK MAMPU</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -24,13 +24,14 @@
 									<th>Keperluan</th>
 									<th>Status</th>
 									<th>Keterangan</th>
-									<th>Surat</th>
+									<th>Download Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$sql = "SELECT * FROM data_request_sktm natural join data_user WHERE nik=$_SESSION[nik]";
+								$konek = mysqli_connect($hostname, $username, $password, $database,); // info file
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -44,7 +45,7 @@
 									$keterangan = $data['keterangan'];
 									$file_sktm = $data['file_sktm'];
 									$id_request_sktm = $data['id_request_sktm'];
-									$file_sktm = $data['file_sktm'];
+									$file_sktm = $data['file_sktm']; // file sktm
 
 									if ($status == "1") {
 										$status = "<b style='color:green'>Sudah ACC RT</b>";
@@ -66,7 +67,7 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
 										<td>
-											<a href="download_sktm.php?url=<?php echo $row['file_sktm']; ?>"><?php echo $file_sktm; ?> </a></i>
+											<a href="download_sktm.php?file=<?php echo $file_sktm; ?>"><?php echo $file_sktm; ?></a> <!-- Button link -->
 										</td>
 										</td>
 										<td>
@@ -98,7 +99,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN USAHA</h4>
+						<h4 class="card-title">STATUS LAYANAN SURAT KETERANGAN USAHA</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -115,13 +116,14 @@
 									<th>Keperluan</th>
 									<th>Status</th>
 									<th>Keterangan</th>
-									<th>Surat</th>
+									<th>Download Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$sql = "SELECT * FROM data_request_sku natural join data_user WHERE nik=$_SESSION[nik]";
+								$konek = mysqli_connect($hostname, $username, $password, $database,); // info file
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -134,8 +136,8 @@
 									$usaha  = $data['usaha'];
 									$keperluan = $data['keperluan'];
 									$keterangan = $data['keterangan'];
-									$file_sku = $data['file_sku'];
 									$id_request_sku = $data['id_request_sku'];
+									$file_sku = $data['file_sku']; // file_sku
 
 									if ($status == "1") {
 										$status = "<b style='color:green'>Sudah ACC RT</b>";
@@ -158,7 +160,7 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
 										<td>
-											<a href="download_sku.php?url=<?php echo $row['file_sku']; ?>"><?php echo $file_sku; ?> </a></i>
+											<a href="download_sku.php?file=<?php echo $file_sku; ?>"><?php echo $file_sku; ?></a> <!-- Button link -->
 										</td>
 										<td>
 											<div class="form-button-action">
@@ -191,7 +193,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN KARTU KELUARGA</h4>
+						<h4 class="card-title">STATUS LAYANAN SURAT KETERANGAN KARTU KELUARGA</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -207,13 +209,14 @@
 									<th>Keperluan</th>
 									<th>Status</th>
 									<th>Keterangan</th>
-									<th>Surat</th>
+									<th>Download Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$sql = "SELECT * FROM data_request_kk natural join data_user WHERE nik=$_SESSION[nik]";
+								$konek = mysqli_connect($hostname, $username, $password, $database,); // info file
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -225,7 +228,7 @@
 									$kk = $data['scan_kk'];
 									$keperluan = $data['keperluan'];
 									$keterangan = $data['keterangan'];
-									$file_kk = $data['file_kk'];
+									$file_kk = $data['file_kk']; // file_kk
 									$id_request_kk = $data['id_request_kk'];
 
 
@@ -249,7 +252,7 @@
 										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><i><?php echo $keterangan; ?></i></td>
 										<td>
-											<a href="download_kk.php?url=<?php echo $row['file_kk']; ?>"><?php echo $file_kk; ?> </a></i>
+											<a href="download_kk.php?file=<?php echo $file_kk; ?>"><?php echo $file_kk; ?></a> <!-- Button link -->
 										</td>
 										<td>
 											<div class="form-button-action">
@@ -281,7 +284,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN DOMISILI</h4>
+						<h4 class="card-title">STATUS LAYANAN SURAT KETERANGAN DOMISILI</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -297,13 +300,14 @@
 									<th>Status</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
-									<th>Surat</th>
+									<th>Download Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$sql = "SELECT * FROM data_request_skd natural join data_user WHERE nik=$_SESSION[nik]";
+								$konek = mysqli_connect($hostname, $username, $password, $database,); // info file
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -316,7 +320,7 @@
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
 									$id_request_skd = $data['id_request_skd'];
-									$file_skd = $data['file_skd'];
+									$file_skd = $data['file_skd']; // file_skd
 
 									if ($status == "1") {
 										$status = "<b style='color:green'>Sudah ACC Rt</b>";
@@ -338,7 +342,7 @@
 										<td><?= $keperluan; ?></td>
 										<td><i><?= $keterangan; ?></i></td>
 										<td>
-											<a href="download_skd.php?url=<?php echo $row['file_skd']; ?>"><?php echo $file_skd; ?> </a></i>
+											<a href="download_skd.php?file=<?php echo $file_skd; ?>"><?php echo $file_skd; ?></a> <!-- Button link -->
 										</td>
 										<td>
 											<div class="form-button-action">
@@ -370,7 +374,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN AKTA</h4>
+						<h4 class="card-title">STATUS LAYANAN SURAT KETERANGAN AKTA</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -386,13 +390,14 @@
 									<th>Status</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
-									<th>Surat</th>
+									<th>Download Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$sql = "SELECT * FROM data_request_akta natural join data_user WHERE nik=$_SESSION[nik]";
+								$konek = mysqli_connect($hostname, $username, $password, $database,); // info file
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -404,7 +409,7 @@
 									$kk = $data['scan_kk'];
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
-									$file_akta = $data['file_akta'];
+									$file_akta = $data['file_akta']; // file_akta
 
 									$id_request_akta = $data['id_request_akta'];
 
@@ -428,7 +433,7 @@
 										<td><?= $keperluan; ?></td>
 										<td><i><?= $keterangan; ?></i></td>
 										<td>
-											<a href="download_akta.php?url=<?php echo $row['file_akta']; ?>"><?php echo $file_akta; ?> </a></i>
+											<a href="download_akta.php?file=<?php echo $file_akta; ?>"><?php echo $file_akta; ?></a> <!-- Button link -->
 										</td>
 										<td>
 											<div class="form-button-action">
@@ -461,7 +466,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="card-title">STATUS REQUEST SURAT KETERANGAN KTP</h4>
+						<h4 class="card-title">STATUS LAYANAN SURAT KETERANGAN KTP</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -477,13 +482,14 @@
 									<th>Status</th>
 									<th>Keperluan</th>
 									<th>Keterangan</th>
-									<th>Surat</th>
+									<th>Download Surat</th>
 									<th style="width: 10%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
 								$sql = "SELECT * FROM data_request_ktp natural join data_user WHERE nik=$_SESSION[nik]";
+								$konek = mysqli_connect($hostname, $username, $password, $database,); // info file
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -495,7 +501,7 @@
 									$kk = $data['scan_kk'];
 									$keterangan = $data['keterangan'];
 									$keperluan = $data['keperluan'];
-									$file_ktp = $data['file_ktp'];
+									$file_ktp = $data['file_ktp']; // file_ktp
 									$id_request_ktp = $data['id_request_ktp'];
 
 									if ($status == "1") {
@@ -518,7 +524,7 @@
 										<td><?= $keperluan; ?></td>
 										<td><i><?= $keterangan; ?></i></td>
 										<td>
-											<a href="download_ktp.php?url=<?php echo $row['file_ktp']; ?>"><?php echo $file_ktp; ?> </a></i>
+											<a href="download_ktp.php?file=<?php echo $file_ktp; ?>"><?php echo $file_ktp; ?></a> <!-- Button link -->
 										</td>
 										<td>
 											<div class="form-button-action">

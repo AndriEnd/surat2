@@ -22,7 +22,7 @@ if (isset($_GET['id_request_kk'])) {
 			<form method="POST" enctype="multipart/form-data">
 				<div class="card">
 					<div class="card-header">
-						<div class="card-title">FORM TAMBAH REQUEST SURAT KARTU KELUARGA</div>
+						<div class="card-title">UBAH DATA LAYANAN SURAT KARTU KELUARGA</div>
 					</div>
 					<div class="card-body">
 						<div class="row">
@@ -46,7 +46,7 @@ if (isset($_GET['id_request_kk'])) {
 									<img src="../dataFoto/scan_ktp/<?= $ktp; ?>" width="200" height="100" alt="">
 								</div>
 								<div class="form-group">
-									<input type="file" name="ktp" class="form-control"value="<?= $ktp; ?>" size="37">
+									<input type="file" name="ktp" class="form-control" value="<?= $ktp; ?>" size="37">
 								</div>
 							</div>
 						</div>

@@ -122,7 +122,7 @@ if ($hak_akses == "Pemohon") {
 				</div>
 			</div>
 			<div class="col-md-3 pr-md-0">
-				<div class="card-pricing2 card-warning">
+				<div class="card-pricing2 card-info">
 					<div class="pricing-header">
 						<h6 class="fw-bold text-center text-uppercase">Surat Keterangan KTP</h6>
 					</div>
@@ -135,14 +135,15 @@ if ($hak_akses == "Pemohon") {
 					</div>
 					<ul class="pricing-content">
 					</ul>
-					<a href="?halaman=request_ktp" class="btn btn-warning btn-round btn-sm mb-3"><span class="btn-label">
+					<a href="?halaman=request_ktp" class="btn btn-info btn-round btn-sm mb-3"><span class="btn-label">
 							<i class="fas fa-plus-circle"></i> Request</a>
 				</div>
 			</div>
 		</div>
 	</div>
 <?php
-} elseif ($hak_akses == "RT") {
+}
+if ($hak_akses == "RT") {
 ?>
 	<div class="panel-header bg-primary-gradient">
 		<div class="page-inner py-5">
@@ -155,7 +156,7 @@ if ($hak_akses == "Pemohon") {
 	</div>
 	<div class="page-inner">
 		<!-- Card -->
-		<h3 class="fw-bold text-uppercase">JUMLAH REQUEST SURAT KETERANGAN SUDAH ACC</h3>
+		<h3 class="fw-bold text-uppercase">DAFTAR ACC RT</h3>
 		<!-- Card With Icon States Background -->
 		<div class="row">
 			<div class="col-sm-6 col-md-3">
@@ -165,19 +166,19 @@ if ($hak_akses == "Pemohon") {
 							<a href="?halaman=sudah_acc_sktm">
 								<div class="col-icon">
 									<div class="icon-big text-center icon-primary bubble-shadow-small">
-										<i class="flaticon-envelope-1"></i>
+										<i class="flaticon-envelope-2"></i>
 									</div>
 								</div>
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SKTM</p>
+									<p class="card-category">SURAT KETERANGAN TIDAK MAMPU</p>
 									<?php
-									$sql = "SELECT * FROM data_request_sktm WHERE status=1";
+									$sql = "SELECT * FROM data_request_sktm WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
-									$status = $data['status'];
+									//$status = $data['status'];
 
 									// if($status=="1"){
 									// 	$count ="Belum ada request";
@@ -199,19 +200,19 @@ if ($hak_akses == "Pemohon") {
 							<a href="?halaman=sudah_acc_sku">
 								<div class="col-icon">
 									<div class="icon-big text-center icon-success bubble-shadow-small">
-										<i class="flaticon-envelope-1"></i>
+										<i class="flaticon-envelope-2"></i>
 									</div>
 								</div>
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SKU</p>
+									<p class="card-category">SURAT KETERANGAN USAHA</p>
 									<?php
-									$sql = "SELECT * FROM data_request_sku WHERE status=1";
+									$sql = "SELECT * FROM data_request_sku WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
-									$status = $data['status'];
+									//$status = $data['status'];
 
 									// if($status=="1"){
 									// 	$count ="Belum ada request";
@@ -233,19 +234,19 @@ if ($hak_akses == "Pemohon") {
 							<a href="?halaman=sudah_acc_kk">
 								<div class="col-icon">
 									<div class="icon-big text-center icon-warning bubble-shadow-small">
-										<i class="flaticon-envelope-1"></i>
+										<i class="flaticon-envelope-2"></i>
 									</div>
 								</div>
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">KK</p>
+									<p class="card-category">SURAT KETERANGAN KARTU KELUARGA</p>
 									<?php
-									$sql = "SELECT * FROM data_request_kk WHERE status=1";
+									$sql = "SELECT * FROM data_request_kk WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
-									$status = $data['status'];
+									//$status = $data['status'];
 
 									// if($status=="1"){
 									// 	$count ="Belum ada request";
@@ -267,19 +268,19 @@ if ($hak_akses == "Pemohon") {
 							<a href="?halaman=sudah_acc_skd">
 								<div class="col-icon">
 									<div class="icon-big text-center icon-secondary bubble-shadow-small">
-										<i class="flaticon-envelope-1"></i>
+										<i class="flaticon-envelope-2"></i>
 									</div>
 								</div>
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SKD</p>
+									<p class="card-category">SURAT KETERANGAN DOMISILI</p>
 									<?php
-									$sql = "SELECT * FROM data_request_skd WHERE status=1";
+									$sql = "SELECT * FROM data_request_skd WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
-									$status = $data['status'];
+									//$status = $data['status'];
 
 									// if($status=="1"){
 									// 	$count ="Belum ada request";
@@ -298,22 +299,22 @@ if ($hak_akses == "Pemohon") {
 				<div class="card card-stats card-round">
 					<div class="card-body">
 						<div class="row align-items-center">
-							<a href="?halaman=sudah_acc_skd">
+							<a href="?halaman=sudah_acc_akta">
 								<div class="col-icon">
-									<div class="icon-big text-center icon-secondary bubble-shadow-small">
-										<i class="flaticon-envelope-1"></i>
+									<div class="icon-big text-center icon-danger bubble-shadow-small">
+										<i class="flaticon-envelope-2"></i>
 									</div>
 								</div>
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SURAT LAHIR</p>
+									<p class="card-category">SURAT KETERANGAN LAHIR</p>
 									<?php
-									$sql = "SELECT * FROM data_request_akta WHERE status=1";
+									$sql = "SELECT * FROM data_request_akta WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
-									$status = $data['status'];
+									//$status = $data['status'];
 
 									// if($status=="1"){
 									// 	$count ="Belum ada request";
@@ -332,22 +333,22 @@ if ($hak_akses == "Pemohon") {
 				<div class="card card-stats card-round">
 					<div class="card-body">
 						<div class="row align-items-center">
-							<a href="?halaman=sudah_acc_skd">
+							<a href="?halaman=sudah_acc_ktp">
 								<div class="col-icon">
-									<div class="icon-big text-center icon-secondary bubble-shadow-small">
-										<i class="flaticon-envelope-1"></i>
+									<div class="icon-big text-center icon-info bubble-shadow-small">
+										<i class="flaticon-envelope-2"></i>
 									</div>
 								</div>
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">KTP</p>
+									<p class="card-category">SURAT KETERANGAN LAHIR</p>
 									<?php
-									$sql = "SELECT * FROM data_request_ktp WHERE status=1";
+									$sql = "SELECT * FROM data_request_ktp WHERE status=0";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
-									$status = $data['status'];
+									//$status = $data['status'];
 
 									// if($status=="1"){
 									// 	$count ="Belum ada request";
@@ -530,7 +531,7 @@ if ($hak_akses == "Pemohon") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SURAT LAHIR</p>
+									<p class="card-category">SURAT KETERANGAN LAHIR</p>
 									<?php
 									$sql = "SELECT * FROM data_request_akta WHERE status=0";
 									$query = mysqli_query($konek, $sql);

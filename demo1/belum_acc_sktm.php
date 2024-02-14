@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="fw-bold text-uppercase">belum acc request surat keterangan tidak mampu</h4>
+						<h4 class="fw-bold text-uppercase">daftar acc surat keterangan tidak mampu</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -24,6 +24,7 @@
 										<th>Scan KTP</th>
 										<th>Scan KK</th>
 										<th>Keterangan</th>
+										<th>Keperluan</th>
 										<th style="width: 10%">Action</th>
 									</tr>
 								</thead>
@@ -41,6 +42,7 @@
 										$ktp = $data['scan_ktp'];
 										$kk = $data['scan_kk'];
 										$keterangan = $data['keterangan'];
+										$keperluan = $data['keperluan'];
 										$id_request_sktm = $data['id_request_sktm'];
 
 										if ($status == "1") {
@@ -57,6 +59,7 @@
 											<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 											<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
 											<td><i><?php echo $keterangan; ?></i></td>
+											<td><i><?php echo $keperluan; ?></i></td>
 											<!-- <td>
 															<input type="checkbox" name="check[$i]" value="<?php echo $id; ?>">
 															<input type="submit" name="acc" class="btn btn-primary btn-sm" value="ACC">

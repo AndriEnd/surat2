@@ -1,5 +1,6 @@
 <?php
-if(isset($_GET['file'])){
+
+if (isset($_GET['file'])) {
     // Mendapatkan nama file dari parameter URL
     $file_name = $_GET['file'];
 
@@ -7,7 +8,7 @@ if(isset($_GET['file'])){
     $file_path = "../outputSurat/SKTM/" . $file_name; // Ganti dengan path yang sesuai
 
     // Memeriksa apakah file ada
-    if(file_exists($file_path)){
+    if (file_exists($file_path)) {
         // Mengatur header untuk memaksa download
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename="' . $file_name . '"');
@@ -22,4 +23,3 @@ if(isset($_GET['file'])){
 } else {
     echo "Permintaan tidak valid.";
 }
-?>

@@ -75,14 +75,14 @@ if (isset($_GET['id_request_sktm'])) {
                         </form>
 
                         <?php
-                        // Pastikan variabel $id sudah didefinisikan sebelumnya
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
                             $file_sktm = $_FILES['sktm']['name']; // nama file
                             $file_tmp = $_FILES['sktm']['tmp_name']; // lokasi file
                             $file_destination = "../outputSurat/SKTM/" . $file_sktm; // folder file                           
                             $konek = mysqli_connect($hostname, $username, $password, $database,); // info file
-                            $sql = "INSERT INTO data_request_sktm (file_sktm) VALUES ('$file_sktm') WHERE id_request_sktm=$id";
+                            $sql = "UPDATE data_request_sktm SET file_sktm='$file_sktm' WHERE id_request_sktm=$id";
+                            // $sql = "INSERT INTO data_request_sktm (file_sktm) VALUES ('$file_sktm') WHERE id_request_sktm=$id"; // Insert to DB where ID
                             $query = mysqli_query($konek, $sql,);
                             $update = mysqli_query($konek, "UPDATE data_request_sktm SET keterangan='$cetak', status=3 WHERE id_request_sktm=$id");
 
@@ -239,8 +239,7 @@ if (isset($_GET['id_request_sktm'])) {
                             <td><?php echo $keperluan; ?></td>
                         </tr>
                         <tr>
-                            <td>Keterangan</td>
-                            <td>:</td>
+
                             <?php
 
                             if ($request == "TIDAK MAMPU") {
@@ -248,7 +247,6 @@ if (isset($_GET['id_request_sktm'])) {
                             }
 
                             ?>
-                            <td><?php echo $request; ?></td>
                         </tr>
                     </table>
                     <br>

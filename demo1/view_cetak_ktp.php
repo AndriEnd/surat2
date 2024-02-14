@@ -66,39 +66,41 @@ if (isset($_GET['id_request_ktp'])) {
             <div class="card full-height">
                 <div class="card-body">
                     <div class="card-tools">
-                    <form action="" enctype="multipart/form-data" method="POST">
-                    <div class="form-group">
+                        <form action="" enctype="multipart/form-data" method="POST">
+                            <div class="form-group">
                                 <label>Keterangan</label>
-                                <select name="dicetak" id="" class="form-control" required="">
+                                <select name="dicetak" id="" class="form-control">
                                     <option value="">Pilih</option>
                                     <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
                                 </select>
-                                <br>
-                                <br>
-                                <b> Upload File KTP <b>
-                                        <br>
-                                        <input type="file" name="kartu_ktp" class="form-control" size="37" required>
-                                        <br>
-                                        <br>
-                                        <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
+                                <br><br>
+                                <b>Upload File KTP</b><br>
+                                <input type="file" name="ktp" class="form-control" size="37" required>
+                                <br><br>
+                                <input type="submit" name="ttd" value="Kirim" class="btn btn-success btn-sm">
                             </div>
                         </form>
+
                         <?php
                         if (isset($_POST['ttd'])) {
                             $cetak = $_POST['dicetak'];
-                            $nama_file   = $_FILES['kartu_ktp'];
-                            $file_ktp = $_FILES['kartu_ktp']['name']; // Perbaikan disini
+                            $file_ktp = $_FILES['ktp']['name']; // nama file
+                            $file_tmp = $_FILES['ktp']['tmp_name']; // lokasi file
+                            $file_destination = "../outputSurat/KTP/" . $file_ktp; // folder file                           
+                            $konek = mysqli_connect($hostname, $username, $password, $database,); // info file
                             $sql = "UPDATE data_request_ktp SET file_ktp='$file_ktp' WHERE id_request_ktp=$id";
-                            $query = mysqli_query($konek, $sql);
+                            //$sql = "INSERT INTO data_request_ktp (file_ktp) VALUES ('$file_ktp') WHERE id_request_ktp=$id"; // Insert to DB where ID
+                            $query = mysqli_query($konek, $sql,);
                             $update = mysqli_query($konek, "UPDATE data_request_ktp SET keterangan='$cetak', status=3 WHERE id_request_ktp=$id");
-    
-                            if ($update && $query) { // Perbaikan disini
-                                copy($_FILES['kartu_ktp']['tmp_name'], "../outputSurat/ktp/" . $file_ktp);
-                                echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
-                            } else {
-                                echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                                echo '<meta http-equiv="refresh" content="3; url=?halaman=view_ktp">';
+
+                            if ($update && $query) {
+                                if (move_uploaded_file($file_tmp, $file_destination)) {
+                                    echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
+                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                                } else {
+                                    echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
+                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=view_ktp">';
+                                }
                             }
                         }
                         ?>
@@ -107,13 +109,14 @@ if (isset($_GET['id_request_ktp'])) {
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <table border="1" align="center">
                     <table border="1" align="center">
-                    <table border="1" align="center">
-                    <a href="cetak_ktp.php?id_request_ktp=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+                        <a href="cetak_ktp.php?id_request_ktp=<?= $id; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
                             <span class="btn-label">
                                 <i class="fa fa-print"></i>
                             </span>
@@ -255,6 +258,14 @@ if (isset($_GET['id_request_ktp'])) {
                                 <td>:</td>
                                 <td><?php echo $keperluan; ?></td>
                             </tr>
+                            <tr>
+
+                                <?php
+                                if ($request == "KTP") {
+                                    $request = "Surat Keterangan KTP";
+                                }
+                                ?>
+
                         </table>
                         <br>
                         <table border="0" align="center">
@@ -336,8 +347,8 @@ if (isset($_GET['id_request_ktp'])) {
                             </tr>
                         </table>
                     </table>
-                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
