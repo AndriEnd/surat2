@@ -2,8 +2,10 @@
 include '../konek.php';
 date_default_timezone_set('Asia/Jakarta');
 ?>
-<?php
 
+<?php
+$tahun="";
+$request="";
 if (!isset($_POST['tampilkan'])) {
 	$tahun = isset($_POST['tahun']) ? $_POST['tahun'] : '';
 	$request = isset($_POST['request']) ? $_POST['request'] : '';
@@ -73,9 +75,11 @@ if (!isset($_POST['tampilkan'])) {
 	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
 	WHERE data_request_ktp.status = 3";
 	$query = mysqli_query($konek, $sql);
-} elseif (isset($_POST['tampilkan'])) {
+
+}
+elseif (isset($_POST['tampilkan'])) {
 	$tahun = isset($_POST['tahun']) ? $_POST['tahun'] : '';
-	$request = isset($_POST['tahun']) ? $_POST['tahun'] : '';
+	$request = isset($_POST['request']) ? $_POST['request'] : '';
 	$sql = "SELECT
 		data_user.nik,
 		data_user.nama,
@@ -175,19 +179,21 @@ if (!isset($_POST['tampilkan'])) {
 									<option value="2028">2028</option>
 									<option value="2029">2029</option>
 								</select>
-								<select name="request" id="request" class="form-control">
-									<option value="">Pilih</option>
-									<option value="SKTM">SKTM</option>
-									<option value="KK">KK</option>
-									<option value="SKU">SKU</option>
-									<option value="SKD">SKD</option>
-									<option value="SKU">SKU</option>
+								<select name="s_jurusan" id="s_jurusan" class="form-control">
+									<option value="">Pilih Surat</option>
+									<option value="SKTM" <?php if ($request=="SKTM"){ echo "tampilkan"; } ?>>SKTM</option>
+									<option value="SKU" <?php if ($request=="SKU"){ echo "tampilkan"; } ?>>SKU</option>
+									<option value="AKTA" <?php if ($request=="AKTA"){ echo "tampilkan"; } ?>>KETERANGAN LAHIR</option>
+									<option value="KTP" <?php if ($request=="KTP"){ echo "tampilkan"; } ?>>KTP</option>
+									<option value="KARTU KK" <?php if ($request=="KARTU KK"){ echo "tampilkan"; } ?>>KK</option>
+									<option value="SKD" <?php if ($request=="SKD"){ echo "tampilkan"; } ?>>SKD</option>
 								</select>
+								
 								<div class="form-group">
 									<input type="submit" name="tampilkan" value="Tampilkan" class="btn btn-primary btn-sm">
-									<a href="?halaman=laporan_pertahun">
-										<input type="submit" value="Reload" class="btn btn-primary btn-sm">
-									</a>
+										<a href="?halaman=laporan_pertahun">
+									<input type="submit" value="Reload" class="btn btn-primary btn-sm"></a>
+									
 								</div>
 							</div>
 						</form>
