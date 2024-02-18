@@ -142,6 +142,43 @@
 		// Add Row
 		$('#add4').DataTable({
 			"pageLength": 2,
+
+		});
+		// Add Row
+		$('#add5').DataTable({
+			"pageLength": 2,
+
+		});
+		// Add Row
+		$('#add6').DataTable({
+			"pageLength": 2,
+
+
+		});
+		// Add Row
+		$('#add7').DataTable({
+			"pageLength": 2,
+
+
+		});
+
+		// Add Row
+		$('#add8').DataTable({
+			"pageLength": 2,
+
+
+		});
+		// Add Row
+		$('#add9').DataTable({
+			"pageLength": 2,
+
+
+		});
+		// Add Row
+		$('#add10').DataTable({
+			"pageLength": 2,
+
+
 		});
 	});
 </script>

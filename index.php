@@ -86,6 +86,7 @@ $level = "pemohon";
         </div>
     </section>
 
+
     <section id="features">
         <div class="container">
             <div class="section-header">
@@ -196,7 +197,7 @@ $level = "pemohon";
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">Permohonan Disetujui</h4>
-                                <p>Permohonan di setujui oleh lurah, kemudian staf akan mencetak surat sesuai request surat yang diajukan, pemohon mengambil surat yang sudah dicetak dan bertandatangan di Kantor Kelurahan Sumber.</p>
+                                <p>Permohonan di setujui oleh lurah, kemudian staf akan mencetak surat sesuai request surat yang diajukan, pemohon mengambil surat yang sudah dicetak dan bertandatangan di Kantor Kelurahan Sumber Bahagia.</p>
                             </div>
                         </div>
                     </div>
@@ -223,6 +224,15 @@ $level = "pemohon";
         </div>
     </section>
     <!--/#bottom-->
+    <section id="get-in-touch">
+        <div class="container">
+            <div class="section-header" align="left">
+                <h2>Hubungi Kami</h2>
+                <p>Jika Anda memiliki pertanyaan atau ingin berpartisipasi dalam kegiatan desa, jangan ragu untuk menghubungi kami. Kami senang mendengar dari Anda!</p>
+                <p> Kontak Kami : 081990034835</p>
+
+            </div>
+    </section>
 
     <footer id="footer">
         <div class="container">
@@ -232,10 +242,7 @@ $level = "pemohon";
                 </div>
                 <div class="col-sm-6">
                     <ul class="social-icons">
-                        <li><a href="" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="" target="_blank"><i class="fa fa-github"></i></a></li>
+
                     </ul>
                 </div>
             </div>

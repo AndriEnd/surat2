@@ -13,7 +13,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 <div class="sidebar sidebar-style-2">
 	<div class="sidebar-wrapper scrollbar scrollbar-inner">
 		<div class="sidebar-content">
-			<ul class="nav nav-primary">
+			<ul class="nav nav-info">
 				<li class="nav-item active">
 					<a href="main.php">
 						<i class="fas fa-home"></i>
@@ -36,7 +36,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 					</li>
 					<li class="nav-item">
 						<a href="?halaman=tampil_status">
-							<i class="far fa-calendar-check"></i>
+							<i class="far fa-envelope"></i>
 							<p>Status Layanan</p>
 						</a>
 					</li>
@@ -240,7 +240,6 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 				default:
 					echo "<center>HALAMAN KOSONG </center>";
 					break;
-			
 			}
 		} else {
 			include 'beranda.php';

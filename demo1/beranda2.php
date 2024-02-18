@@ -16,7 +16,7 @@ if ($hak_akses == "RT") {
 		<div class="page-inner py-5">
 			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 				<div>
-					<h2 class="text-white pb-2 fw-bold">Halo <?php echo $hak_akses; ?>!</h2>
+					<h2 class="text-white pb-2 fw-bold">Halo <?php echo $nama; ?>!</h2>
 				</div>
 			</div>
 		</div>

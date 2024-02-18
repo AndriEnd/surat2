@@ -22,8 +22,6 @@
                             Print
                         </a>
                     </div>
-
-
                 </div>
                 <div class="card-body">
                     <!-- Modal -->
@@ -77,6 +75,12 @@
                     <form action="">
                         <div class="table-responsive">
                             <table id="add1" class="display table table-striped table-hover">
+                                <!-- TAMPIL OPTION -->
+                                <div class="form-group">
+                                    <input type="submit" name="tampilkan" value="Tampilkan" class="btn btn-primary btn-sm">
+                                    <a href="?halaman=tampil_penduduk">
+                                        <input type="submit" value="Reload" class="btn btn-primary btn-sm"></a>
+                                </div>
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -151,6 +155,7 @@
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
+
                                             </td>
                                         </tr>
                                     <?php

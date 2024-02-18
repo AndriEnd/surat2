@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">PERMOHONAN SURAT SUDAH DICETAK</h4>
+                        <h4 class="card-title">DAFTAR SURAT SELESAI DICETAK</h4>
                     </div>
                 </div>
                 <div class="card-body">

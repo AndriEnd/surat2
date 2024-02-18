@@ -11,7 +11,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 <div class="sidebar sidebar-style-2">
 	<div class="sidebar-wrapper scrollbar scrollbar-inner">
 		<div class="sidebar-content">
-			<ul class="nav nav-primary">
+			<ul class="nav nav-info">
 				<li class="nav-item active">
 					<a href="main2.php">
 						<i class="fas fa-home"></i>
@@ -84,7 +84,7 @@ if (isset($_SESSION['password']) == "" || ($_SESSION['hak_akses']) == "") {
 
 					<li class="nav-item">
 						<a href="?halaman=permohonan_surat">
-							<i class="far fa-calendar-check"></i>
+							<i class="fa fa-print"></i>
 							<p>Cetak Surat</p>
 						</a>
 					</li>
