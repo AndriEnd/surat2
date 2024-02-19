@@ -3,8 +3,21 @@ include '../konek.php';
 date_default_timezone_set('Asia/Jakarta');
 ?>
 <?php
+$host = 'localhost:3307';
+$db = 'backup_surat';
+$user = 'root';
+$pass = '';
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    // Atur mode error PDO menjadi exception
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Koneksi gagal: " . $e->getMessage());
+}
 if (!isset($_POST['tampilkan'])) {
 	$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
+	
+    $result = $bulan;
 	$sql = "SELECT
 		data_user.nik,
 		data_user.nama,
@@ -71,75 +84,84 @@ if (!isset($_POST['tampilkan'])) {
 	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
 	WHERE data_request_ktp.status = 3";
 	$query = mysqli_query($konek, $sql);
+	
 } elseif (isset($_POST['tampilkan'])) {
 	$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
+	$request = isset($_POST['request']) ? $_POST['request'] : '';
+
 	$sql = "SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_sktm.acc,
-		data_request_sktm.keperluan,
-		data_request_sktm.request
+	data_user.nik,
+	data_user.nama,
+	data_request_sktm.acc,
+	data_request_sktm.keperluan,
+	data_request_sktm.request
 	FROM
 		data_user
 	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE month(data_request_sktm.acc) = '$bulan'
+	WHERE MONTH(data_request_sktm.acc) = :bulan AND data_request_sktm.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_kk.acc,
-		data_request_kk.keperluan,
-		data_request_kk.request
-	FROM
-		data_user
-	INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
-	WHERE month(data_request_kk.acc) = '$bulan'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_kk.acc,
+        data_request_kk.keperluan,
+        data_request_kk.request
+    FROM
+        data_user
+    INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
+    WHERE MONTH(data_request_kk.acc) = :bulan AND data_request_kk.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_sku.acc,
-		data_request_sku.keperluan,
-		data_request_sku.request
-	FROM
-		data_user
-	INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
-	WHERE month(data_request_sku.acc) = '$bulan'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_sku.acc,
+        data_request_sku.keperluan,
+        data_request_sku.request
+    FROM
+        data_user
+    INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
+    WHERE MONTH(data_request_sku.acc) = :bulan AND data_request_sku.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_skd.acc,
-		data_request_skd.keperluan,
-		data_request_skd.request
-	FROM
-		data_user
-	INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
-	WHERE month(data_request_skd.acc) = '$bulan'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_skd.acc,
+        data_request_skd.keperluan,
+        data_request_skd.request
+    FROM
+        data_user
+    INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
+    WHERE MONTH(data_request_skd.acc) = :bulan AND data_request_skd.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_akta.acc,
-		data_request_akta.keperluan,
-		data_request_akta.request
-	FROM
-		data_user
-	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
-	WHERE month(data_request_akta.acc) = '$bulan'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_akta.acc,
+        data_request_akta.keperluan,
+        data_request_akta.request
+    FROM
+        data_user
+    INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+    WHERE MONTH(data_request_akta.acc) = :bulan AND data_request_akta.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_ktp.acc,
-		data_request_ktp.keperluan,
-		data_request_ktp.request
-	FROM
-		data_user
-	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
-	WHERE month(data_request_ktp.acc) = '$bulan'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_ktp.acc,
+        data_request_ktp.keperluan,
+        data_request_ktp.request
+    FROM
+        data_user
+    INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+    WHERE MONTH(data_request_ktp.acc) = :bulan AND data_request_ktp.request = :request
 	";
-	$query = mysqli_query($konek, $sql);
+	    $stmt = $pdo->prepare($sql);
+		$stmt->bindParam(':bulan', $bulan, PDO::PARAM_INT); // Ubah menjadi PDO::PARAM_INT jika bulan berupa angka
+		$stmt->bindParam(':request', $request, PDO::PARAM_STR);
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$pdo = null;
+   
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -159,8 +181,9 @@ if (!isset($_POST['tampilkan'])) {
 					<div class="card-tools">
 						<form action="" method="POST">
 							<div class="form-group">
+								<h3 > PILIH PRIODE BULAN</h3>
 								<select name="bulan" id="bulan" class="form-control">
-									<option value="">Pilih</option>
+									
 									<option value="1">Januari</option>
 									<option value="2">Februari</option>
 									<option value="3">Maret</option>
@@ -174,19 +197,21 @@ if (!isset($_POST['tampilkan'])) {
 									<option value="11">Nopember</option>
 									<option value="12">Desember</option>
 								</select>
+								<h3 > PILIH JENIS SURAT</h3>
 								<select name="request" id="request" class="form-control">
-									<option value="">Pilih</option>
+									
 									<option value="SKTM">SKTM</option>
-									<option value="KK">KK</option>
 									<option value="SKU">SKU</option>
 									<option value="SKD">SKD</option>
+									<option value="AKTA">AKTA</option>
 									<option value="KTP">KTP</option>
-
+									<option value="KARTU KELUARGA">KK</option>
+									
 								</select>
 								<div class="form-group">
 									<input type="submit" name="tampilkan" value="Tampilkan" class="btn btn-primary btn-sm">
 									<a href="?halaman=laporan_perbulan">
-										<input type="submit" value="Reload" class="btn btn-primary btn-sm">
+										
 									</a>
 								</div>
 							</div>
@@ -224,22 +249,27 @@ if (!isset($_POST['tampilkan'])) {
 						<tbody>
 							<?php
 							$no = 0;
-							while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
+							foreach ($result as $data) {
+								
+								//echo ($no + 1) . '. ' . $data['nik'] . ' ' . $data['nama'] . ' ' . $data['acc'] . ' ' . $data['keperluan'] . ' ' . $data['request'] . '<br>';
+								// Gunakan $data langsung jika variabel $data tidak diperlukan lagi di luar loop
+							
+								// Format tanggal
+								$tgl = date('d F Y', strtotime($data['acc']));
+							
+								// Lakukan sesuatu dengan data, jika perlu
+								// ...
+							
 								$no++;
-								$nik = $data['nik'];
-								$nama = $data['nama'];
-								$tanggal = $data['acc'];
-								$tgl = date('d F Y', strtotime($tanggal));
-								$keperluan = $data['keperluan'];
-								$request = $data['request'];
+							
 							?>
 								<tr>
-									<td><?php echo $no; ?></td>
-									<td><?php echo $tgl; ?></td>
-									<td><?php echo $nik; ?></td>
-									<td><?php echo $nama; ?></td>
-									<td><?php echo $keperluan; ?></td>
-									<td><?php echo $request; ?></td>
+								<td><?php echo $no; ?></td>
+								<td><?php echo $tgl; ?></td>
+								<td><?php echo $data['nik']; ?></td>
+								<td><?php echo $data['nama']; ?></td>
+								<td><?php echo $data['keperluan']; ?></td>
+								<td><?php echo $data['request']; ?></td>
 								</tr>
 							<?php
 							}
