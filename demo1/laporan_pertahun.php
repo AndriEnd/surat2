@@ -76,75 +76,88 @@ if (!isset($_POST['tampilkan'])) {
 	WHERE data_request_ktp.status = 3";
 	$query = mysqli_query($konek, $sql);
 } elseif (isset($_POST['tampilkan'])) {
+	$konek = mysqli_connect($hostname, $username, $password, $database);
+	try {
+		$pdo = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	} catch (PDOException $e) {
+		die("Koneksi gagal: " . $e->getMessage());
+	}
 	$tahun = isset($_POST['tahun']) ? $_POST['tahun'] : '';
 	$request = isset($_POST['request']) ? $_POST['request'] : '';
+
 	$sql = "SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_sktm.acc,
-		data_request_sktm.keperluan,
-		data_request_sktm.request
+	data_user.nik,
+	data_user.nama,
+	data_request_sktm.acc,
+	data_request_sktm.keperluan,
+	data_request_sktm.request
 	FROM
 		data_user
 	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE year(data_request_sktm.acc) = '$tahun' 
+	WHERE YEAR(data_request_sktm.acc) = :tahun AND data_request_sktm.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_kk.acc,
-		data_request_kk.keperluan,
-		data_request_kk.request
-	FROM
-		data_user
-	INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
-	WHERE year(data_request_kk.acc) = '$tahun' 
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_kk.acc,
+        data_request_kk.keperluan,
+        data_request_kk.request
+    FROM
+        data_user
+    INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
+    WHERE YEAR(data_request_kk.acc) = :tahun AND data_request_kk.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_sku.acc,
-		data_request_sku.keperluan,
-		data_request_sku.request
-	FROM
-		data_user
-	INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
-	WHERE year(data_request_sku.acc) = '$tahun'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_sku.acc,
+        data_request_sku.keperluan,
+        data_request_sku.request
+    FROM
+        data_user
+    INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
+    WHERE YEAR(data_request_sku.acc) = :tahun AND data_request_sku.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_skd.acc,
-		data_request_skd.keperluan,
-		data_request_skd.request
-	FROM
-		data_user
-	INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
-	WHERE year(data_request_skd.acc) = '$tahun'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_skd.acc,
+        data_request_skd.keperluan,
+        data_request_skd.request
+    FROM
+        data_user
+    INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
+    WHERE YEAR(data_request_skd.acc) = :tahun AND data_request_skd.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_akta.acc,
-		data_request_akta.keperluan,
-		data_request_akta.request
-	FROM
-		data_user
-	INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
-	WHERE year(data_request_akta.acc) = '$tahun'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_akta.acc,
+        data_request_akta.keperluan,
+        data_request_akta.request
+    FROM
+        data_user
+    INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+    WHERE YEAR(data_request_akta.acc) = :tahun AND data_request_akta.request = :request
 	UNION
-	SELECT
-		data_user.nik,
-		data_user.nama,
-		data_request_ktp.acc,
-		data_request_ktp.keperluan,
-		data_request_ktp.request
-	FROM
-		data_user
-	INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
-	WHERE year(data_request_ktp.acc) = '$tahun'
+    SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_ktp.acc,
+        data_request_ktp.keperluan,
+        data_request_ktp.request
+    FROM
+        data_user
+    INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+    WHERE YEAR(data_request_ktp.acc) = :tahun AND data_request_ktp.request = :request
 	";
-	$query = mysqli_query($konek, $sql);
+	$stmt = $pdo->prepare($sql);
+	$stmt->bindParam(':tahun', $tahun, PDO::PARAM_INT); // Ubah menjadi PDO::PARAM_INT jika tahun berupa angka
+	$stmt->bindParam(':request', $request, PDO::PARAM_STR);
+	$stmt->execute();
+	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$pdo = null;
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -164,8 +177,9 @@ if (!isset($_POST['tampilkan'])) {
 					<div class="card-tools">
 						<form action="" method="POST">
 							<div class="form-group">
+								<h3> PILIH PRIODE TAHUN</h3>
 								<select name="tahun" class="form-control">
-									<option value="">Pilih</option>
+									<option value="">Pilih Tahun</option>
 									<option value="2020">2020</option>
 									<option value="2021">2021</option>
 									<option value="2022">2022</option>
@@ -177,7 +191,18 @@ if (!isset($_POST['tampilkan'])) {
 									<option value="2028">2028</option>
 									<option value="2029">2029</option>
 								</select>
-								<select name="request" class="form-control">
+								<h3> PILIH JENIS SURAT</h3>
+								<select name="request" id="request" class="form-control">
+									<option>Pilih Surat</option>
+									<option value="SKTM">SKTM</option>
+									<option value="SKU">SKU</option>
+									<option value="SKD">SKD</option>
+									<option value="AKTA">AKTA</option>
+									<option value="KTP">KTP</option>
+									<option value="KARTU KELUARGA">KK</option>
+								</select>
+
+								<!--<select name="request" class="form-control">
 									<option value="">Pilih Surat</option>
 									<option value="SKTM" <?php if ($request == "SKTM") {
 																echo "tampilkan";
@@ -197,7 +222,7 @@ if (!isset($_POST['tampilkan'])) {
 									<option value="SKD" <?php if ($request == "SKD") {
 															echo "tampilkan";
 														} ?>>SKD</option>
-								</select>
+								</select> -->
 
 								<div class="form-group">
 									<input type="submit" name="tampilkan" value="Tampilkan" class="btn btn-primary btn-sm">
@@ -241,24 +266,26 @@ if (!isset($_POST['tampilkan'])) {
 						<tbody>
 							<?php
 							$no = 0;
-							while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-								$no++;
-								$nik = $data['nik'];
-								$nama = $data['nama'];
-								$tanggal = $data['acc'];
-								$tgl = date('d F Y', strtotime($tanggal));
-								$keperluan = $data['keperluan'];
-								$request = $data['request'];
+							if (isset($result) && is_array($result)) {
+								foreach ($result as $data) {
+									$no++;
+									$nik = $data['nik'];
+									$nama = $data['nama'];
+									$tanggal = $data['acc'];
+									$tgl = date('d F Y', strtotime($tanggal));
+									$keperluan = $data['keperluan'];
+									$request = $data['request'];
 							?>
-								<tr>
-									<td><?php echo $no; ?></td>
-									<td><?php echo $tgl; ?></td>
-									<td><?php echo $nama; ?></td>
-									<td><?php echo $nik; ?></td>
-									<td><?php echo $keperluan; ?></td>
-									<td><?php echo $request; ?></td>
-								</tr>
+									<tr>
+										<td><?php echo $no; ?></td>
+										<td><?php echo $tgl; ?></td>
+										<td><?php echo $nama; ?></td>
+										<td><?php echo $nik; ?></td>
+										<td><?php echo $keperluan; ?></td>
+										<td><?php echo $request; ?></td>
+									</tr>
 							<?php
+								}
 							}
 							?>
 						</tbody>
