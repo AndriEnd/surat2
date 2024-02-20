@@ -109,7 +109,7 @@ if (isset($_GET['tahun'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laporan Penduduk Tahun <?php echo date('Y'); ?></title>
+        <title>Laporan Tahun <?php echo date('Y'); ?></title>
     </head>
 
     <body>
