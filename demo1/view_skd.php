@@ -233,16 +233,18 @@ if (isset($_GET['id_request_skd'])) {
                             <tr>
                                 <th></th>
                                 <th width="100px"></th>
-                                <th>Lampung Tengah, <?php echo $format4; ?></th>
+                                <th>Sumber Bahagia, <?php echo $format4; ?></th>
                             </tr>
                             <tr>
-                                <td>Tanda Tangan <br> Yang Bersangkutan </td>
+                                <td><b></b></td>
                                 <td></td>
-                                <td>Lurah Sumber Bahagia </td>
+                                <td>Kepala Desa Sumber Bahagia </td>
                             </tr>
                             <tr>
                                 <td rowspan="15"></td>
-                                <td></td>
+                                <td>
+                                <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                                </td>
                                 <td rowspan="15"></td>
                             </tr>
                             <tr>
@@ -290,10 +292,9 @@ if (isset($_GET['id_request_skd'])) {
                             <tr>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
-                                <td></td>
-                                <td><b><u>(LURAH)</u></b></td>
+                            <td><b></b></td>
+                            <td></td>
+                            <td><b><u>Setio Hudi</u></b></td>
                             </tr>
                         </table>
                     </table>

@@ -321,15 +321,13 @@ if ($hak_akses == "RT") {
 							</a>
 							<div class="col col-stats ml-3 ml-sm-0">
 								<div class="numbers">
-									<p class="card-category">SURAT KETERANGAN KETERANGAN KARTU KELUARGA</p>
+									<p class="card-category">SURAT KETERANGAN KARTU KELUARGA</p>
 									<?php
 									$sql = "SELECT * FROM data_request_kk WHERE status=1";
 									$query = mysqli_query($konek, $sql);
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -358,8 +356,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -388,8 +384,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -418,8 +412,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -467,8 +459,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -497,7 +487,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -526,8 +515,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>
@@ -556,8 +543,6 @@ if ($hak_akses == "RT") {
 									$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 									$count = mysqli_num_rows($query);
 									$status = $data['status'];
-
-
 									?>
 									<h4 class="card-title"><?php echo $count; ?></h4>
 								</div>

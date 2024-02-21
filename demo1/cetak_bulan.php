@@ -1,6 +1,6 @@
-<?php
-include '../konek.php';
-?>
+: <?php
+    include '../konek.php';
+    ?>
 <!-- Fonts and icons -->
 <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
 <script>
@@ -26,25 +26,33 @@ include '../konek.php';
 <link rel="stylesheet" href="../assets/css/demo.css">
 
 <?php
-include '../konek.php';
 
 if (isset($_GET['bulan'])) {
-    $bulan = $_GET['bulan'];
+    $bln = isset($_GET['bulan']) ? $_GET['bulan'] : '';
     $request = isset($_GET['request']) ? $_GET['request'] : '';
+    $requestType = '';
+    $konek = mysqli_connect($hostname, $username, $password, $database);
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT
-	data_user.nik,
-	data_user.nama,
-	data_request_sktm.acc,
-	data_request_sktm.keperluan,
-	data_request_sktm.request
-	FROM
-		data_user
-	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE MONTH(data_request_sktm.acc) = :bulan AND data_request_sktm.request = :request
-	UNION
+    } catch (PDOException $e) {
+        die("Koneksi gagal: " . $e->getMessage());
+    }
+    //$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
+    //$request = isset($_POST['request']) ? $_POST['request'] : '';
+
+    $sql = "SELECT
+        data_user.nik,
+        data_user.nama,
+        data_request_sktm.acc,
+        data_request_sktm.keperluan,
+        data_request_sktm.request
+    FROM
+        data_user
+    INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
+    WHERE MONTH(data_request_sktm.acc) = :bulan AND data_request_sktm.request = :request
+    UNION
+        
     SELECT
         data_user.nik,
         data_user.nama,
@@ -100,15 +108,38 @@ if (isset($_GET['bulan'])) {
     INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
     WHERE MONTH(data_request_ktp.acc) = :bulan AND data_request_ktp.request = :request
 	";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':bulan', $bulan, PDO::PARAM_INT);
-        $stmt->bindParam(':request', $request, PDO::PARAM_STR);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Koneksi gagal: " . $e->getMessage());
-    } finally {
-        $pdo = null; // Tutup koneksi PDO setelah selesai digunakan
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':bulan', $bulan, PDO::PARAM_INT); // Ubah menjadi PDO::PARAM_INT jika bulan berupa angka
+    $stmt->bindParam(':request', $request, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $pdo = null;
+
+    if ($bln == "1") {
+        $requestType = "STKM";
+    } elseif ($bln == "2") {
+        $requestType = "FEBRUARI";
+    } elseif ($bln == "3") {
+        $requestType = "MARET";
+    } elseif ($bln == "4") {
+        $requestType = "APRIL";
+    } elseif ($bln == "5") {
+        $requestType = "MEI";
+    } elseif ($bln == "6") {
+        $requestType = "JUNI";
+    } elseif ($bln == "7") {
+        $requestType = "JULI";
+    } elseif ($bln == "8") {
+        $requestType = "AGUSTUS";
+    } elseif ($bln == "9") {
+        $requestType = "SEPTEMBER";
+    } elseif ($bln == "10") {
+        $requestType = "OKTOBER";
+    } elseif ($bln == "11") {
+        $requestType = "NOVEMBER";
+    } elseif ($bln == "12") {
+        $requestType = "DESEMBER";
     }
 }
 
@@ -185,41 +216,40 @@ if (isset($_GET['bulan'])) {
     <br>
     <center>
         <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Tanggal Request</th>
-                    <th>Tanggal ACC</th>
-                    <th>Nama</th>
-                    <th>Keperluan</th>
-                    <th>Layanan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $no = 1; // Mulai dari nomor 1
-                if (isset($result) && is_array($result)) {
-                    foreach ($result as $data) {
-                        // Pastikan variabel diambil dari data iterasi
-                        $req = $data['tanggal_request'];
-                        $format1 = date('d F Y', strtotime($data['acc']));
-                        $nama = $data['nama'];
-                        $keperluan = $data['keperluan'];
-                        $request = $data['request'];
-                ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $req; ?></td>
-                            <td><?php echo $format1; ?></td>
-                            <td><?php echo $nama; ?></td>
-                            <td><?php echo $keperluan; ?></td>
-                            <td><?php echo $request; ?></td>
-                        </tr>
-                <?php
-                    }
+            <tr>
+                <th>No.</th>
+                <th>Tanggal Request</th>
+                <th>Tanggal ACC</th>
+                <th>Nama</th>
+                <th>Keperluan</th>
+                <th>Layanan</th>
+            </tr>
+            <?php
+            $no = 0;
+
+            if (isset($bln) && is_array($result)) {
+                foreach ($result as $data) {
+                    $no++;
+                    $nama = $data['nama'];
+                    $tanggal = $data['acc'];
+                    $tgl = date('d F Y', strtotime($tanggal));
+                    $keperluan = $data['keperluan'];
+                    $request = $data['request'];
+                    $tglreq = $data['tanggal_request'];
+                    $req = date('d F Y', strtotime($tglreq));
+            ?>
+                    <tr>
+                        <th><?php echo $no; ?></th>
+                        <td><?php echo $req; ?></td>
+                        <td><?php echo $tgl; ?></td>
+                        <td><?php echo $nama; ?></td>
+                        <td><?php echo $keperluan; ?></td>
+                        <td><?php echo $request; ?></td>
+                    </tr>
+            <?php
                 }
-                ?>
-            </tbody>
+            }
+            ?>
         </table>
     </center>
     <br>

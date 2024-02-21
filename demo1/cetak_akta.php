@@ -195,18 +195,18 @@ if (isset($_GET['id_request_akta'])) {
         <br>
         <br>
         <br>
-        <table border="0" align="center">
-            <tr>
+        <table border="0" align="right">
+            <tr align="left">
                 <th></th>
                 <th width="100px"></th>
-                <th>Lampung Tengah, <?php echo $format4; ?></th>
+                <th>Sumber Bahagia, <?php echo $format4; ?></th>
             </tr>
-            <tr>
-                <td>Tanda Tangan <br> Yang Bersangkutan </td>
-                <td><img src="" alt=""></td>
-                <td>Lurah Sumber Bahagia </td>
+            <tr align="left">
+                <td><b></b></td>
+                <td></td>
+                <td>Kepala Desa Sumber Bahagia </td>
             </tr>
-            <tr>
+            <tr align="left">
                 <td rowspan="15"></td>
                 <td>
                 <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
@@ -258,10 +258,9 @@ if (isset($_GET['id_request_akta'])) {
             <tr>
                 <td></td>
             </tr>
-            <tr>
-                <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
-                <td></td>
-                <td><b><u>(LURAH)</u></b></td>
+            <td><b></b></td>
+            <td></td>
+            <td><b><u>Setio Hudi</u></b></td>
             </tr>
         </table>
     </table>
