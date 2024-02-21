@@ -1,4 +1,4 @@
-<?php
+: <?php
 include '../konek.php';
 ?>
 <!-- Fonts and icons -->
@@ -26,15 +26,21 @@ include '../konek.php';
 <link rel="stylesheet" href="../assets/css/demo.css">
 
 <?php
-include '../konek.php';
 
 if (isset($_GET['bulan'])) {
-    $bulan = $_GET['bulan'];
+    $bln = isset($_POST['bulan']) ? $_POST['bulan'] : '';
     $request = isset($_GET['request']) ? $_GET['request'] : '';
+    $konek = mysqli_connect($hostname, $username, $password, $database);
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT
+    } catch (PDOException $e) {
+        die("Koneksi gagal: " . $e->getMessage());
+    }
+    //$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
+    //$request = isset($_POST['request']) ? $_POST['request'] : '';
+
+    $sql = "SELECT
 	data_user.nik,
 	data_user.nama,
 	data_request_sktm.acc,
@@ -100,18 +106,113 @@ if (isset($_GET['bulan'])) {
     INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
     WHERE MONTH(data_request_ktp.acc) = :bulan AND data_request_ktp.request = :request
 	";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':bulan', $bulan, PDO::PARAM_INT);
-        $stmt->bindParam(':request', $request, PDO::PARAM_STR);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die("Koneksi gagal: " . $e->getMessage());
-    } finally {
-        $pdo = null; // Tutup koneksi PDO setelah selesai digunakan
-    }
-}
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':bulan', $bulan, PDO::PARAM_INT); // Ubah menjadi PDO::PARAM_INT jika bulan berupa angka
+    $stmt->bindParam(':request', $request, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $pdo = null;
 
+if ($bln == "1") {
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "2") {
+    $bln = "FEBRUARI";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "3") {
+    $bln = "MARET";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "4") {
+    $bln = "APRIL";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "5") {
+    $bln = "MEI";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "6") {
+    $bln = "JUNI";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "7") {
+    $bln = "JULI";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "8") {
+    $bln = "AGUSTUS";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "9") {
+    $bln = "SEPTEMBER";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "10") {
+    $bln = "OKTOBER";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "11") {
+    $bln = "NOVEMBER";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+} elseif ($bln == "12") {
+    $bln = "DESEMBER";
+    $request = "STKM";
+    $request = "SKU";
+    $request = "AKTA";
+    $request = "KTP";
+    $request = "KARTU KELUARGA";
+
+
+if ($request == "SKTM") {
+    $request = "STKM";
+} elseif ($request == "SKU") {
+    $request = "SKU";
+} elseif ($request == "SKD") {
+    $request = "SKD";
+} elseif ($request == "AKTA") {
+    $request = "AKTA";
+} elseif ($request == "KTP") {
+    $request = "KTP";
+} elseif ($request == "KARTU KELUARGA") {
+    $request = "KARTU KELUARGA";
+}
+}
+}
 
 ?>
 <!DOCTYPE html>
@@ -186,28 +287,27 @@ if (isset($_GET['bulan'])) {
     <center>
         <table class="table table-bordered">
             <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Tanggal Request</th>
-                    <th>Tanggal ACC</th>
-                    <th>Nama</th>
-                    <th>Keperluan</th>
-                    <th>Layanan</th>
-                </tr>
-            </thead>
+            <tr>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $tgl; ?></td>
+                <td><?php echo $data['nik']; ?></td>
+                <td><?php echo $data['nama']; ?></td>
+                <td><?php echo $data['keperluan']; ?></td>
+                <td><?php echo $data['request']; ?></td>
+            </tr>
+            
             <tbody>
                 <?php
-                $no = 1; // Mulai dari nomor 1
+                $no = 1; 
                 if (isset($result) && is_array($result)) {
                     foreach ($result as $data) {
-                        // Pastikan variabel diambil dari data iterasi
                         $req = $data['tanggal_request'];
                         $format1 = date('d F Y', strtotime($data['acc']));
                         $nama = $data['nama'];
                         $keperluan = $data['keperluan'];
                         $request = $data['request'];
                 ?>
-                        <tr>
+                     <tr>
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $req; ?></td>
                             <td><?php echo $format1; ?></td>
@@ -215,11 +315,13 @@ if (isset($_GET['bulan'])) {
                             <td><?php echo $keperluan; ?></td>
                             <td><?php echo $request; ?></td>
                         </tr>
+                       
                 <?php
                     }
                 }
                 ?>
             </tbody>
+            </thead>
         </table>
     </center>
     <br>
@@ -244,3 +346,4 @@ if (isset($_GET['bulan'])) {
 <script>
     window.print();
 </script>
+
