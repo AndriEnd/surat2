@@ -245,7 +245,7 @@ if (!isset($_POST['tampilkan'])) {
 							<span class="btn-label">
 								<i class="fa fa-print"></i>
 							</span>
-							Print
+							Print All
 						</a>
 					</div>
 				</div>

@@ -219,7 +219,7 @@ if (!isset($_POST['tampilkan'])) {
 			<div class="card">
 				<div class="card-header">
 					<div class="card-tools">
-						<a href="cetak_bulan.php?bulan=<?php echo $bulan; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
+						<a href="cetak_bulan.php?bulan=<?php echo $bulan; ?>,<?php echo $request; ?>" target="_blank" class="btn btn-info btn-border btn-round btn-sm">
 							<span class="btn-label">
 								<i class="fa fa-print"></i>
 							</span>

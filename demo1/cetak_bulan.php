@@ -1,6 +1,6 @@
-: <?php
-    include '../konek.php';
-    ?>
+<?php
+include '../konek.php';
+?>
 <!-- Fonts and icons -->
 <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
 <script>
@@ -27,10 +27,7 @@
 
 <?php
 
-if (isset($_GET['bulan'])) {
-    $bln = isset($_GET['bulan']) ? $_GET['bulan'] : '';
-    $request = isset($_GET['request']) ? $_GET['request'] : '';
-    $requestType = '';
+if (isset($_GET['bulan']) && isset($_GET['request'])) {
     $konek = mysqli_connect($hostname, $username, $password, $database);
     try {
         $pdo = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
@@ -38,21 +35,20 @@ if (isset($_GET['bulan'])) {
     } catch (PDOException $e) {
         die("Koneksi gagal: " . $e->getMessage());
     }
-    //$bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
-    //$request = isset($_POST['request']) ? $_POST['request'] : '';
+    $bulan = isset($_POST['bulan']) ? $_POST['bulan'] : '';
+    $request = isset($_POST['request']) ? $_POST['request'] : '';
 
     $sql = "SELECT
-        data_user.nik,
-        data_user.nama,
-        data_request_sktm.acc,
-        data_request_sktm.keperluan,
-        data_request_sktm.request
-    FROM
-        data_user
-    INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-    WHERE MONTH(data_request_sktm.acc) = :bulan AND data_request_sktm.request = :request
-    UNION
-        
+	data_user.nik,
+	data_user.nama,
+	data_request_sktm.acc,
+	data_request_sktm.keperluan,
+	data_request_sktm.request
+	FROM
+		data_user
+	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
+	WHERE MONTH(data_request_sktm.acc) = :bulan AND data_request_sktm.request = :request
+	UNION
     SELECT
         data_user.nik,
         data_user.nama,
@@ -113,8 +109,9 @@ if (isset($_GET['bulan'])) {
     $stmt->bindParam(':request', $request, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     $pdo = null;
+
+
 
     if ($bln == "1") {
         $requestType = "STKM";
@@ -215,42 +212,46 @@ if (isset($_GET['bulan'])) {
     </table>
     <br>
     <center>
-        <table class="table table-bordered">
-            <tr>
-                <th>No.</th>
-                <th>Tanggal Request</th>
-                <th>Tanggal ACC</th>
-                <th>Nama</th>
-                <th>Keperluan</th>
-                <th>Layanan</th>
-            </tr>
-            <?php
-            $no = 0;
-
-            if (isset($bln) && is_array($result)) {
-                foreach ($result as $data) {
-                    $no++;
-                    $nama = $data['nama'];
-                    $tanggal = $data['acc'];
-                    $tgl = date('d F Y', strtotime($tanggal));
-                    $keperluan = $data['keperluan'];
-                    $request = $data['request'];
-                    $tglreq = $data['tanggal_request'];
-                    $req = date('d F Y', strtotime($tglreq));
-            ?>
+        <div class="card-body">
+            <table class="table mt-3">
+                <thead>
                     <tr>
-                        <th><?php echo $no; ?></th>
-                        <td><?php echo $req; ?></td>
-                        <td><?php echo $tgl; ?></td>
-                        <td><?php echo $nama; ?></td>
-                        <td><?php echo $keperluan; ?></td>
-                        <td><?php echo $request; ?></td>
+                        <th scope="col">No</th>
+                        <th scope="col">Tanggal ACC</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Keperluan</th>
+                        <th scope="col">Request</th>
                     </tr>
-            <?php
-                }
-            }
-            ?>
-        </table>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 0;
+                    if (isset($result) && is_array($result)) {
+                        foreach ($result as $data) {
+                            $no++;
+                            $nik = $data['nik'];
+                            $nama = $data['nama'];
+                            $tanggal = $data['acc'];
+                            $tgl = date('d F Y', strtotime($tanggal));
+                            $keperluan = $data['keperluan'];
+                            $request = $data['request'];
+                    ?>
+                            <tr>
+                                <td><?php echo $no; ?></td>
+                                <td><?php echo $tgl; ?></td>
+                                <td><?php echo $nama; ?></td>
+                                <td><?php echo $nik; ?></td>
+                                <td><?php echo $keperluan; ?></td>
+                                <td><?php echo $request; ?></td>
+                            </tr>
+                    <?php
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </center>
     <br>
     <br>
