@@ -39,71 +39,53 @@ if (isset($_GET['bulan']) && isset($_GET['request'])) {
     $request = isset($_POST['request']) ? $_POST['request'] : '';
 
     $sql = "SELECT
-	data_user.nik,
-	data_user.nama,
-	data_request_sktm.acc,
-	data_request_sktm.keperluan,
-	data_request_sktm.request
-	FROM
-		data_user
-	INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
-	WHERE MONTH(data_request_sktm.acc) = :bulan AND data_request_sktm.request = :request
-	UNION
-    SELECT
-        data_user.nik,
-        data_user.nama,
-        data_request_kk.acc,
-        data_request_kk.keperluan,
-        data_request_kk.request
-    FROM
-        data_user
-    INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
-    WHERE MONTH(data_request_kk.acc) = :bulan AND data_request_kk.request = :request
-	UNION
-    SELECT
-        data_user.nik,
-        data_user.nama,
-        data_request_sku.acc,
-        data_request_sku.keperluan,
-        data_request_sku.request
-    FROM
-        data_user
-    INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
-    WHERE MONTH(data_request_sku.acc) = :bulan AND data_request_sku.request = :request
-	UNION
-    SELECT
-        data_user.nik,
-        data_user.nama,
-        data_request_skd.acc,
-        data_request_skd.keperluan,
-        data_request_skd.request
-    FROM
-        data_user
-    INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
-    WHERE MONTH(data_request_skd.acc) = :bulan AND data_request_skd.request = :request
-	UNION
-    SELECT
-        data_user.nik,
-        data_user.nama,
-        data_request_akta.acc,
-        data_request_akta.keperluan,
-        data_request_akta.request
-    FROM
-        data_user
-    INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
-    WHERE MONTH(data_request_akta.acc) = :bulan AND data_request_akta.request = :request
-	UNION
-    SELECT
-        data_user.nik,
-        data_user.nama,
-        data_request_ktp.acc,
-        data_request_ktp.keperluan,
-        data_request_ktp.request
-    FROM
-        data_user
-    INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
-    WHERE MONTH(data_request_ktp.acc) = :bulan AND data_request_ktp.request = :request
-	";
+    data_user.nik,
+    data_user.nama,
+    data_request_sktm.acc,
+    data_request_sktm.tanggal_request,
+    data_request_sktm.keperluan,
+    data_request_sktm.request
+FROM
+    data_user
+INNER JOIN data_request_sktm ON data_request_sktm.nik = data_user.nik
+WHERE year(data_request_sktm.acc) = '$tahun'
+UNION
+SELECT
+    data_user.nik,
+    data_user.nama,
+    data_request_kk.acc,
+    data_request_kk.tanggal_request,
+    data_request_kk.keperluan,
+    data_request_kk.request
+FROM
+    data_user
+INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
+WHERE year(data_request_kk.acc) = '$tahun'
+UNION
+SELECT
+    data_user.nik,
+    data_user.nama,
+    data_request_sku.acc,
+    data_request_sku.tanggal_request,
+    data_request_sku.keperluan,
+    data_request_sku.request
+FROM
+    data_user
+INNER JOIN data_request_sku ON data_request_sku.nik = data_user.nik
+WHERE year(data_request_sku.acc) = '$tahun'
+UNION
+SELECT
+    data_user.nik,
+    data_user.nama,
+    data_request_skd.acc,
+    data_request_skd.tanggal_request,
+    data_request_skd.keperluan,
+    data_request_skd.request
+FROM
+    data_user
+INNER JOIN data_request_skd ON data_request_skd.nik = data_user.nik
+WHERE year(data_request_skd.acc) = '$tahun'";
+
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':bulan', $bulan, PDO::PARAM_INT); // Ubah menjadi PDO::PARAM_INT jika bulan berupa angka
     $stmt->bindParam(':request', $request, PDO::PARAM_STR);
@@ -212,47 +194,46 @@ if (isset($_GET['bulan']) && isset($_GET['request'])) {
     </table>
     <br>
     <center>
-        <div class="card-body">
-            <table class="table mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Tanggal ACC</th>
-                        <th scope="col">NIK</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Keperluan</th>
-                        <th scope="col">Request</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $no = 0;
-                    if (isset($result) && is_array($result)) {
-                        foreach ($result as $data) {
-                            $no++;
-                            $nik = $data['nik'];
-                            $nama = $data['nama'];
-                            $tanggal = $data['acc'];
-                            $tgl = date('d F Y', strtotime($tanggal));
-                            $keperluan = $data['keperluan'];
-                            $request = $data['request'];
-                    ?>
-                            <tr>
-                                <td><?php echo $no; ?></td>
-                                <td><?php echo $tgl; ?></td>
-                                <td><?php echo $nama; ?></td>
-                                <td><?php echo $nik; ?></td>
-                                <td><?php echo $keperluan; ?></td>
-                                <td><?php echo $request; ?></td>
-                            </tr>
-                    <?php
-                        }
-                    }
-                    ?>
-                </tbody>
+            <table class="table table-bordered">
+                <tr>
+                    <th>No.</th>
+                    <th>Tanggal Request</th>
+                    <th>Tanggal ACC</th>
+                    <th>Nama</th>
+                    <th>Keperluan</th>
+                    <th>Layanan</th>
+                </tr>
+                <?php
+                $no = 0;
+                $query = mysqli_query($konek, $sql);
+                while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
+                    $no++;
+                    // $nik = $data['nik'];
+                    $nama = $data['nama'];
+                    $tanggal = $data['acc'];
+                    $tgl = date('d F Y', strtotime($tanggal));
+                    $keperluan = $data['keperluan'];
+                    $request = $data['request'];
+                    $tglreq = $data['tanggal_request'];
+                    $req = date('d F Y', strtotime($tglreq));
+                ?>
+                    <tbody>
+                        <tr>
+                            <th><?php echo $no; ?></th>
+                            <td><?php echo $req; ?></td>
+                            <td><?php echo $tgl; ?></td>
+                            <!-- <td><?php echo $nik; ?></td> -->
+                            <td><?php echo $nama; ?></td>
+                            <td><?php echo $keperluan; ?></td>
+                            <td><?php echo $request; ?></td>
+                        </tr>
+                    </tbody>
+            <?php
+                }
+            
+            ?>
             </table>
-        </div>
-    </center>
+        </center>
     <br>
     <br>
     <table border='0' align="right">
