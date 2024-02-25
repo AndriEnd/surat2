@@ -21,7 +21,7 @@
                                         <th>NIK</th>
                                         <th>Nama Lengkap</th>
                                         <th>Status</th>
-                                        <th>Scan KTP</th>
+                                        <th>Surat Lahir</th>
                                         <th>Scan KK</th>
                                         <th>Keterangan</th>
                                         <th>Keperluan</th>

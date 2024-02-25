@@ -22,6 +22,7 @@
                                     <th>Keperluan</th>
                                     <th>Request</th>
                                     <th>Status</th>
+                                    <th>File</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,7 +98,7 @@
                                                     data_user
                                                 INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
                                                 WHERE data_request_ktp.status = 3";
-                                // $sql = "SELECT * FROM data_request_skd natural join data_user WHERE status=3";
+                                $sql = "SELECT * FROM data_request_skd natural join data_user WHERE status=3";
                                 $query = mysqli_query($konek, $sql);
                                 while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
                                     $tgl = $data['tanggal_request'];
@@ -124,6 +125,7 @@
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td><?php echo $request; ?></td>
+
                                         <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
                                     </tr>
                                     <!-- <?php

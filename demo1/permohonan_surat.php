@@ -250,9 +250,8 @@
 								</tr>
 							</thead>
 							<tbody>
-
 								<?php
-								$sql = "SELECT * FROM data_request_skd natural join data_user where status=2";
+								$sql = "SELECT * FROM data_request_skd natural join data_user  where status=2";
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -262,7 +261,10 @@
 									$status = $data['status'];
 									$ktp = $data['scan_ktp'];
 									$kk = $data['scan_kk'];
+									$keperluan = $data['keperluan'];
+									$keterangan = $data['keterangan'];
 									$id_request_skd = $data['id_request_skd'];
+
 
 									if ($status == "2") {
 										$status = "<b style='color:blue'>SUDAH ACC LURAH</b>";
@@ -276,8 +278,8 @@
 										<td><?php echo $nama; ?></td>
 										<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 										<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><?php echo $keperluan; ?></td>
+										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=view_cetak_skd&id_request_skd=<?= $id_request_skd; ?>">
@@ -285,27 +287,12 @@
 														<i class="fa fa-edit"></i>
 													</button>
 												</a>
-
 											</div>
 										</td>
 									</tr>
 								<?php
 								}
 								?>
-								<!-- <?php
-										//if (isset($_POST['kirim'])) {
-										//	$keterangan = $_POST['keterangan'];
-										//	$sql = mysqli_query($konek, "UPDATE data_request_skd SET
-										//	keterangan='$keterangan', status='3' WHERE id_request_skd='$id_request_skd'");
-										//	if ($sql) {
-										//		echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil!', 'success');</script>";
-										//		echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
-										//	} else {
-										//		echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal!', 'error');</script>";
-										//		echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
-										//	}
-										//}
-										?> -->
 							</tbody>
 						</table>
 					</div>
@@ -339,7 +326,7 @@
 							</thead>
 							<tbody>
 								<?php
-								$sql = "SELECT * FROM data_request_akta natural join data_user where status=2";
+								$sql = "SELECT * FROM data_request_akta natural join data_user  where status=2";
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -349,7 +336,10 @@
 									$status = $data['status'];
 									$ktp = $data['scan_ktp'];
 									$kk = $data['scan_kk'];
+									$keperluan = $data['keperluan'];
+									$keterangan = $data['keterangan'];
 									$id_request_akta = $data['id_request_akta'];
+
 
 									if ($status == "2") {
 										$status = "<b style='color:blue'>SUDAH ACC LURAH</b>";
@@ -363,8 +353,8 @@
 										<td><?php echo $nama; ?></td>
 										<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 										<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><?php echo $keperluan; ?></td>
+										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=view_cetak_akta&id_request_akta=<?= $id_request_akta; ?>">
@@ -378,20 +368,6 @@
 								<?php
 								}
 								?>
-								<!-- <?php
-										//if (isset($_POST['kirim'])) {
-										//	$keterangan = $_POST['keterangan'];
-										//	$sql = mysqli_query($konek, "UPDATE data_request_akta SET keterangan='$keterangan', status='3' WHERE id_request_akta='$id_request_akta'");
-										//	if ($sql) {
-										//		echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil!', 'success');</script>";
-										//		echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
-										//	} else {
-										//		echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal!', 'error');</script>";
-										//		echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
-										//	}
-										//}
-										//
-										?> -->
 							</tbody>
 						</table>
 					</div>
@@ -425,7 +401,7 @@
 							</thead>
 							<tbody>
 								<?php
-								$sql = "SELECT * FROM data_request_ktp natural join data_user where status=2";
+								$sql = "SELECT * FROM data_request_ktp natural join data_user  where status=2";
 								$query = mysqli_query($konek, $sql);
 								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
 									$tgl = $data['tanggal_request'];
@@ -435,7 +411,10 @@
 									$status = $data['status'];
 									$ktp = $data['scan_ktp'];
 									$kk = $data['scan_kk'];
+									$keperluan = $data['keperluan'];
+									$keterangan = $data['keterangan'];
 									$id_request_ktp = $data['id_request_ktp'];
+
 
 									if ($status == "2") {
 										$status = "<b style='color:blue'>SUDAH ACC LURAH</b>";
@@ -449,8 +428,8 @@
 										<td><?php echo $nama; ?></td>
 										<td><img src="../dataFoto/scan_ktp/<?php echo $ktp; ?>" width="50" height="50" alt=""></td>
 										<td><img src="../dataFoto/scan_kk/<?php echo $kk; ?>" width="50" height="50" alt=""></td>
-										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td><?php echo $keperluan; ?></td>
+										<td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
 										<td>
 											<div class="form-button-action">
 												<a href="?halaman=view_cetak_ktp&id_request_ktp=<?= $id_request_ktp; ?>">
@@ -464,20 +443,6 @@
 								<?php
 								}
 								?>
-								<!--<?php
-									//if (isset($_POST['kirim'])) {
-									//	$keterangan = $_POST['keterangan'];
-									//	$sql = mysqli_query($konek, "UPDATE data_request_ktp SET keterangan='$keterangan', status='3' WHERE id_request_ktp='$id_request_ktp'");
-									//	if ($sql) {
-									//		echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil!', 'success');</script>";
-									//		echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
-									//	} else {
-									//		echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal!', 'error');</script>";
-									//		echo '<meta http-equiv="refresh" content="3; url=?halaman=permohonan_surat">';
-									//	}
-									//}
-									//
-									?> -->
 							</tbody>
 						</table>
 					</div>

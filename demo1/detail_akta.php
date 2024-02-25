@@ -21,6 +21,8 @@ if (isset($_GET['id_request_akta'])) {
     $kk = $data['scan_kk'];
     $keterangan = $data['keterangan'];
     $keperluan = $data['keperluan'];
+    $nama_anak = $data['nama_anak'];
+    $anak_ke = $data['anak_ke'];
 }
 if (isset($_GET['id_request_akta'])) {
     $id_request_akta = $_GET['id_request_akta'];
@@ -104,6 +106,10 @@ if (isset($_GET['id_request_akta'])) {
                                     <label>Keperluan</label>
                                     <input type="text" name="keperluan" readonly="" class="form-control" placeholder="Keperluan Anda.." value="<?= $keperluan; ?>">
                                 </div>
+                                <div class="form-group">
+                                    <label>Anak ke -</label>
+                                    <input type="text" name="anak_ke" readonly="" class="form-control" placeholder="Anak ke" value="<?= $anak_ke; ?>" readonly="">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -112,7 +118,7 @@ if (isset($_GET['id_request_akta'])) {
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">KTP</h4>
+                        <h4 class="card-title">Surat Lahir</h4>
                     </div>
                     <div class="card-body">
                         <div class="row justify-content-md-center">

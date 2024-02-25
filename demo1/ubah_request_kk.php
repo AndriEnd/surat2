@@ -14,6 +14,35 @@ if (isset($_GET['id_request_kk'])) {
 	$warga_negara = $data['warga_negara'];
 	$ktp = $data['scan_ktp'];
 	$kk = $data['scan_kk'];
+
+	$nama_anggota  = $data['nama_anggota']; // anggota kel
+	$nik_anggota  =  $data['nik_anggota'];
+	$tempat_anggota  = $data['tempat_anggota'];
+	$tgl_anggota  =  $data['tgl_anggota'];
+	$jekel_anggota  =  $data['jekel_anggota'];
+	$agama_anggota  =  $data['agama_anggota'];
+	$hdk_anggota  =  $data['hdk_anggota'];
+}
+if (isset($_GET['id_request_kk'])) {
+	$id = $_GET['id_request_kk'];
+	$sql = "SELECT * FROM data_request_kk natural join data_penduduk WHERE id_request_kk='$id'";
+	$query = mysqli_query($konek, $sql);
+	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
+	$no_kk = $data['no_kk'];
+	$pekerjaan = $data['pekerjaan'];
+	$alamat = $data['alamat'];
+	$jekel = $data['jekel'];
+	$status_warga = $data['status_warga'];
+	$status_hdk = $data['status_hdk'];
+	$status_perkawinan = $data['status_perkawinan'];
+
+	$nama_anggota  = $data['nama_anggota']; // anggota kel
+	$nik_anggota  =  $data['nik_anggota'];
+	$tempat_anggota  = $data['tempat_anggota'];
+	$tgl_anggota  =  $data['tgl_anggota'];
+	$jekel_anggota  =  $data['jekel_anggota'];
+	$agama_anggota  =  $data['agama_anggota'];
+	$hdk_anggota  =  $data['hdk_anggota'];
 }
 ?>
 <div class="page-inner">
@@ -30,6 +59,10 @@ if (isset($_GET['id_request_kk'])) {
 								<div class="form-group">
 									<label>NIK</label>
 									<input type="text" name="nik" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
+								</div>
+								<div class="form-group">
+									<label>No.KK</label>
+									<input type="text" name="no_kk" class="form-control" value="<?= $no_kk; ?>" readonly>
 								</div>
 								<div class="form-group">
 									<label>Keperluan</label>
@@ -49,6 +82,44 @@ if (isset($_GET['id_request_kk'])) {
 									<input type="file" name="ktp" class="form-control" value="<?= $ktp; ?>" size="37">
 								</div>
 							</div>
+							<table border="1" align="center">
+								<tr align="center">
+									<th>No.</th>
+									<th>Nama</th>
+									<th>NIK</th>
+									<th>No. KK</th>
+									<th>Tempat, Tanggal lahir</th>
+									<th>Jenis Kelamin</th>
+									<th>Agama</th>
+									<th>Status HDK</th>
+								</tr>
+								<?php
+								$no = 0;
+								$query = mysqli_query($konek, $sql);
+								while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
+									$no++;
+									$nama_anggota = $data['nama_anggota'];
+									$nik_anggota = $data['nik_anggota'];
+									$format_anggota = date('d F Y', strtotime($tgl_anggota));
+									$jekel_anggota = $data['jekel_anggota'];
+									$agama_anggota = $data['agama_anggota'];
+									$hdk = $data['hdk_anggota'];
+								?>
+									<tbody>
+										<tr align="center">
+											<th><?php echo $no++; ?></th>
+											<th><?php echo $nama_anggota; ?></th>
+											<td><?php echo $nik_anggota; ?></td>
+											<td><?php echo $tempat_anggota . ", " . $format_anggota; ?></td>
+											<td><?php echo $jekel_anggota; ?></td>
+											<td><?php echo $agama_anggota; ?></td>
+											<td><?php echo $hdk_anggota; ?></td>
+										</tr>
+									</tbody>
+								<?php
+								}
+								?>
+							</table>
 						</div>
 					</div>
 					<div class="card-action">

@@ -1,4 +1,5 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
@@ -41,63 +42,35 @@ $nama = $data['nama'];
 									<input type="text" name="anggota_keluarga" class="form-control" placeholder="Anggota  Keluarga" autofocus>
 								</div> -->
 
-
 								<div class="form-group">
-									<div class="control-group after-add-more">
-										<h2>Anggota Keluarga</h2>
-										<label>NIK</label>
-										<input type="text" name="nik_anggota" class="form-control">
-
-										<label>Nama</label>
-										<input type="text" name="nama_anggota" class="form-control">
-
-										<label>Tempat Lahir</label>
-										<input type="text" name="tempat_anggota" class="form-control" placeholder="Tempat Lahir..">
-
-										<label>Tanggal Lahir</label>
-										<input type="date" name="tgl_anggota" class="form-control">
-
-										<label>Jenis Kelamin</label>
-										<select class="form-control" name="jekel_anggota">
-											<option>Laki-Laki</option>
-											<option>Perempuan</option>
-										</select>
-										<label>Agama</label>
-										<select class="form-control" name="agama_anggota">
-											<option>Islam</option>
-											<option>Katolik</option>
-											<option>Kristen</option>
-											<option>Budha</option>
-											<option>Hindu</option>
-											<option>Konghucu</option>
-										</select>
-										<label>Status HDK</label>
-										<input type="text" name="hdk_anggota" class="form-control">
-										<br>
-										<!-- <button class="btn btn-success add-more" type="button">
-											<i class="glyphicon glyphicon-plus"></i> Tambah Anggota +
-										</button> -->
-										<hr>
-									</div>
+									<label>Scan KTP</label>
+									<input type="file" name="ktp" class="form-control" size="37" required>
 								</div>
 							</div>
 
-							<!--<div class="form-group">
-								<div class="copy hide">
+							<div class="col-md-6 col-lg-6">
+								<div class="control-group after-add-more">
 									<h2>Anggota Keluarga</h2>
-									<label>Nama</label>
-									<input type="text" name="nama[]" class="form-control">
 									<label>NIK</label>
-									<input type="text" name="nik[]" class="form-control">
-									<label>Tempat & Tgl Lahir</label>
-									<input type="text" name="Tempat[]" class="form-control">
+									<input type="text" name="nik_anggota" class="form-control">
+
+									<label>Nama</label>
+									<input type="text" name="nama_anggota" class="form-control">
+
+									<label>Tempat Lahir</label>
+									<input type="text" name="tempat_anggota" class="form-control" placeholder="Tempat Lahir..">
+
+									<label>Tanggal Lahir</label>
+									<input type="date" name="tgl_anggota" class="form-control">
+
 									<label>Jenis Kelamin</label>
-									<select class="form-control" name="jekel[]">
+									<select class="form-control" name="jekel_anggota">
 										<option>Laki-Laki</option>
 										<option>Perempuan</option>
 									</select>
+
 									<label>Agama</label>
-									<select class="form-control" name="Agama[]">
+									<select class="form-control" name="agama_anggota">
 										<option>Islam</option>
 										<option>Katolik</option>
 										<option>Kristen</option>
@@ -106,44 +79,43 @@ $nama = $data['nama'];
 										<option>Konghucu</option>
 									</select>
 									<label>Status HDK</label>
-									<input type="text" name="status_hdk[]" class="form-control">
+									<input type="text" name="hdk_anggota" class="form-control">
 									<br>
-									<button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-									<hr>
 								</div>
-							</div> -->
+								<button class="btn btn-success add-more" type="button">
+									<i class="glyphicon glyphicon-plus">
+									</i> Tambah Anggota +
+								</button>
+								<hr>
+								<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+								<script>
+									$(document).ready(function() {
+										$(".add-more").click(function() {
+											var html = $(".after-add-more:first").clone();
+											html.find("input").val("");
+											html.find("select").val("");
+											html.find(".remove").show();
+											$(".after-add-more:last").after(html);
+										});
 
-						</div>
-						<div class="col-md-6 col-lg-6">
-							<div class="form-group">
-								<label>Scan KTP</label>
-								<input type="file" name="ktp" class="form-control" size="37" required>
+										$("body").on("click", ".remove", function() {
+											$(this).closest(".after-add-more").remove();
+										});
+									});
+								</script>
 							</div>
 						</div>
 					</div>
+					<div class="card-action">
+						<button name="kirim" class="btn btn-success">Kirim</button>
+						<a href="?halaman=beranda" class="btn btn-default">Batal</a>
+					</div>
 				</div>
-				<div class="card-action">
-					<button name="kirim" class="btn btn-success">Kirim</button>
-					<a href="?halaman=beranda" class="btn btn-default">Batal</a>
-				</div>
+			</form>
 		</div>
 	</div>
-	<!-- <script type="text/javascript">
-		$(document).ready(function() {
-			$(".add-more").click(function() {
-				var html = $(".copy").html();
-				$(".after-add-more").after(html);
-			});
+</div>
 
-			// saat tombol remove dklik control group akan dihapus 
-			$("body").on("click", ".remove", function() {
-				$(this).parents(".control-group").remove();
-			});
-		});
-	</script> -->
-	</form>
-</div>
-</div>
 
 <?php
 if (isset($_POST['kirim'])) {
@@ -206,5 +178,4 @@ if (isset($_POST['kirim'])) {
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=request_kk">';
 	}
 }
-
 ?>

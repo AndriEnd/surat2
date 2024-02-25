@@ -33,6 +33,19 @@ if (isset($_GET['id_request_akta'])) {
     $acc = $data['acc'];
     $format4 = date('d F Y', strtotime($acc));
 }
+if (isset($_GET['id_request_akta'])) {
+    $id = $_GET['id_request_akta'];
+    $sql = "SELECT * FROM data_request_akta natural join data_penduduk WHERE id_request_akta='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $pekerjaan = $data['pekerjaan'];
+    $alamat = $data['alamat'];
+    $status_warga = $data['status_warga'];
+    $status_perkawinan = $data['status_perkawinan'];
+    $status_hdk = $data['status_hdk'];
+    $nama_ayah = $data['nama_ayah'];
+    $nama_ibu = $data['nama_ibu'];
+}
 
 ?>
 <!DOCTYPE html>
@@ -129,7 +142,7 @@ if (isset($_GET['id_request_akta'])) {
             <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td><?php echo $nama_anak; ?></td>
+                <td><?php echo $nama; ?></td>
             </tr>
             <tr>
                 <td>Tempat, Tanggal Lahir</td>
@@ -151,20 +164,21 @@ if (isset($_GET['id_request_akta'])) {
                 <td>:</td>
                 <td><?php echo $status_warga; ?></td>
             </tr>
-            <tr>
-                <td>Status anak</td>
-                <td>:</td>
-                <td><?php echo $status_anak; ?></td>
-            </tr>
+
             <tr>
                 <td>Anak Ke -</td>
                 <td>:</td>
                 <td><?php echo $anak_ke; ?></td>
             </tr>
             <tr>
+                <td>Nama Ayah</td>
+                <td>:</td>
+                <td><?php echo $nama_ayah; ?></td>
+            </tr>
+            <tr>
                 <td>Nama Ibu</td>
                 <td>:</td>
-                <td><?php echo $nama; ?></td>
+                <td><?php echo $nama_ibu; ?></td>
             </tr>
             <tr>
                 <td>No. NIK</td>

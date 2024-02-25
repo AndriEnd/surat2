@@ -20,7 +20,7 @@
                                         <th>Tanggal Request</th>
                                         <th>NIK</th>
                                         <th>Nama Lengkap</th>
-                                        <th>Scan KTP</th>
+                                        <th>Surat Lahir</th>
                                         <th>Scan KK</th>
                                         <th>Keperluan</th>
                                         <th style="width: 10%">Action</th>

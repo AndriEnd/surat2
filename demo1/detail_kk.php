@@ -22,6 +22,14 @@ if (isset($_GET['id_request_kk'])) {
 	$keperluan = $data['keperluan'];;
 	$keterangan = $data['keterangan'];
 	$warga_negara = $data['warga_negara'];
+
+	$nama_anggota  = $data['nama_anggota']; // anggota kel
+	$nik_anggota  =  $data['nik_anggota'];
+	$tempat_anggota  = $data['tempat_anggota'];
+	$tgl_anggota  =  $data['tgl_anggota'];
+	$jekel_anggota  =  $data['jekel_anggota'];
+	$agama_anggota  =  $data['agama_anggota'];
+	$hdk_anggota  =  $data['hdk_anggota'];
 }
 if (isset($_GET['id_request_kk'])) {
 	$id_request_kk = $_GET['id_request_kk'];
@@ -112,6 +120,37 @@ if (isset($_GET['id_request_kk'])) {
 								<div class="form-group">
 									<label>Kewarganegaraan</label>
 									<input type="text" name="warga_negara" readonly="" class="form-control" placeholder="Kewarganegaraan" value="<?= $warga_negara; ?>">
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6">
+								<div class="form-group">
+									<h3>Anggota Keluarga</h3>
+									<label>NIK</label>
+									<input type="text" name="nik_anggota" readonly="" class="form-control" value="<?= $nik_anggota; ?>">
+								</div>
+								<div class="form-group">
+									<label>Nama</label>
+									<input type="text" name="nama_anggota" readonly="" class="form-control" value="<?= $nama_anggota; ?>">
+								</div>
+								<div class="form-group">
+									<label>Tempat Lahir</label>
+									<input type="text" name="tempat_anggota" readonly="" class="form-control" value="<?= $tempat_anggota; ?>">
+								</div>
+								<div class="form-group">
+									<label>Tanggal Lahir</label>
+									<input type="text" name="tgl_anggota" readonly="" class="form-control" value="<?= $tgl_anggota; ?>">
+								</div>
+								<div class="form-group">
+									<label>Jenis Kelamin</label>
+									<input type="text" name="jekel_anggota" readonly="" class="form-control" value="<?= $jekel_anggota; ?>">
+								</div>
+								<div class="form-group">
+									<label>Agama</label>
+									<input type="text" name="agama_anggota" readonly="" class="form-control" value="<?= $agama_anggota; ?>">
+								</div>
+								<div class="form-group">
+									<label>Status HDK</label>
+									<input type="text" name="hdk_anggota" readonly="" class="form-control" value="<?= $hdk_anggota; ?>">
 								</div>
 							</div>
 						</div>

@@ -21,42 +21,36 @@ $nama = $data['nama'];
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>NIK Kepala Keluarga & Nama</label>
+                                    <label>NIK & Nama</label>
                                     <input type="text" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
                                 </div>
-                                <div class="form-group">
-                                    <label>No.KK </label>
-                                    <input type="text" class="form-control" value="<?= $no_kk; ?>" readonly>
-                                </div>
+
                                 <div class="form-group">
                                     <input type="hidden" name="nik" class="form-control" value="<?= $nik; ?>" readonly>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>Nama Anak</label>
                                     <input type="text" name="nama_anak" class="form-control" placeholder="Nama Anak.." autofocus>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label>Anak Ke -</label>
                                     <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke - " autofocus>
                                 </div>
-                                <div class="form-group">
-                                    <label>Status Anak</label>
-                                    <input type="text" name="status_anak" class="form-control" placeholder="status_anak " autofocus>
-                                </div>
+
                                 <div class="form-group">
                                     <label>Keperluan </label>
                                     <input type="text" name="keperluan" class="form-control" placeholder="Keperluan" autofocus>
                                 </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <div class="form-group">
-                                        <label>Scan KTP Kepala Keluarga</label>
-                                        <input type="file" name="ktp" class="form-control" size="37" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Scan KK</label>
-                                        <input type="file" name="kk" class="form-control" size="37" required>
-                                    </div>
+
+                                <div class="form-group">
+                                    <label>Surat Kelahiran</label>
+                                    <input type="file" name="ktp" class="form-control" size="37" required>
                                 </div>
+                                <div class="form-group">
+                                    <label>Scan KK</label>
+                                    <input type="file" name="kk" class="form-control" size="37" required>
+                                </div>
+
                             </div>
                         </div>
                     </div>

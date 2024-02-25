@@ -44,6 +44,14 @@ if (isset($_GET['id_request_kk'])) {
     $status_warga = $data['status_warga'];
     $status_perkawinan = $data['status_perkawinan'];
     $pekerjaan = $data['pekerjaan'];
+
+    $nama_anggota  = $data['nama_anggota']; // anggota kel
+    $nik_anggota  =  $data['nik_anggota'];
+    $tempat_anggota  = $data['tempat_anggota'];
+    $tgl_anggota  =  $data['tgl_anggota'];
+    $jekel_anggota  =  $data['jekel_anggota'];
+    $agama_anggota  =  $data['agama_anggota'];
+    $hdk_anggota  =  $data['hdk_anggota'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -251,22 +259,22 @@ if (isset($_GET['id_request_kk'])) {
                                 $query = mysqli_query($konek, $sql);
                                 while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
                                     $no++;
-                                    $nama = $data['nama'];
-                                    $nik = $data['nik'];
-                                    $format2 = date('d F Y', strtotime($tgl));
-                                    $jekel = $data['jekel'];
-                                    $agama = $data['agama'];
-                                    $status_hdk = $data['status_hdk'];
+                                    $nama_anggota = $data['nama_anggota'];
+                                    $nik_anggota = $data['nik_anggota'];
+                                    $format_anggota = date('d F Y', strtotime($tgl_anggota));
+                                    $jekel_anggota = $data['jekel_anggota'];
+                                    $agama_anggota = $data['agama_anggota'];
+                                    $hdk = $data['hdk_anggota'];
                                 ?>
                                     <tbody>
                                         <tr align="center">
                                             <th><?php echo $no++; ?></th>
-                                            <th><?php echo $nama; ?></th>
-                                            <td><?php echo $nik; ?></td>
-                                            <td><?php echo $tempat . ", " . $format2; ?></td>
-                                            <td><?php echo $jekel; ?></td>
-                                            <td><?php echo $agama; ?></td>
-                                            <td><?php echo $status_hdk; ?></td>
+                                            <th><?php echo $nama_anggota; ?></th>
+                                            <td><?php echo $nik_anggota; ?></td>
+                                            <td><?php echo $tempat_anggota . ", " . $format_anggota; ?></td>
+                                            <td><?php echo $jekel_anggota; ?></td>
+                                            <td><?php echo $agama_anggota; ?></td>
+                                            <td><?php echo $hdk_anggota; ?></td>
                                         </tr>
                                     </tbody>
                                 <?php
