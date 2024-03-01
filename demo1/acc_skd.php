@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="d-flex align-items-center">
-						<h4 class="fw-bold text-uppercase">TAMPIL ACC REQUEST SURAT KETERANGAN DOMISILI</h4>
+						<h4 class="fw-bold text-uppercase">DAFTAR ACC SURAT KETERANGAN DOMISILI</h4>
 					</div>
 				</div>
 				<div class="card-body">
@@ -86,10 +86,10 @@ if (isset($_POST['acc'])) {
 			$query = mysqli_query($konek, $ubah);
 
 			if ($query) {
-				echo "<script language='javascript'>swal('Selamat...', 'ACC Staf Berhasil!', 'success');</script>";
+				echo "<script language='javascript'>swal('Selamat...', 'ACC RT Berhasil!', 'success');</script>";
 				echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_skd">';
 			} else {
-				echo "<script language='javascript'>swal('Gagal...', 'ACC Staf Gagal!', 'error');</script>";
+				echo "<script language='javascript'>swal('Gagal...', 'ACC RT Gagal!', 'error');</script>";
 				echo '<meta http-equiv="refresh" content="3; url=?halaman=sudah_acc_skd">';
 			}
 		}

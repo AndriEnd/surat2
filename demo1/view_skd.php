@@ -1,4 +1,5 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+include '../convert_romawi.php'; ?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
@@ -17,6 +18,8 @@ if (isset($_GET['id_request_skd'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
@@ -31,6 +34,13 @@ if (isset($_GET['id_request_skd'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_skd'])) {
+    $id = $_GET['id_request_skd'];
+    $sql = "SELECT * FROM data_request_skd natural join data_penduduk WHERE id_request_skd='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_perkawinan = $data['status_perkawinan'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -107,7 +117,7 @@ if (isset($_GET['id_request_skd'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156</i></font><br>
+                                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -142,9 +152,9 @@ if (isset($_GET['id_request_skd'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR DOMISILI</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                        <span>Nomor : 145.3 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                     </center>
                                 </td>
                             </tr>
@@ -161,12 +171,22 @@ if (isset($_GET['id_request_skd'])) {
                         <br>
                         <table border="0" align="center">
                             <tr>
+                                <td>No. NIK</td>
+                                <td>:</td>
+                                <td><?php echo $nik; ?></td>
+                            </tr>
+                            <tr>
                                 <td>Nama</td>
                                 <td>:</td>
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td><?php echo $alamat; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Tempat,Tanggal Lahir</td>
                                 <td>:</td>
                                 <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
@@ -186,36 +206,23 @@ if (isset($_GET['id_request_skd'])) {
                                 <td><?php echo $status_warga; ?></td>
                             </tr>
                             <tr>
-                                <td>No. NIK</td>
+                                <td>Status Perkawinan</td>
                                 <td>:</td>
-                                <td><?php echo $nik; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td>:</td>
-                                <td><?php echo $alamat; ?></td>
+                                <td><?php echo $status_perkawinan; ?></td>
                             </tr>
                             <tr>
                                 <td>Keperluan</td>
                                 <td>:</td>
                                 <td><?php echo $keperluan; ?></td>
                             </tr>
-                            <tr>
-                                <td>Keterangan</td>
-                                <td>:</td>
-                                <?php
-                                if ($request == "DOMISILI") {
-                                    $request = "Surat Keterangan Domisili";
-                                }
-                                ?>
-                                <td><?php echo $request; ?></td>
-                            </tr>
                         </table>
                         <br>
                         <table border="0" align="center">
-                            <tr>
+                            <tr align="justify">
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dengan ini menerangkan bahwa benar yang bersangkutan berdomisili di Kampung Sumber<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Bahagia Kecamatan Seputih Banyak Kabupaten Lampung Tengah.
+                                    <br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.
                                 </td>
                             </tr>
                         </table>
@@ -226,16 +233,18 @@ if (isset($_GET['id_request_skd'])) {
                             <tr>
                                 <th></th>
                                 <th width="100px"></th>
-                                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                                <th>Sumber Bahagia, <?php echo $format4; ?></th>
                             </tr>
                             <tr>
-                                <td>Tanda Tangan <br> Yang Bersangkutan </td>
+                                <td><b></b></td>
                                 <td></td>
-                                <td>Lurah Sumber Bahagia </td>
+                                <td>Kepala Desa Sumber Bahagia </td>
                             </tr>
                             <tr>
                                 <td rowspan="15"></td>
-                                <td></td>
+                                <td>
+                                <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                                </td>
                                 <td rowspan="15"></td>
                             </tr>
                             <tr>
@@ -283,10 +292,9 @@ if (isset($_GET['id_request_skd'])) {
                             <tr>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
-                                <td></td>
-                                <td><b><u>(Burhan Suburhan)</u></b></td>
+                            <td><b></b></td>
+                            <td></td>
+                            <td><b><u>Setio Hudi</u></b></td>
                             </tr>
                         </table>
                     </table>

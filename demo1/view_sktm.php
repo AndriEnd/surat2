@@ -1,11 +1,14 @@
-<?php include '../konek.php'; ?>
+<?php
+include '../konek.php';
+include '../convert_romawi.php';
+?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
 <?php
 if (isset($_GET['id_request_sktm'])) {
     $id = $_GET['id_request_sktm'];
-    $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE id_request_sktm='$id'";
+    $sql = "SELECT * FROM data_request_sktm natural join data_penduduk WHERE id_request_sktm='$id'";
     $query = mysqli_query($konek, $sql);
     $data = mysqli_fetch_array($query, MYSQLI_BOTH);
     $id = $data['id_request_sktm'];
@@ -17,10 +20,13 @@ if (isset($_GET['id_request_sktm'])) {
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
+    $pekerjaan = $data['pekerjaan'];
     $agama = $data['agama'];
     $jekel = $data['jekel'];
     $nama = $data['nama'];
-    $alamat = $data['alamat'];
+
     $status_warga = $data['status_warga'];
     $keperluan = $data['keperluan'];
     $request = $data['request'];
@@ -31,6 +37,13 @@ if (isset($_GET['id_request_sktm'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_sktm'])) {
+    $id = $_GET['id_request_sktm'];
+    $sql = "SELECT * FROM data_request_sktm natural join data_user WHERE id_request_sktm='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $alamat = $data['alamat'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -107,7 +120,7 @@ if (isset($_GET['id_request_sktm'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156</i></font><br>
+                                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -125,14 +138,9 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                             <tr>
-                                <td colspan="45">
+                                <td colspan="60">
                                     <hr color="black">
                                 </td>
                             </tr>
@@ -142,14 +150,13 @@ if (isset($_GET['id_request_sktm'])) {
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN TIDAK MAMPU</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                        <span>Nomor : 145.1 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                     </center>
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <br>
                         <table border="0" align="center">
                             <tr>
@@ -166,9 +173,14 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td><?php echo $nama; ?></td>
                             </tr>
                             <tr>
-                                <td>TTL</td>
+                                <td>NIK</td>
                                 <td>:</td>
-                                <td><?php echo $tempat . ", " . $format1; ?></td>
+                                <td><?php echo $nik; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Tempat,Tanggal Lahir </td>
+                                <td>:</td>
+                                <td><?php echo $tempat . ", " . $format2; ?></td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
@@ -181,15 +193,16 @@ if (isset($_GET['id_request_sktm'])) {
                                 <td><?php echo $agama; ?></td>
                             </tr>
                             <tr>
-                                <td>Status Warga</td>
+                                <td>Pekerjaan</td>
+                                <td>:</td>
+                                <td><?php echo $pekerjaan; ?></td>
+                            </tr>
+                            <tr>
+                                <td>RT / RW </td>
                                 <td>:</td>
                                 <td><?php echo $status_warga; ?></td>
                             </tr>
-                            <tr>
-                                <td>No. NIK</td>
-                                <td>:</td>
-                                <td><?php echo $nik; ?></td>
-                            </tr>
+
                             <tr>
                                 <td>Alamat</td>
                                 <td>:</td>
@@ -208,7 +221,6 @@ if (isset($_GET['id_request_sktm'])) {
                                 if ($request == "TIDAK MAMPU") {
                                     $request = "Surat Keterangan Tidak Mampu";
                                 }
-
                                 ?>
                                 <td><?php echo $request; ?></td>
                             </tr>
@@ -217,26 +229,27 @@ if (isset($_GET['id_request_sktm'])) {
                         <table border="0" align="center">
                             <tr>
                                 <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bahwa nama tersebut benar- benar warga kami dan menurut sepanjang pengetahuan kami <br> dari laporan RT setempat dan hingga surat ini dikeluarkan yang bersanggkutan benar - benar<br> berasal dari keluarga tidak mampu.&nbsp;&nbsp;<br><br>Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan <br> untuk sebagaimana mestinya.&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <br>
                         <table border="0" align="center">
                             <tr>
                                 <th></th>
                                 <th width="100px"></th>
-                                <th>Lampung Tengah, <?php echo $acc; ?></th>
+                                <th>Sumber Bahagia, <?php echo $format4; ?></th>
                             </tr>
                             <tr>
-                                <td>Tanda Tangan <br> Yang Bersangkutan </td>
+                                <td><b></b></td>
                                 <td></td>
-                                <td>Lurah Sumber Bahagia </td>
+                                <td>Kepala Desa Sumber Bahagia </td>
                             </tr>
                             <tr>
                                 <td rowspan="15"></td>
-                                <td></td>
+                                <td>
+                                <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                                </td>
                                 <td rowspan="15"></td>
                             </tr>
                             <tr>
@@ -284,15 +297,12 @@ if (isset($_GET['id_request_sktm'])) {
                             <tr>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
-                                <td></td>
-                                <td><b><u>(Burhan Suburhan)</u></b></td>
+                            <td><b></b></td>
+                            <td></td>
+                            <td><b><u>Setio Hudi</u></b></td>
                             </tr>
                         </table>
-
                     </table>
-
                 </div>
             </div>
         </div>

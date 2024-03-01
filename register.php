@@ -1,7 +1,7 @@
-<?php include 'konek.php';?>
+<?php include 'konek.php'; ?>
 <link href="demo1/css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="demo1/js/jquery-2.1.3.min.js"></script>
-<script src="demo1/js/sweetalert.min.js"></script> 
+<script src="demo1/js/sweetalert.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="main/vendors/base/vendor.bundle.base.css">
   <link href="main/js/sweetalert.css" rel="stylesheet" type="text/css">
   <script src="main/js/jquery-2.1.3.min.js"></script>
-  <script src="main/js/sweetalert.min.js"></script>                
-  <script src="main/js/sweetalert-dev.js"></script>  
+  <script src="main/js/sweetalert.min.js"></script>
+  <script src="main/js/sweetalert-dev.js"></script>
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -39,7 +39,7 @@
               <h4>HALAMAN PENDAFTARAN</h4>
               <form method="POST" class="pt-3">
                 <div class="form-group">
-                  <input type="number" name="nik" class="form-control form-control-lg" placeholder="NIK Anda.." oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "16" required autofocus>
+                  <input type="number" name="nik" class="form-control form-control-lg" placeholder="NIK Anda.." oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" required autofocus>
                 </div>
                 <div class="form-group">
                   <input type="text" name="nama" class="form-control form-control-lg" placeholder="Nama Lengkap Anda.." required>
@@ -60,7 +60,7 @@
                   <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
                 </div>
                 <div class="mb-4">
-                
+
                 </div>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" name="register">
@@ -86,26 +86,26 @@
 
   <!-- insert register -->
   <?php
-    if(isset($_POST['register'])){
-        $nik = $_POST['nik'];
-        $password = $_POST['password'];
-        $hak_akses = "Pemohon";
-        $nama = $_POST['nama'];
-        $jekel = $_POST['jekel'];
-        $kota = $_POST['kota'];
-        $tgl = $_POST['tgl'];
+  if (isset($_POST['register'])) {
+    $nik = $_POST['nik'];
+    $password = $_POST['password'];
+    $hak_akses = "Pemohon";
+    $nama = $_POST['nama'];
+    $jekel = $_POST['jekel'];
+    $kota = $_POST['kota'];
+    $tgl = $_POST['tgl'];
 
-        $sql_simpan = "INSERT INTO data_user (nik,password,hak_akses,nama,tanggal_lahir,jekel,tempat_lahir) VALUES ('$nik','$password','$hak_akses','$nama','$tgl','$jekel','$kota')";
-        $query_simpan = mysqli_query($konek,$sql_simpan);
+    $sql_simpan = "INSERT INTO data_user (nik,password,hak_akses,nama,tanggal_lahir,jekel,tempat_lahir) VALUES ('$nik','$password','$hak_akses','$nama','$tgl','$jekel','$kota')";
+    $query_simpan = mysqli_query($konek, $sql_simpan);
 
-        if($query_simpan){
-            echo "<script language='javascript'>swal('Selamat...', 'Akun Berhasil dibuat!', 'success');</script>" ;
-            echo '<meta http-equiv="refresh" content="3; url=login.php">';
-        }else{
-          echo "<script language='javascript'>swal('Gagal...', 'Akun Gagal dibuat!', 'error');</script>" ;
-          echo '<meta http-equiv="refresh" content="3; url=register.php">';
-        }
+    if ($query_simpan) {
+      echo "<script language='javascript'>swal('Selamat...', 'Akun Berhasil dibuat!', 'success');</script>";
+      echo '<meta http-equiv="refresh" content="3; url=login.php">';
+    } else {
+      echo "<script language='javascript'>swal('Gagal...', 'Akun Gagal dibuat!', 'error');</script>";
+      echo '<meta http-equiv="refresh" content="3; url=register.php">';
     }
+  }
 
   ?>
   <!-- plugins:js -->

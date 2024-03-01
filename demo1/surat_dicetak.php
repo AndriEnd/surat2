@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">PERMOHONAN SURAT SUDAH DICETAK</h4>
+                        <h4 class="card-title">DAFTAR SURAT SELESAI DICETAK</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -22,6 +22,7 @@
                                     <th>Keperluan</th>
                                     <th>Request</th>
                                     <th>Status</th>
+                                    <th>File</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,8 +74,31 @@
                                                     data_user
                                                 INNER JOIN data_request_kk ON data_request_kk.nik = data_user.nik
                                                 WHERE data_request_kk.status = 3
-                                                ";
-                                // $sql = "SELECT * FROM data_request_skd natural join data_user WHERE status=3";
+                                                UNION
+                                                SELECT
+                                                    data_user.nik,
+                                                    data_user.nama,
+                                                    data_request_akta.tanggal_request,
+                                                    data_request_akta.keperluan,
+                                                    data_request_akta.request,
+                                                    data_request_akta.status
+                                                FROM
+                                                    data_user
+                                                INNER JOIN data_request_akta ON data_request_akta.nik = data_user.nik
+                                                WHERE data_request_akta.status = 3
+                                                UNION
+                                                SELECT
+                                                    data_user.nik,
+                                                    data_user.nama,
+                                                    data_request_ktp.tanggal_request,
+                                                    data_request_ktp.keperluan,
+                                                    data_request_ktp.request,
+                                                    data_request_ktp.status
+                                                FROM
+                                                    data_user
+                                                INNER JOIN data_request_ktp ON data_request_ktp.nik = data_user.nik
+                                                WHERE data_request_ktp.status = 3";
+                                $sql = "SELECT * FROM data_request_skd natural join data_user WHERE status=3";
                                 $query = mysqli_query($konek, $sql);
                                 while ($data = mysqli_fetch_array($query, MYSQLI_BOTH)) {
                                     $tgl = $data['tanggal_request'];
@@ -88,9 +112,9 @@
                                     $request = $data['request'];
 
                                     if ($status == "1") {
-                                        $status = "<b style='color:blue'>Sudah ACC Staf</b>";
+                                        $status = "<b style='color:blue'>Sudah ACC RT</b>";
                                     } elseif ($status == "0") {
-                                        $status = "<b style='color:red'>BELUM ACC staf</b>";
+                                        $status = "<b style='color:red'>BELUM ACC RT</b>";
                                     } elseif ($status == "3") {
                                         $status = "<b style='color:green'>SURAT SUDAH DICETAK</b>";
                                     }
@@ -101,6 +125,7 @@
                                         <td><?php echo $nama; ?></td>
                                         <td><?php echo $keperluan; ?></td>
                                         <td><?php echo $request; ?></td>
+
                                         <td class="fw-bold text-uppercase text-danger op-8"><?php echo $status; ?></td>
                                     </tr>
                                     <!-- <?php

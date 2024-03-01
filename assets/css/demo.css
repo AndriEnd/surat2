@@ -176,6 +176,9 @@
 body[data-background-color="dark"] .demo-icon .icon-preview {
 	color: #969696;
 }
+body[data-background-color="grey"] .demo-icon .icon-preview {
+	color: #d8d8d8;
+}
 
 .demo-icon .icon-class{
 	font-weight: 300;

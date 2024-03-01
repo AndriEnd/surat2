@@ -1,14 +1,15 @@
 <footer class="footer">
 	<div class="container-fluid">
 		<div class="copyright ml-auto">
-			<?php echo date('Y'); ?>, Credit <i class="fa fa-heart heart text-danger"></i> by <a href="">Anis Kirana</a>
+			<?php echo date('Y'); ?>, <i class="fa fa-check"></i> <a href="">Kel.Sumber Bahagia </a>
 		</div>
 	</div>
 </footer>
 </div>
 
 <!-- Custom template | don't include it in your project! -->
-<div class="custom-template">
+
+<!--<div class="custom-template">
 	<div class="title">Settings</div>
 	<div class="custom-content">
 		<div class="switcher">
@@ -76,7 +77,7 @@
 	<div class="custom-toggle">
 		<i class="flaticon-settings"></i>
 	</div>
-</div>
+</div> -->
 <!-- End Custom template -->
 </div>
 <!--   Core JS Files   -->
@@ -141,6 +142,43 @@
 		// Add Row
 		$('#add4').DataTable({
 			"pageLength": 2,
+
+		});
+		// Add Row
+		$('#add5').DataTable({
+			"pageLength": 2,
+
+		});
+		// Add Row
+		$('#add6').DataTable({
+			"pageLength": 2,
+
+
+		});
+		// Add Row
+		$('#add7').DataTable({
+			"pageLength": 2,
+
+
+		});
+
+		// Add Row
+		$('#add8').DataTable({
+			"pageLength": 2,
+
+
+		});
+		// Add Row
+		$('#add9').DataTable({
+			"pageLength": 2,
+
+
+		});
+		// Add Row
+		$('#add10').DataTable({
+			"pageLength": 2,
+
+
 		});
 	});
 </script>

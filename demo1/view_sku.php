@@ -1,7 +1,10 @@
-<?php include '../konek.php'; ?>
+<?php include '../konek.php';
+include '../convert_romawi.php';
+?>
 <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
+
 <?php
 if (isset($_GET['id_request_sku'])) {
     $id = $_GET['id_request_sku'];
@@ -14,15 +17,21 @@ if (isset($_GET['id_request_sku'])) {
     $tempat = $data['tempat_lahir'];
     $tgl = $data['tanggal_lahir'];
     $tgl2 = $data['tanggal_request'];
+    $bulan = date('acc');
+    $romawi = getRomawi($bulan);
     $format1 = date('Y', strtotime($tgl2));
     $format2 = date('d-m-Y', strtotime($tgl));
     $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
-    $nama = $data['nama'];
-    $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
     $keperluan = $data['keperluan'];
+    $alamat_usaha = $data['alamat_usaha'];
+    $usaha = $data['usaha'];
+    $jenis_usaha = $data['jenis_usaha'];
+    $alamat_usaha = $data['alamat_usaha'];
+    $kepemilikan = $data['kepemilikan'];
     $request = $data['request'];
     $usaha = $data['usaha'];
     $acc = $data['acc'];
@@ -32,6 +41,15 @@ if (isset($_GET['id_request_sku'])) {
     } elseif ($acc == 1) {
         $acc;
     }
+}
+if (isset($_GET['id_request_sku'])) {
+    $id = $_GET['id_request_sku'];
+    $sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $status_warga = $data['status_warga'];
+    $alamat = $data['alamat'];
+    $pekerjaan = $data['pekerjaan'];
 }
 ?>
 <div class="panel-header bg-primary-gradient">
@@ -108,7 +126,7 @@ if (isset($_GET['id_request_sku'])) {
                                         <font size="4">PEMERINTAHAN KABUPATEN LAMPUNG TENGAH</font><br>
                                         <font size="4">KECAMATAN SEPUTIH BANYAK</font><br>
                                         <font size="5"><b>KELURAHAN SUMBER BAHAGIA</b></font><br>
-                                        <font size="2"><i>JL.SOLO NO 1 , 34156 </i></font><br>
+                                        <font size="2"><i>Alamat : JL Simpang Lima Sumber Bahagia Seputih Banyak , 34156</i></font><br>
                                     </center>
                                 </td>
                                 <td></td>
@@ -138,165 +156,179 @@ if (isset($_GET['id_request_sku'])) {
                                 </td>
                             </tr>
                         </table>
-                        <br>
                         <table border="0" align="center">
                             <tr>
                                 <td>
                                     <center>
-                                        <font size="4"><b>SURAT KETERANGAN / PENGANTAR</b></font><br>
+                                        <font size="4"><b>SURAT KETERANGAN USAHA</b></font><br>
                                         <hr style="margin:0px" color="black">
-                                        <span>Nomor : 045.2 / <?php echo $id; ?> / 29.07.05</span>
+                                        <span>Nomor : 145.2 /<?php echo $id; ?>/ KP.01 /<?php echo $romawi; ?>/<?php echo $format1; ?> </span>
                                     </center>
                                 </td>
                             </tr>
-                        </table>
-                        <br>
-                        <br>
-                        <table border="0" align="center">
-                            <tr>
-                                <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak <br> Lampung Tengah, Menerangkan bahwa :
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                        <table border="0" align="center">
-                            <tr>
-                                <td>Nama</td>
-                                <td>:</td>
-                                <td><?php echo $nama; ?></td>
-                            </tr>
-                            <tr>
-                                <td>TTL</td>
-                                <td>:</td>
-                                <td><?php echo $tempat . ", " . $format2; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Jenis Kelamin</td>
-                                <td>:</td>
-                                <td><?php echo $jekel; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Agama</td>
-                                <td>:</td>
-                                <td><?php echo $agama; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Status Warga</td>
-                                <td>:</td>
-                                <td><?php echo $status_warga; ?></td>
-                            </tr>
-                            <tr>
-                                <td>No. NIK</td>
-                                <td>:</td>
-                                <td><?php echo $nik; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td>:</td>
-                                <td><?php echo $alamat; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Usaha</td>
-                                <td>:</td>
-                                <td><?php echo $usaha; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Keperluan</td>
-                                <td>:</td>
-                                <td><?php echo $keperluan; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Request</td>
-                                <td>:</td>
-                                <?php
-                                if ($request == "USAHA") {
-                                    $request = "Surat Keterangan Usaha";
-                                }
-                                ?>
-                                <td><?php echo $request; ?></td>
-                            </tr>
-                        </table>
-                        <br>
-                        <table border="0" align="center">
-                            <tr>
-                                <td>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan<br>&nbsp;&nbsp;&nbsp;&nbsp;untuk sebagaimana mestinya.
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                        <br>
-                        <table border="0" align="center">
-                            <tr>
-                                <th></th>
-                                <th width="100px"></th>
-                                <th>Lampung Tengah <?php echo $acc; ?></th>
-                            </tr>
-                            <tr>
-                                <td>Tanda Tangan <br> Yang Bersangkutan </td>
-                                <td></td>
-                                <td>Lurah Sumber Bahagia </td>
-                            </tr>
-                            <tr>
-                                <td rowspan="15"></td>
-                                <td></td>
-                                <td rowspan="15"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b style="text-transform:uppercase"><u>(<?php echo $nama; ?>)</u></b></td>
-                                <td></td>
-                                <td><b><u>(Burhan Suburhan)</u></b></td>
-                            </tr>
-                        </table>
+                            <table border="0" align="center">
+                                <tr>
+                                    <td>
+                                        <br>Yang bertanda tangan di bawah ini Lurah Sumber Bahagia Kecamatan Seputih Banyak &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br> Menerangkan bahwa :
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" align="center">
+                                <tr>
+                                    <td>Nama</td>
+                                    <td>:</td>
+                                    <td><?php echo $nama; ?></td>
 
+                                </tr>
+                                <tr>
+                                    <td>Tempat,Tanggal Lahir</td>
+                                    <td>:</td>
+                                    <td><?php echo $tempat . ", " . $format2; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Jenis Kelamin</td>
+                                    <td>:</td>
+                                    <td><?php echo $jekel; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Agama</td>
+                                    <td>:</td>
+                                    <td><?php echo $agama; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Pekerjaan</td>
+                                    <td>:</td>
+                                    <td><?php echo $pekerjaan; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat</td>
+                                    <td>:</td>
+                                    <td><?php echo $alamat; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>RT /RW </td>
+                                    <td>:</td>
+                                    <td><?php echo $status_warga; ?></td>
+                                </tr>
+                            </table>
+                            <table border="0" align="center">
+                                <tr>
+                                    <td>
+                                        Sesuai dengan yang bersangkutan benar nama tersebut mempunyai usaha sebagai berikut :
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" align="center">
+                                <tr>
+                                    <td>Nama Usaha</td>
+                                    <td>:</td>
+                                    <td></td>
+                                    <td><?php echo $usaha; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Jenis Usaha</td>
+                                    <td>:</td>
+                                    <td></td>
+                                    <td><?php echo $jenis_usaha; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat Usaha</td>
+                                    <td>:</td>
+                                    <td></td>
+                                    <td><?php echo $alamat_usaha; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Status Kepemilikan</td>
+                                    <td>:</td>
+                                    <td></td>
+                                    <td><?php echo $kepemilikan; ?></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Keperluan</td>
+                                    <td>:</td>
+                                    <td></td>
+                                    <td><?php echo $keperluan; ?></td>
+                                </tr>
+                            </table>
+                            <table border="0" align="center">
+                                <tr>
+                                    <td>
+                                        Demikian surat ini diberikan kepada yang bersangkutan agar dapat dipergunakan untuk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>sebagaimana mestinya.
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table border="0" align="center">
+                                <tr>
+                                    <th></th>
+                                    <th width="100px"></th>
+                                    <th>Sumber Bahagia, <?php echo $format4; ?></th>
+                                </tr>
+                                <tr>
+                                    <td><b></b></td>
+                                    <td></td>
+                                    <td>Kepala Desa Sumber Bahagia </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="15"></td>
+                                    <td>
+                                    <td style="text-align: left"> <img src="../main/img/qr1.PNG" alt="" style="width: 60px; height: 60px;"></td>
+                                    </td>
+                                    <td rowspan="15"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <td><b></b></td>
+                                <td></td>
+                                <td><b><u>Setio Hudi</u></b></td>
+                                </tr>
+                            </table>
+                        </table>
                     </table>
-
                 </div>
             </div>
         </div>

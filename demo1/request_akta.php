@@ -15,32 +15,42 @@ $nama = $data['nama'];
             <form method="POST" enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">FORM TAMBAH REQUEST SURAT AKTA LAHIR</div>
+                        <div class="card-title">FORM LAYANAN SURAT KETERANGAN LAHIR</div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>NIK</label>
+                                    <label>NIK & Nama</label>
                                     <input type="text" class="form-control" value="<?= $nik . ' - ' . $nama; ?>" readonly>
                                 </div>
+
                                 <div class="form-group">
                                     <input type="hidden" name="nik" class="form-control" value="<?= $nik; ?>" readonly>
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label>Nama Anak</label>
+                                    <input type="text" name="nama_anak" class="form-control" placeholder="Nama Anak.." autofocus>
+                                </div> -->
                                 <div class="form-group">
-                                    <label>Keperluan</label>
-                                    <input type="text" name="keperluan" class="form-control" placeholder="Keperluan Anda.." autofocus>
+                                    <label>Anak Ke -</label>
+                                    <input type="text" name="anak_ke" class="form-control" placeholder="Anak Ke - " autofocus>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6">
+
                                 <div class="form-group">
-                                    <label>Scan KTP</label>
+                                    <label>Keperluan </label>
+                                    <input type="text" name="keperluan" class="form-control" placeholder="Keperluan" autofocus>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Surat Kelahiran</label>
                                     <input type="file" name="ktp" class="form-control" size="37" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Scan KK</label>
                                     <input type="file" name="kk" class="form-control" size="37" required>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -62,8 +72,10 @@ if (isset($_POST['kirim'])) {
     $file_ktp = $_POST['nik'] . "_" . ".jpg";
     $nama_kk = isset($_FILES['kk']);
     $file_kk = $_POST['nik'] . "_" . ".jpg";
-    $sql = "INSERT INTO data_request_skp (nik,scan_ktp,scan_kk,keperluan) VALUES ('$nik','$file_ktp','$file_kk','$keperluan')";
-    $query = mysqli_query($konek, $sql) or die(mysqli_error());
+    $nama_anak = $_POST['nama_anak'];
+    $anak_ke = $_POST['anak_ke'];
+    $sql = "INSERT INTO data_request_akta (nik,scan_ktp,scan_kk,keperluan,anak_ke,nama_anak,status_anak) VALUES ('$nik','$file_ktp','$file_kk','$keperluan','$anak_ke','$nama_anak','$status_anak')";
+    $query = mysqli_query($konek, $sql)  or die(mysqli_connect_error());
 
     if ($query) {
         copy($_FILES['ktp']['tmp_name'], "../dataFoto/scan_ktp/" . $file_ktp);
@@ -72,7 +84,7 @@ if (isset($_POST['kirim'])) {
         echo '<meta http-equiv="refresh" content="3; url=?halaman=tampil_status">';
     } else {
         echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-        echo '<meta http-equiv="refresh" content="3; url=?halaman=request_skp">';
+        echo '<meta http-equiv="refresh" content="3; url=?halaman=request_akta">';
     }
 }
 
