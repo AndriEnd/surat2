@@ -1,10 +1,13 @@
 <?php include '../konek.php'; ?>
 <?php
-$tampil_nik = "SELECT * FROM data_penduduk WHERE nik=$_SESSION[nik]";
+$tampil_nik = "SELECT * FROM data_penduduk 
+JOIN data_user ON data_penduduk.nik = data_user.nik 
+WHERE data_penduduk.nik = '$_SESSION[nik]'";
 $query = mysqli_query($konek, $tampil_nik);
 $data = mysqli_fetch_array($query, MYSQLI_BOTH);
 $nik = $data['nik'];
 $no_kk = $data['no_kk'];
+$Email = $data['email'];
 $nama = $data['nama'];
 $jekel = $data['jekel'];
 $tempat_lahir = $data['tempat_lahir'];
@@ -48,6 +51,11 @@ $nama_ibu = $data['nama_ibu'];
                                 <th>No.KK</th>
                                 <td>:</td>
                                 <td><?= $no_kk; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>:</td>
+                                <td><?= $Email; ?></td>
                             </tr>
                             <tr>
                                 <th>Nama</th>

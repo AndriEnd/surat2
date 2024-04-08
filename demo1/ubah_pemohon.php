@@ -2,12 +2,18 @@
 
 <?php
 if (isset($_GET['nik'])) {
-	$tampil_nik = "SELECT * FROM data_penduduk WHERE nik=$_SESSION[nik]";
+	$tampil_nik ="SELECT * FROM data_penduduk 
+	JOIN data_user ON data_penduduk.nik = data_user.nik 
+	WHERE data_penduduk.nik = '$_SESSION[nik]'";
 	$query = mysqli_query($konek, $tampil_nik);
 	$data = mysqli_fetch_array($query, MYSQLI_BOTH);
 	$nik = $data['nik'];
+	$no_kk = $data['no_kk'];
 	$nama = $data['nama'];
+	$Email = $data['email'];
 	$tempat_lahir = $data['tempat_lahir'];
+	$gol_darah = $data['gol_darah'];
+	$status_warga = $data['status_warga'];
 	$tanggal_lahir = $data['tanggal_lahir'];
 	$jekel = $data['jekel'];
 	$agama = $data['agama'];
@@ -21,6 +27,7 @@ if (isset($_GET['nik'])) {
 	$nama_ayah = $data['nama_ayah'];
 	$nama_ibu = $data['nama_ibu'];
 }
+
 
 ?>
 
@@ -44,7 +51,11 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>No.KK</label>
-									<input type="number" name="no_kk" class="form-control" value="<?= $no_kk; ?>" placeholder="Nomer kartu Keluarga" value="<?= $no_kk; ?>">
+									<input type="number" name="no_kk" class="form-control"  placeholder="No.KK Anda.." value="<?= $no_kk; ?>">
+								</div>
+								<div class="form-group">
+									<label>Email</label>
+									<input type="text" name="email" class="form-control" value="<?= $Email; ?>" placeholder="Alamat Email Anda" value="<?= $Email; ?>">
 								</div>
 								<div class="form-group">
 									<label>Nama Lengkap</label>
@@ -71,7 +82,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Nomor Telepon</label>
-									<input type="text" name="telepon" class="form-control" value="<?= $telepon; ?>" placeholder="Npmer Telepon Anda" value="<?= $telepon; ?>">
+									<input type="text" name="telepon" class="form-control" value="<?= $telepon; ?>" placeholder="Nomer Telepon Anda" value="<?= $telepon; ?>">
 								</div>
 							</div>
 							<div class="col-md-6 col-lg-6">
@@ -113,11 +124,11 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label for="comment">RT / RW</label>
-									<textarea class="form-control" name="status_warga" rows="1"><?= $status_warga ?></textarea>
+									<textarea class="form-control" name="status_warga" rows="1"  placeholder="<?= $status_warga; ?>"> </textarea>
 								</div>
 								<div class="form-group">
 									<label>Status perkawinan</label>
-									<select name="status_perkawinan" class="form-control" value="<?= $status_perkawinan; ?>">
+									<select name="status_perkawinan" class="form-control" value="<?= $status_perkawinan ?>">
 										<option disabled="" selected="">Pilih Status Perkawinan</option>
 										<option value='Belum Berkeluarga'>Belum Berkeluarga</option>
 										<option value='Sudah Berkeluarga'>Sudah Berkeluarga</option>
@@ -148,7 +159,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label for="comment">Alamat</label>
-									<textarea class="form-control" value="<?= $alamat; ?>" name="alamat" rows="5"><?= $alamat ?></textarea>
+									<textarea class="form-control" value="<?= $alamat; ?>" name="alamat" rows="5"><?= $alamat ?> </textarea>
 								</div>
 								<div class="form-group">
 									<label>Nama Ayah</label>
@@ -211,6 +222,13 @@ if (isset($_POST['ubah'])) {
     nama_ibu='$nama_ibu' WHERE nik=$nik";
 	$query = mysqli_query($konek, $sql);
 
+	if (isset($_POST['ubah'])) {
+		$sql = "UPDATE data_user SET
+		email='$Email'
+		
+		WHERE nik=$nik";
+		$query = mysqli_query($konek, $sql);
+
 	if ($query) {
 		echo "<script language='javascript'>swal('Selamat...', 'Ubah Berhasil', 'success');</script>";
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=tampil_pemohon">';
@@ -218,6 +236,7 @@ if (isset($_POST['ubah'])) {
 		echo "<script language='javascript'>swal('Gagal...', 'Ubah Gagal', 'error');</script>";
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=ubah_pemohon">';
 	}
+}
 }
 
 ?>
