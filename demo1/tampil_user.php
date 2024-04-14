@@ -76,7 +76,7 @@
                                         <th>Jenis Kelamin</th>
                                         <th>RT / RW</th>
                                         <th>Password</th>
-                                        <th>Email</th>
+                                        <!--<th>Email</th> !-->
                                         <th>Hak Akses</th>
                                         <th style="width: 10%">Action</th>
                                     </tr>
@@ -94,7 +94,7 @@
                                         $tanggal = $data['tanggal_lahir'];
                                         $alamat = $data['alamat'];
                                         $jekel = $data['jekel'];
-                                        $Email = $data['email'];
+                                        //$Email = $data['email'];
                                         $status_warga = $data['status_warga'];
                                         $tanggal_lahir = date("d-F-Y", strtotime($tanggal));
                                         $hak_akses = $data['hak_akses'];
@@ -107,7 +107,7 @@
                                             <td><?php echo $jekel; ?></td>
                                             <td><?php echo $status_warga; ?></td>
                                             <td><?php echo $password; ?></td>
-                                            <td><?php echo $Email; ?></td>
+                                            <!--<td><?php echo $Email; ?></td> !-->
                                             <td><?php echo $hak_akses; ?></td>
                                             <td>
                                                 <div class="form-button-action">

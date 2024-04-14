@@ -42,6 +42,10 @@
                                     <input type="date" name="tanggal_lahir" class="form-control">
                                 </div>
                                 <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="nama" name="email" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
                                     <label>Nomor Telepon</label>
                                     <input type="nama" name="telepon" class="form-control" placeholder="Nomor Telepon">
                                 </div>
@@ -136,6 +140,7 @@ if (isset($_POST['simpan'])) {
     $jekel = $_POST['jekel'];
     $tempat_lahir = $_POST['tempat_lahir'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
+    $Email = $_POST['email'];
     $telepon = $_POST['telepon'];
     $gol_darah = $_POST['gol_darah'];
     $agama = $_POST['agama'];
@@ -148,7 +153,7 @@ if (isset($_POST['simpan'])) {
     $nama_ayah = $_POST['nama_ayah'];
     $nama_ibu = $_POST['nama_ibu'];
 
-    $sql = "INSERT INTO data_penduduk (nik,no_kk,nama,jekel,tempat_lahir,tanggal_lahir,telepon,gol_darah,agama,status_warga,status_perkawinan,status_hdk,pend_terakhir,alamat,pekerjaan,nama_ayah,nama_ibu) VALUES ('$nik','$no_kk','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$telepon','$gol_darah','$agama','$status_warga','$status_perkawinan','$status_hdk','$pend_terakhir','$alamat','$pekerjaan','$nama_ayah','$nama_ibu')";
+    $sql = "INSERT INTO data_penduduk (nik,no_kk,nama,jekel,tempat_lahir,tanggal_lahir,email,telepon,gol_darah,agama,status_warga,status_perkawinan,status_hdk,pend_terakhir,alamat,pekerjaan,nama_ayah,nama_ibu) VALUES ('$nik','$no_kk','$nama','$jekel','$tempat_lahir','$tanggal_lahir','$Email','$telepon','$gol_darah','$agama','$status_warga','$status_perkawinan','$status_hdk','$pend_terakhir','$alamat','$pekerjaan','$nama_ayah','$nama_ibu')";
     $query = mysqli_query($konek, $sql);
 
     if ($query) {

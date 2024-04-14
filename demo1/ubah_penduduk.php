@@ -13,6 +13,7 @@ if (isset($_GET['nik'])) {
     $jekel = $data['jekel'];
     $tempat_lahir = $data['tempat_lahir'];
     $tanggal_lahir = $data['tanggal_lahir'];
+    $Email = $_POST['email'];
     $telepon = $_POST['telepon'];
     $gol_darah = $_POST['gol_darah'];
     $agama = $_POST['agama'];
@@ -108,6 +109,7 @@ if (isset($_POST['ubah'])) {
     $jekel = $_POST['jekel'];
     $tempat_lahir = $_POST['tempat_lahir'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
+    $Email = $_POST['email'];
     $telepon = $_POST['telepon'];
     $gol_darah = $_POST['gol_darah'];
     $agama = $_POST['agama'];
@@ -147,6 +149,7 @@ if (isset($_GET['nik'])) {
     $jekel = $data['jekel'];
     $agama = $data['agama'];
     $alamat = $data['alamat'];
+    $Email = $_POST['email'];
     $telepon = $data['telepon'];
     $status_warga = $data['status_warga'];
     $status_perkawinan = $data['status_perkawinan'];
@@ -201,6 +204,10 @@ if (isset($_GET['nik'])) {
                                 <div class="form-group">
                                     <label>Tanggal Lahir</label>
                                     <input type="date" name="tanggal_lahir" class="form-control" value="<?= $tanggal_lahir; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="nama" name="email" class="form-control" placeholder="Email" value="<?= $Email; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Nomor Telepon</label>
@@ -296,6 +303,7 @@ if (isset($_POST['ubah'])) {
     $jekel = $_POST['jekel'];
     $tempat_lahir = $_POST['tempat_lahir'];
     $tanggal_lahir = $_POST['tanggal_lahir'];
+    $Email = $_POST['email'];
     $telepon = $_POST['telepon'];
     $gol_darah = $_POST['gol_darah'];
     $agama = $_POST['agama'];
@@ -315,6 +323,7 @@ if (isset($_POST['ubah'])) {
     jekel='$jekel',
     tempat_lahir='$tempat_lahir',
 	tanggal_lahir='$tanggal_lahir',
+    email='$Email',
 	telepon='$telepon',
     gol_darah='$gol_darah',
 	agama='$agama',

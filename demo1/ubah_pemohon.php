@@ -98,8 +98,8 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label>Agama</label>
-									<select name="agama" class="form-control" value="<?= $agama; ?>">
-										<option value="">Pilih Agama Anda</option>
+									<select name="agama" class="form-control"  placeholder="Pilih Agama" value="<?= $Agama; ?> ">
+										
 
 										<option <?php if ($agama == 'Islam') {
 													echo "selected";
@@ -124,12 +124,12 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label for="comment">RT / RW</label>
-									<textarea class="form-control" name="status_warga" rows="1"  placeholder="<?= $status_warga; ?>"> </textarea>
+									<input type="text" name="status_warga" value="<?= $status_warga; ?>" class="form-control" placeholder="Status Warga" value="<?= $status_warga; ?>">
 								</div>
 								<div class="form-group">
 									<label>Status perkawinan</label>
-									<select name="status_perkawinan" class="form-control" value="<?= $status_perkawinan ?>">
-										<option disabled="" selected="">Pilih Status Perkawinan</option>
+									<select name="status_perkawinan" class="form-control"  placeholder="Pilih Status" value="<?= $status_perkawinan; ?> ">
+										
 										<option value='Belum Berkeluarga'>Belum Berkeluarga</option>
 										<option value='Sudah Berkeluarga'>Sudah Berkeluarga</option>
 										<option value='Janda'>Janda</option>
@@ -138,7 +138,7 @@ if (isset($_GET['nik'])) {
 								</div>
 								<div class="form-group">
 									<label for="comment">Status HDK</label>
-									<textarea class="form-control" name="status_hdk" rows="1"><?= $status_hdk ?></textarea>
+									<input type="text" name="status_hdk" value="<?= $status_hdk; ?>" class="form-control" placeholder="Status hdk" value="<?= $status_hdk; ?>">
 								</div>
 								<div class="form-group">
 									<label>Pendidikan</label>
@@ -190,6 +190,7 @@ if (isset($_POST['ubah'])) {
 	$jekel = $_POST['jekel'];
 	$tempat_lahir = $_POST['tempat_lahir'];
 	$tanggal_lahir = $_POST['tanggal_lahir'];
+	$Email = $_POST['email'];
 	$telepon = $_POST['telepon'];
 	$gol_darah = $_POST['gol_darah'];
 	$agama = $_POST['agama'];
@@ -209,6 +210,7 @@ if (isset($_POST['ubah'])) {
     jekel='$jekel',
     tempat_lahir='$tempat_lahir',
 	tanggal_lahir='$tanggal_lahir',
+	email='$Email',
 	telepon='$telepon',
     gol_darah='$gol_darah',
 	agama='$agama',
@@ -222,13 +224,7 @@ if (isset($_POST['ubah'])) {
     nama_ibu='$nama_ibu' WHERE nik=$nik";
 	$query = mysqli_query($konek, $sql);
 
-	if (isset($_POST['ubah'])) {
-		$sql = "UPDATE data_user SET
-		email='$Email'
-		
-		WHERE nik=$nik";
-		$query = mysqli_query($konek, $sql);
-
+	
 	if ($query) {
 		echo "<script language='javascript'>swal('Selamat...', 'Ubah Berhasil', 'success');</script>";
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=tampil_pemohon">';
@@ -237,6 +233,6 @@ if (isset($_POST['ubah'])) {
 		echo '<meta http-equiv="refresh" content="3; url=?halaman=ubah_pemohon">';
 	}
 }
-}
+
 
 ?>
