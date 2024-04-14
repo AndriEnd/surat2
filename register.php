@@ -41,6 +41,9 @@
                 <div class="form-group">
                   <input type="number" name="nik" class="form-control form-control-lg" placeholder="NIK Anda.." oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="16" required autofocus>
                 </div>
+               <!-- <div class="form-group">
+                  <input type="text" name="email" class="form-control form-control-lg" placeholder="Masukan Email Anda .. " required>
+                </div> !-->
                 <div class="form-group">
                   <input type="text" name="nama" class="form-control form-control-lg" placeholder="Nama Lengkap Anda.." required>
                 </div>
@@ -95,7 +98,7 @@
     $kota = $_POST['kota'];
     $tgl = $_POST['tgl'];
 
-    $sql_simpan = "INSERT INTO data_user (nik,password,hak_akses,nama,tanggal_lahir,jekel,tempat_lahir) VALUES ('$nik','$password','$hak_akses','$nama','$tgl','$jekel','$kota')";
+    $sql_simpan = "INSERT INTO data_user (nik,password,hak_akses,nama,tanggal_lahir,jekel,tempat_lahir) VALUES ('$nik','$Email ','$password','$hak_akses','$nama','$tgl','$jekel','$kota')";
     $query_simpan = mysqli_query($konek, $sql_simpan);
 
     if ($query_simpan) {

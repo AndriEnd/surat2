@@ -86,6 +86,7 @@
                                         <th>Golongan Darah</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Tempat & Tanggal Lahir</th>
+                                        <th>Email</th>
                                         <th>Telepon</th>
                                         <th>Agama</th>
                                         <th>RT / RW</th>
@@ -111,6 +112,7 @@
                                         $tempat_lahir = $data['tempat_lahir'];
                                         $tanggal = $data['tanggal_lahir'];
                                         $tanggal_lahir = date("d-F-Y", strtotime($tanggal));
+                                        $Email = $data['email'];
                                         $telepon = $data['telepon'];
                                         $alamat = $data['alamat'];
                                         $gol_darah = $data['gol_darah'];
@@ -132,6 +134,7 @@
                                             <td><?php echo $gol_darah; ?></td>
                                             <td><?php echo $jekel; ?></td>
                                             <td><?php echo $tempat_lahir . ", " . $tanggal_lahir; ?></td>
+                                            <td> <?php echo $Email; ?></td>
                                             <td><?php echo $telepon; ?></td>
                                             <td><?php echo $agama; ?></td>
                                             <td><?php echo $status_warga; ?></td>
