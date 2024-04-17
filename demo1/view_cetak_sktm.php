@@ -77,7 +77,7 @@ if (isset($_GET['id_request_sktm'])) {
                         <form action="" enctype="multipart/form-data" method="POST">
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <input type=text name="dicetak" id="" class="form-control" value="Surat SKTM Sudah Selesai Diproses, Silahkan Unduh Pada Sistem !">
+                                <input type=text name="dicetak" id="" class="form-control" value="Surat SKTM Sudah Selesai Diproses, Silahkan Unduh Pada Halaman Website Sisurat!">
                                 <br>
                                 <br>
                                 <b>Upload File SKTM</b><br>
@@ -98,7 +98,7 @@ if (isset($_GET['id_request_sktm'])) {
                             // $sql = "INSERT INTO data_request_sktm (file_sktm) VALUES ('$file_sktm') WHERE id_request_sktm=$id"; // Insert to DB where ID
                             $query = mysqli_query($konek, $sql,);
                             $update = mysqli_query($konek, "UPDATE data_request_sktm SET keterangan='$cetak', status=3 WHERE id_request_sktm=$id");
-
+                            
                             $sender_name = "AdminSisurat";
                             $sender_email = "noreply@mailer.org";
                             //
@@ -111,7 +111,7 @@ if (isset($_GET['id_request_sktm'])) {
                             
                             $mail = new PHPMailer(true);
                             $mail->isSMTP();
-                        //$mail->SMTPDebug = 2;
+                            //$mail->SMTPDebug = 2;
                             $mail->Host = 'smtp.gmail.com';
                             $mail->SMTPAuth = true;
                         
@@ -136,10 +136,8 @@ if (isset($_GET['id_request_sktm'])) {
                                 
                             }
                     }
-
                     ?>     
                     </div>
-                    
                 </div>
             </div>
         </div>

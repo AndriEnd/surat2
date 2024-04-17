@@ -4,29 +4,15 @@ include '../convert_romawi.php' ?>
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
 <?php
-if (isset($_GET['id_request_sku'])) {
-    $id = $_GET['id_request_sku'];
-    $sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id'";
-    $query = mysqli_query($konek, $sql);
-    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
-    $id = $data['id_request_sku'];
-    $nik = $data['nik'];
-    $nama = $data['nama'];
-    $tempat = $data['tempat_lahir'];
-    $pekerjaan = $data['pekerjaan'];
-    $tgl = $data['tanggal_lahir'];
-    $tgl2 = $data['tanggal_request'];
-    $format1 = date('Y', strtotime($tgl2));
-    $format2 = date('d-m-Y', strtotime($tgl));
-    $format3 = date('d F Y', strtotime($tgl2));
-    $bulan = date('m', strtotime($tgl2));
-    $romawi = getRomawi($bulan);
-    $agama = $data['agama'];
-    $jekel = $data['jekel'];
-    $alamat = $data['alamat'];
-    $status_warga = $data['status_warga'];
-    $keperluan = $data['keperluan'];
-}
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 if (isset($_GET['id_request_sku'])) {
     $id = $_GET['id_request_sku'];
     $sql = "SELECT * FROM data_request_sku natural join data_user WHERE id_request_sku='$id'";
@@ -52,6 +38,33 @@ if (isset($_GET['id_request_sku'])) {
         $keterangan = "Sudah ACC Lurah, surat sedang dalam proses cetak oleh RT";
     }
 }
+
+if (isset($_GET['id_request_sku'])) {
+    $id = $_GET['id_request_sku'];
+    $sql = "SELECT * FROM data_request_sku natural join data_penduduk WHERE id_request_sku='$id'";
+    $query = mysqli_query($konek, $sql);
+    $data = mysqli_fetch_array($query, MYSQLI_BOTH);
+    $id = $data['id_request_sku'];
+    $nik = $data['nik'];
+    $nama = $data['nama'];
+    $tempat = $data['tempat_lahir'];
+    $pekerjaan = $data['pekerjaan'];
+    $tgl = $data['tanggal_lahir'];
+    $tgl2 = $data['tanggal_request'];
+    $format1 = date('Y', strtotime($tgl2));
+    $format2 = date('d-m-Y', strtotime($tgl));
+    $format3 = date('d F Y', strtotime($tgl2));
+    $bulan = date('m', strtotime($tgl2));
+    $romawi = getRomawi($bulan);
+    $agama = $data['agama'];
+    $jekel = $data['jekel'];
+    $Email = $data['email'];
+    $alamat = $data['alamat'];
+    $status_warga = $data['status_warga'];
+    $keperluan = $data['keperluan'];
+    $file_sku = $data['file_sku'];
+    $receiver_email = $data['email'];
+}
 ?>
 <div class="panel-header bg-primary-gradient">
     <div class="page-inner py-5">
@@ -71,11 +84,9 @@ if (isset($_GET['id_request_sku'])) {
                         <form action="" enctype="multipart/form-data" method="POST">
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <select name="dicetak" id="" class="form-control">
-                                    <option value="">Pilih</option>
-                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
-                                </select>
-                                <br><br>
+                                <input type=text name="dicetak" id="" class="form-control" value="Surat SKU Sudah Selesai Diproses, Silahkan Unduh Pada Halaman Website Sisurat !">
+                                <br>
+                                <br>
                                 <b>Upload File SKU</b><br>
                                 <input type="file" name="sku" class="form-control" size="37" required>
                                 <br><br>
@@ -95,17 +106,44 @@ if (isset($_GET['id_request_sku'])) {
                             $query = mysqli_query($konek, $sql,);
                             $update = mysqli_query($konek, "UPDATE data_request_sku SET keterangan='$cetak', status=3 WHERE id_request_sku=$id");
 
+                            $sender_name = "AdminSisurat";
+                            $sender_email = "noreply@mailer.org";
+                            //
+                            $username = "techsisurat@gmail.com";
+                            $password = "rduzkgkzwezrslgx";
+                            //
+                            $receiver_email = $data['email']; // Mengakses nilai 'email' dalam $_POST
+                            $message = $_POST['dicetak']; // Mengakses nilai 'dicetak' dalam $_POST
+                            $subject = 'Status Pengajuan Surat'; // Mengakses nilai 'sktm' dalam $_POST
+                            
+                            $mail = new PHPMailer(true);
+                            $mail->isSMTP();
+                            //$mail->SMTPDebug = 2;
+                            $mail->Host = 'smtp.gmail.com';
+                            $mail->SMTPAuth = true;
+                        
+                            $mail->SMTPSecure = 'ssl';
+                            $mail->Port = 465;
+                            
+                            $mail->setFrom($sender_email, $sender_name);
+                            $mail->Username = $username;
+                            $mail->Password = $password;
+                        
+                            $mail->Subject = $subject;
+                            $mail->msgHTML($message);
+                            $mail->addAddress($receiver_email);
                             if ($update && $query) {
-                                if (move_uploaded_file($file_tmp, $file_destination)) {
+                                if (move_uploaded_file($file_tmp, $file_destination) && $mail->send()) {
                                     echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">'; 
                                 } else {
                                     echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sku">';
+                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sktm">';
                                 }
+                                
                             }
                         }
-                        ?>
+                    ?>
                     </div>
                 </div>
             </div>

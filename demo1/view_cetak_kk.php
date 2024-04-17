@@ -4,6 +4,15 @@ include '../convert_romawi.php'; ?>
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/sweetalert.min.js"></script>
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 if (isset($_GET['id_request_kk'])) {
     $id = $_GET['id_request_kk'];
     $sql = "SELECT * FROM data_request_kk natural join data_user WHERE id_request_kk='$id'";
@@ -22,7 +31,7 @@ if (isset($_GET['id_request_kk'])) {
     $romawi = getRomawi($bulan);
     $agama = $data['agama'];
     $jekel = $data['jekel'];
-
+    
     $nama_anggota = $data['nama_anggota'];
     $nik_anggota = $data['nik_anggota'];
     $jekel_anggota = $data['jekel_anggota'];
@@ -56,7 +65,7 @@ if (isset($_GET['id_request_kk'])) {
     $alamat = $data['alamat'];
     $status_warga = $data['status_warga'];
     $status_perkawinan = $data['status_perkawinan'];
-
+    $Email = $data['email'];
     $nama_anggota  = $data['nama_anggota']; // anggota kel
     $nik_anggota  =  $data['nik_anggota'];
     $tempat_anggota  = $data['tempat_anggota'];
@@ -85,11 +94,9 @@ if (isset($_GET['id_request_kk'])) {
                         <form action="" enctype="multipart/form-data" method="POST">
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <select name="dicetak" id="" class="form-control">
-                                    <option value="">Pilih</option>
-                                    <option value="Surat dicetak, bisa diambil!">Surat dicetak, bisa diambil!</option>
-                                </select>
-                                <br><br>
+                                <input type=text name="dicetak" id="" class="form-control" value="Surat Keterangan Kartu Keluarga Sudah Selesai Diproses, Silahkan Unduh Pada Halaman Website Sisurat!">
+                                <br>
+                                <br>
                                 <b>Upload File KK</b><br>
                                 <input type="file" name="kk" class="form-control" size="37" required>
                                 <br><br>
@@ -109,14 +116,41 @@ if (isset($_GET['id_request_kk'])) {
                             $query = mysqli_query($konek, $sql,);
                             $update = mysqli_query($konek, "UPDATE data_request_kk SET keterangan='$cetak', status=3 WHERE id_request_kk=$id");
 
+                            $sender_name = "AdminSisurat";
+                            $sender_email = "noreply@mailer.org";
+                            //
+                            $username = "techsisurat@gmail.com";
+                            $password = "rduzkgkzwezrslgx";
+                            //
+                            $receiver_email = $data['email']; // Mengakses nilai 'email' dalam $_POST
+                            $message = $_POST['dicetak']; // Mengakses nilai 'dicetak' dalam $_POST
+                            $subject = 'Status Pengajuan Surat'; // Mengakses nilai 'sktm' dalam $_POST
+                            
+                            $mail = new PHPMailer(true);
+                            $mail->isSMTP();
+                            //$mail->SMTPDebug = 2;
+                            $mail->Host = 'smtp.gmail.com';
+                            $mail->SMTPAuth = true;
+                        
+                            $mail->SMTPSecure = 'ssl';
+                            $mail->Port = 465;
+                            
+                            $mail->setFrom($sender_email, $sender_name);
+                            $mail->Username = $username;
+                            $mail->Password = $password;
+                        
+                            $mail->Subject = $subject;
+                            $mail->msgHTML($message);
+                            $mail->addAddress($receiver_email);
                             if ($update && $query) {
-                                if (move_uploaded_file($file_tmp, $file_destination)) {
+                                if (move_uploaded_file($file_tmp, $file_destination) && $mail->send()) {
                                     echo "<script language='javascript'>swal('Selamat...', 'Kirim Berhasil', 'success');</script>";
-                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">';
+                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=surat_dicetak">'; 
                                 } else {
                                     echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
-                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=view_kk">';
+                                    echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sktm">';
                                 }
+                                
                             }
                         }
                         ?>
