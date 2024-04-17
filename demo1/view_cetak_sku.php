@@ -140,7 +140,6 @@ if (isset($_GET['id_request_sku'])) {
                                     echo "<script language='javascript'>swal('Gagal...', 'Kirim Gagal', 'error');</script>";
                                     echo '<meta http-equiv="refresh" content="3; url=?halaman=view_sktm">';
                                 }
-                                
                             }
                         }
                     ?>
