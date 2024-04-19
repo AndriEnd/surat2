@@ -105,8 +105,8 @@ if (isset($_GET['id_request_ktp'])) {
                             $sender_name = "AdminSisurat";
                             $sender_email = "noreply@mailer.org";
                             //
-                            $username = "techsisurat@gmail.com";
-                            $password = "rduzkgkzwezrslgx";
+                            $username = "kelurahan.sumberbahagaia@gmail.com";
+                            $password = "ihwpalefpelxodmc";
                             //
                             $receiver_email = $data['email']; // Mengakses nilai 'email' dalam $_POST
                             $message = $_POST['dicetak']; // Mengakses nilai 'dicetak' dalam $_POST

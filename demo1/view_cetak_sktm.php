@@ -102,9 +102,9 @@ if (isset($_GET['id_request_sktm'])) {
                             $sender_name = "AdminSisurat";
                             $sender_email = "noreply@mailer.org";
                             //
-                            $username = "techsisurat@gmail.com";
-                            $password = "rduzkgkzwezrslgx";
-                            //
+                            $username = "kelurahan.sumberbahagaia@gmail.com";
+                            $password = "ihwpalefpelxodmc";
+                            //rduzkgkzwezrslgx
                             $receiver_email = $data['email']; // Mengakses nilai 'email' dalam $_POST
                             $message = $_POST['dicetak']; // Mengakses nilai 'dicetak' dalam $_POST
                             $subject = 'Status Pengajuan Surat'; // Mengakses nilai 'sktm' dalam $_POST
